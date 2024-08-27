@@ -1,32 +1,49 @@
-# Prerequisites
-*.d
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+.vs/KDX_RPG/FileContentIndex/2ce7adc6-6778-4839-8728-3988b3d131a0.vsidx
+.vs/KDX_RPG/FileContentIndex/b28664f8-7492-44c6-89f0-45b80f5ba27c.vsidx
+.vs/KDX_RPG/FileContentIndex/b3e58493-fdcb-476b-af3b-9892e7fd9755.vsidx
+.vs/KDX_RPG/FileContentIndex/d3c79fe8-8f20-42fb-8aab-80174f66fd3b.vsidx
+.vs/KDX_RPG/FileContentIndex/f6680a7c-2bea-4c18-8bc4-38df2617d1d9.vsidx
+.vs/KDX_RPG/v17/.suo
+.vs/KDX_RPG/v17/Browse.VC.db
+.vs/KDX_RPG/v17/ipch/AutoPCH/2fab24f7fa37d104/INVENTORY.ipch
+.vs/KDX_RPG/v17/ipch/AutoPCH/31b509e19d11e942/PLAYER.ipch
+.vs/KDX_RPG/v17/ipch/AutoPCH/50c0d5d9a7b9ded7/CHARACTER.ipch
+.vs/KDX_RPG/v17/ipch/AutoPCH/8c1e8672c42e3d5d/ITEM.ipch
+.vs/KDX_RPG/v17/ipch/AutoPCH/8d818aac0ec881e1/POTION.ipch
+.vs/KDX_RPG/v17/ipch/AutoPCH/a54b3b7d1130d3cf/NPC.ipch
+.vs/KDX_RPG/v17/ipch/AutoPCH/aded968cff77269f/PLAYER.ipch
+.vs/KDX_RPG/v17/ipch/AutoPCH/b9e5f0e701232b73/ARMOR.ipch
+.vs/KDX_RPG/v17/ipch/AutoPCH/cb819542c0fb9496/WEAPON.ipch
+.vs/KDX_RPG/v17/ipch/AutoPCH/f1fe88bab9ee4317/MAIN.ipch
+.vs/KDX_RPG/v17/Solution.VC.db
+gitignore.txt
+KDX_RPG/x64/Debug/Armor.obj
+KDX_RPG/x64/Debug/Character.obj
+KDX_RPG/x64/Debug/Inventory.obj
+KDX_RPG/x64/Debug/Item.obj
+KDX_RPG/x64/Debug/KDX_RPG.exe.recipe
+KDX_RPG/x64/Debug/KDX_RPG.ilk
+KDX_RPG/x64/Debug/KDX_RPG.log
+KDX_RPG/x64/Debug/KDX_RPG.tlog/CL.command.1.tlog
+KDX_RPG/x64/Debug/KDX_RPG.tlog/Cl.items.tlog
+KDX_RPG/x64/Debug/KDX_RPG.tlog/CL.read.1.tlog
+KDX_RPG/x64/Debug/KDX_RPG.tlog/CL.write.1.tlog
+KDX_RPG/x64/Debug/KDX_RPG.tlog/KDX_RPG.lastbuildstate
+KDX_RPG/x64/Debug/KDX_RPG.tlog/link.command.1.tlog
+KDX_RPG/x64/Debug/KDX_RPG.tlog/link.read.1.tlog
+KDX_RPG/x64/Debug/KDX_RPG.tlog/link.secondary.1.tlog
+KDX_RPG/x64/Debug/KDX_RPG.tlog/link.write.1.tlog
+KDX_RPG/x64/Debug/main.obj
+KDX_RPG/x64/Debug/NPC.obj
+KDX_RPG/x64/Debug/Player.obj
+KDX_RPG/x64/Debug/Potion.obj
+KDX_RPG/x64/Debug/vc143.idb
+KDX_RPG/x64/Debug/vc143.pdb
+KDX_RPG/x64/Debug/Weapon.obj
+x64/Debug/KDX_RPG.exe
+x64/Debug/KDX_RPG.pdb
+/.vs/KDX_RPG/FileContentIndex
+/.vs/KDX_RPG/v17/Browse.VC.db-shm
+/.vs/KDX_RPG/v17/Browse.VC.db-wal
+/.vs/KDX_RPG/v17/Browse.VC.opendb

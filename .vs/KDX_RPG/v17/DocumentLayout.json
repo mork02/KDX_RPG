@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\alber\\Documents\\Code\\C\u002B\u002B\\VS\\KDX_RPG\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8C79FD5F-06D3-4C0D-994B-D7B3D9AF2C4E}|KDX_RPG.vcxproj|C:\\Users\\alber\\Documents\\Code\\C\u002B\u002B\\VS\\KDX_RPG\\Armor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8C79FD5F-06D3-4C0D-994B-D7B3D9AF2C4E}|KDX_RPG.vcxproj|solutionrelative:Armor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8C79FD5F-06D3-4C0D-994B-D7B3D9AF2C4E}|KDX_RPG.vcxproj|C:\\Users\\alber\\Documents\\Code\\C\u002B\u002B\\VS\\KDX_RPG\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{8C79FD5F-06D3-4C0D-994B-D7B3D9AF2C4E}|KDX_RPG.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -39,10 +43,6 @@
       "RelativeMoniker": "D:0:0:{8C79FD5F-06D3-4C0D-994B-D7B3D9AF2C4E}|KDX_RPG.vcxproj|solutionrelative:Item.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8C79FD5F-06D3-4C0D-994B-D7B3D9AF2C4E}|KDX_RPG.vcxproj|C:\\Users\\alber\\Documents\\Code\\C\u002B\u002B\\VS\\KDX_RPG\\Armor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{8C79FD5F-06D3-4C0D-994B-D7B3D9AF2C4E}|KDX_RPG.vcxproj|solutionrelative:Armor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8C79FD5F-06D3-4C0D-994B-D7B3D9AF2C4E}|KDX_RPG.vcxproj|C:\\Users\\alber\\Documents\\Code\\C\u002B\u002B\\VS\\KDX_RPG\\Armor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{8C79FD5F-06D3-4C0D-994B-D7B3D9AF2C4E}|KDX_RPG.vcxproj|solutionrelative:Armor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
@@ -54,17 +54,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 158,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\alber\\Documents\\Code\\C\u002B\u002B\\VS\\KDX_RPG\\main.cpp",
               "RelativeDocumentMoniker": "main.cpp",
               "ToolTip": "C:\\Users\\alber\\Documents\\Code\\C\u002B\u002B\\VS\\KDX_RPG\\main.cpp",
               "RelativeToolTip": "main.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-08-25T01:51:41.882Z",
               "IsPinned": true,
@@ -80,7 +80,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Inventory.h",
               "DocumentMoniker": "C:\\Users\\alber\\Documents\\Code\\C\u002B\u002B\\VS\\KDX_RPG\\Inventory.h",
               "RelativeDocumentMoniker": "Inventory.h",
@@ -92,7 +92,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Item.cpp",
               "DocumentMoniker": "C:\\Users\\alber\\Documents\\Code\\C\u002B\u002B\\VS\\KDX_RPG\\Item.cpp",
               "RelativeDocumentMoniker": "Item.cpp",
@@ -104,7 +104,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 0,
               "Title": "Armor.h",
               "DocumentMoniker": "C:\\Users\\alber\\Documents\\Code\\C\u002B\u002B\\VS\\KDX_RPG\\Armor.h",
               "RelativeDocumentMoniker": "Armor.h",
@@ -112,11 +112,12 @@
               "RelativeToolTip": "Armor.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-27T18:07:26.059Z"
+              "WhenOpened": "2024-08-27T18:07:26.059Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Inventory.cpp",
               "DocumentMoniker": "C:\\Users\\alber\\Documents\\Code\\C\u002B\u002B\\VS\\KDX_RPG\\Inventory.cpp",
               "RelativeDocumentMoniker": "Inventory.cpp",
@@ -128,7 +129,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Weapon.cpp",
               "DocumentMoniker": "C:\\Users\\alber\\Documents\\Code\\C\u002B\u002B\\VS\\KDX_RPG\\Weapon.cpp",
               "RelativeDocumentMoniker": "Weapon.cpp",
@@ -152,7 +153,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Weapon.h",
               "DocumentMoniker": "C:\\Users\\alber\\Documents\\Code\\C\u002B\u002B\\VS\\KDX_RPG\\Weapon.h",
               "RelativeDocumentMoniker": "Weapon.h",
@@ -164,7 +165,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Item.h",
               "DocumentMoniker": "C:\\Users\\alber\\Documents\\Code\\C\u002B\u002B\\VS\\KDX_RPG\\Item.h",
               "RelativeDocumentMoniker": "Item.h",
@@ -176,7 +177,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Player.cpp",
               "DocumentMoniker": "C:\\Users\\alber\\Documents\\Code\\C\u002B\u002B\\VS\\KDX_RPG\\Player.cpp",
               "RelativeDocumentMoniker": "Player.cpp",
@@ -188,7 +189,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Player.h",
               "DocumentMoniker": "C:\\Users\\alber\\Documents\\Code\\C\u002B\u002B\\VS\\KDX_RPG\\Player.h",
               "RelativeDocumentMoniker": "Player.h",
