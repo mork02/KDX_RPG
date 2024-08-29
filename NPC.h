@@ -19,7 +19,7 @@ private:
 
 
 public:
-	NPC(std::string name, int hp, int basic_dmg, int defensive, int extra_defensive, Zone zone);
+	NPC(std::string name, int hp, int basic_dmg, int basic_defensive, Zone zone);
 	Character stats;
 
 	// getter

@@ -4,8 +4,7 @@ Inventory::Inventory() {}
 
 // getter
 
-const std::vector<std::unique_ptr<Item>>& Inventory::get_inventory() const
-{
+const std::vector<std::unique_ptr<Item>>& Inventory::get_inventory() const {
     return inventory;
 }
 

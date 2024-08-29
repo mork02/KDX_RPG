@@ -1,6 +1,6 @@
 #include "Character.h"
 
-Character::Character(int hp_c, int basic_dmg_c, int defensive_c, int extra_defensive_c) : hp(hp_c), max_hp(hp_c), basic_dmg(basic_dmg_c), defensive(defensive_c), extra_defensive(extra_defensive_c) {}
+Character::Character(int hp_c, int basic_dmg_c, int basic_defensive_c) : hp(hp_c), max_hp(hp_c), basic_dmg(basic_dmg_c), basic_defensive(basic_defensive_c) {}
 
 // Getter
 
@@ -19,14 +19,9 @@ int Character::get_basic_dmg()
 	return basic_dmg;
 }
 
-int Character::get_defensive()
+int Character::get_basic_defensive()
 {
-	return defensive;
-}
-
-int Character::get_extra_defensive()
-{
-	return extra_defensive;
+	return basic_defensive;
 }
 
 
@@ -34,7 +29,7 @@ int Character::get_extra_defensive()
 
 void Character::set_hp(int amount)
 {
-	hp = amount;
+	hp = hp + amount;
 	if (hp > max_hp) 
 	{
 		hp = max_hp;
@@ -51,16 +46,10 @@ void Character::set_basic_dmg(int amount)
 	basic_dmg = amount;
 }
 
-void Character::set_defensive(int amount)
+void Character::set_basic_defensive(int amount)
 {
-	defensive = amount;
+	basic_defensive = amount;
 }
-
-void Character::set_extra_defensive(int amount)
-{
-	extra_defensive = amount;
-}
-
 
 // methods
 bool Character::check_death() 

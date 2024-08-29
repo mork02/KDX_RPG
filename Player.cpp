@@ -1,7 +1,7 @@
 #include "Player.h"
 
-Player::Player(std::string name_c, int hp_c, int basic_dmg_c, int defensive_c, int extra_defensive_c)
-	: name(name_c), weapon_slot(), armor_slot(), stats(hp_c, basic_dmg_c, defensive_c, extra_defensive_c)
+Player::Player(std::string name_c, int hp_c, int basic_dmg_c, int basic_defensive_c)
+	: name(name_c), weapon_slot(), armor_slot(), stats_player(hp_c, basic_dmg_c, basic_defensive_c)
 {
 	std::cout << name << " is created!" << std::endl;
 }
@@ -10,20 +10,39 @@ Player::Player(std::string name_c, int hp_c, int basic_dmg_c, int defensive_c, i
 
 std::string Player::get_name() { return name; }
 
-std::unique_ptr<Item> Player::get_weapon_slot()
-{
-	if (weapon_slot) {
-		return std::move(weapon_slot);
+Item* Player::get_weapon_slot() const { return weapon_slot.get(); }
+
+int Player::get_DMG_player() {
+	auto weapon = get_weapon_slot();
+
+	if (weapon) {
+		return stats().get_basic_dmg() + weapon->get_dmg();
 	}
-	return nullptr;
+
+	return stats().get_basic_dmg();
 }
 
-std::unique_ptr<Item> Player::get_armor_slot()
+Item* Player::get_armor_slot() const { return armor_slot.get();  }
+
+int Player::get_DEFENSIVE_player()
 {
-	if (armor_slot) {
-		return std::move(armor_slot); 
+	auto armor = get_armor_slot();
+
+	if (armor) {
+		return stats().get_basic_defensive() + armor->get_dmg();
 	}
-	return nullptr;
+
+	return stats().get_basic_defensive();
+}
+
+Character Player::stats()
+{
+	return stats_player;
+}
+
+Inventory Player::get_inventory()
+{
+	return inventory;
 }
 
 // setter
