@@ -1,15 +1,11 @@
 #pragma once
 #include <iostream>
-#include "Potion.h"
 
 class Item {
 private:
-    static int global_id;
-    int id;
 
 public:
     // init
-    Item() { id = ++global_id; }
     virtual ~Item() = default; 
 
     // getter
@@ -23,5 +19,4 @@ public:
 
     // methods
     virtual void display_item() const = 0;
-    virtual std::unique_ptr<Item> clone() const = 0;
 };

@@ -21,5 +21,4 @@ public:
 
 	// methods
 	void display_item() const override;
-	std::unique_ptr<Item> clone() const override;
 };

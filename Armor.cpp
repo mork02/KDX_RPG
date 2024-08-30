@@ -6,36 +6,25 @@ Armor::Armor(std::string name_c, int defensive_c, int extra_defensive_c, int dur
 
 // getter
 
-std::string Armor::get_name() const
-{
-	return name;
-}
+std::string Armor::get_name() const { return name; }
 
+int Armor::get_defensive() const { return defensive; }
 
-int Armor::get_defensive() const
-{
-	return defensive;
-}
+int Armor::get_extra_defensive() const { return extra_defensive; }
 
-int Armor::get_extra_defensive() const
-{
-	return extra_defensive;
-}
-
-int Armor::get_durability() const
-{
-	return durability;
-}
+int Armor::get_durability() const { return durability; }
 
 
 // methods
 
 void Armor::display_item() const
 {
-	std::cout << "Name: " << name << "\nDefensive: " << defensive << " + " << extra_defensive << "\nDurability: " << durability << "\n" << std::endl;
-}
-
-std::unique_ptr<Item> Armor::clone() const
-{
-	return std::make_unique<Armor>(*this);
+	try
+	{
+		std::cout << "Name: " << name << "\nDefensive: " << defensive << " + " << extra_defensive << "\nDurability: " << durability << "\n" << std::endl;
+	}
+	catch (const std::exception&)
+	{
+		std::cout << "No item equiped!" << std::endl;
+	}
 }

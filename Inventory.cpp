@@ -4,25 +4,36 @@ Inventory::Inventory() {}
 
 // getter
 
-const std::vector<std::unique_ptr<Item>>& Inventory::get_inventory() const {
-    return inventory;
+std::vector<Item*>& Inventory::get_inventory() { return inventory; }
+
+Item* Inventory::get_inv_item(int index)
+{
+    return inventory[index];
 }
 
 // methods
 
-void Inventory::add_item(const Item& obj)
+void Inventory::add_item(Item* obj)
 {
-    inventory.push_back(obj.clone());
+    inventory.push_back(obj);
 }
 
-void Inventory::remove_item(const Item& obj)
+void Inventory::remove_item(Item* obj)
 {
-    
+    auto it = std::find(inventory.begin(), inventory.end(), obj);
+    if (it != inventory.end())
+    {
+        inventory.erase(it);
+    }
+    else
+    {
+        std::cerr << "Item not found in inventory. Cannot remove." << std::endl;
+    }
 }
 
 void Inventory::display_inventory()
 {
-    for (const auto& item : inventory)
+    for (const auto* item : inventory)
     {
         item->display_item();
     }
