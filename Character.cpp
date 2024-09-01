@@ -4,25 +4,13 @@ Character::Character(int hp_c, int basic_dmg_c, int basic_defensive_c) : hp(hp_c
 
 // Getter
 
-int Character::get_hp()
-{
-	return hp;
-}
+int Character::get_hp() const { return hp; }
 
-int Character::get_max_hp()
-{
-	return max_hp;
-}
+int Character::get_max_hp() const { return max_hp; }
 
-int Character::get_basic_dmg()
-{
-	return basic_dmg;
-}
+int Character::get_basic_dmg() const { return basic_dmg; }
 
-int Character::get_basic_defensive()
-{
-	return basic_defensive;
-}
+int Character::get_basic_defensive() const { return basic_defensive; }
 
 
 // Setter
@@ -52,11 +40,3 @@ void Character::set_basic_defensive(int amount)
 }
 
 // methods
-bool Character::check_death() 
-{
-	if (hp <= 0)
-	{
-		return true;
-	}
-	return false;
-}

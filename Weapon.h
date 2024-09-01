@@ -5,23 +5,22 @@
 class Weapon : public Item
 {
 private:
-	std::string name;
-	int dmg, extra_dmg;
-	int durability;
-
+    // int id;
+    std::string name;
+    int dmg, extra_dmg;
+    int durability;
 
 public:
-	// init
-	Weapon(std::string name, int dmg, int extra_dmg, int durability);
+    // Constructor with category parameter
+    Weapon(std::string name, int dmg, int extra_dmg, int durability);
 
-	// getter
-	std::string get_name() const override;
-	int get_dmg() const override;
-	int get_extra_dmg() const override;
-	int get_durability() const override;
+    // Getter
+    // int get_id() const override;
+    std::string get_name() const override;
+    int get_dmg() const override;
+    int get_extra_dmg() const override;
+    int get_durability() const override;
 
-	// methods
-	void display_item() const override;
-
+    // Methods
+    void display_item() const override;
 };
-

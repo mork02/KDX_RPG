@@ -33,8 +33,11 @@ void Inventory::remove_item(Item* obj)
 
 void Inventory::display_inventory()
 {
+    int x = 0;
     for (const auto* item : inventory)
     {
+        std::cout << "ID: " << x << std::endl;
         item->display_item();
+        x++;
     }
 }

@@ -2,9 +2,11 @@
 
 // init
 
-Weapon::Weapon(std::string name_c, int dmg_c, int extra_dmg_c, int durability_c) : name(name_c), dmg(dmg_c), extra_dmg(extra_dmg_c), durability(durability_c) {}
+Weapon::Weapon(std::string name_c, int dmg_c, int extra_dmg_c, int durability_c) : name(name_c), dmg(dmg_c), extra_dmg(extra_dmg_c), durability(durability_c), Item(Category::WEAPON) {}
 
 // getter
+
+ // int Weapon::get_id() const { return id; }
 
 std::string Weapon::get_name() const { return name; }
 

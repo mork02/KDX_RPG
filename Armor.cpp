@@ -2,7 +2,7 @@
 
 // init
 
-Armor::Armor(std::string name_c, int defensive_c, int extra_defensive_c, int durability_c) : name(name_c), defensive(defensive_c), extra_defensive(extra_defensive_c), durability(durability_c) {}
+Armor::Armor(std::string name_c, int defensive_c, int extra_defensive_c, int durability_c) : name(name_c), defensive(defensive_c), extra_defensive(extra_defensive_c), durability(durability_c), Item(Category::ARMOR) {}
 
 // getter
 
