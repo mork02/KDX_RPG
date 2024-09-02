@@ -72,9 +72,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LibraryPath>C:\Users\alber\Documents\Code\C++\VS\KDX_RPG\lib;$(LibraryPath)</LibraryPath>
+    <PublicIncludeDirectories>$(ProjectDir)..\include;$(ProjectDir)..\src;$(PublicIncludeDirectories)</PublicIncludeDirectories>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(IncludePath)</IncludePath>
+    <PublicIncludeDirectories>$(ProjectDir)..\include;$(ProjectDir)..\src;$(PublicIncludeDirectories)</PublicIncludeDirectories>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -82,7 +84,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\lib\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\lib\SFML\include;$(ProjectDir)..\include;$(ProjectDir)..\src</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -100,7 +102,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\lib\SFML\include;$(SolutionDir)..\include\*.h;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\lib\SFML\include;$(ProjectDir)..\include;$(ProjectDir)..\src</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -153,12 +155,16 @@
     <ClCompile Include="..\src\frame.cpp" />
     <ClCompile Include="..\src\inventory.cpp" />
     <ClCompile Include="..\src\item.cpp" />
-    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\main.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\src\npc.cpp" />
     <ClCompile Include="..\src\panel.cpp" />
     <ClCompile Include="..\src\player.cpp" />
     <ClCompile Include="..\src\potion.cpp" />
     <ClCompile Include="..\src\weapon.cpp" />
+    <ClCompile Include="..\src\rect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\armor.h" />
@@ -172,6 +178,7 @@
     <ClInclude Include="..\include\player.h" />
     <ClInclude Include="..\include\potion.h" />
     <ClInclude Include="..\include\weapon.h" />
+    <ClInclude Include="..\include\rect.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

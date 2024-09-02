@@ -1,4 +1,4 @@
-#include "../include/player.h"
+#include "player.h"
 
 Player::Player() : name("Advaturer"), stats(100, 0, 0)
 {

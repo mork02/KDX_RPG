@@ -13,43 +13,55 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Window">
+      <UniqueIdentifier>{07033697-f0bc-4357-aa8c-567e0db6faf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EntitieStuff">
+      <UniqueIdentifier>{f495386d-2b8e-4cac-a2c5-ccf1081f948e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EntitieStuff\ItemStuff">
+      <UniqueIdentifier>{d8e7ca73-1427-4bb4-bb73-c570a7ba5eeb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\armor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\character.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\fps.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\frame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\inventory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\item.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\npc.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\src\fps.cpp">
+      <Filter>Source Files\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\frame.cpp">
+      <Filter>Source Files\Window</Filter>
     </ClCompile>
     <ClCompile Include="..\src\panel.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\character.cpp">
+      <Filter>Source Files\EntitieStuff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\inventory.cpp">
+      <Filter>Source Files\EntitieStuff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\npc.cpp">
+      <Filter>Source Files\EntitieStuff</Filter>
     </ClCompile>
     <ClCompile Include="..\src\player.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\EntitieStuff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\item.cpp">
+      <Filter>Source Files\EntitieStuff\ItemStuff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\armor.cpp">
+      <Filter>Source Files\EntitieStuff\ItemStuff</Filter>
     </ClCompile>
     <ClCompile Include="..\src\potion.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\EntitieStuff\ItemStuff</Filter>
     </ClCompile>
     <ClCompile Include="..\src\weapon.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\EntitieStuff\ItemStuff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\rect.cpp">
+      <Filter>Source Files\Window</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +96,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\include\weapon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

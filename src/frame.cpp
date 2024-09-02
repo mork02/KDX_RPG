@@ -1,11 +1,14 @@
-#include "../include/frame.h"
+#include "frame.h"
 
-Frame::Frame() : window(sf::VideoMode(1920, 1080), "KDX RPG") { open_window(); }
+Frame::Frame() : window(sf::VideoMode(WINDOW_WIDTH, WiNDOW_HEIGHT), WINDOW_TITLE) 
+{ 
+    std::cout << "Trying to open window..." << std::endl;
+    gameloop(); 
+}
 
-void Frame::open_window()
+void Frame::gameloop()
 {
-    window.setFramerateLimit(60);
-    FPS fps;
+    window.setFramerateLimit(fps_value);
 
     while (window.isOpen())
     {
@@ -16,7 +19,7 @@ void Frame::open_window()
                 window.close();
         }
         window.clear();
-        fps.show_fps(window);
+        fps_class.show_fps(window);
 
         panel.update(window);
 

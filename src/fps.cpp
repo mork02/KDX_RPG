@@ -1,4 +1,4 @@
-#include "../include/fps.h"
+#include "fps.h"
 
 FPS::FPS() : mFrame(0), mFps(0) {}
 

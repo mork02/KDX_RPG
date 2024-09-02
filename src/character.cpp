@@ -1,4 +1,4 @@
-#include "../include/character.h"
+#include "character.h"
 
 Character::Character(int hp_c, int basic_dmg_c, int basic_defensive_c) : hp(hp_c), max_hp(hp_c), basic_dmg(basic_dmg_c), basic_defensive(basic_defensive_c) {}
 

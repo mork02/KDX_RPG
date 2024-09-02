@@ -1,4 +1,4 @@
-#include "../include/armor.h"
+#include "armor.h"
 
 // init
 

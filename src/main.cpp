@@ -1,8 +1,8 @@
-#include "../include/frame.h"
+#include "frame.h"
 
 int main()
 {
- 
+
     Frame();
 
     return 0;
