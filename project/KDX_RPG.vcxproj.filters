@@ -22,6 +22,15 @@
     <Filter Include="Source Files\EntitieStuff\ItemStuff">
       <UniqueIdentifier>{d8e7ca73-1427-4bb4-bb73-c570a7ba5eeb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\EntitieStuff">
+      <UniqueIdentifier>{858a7b07-23f3-4154-9f2b-1e1baeb14466}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EntitieStuff\ItemStuff">
+      <UniqueIdentifier>{d082fffd-69a9-4fd2-918d-49e195fbc358}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Window">
+      <UniqueIdentifier>{a38af4d9-af55-43e7-a573-fc4dc4dba277}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -65,41 +74,41 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\armor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\character.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\fps.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\frame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\inventory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\item.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\npc.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\include\rect.h">
+      <Filter>Header Files\Window</Filter>
     </ClInclude>
     <ClInclude Include="..\include\panel.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\frame.h">
+      <Filter>Header Files\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\fps.h">
+      <Filter>Header Files\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\character.h">
+      <Filter>Header Files\EntitieStuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\inventory.h">
+      <Filter>Header Files\EntitieStuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\npc.h">
+      <Filter>Header Files\EntitieStuff</Filter>
     </ClInclude>
     <ClInclude Include="..\include\player.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\EntitieStuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\armor.h">
+      <Filter>Header Files\EntitieStuff\ItemStuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\item.h">
+      <Filter>Header Files\EntitieStuff\ItemStuff</Filter>
     </ClInclude>
     <ClInclude Include="..\include\potion.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\EntitieStuff\ItemStuff</Filter>
     </ClInclude>
     <ClInclude Include="..\include\weapon.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\rect.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\EntitieStuff\ItemStuff</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

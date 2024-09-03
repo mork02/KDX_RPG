@@ -165,6 +165,7 @@
     <ClCompile Include="..\src\potion.cpp" />
     <ClCompile Include="..\src\weapon.cpp" />
     <ClCompile Include="..\src\rect.cpp" />
+	<ClCompile Include="..\src\text.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\armor.h" />
@@ -179,6 +180,7 @@
     <ClInclude Include="..\include\potion.h" />
     <ClInclude Include="..\include\weapon.h" />
     <ClInclude Include="..\include\rect.h" />
+	<ClInclude Include="..\include\text.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
