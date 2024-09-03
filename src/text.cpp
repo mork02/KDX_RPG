@@ -19,7 +19,7 @@ sf::Text& Text::get_text() { return text; }
 
 void Text::set_text(std::string new_text)
 {
-	showing_text = new_text;
+    text.setString(new_text);
 }
 
 // Methods
