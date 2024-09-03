@@ -75,6 +75,9 @@
     <ClCompile Include="..\src\text.cpp">
       <Filter>Source Files\Window</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\asset_loader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\rect.h">
@@ -86,7 +89,7 @@
     <ClInclude Include="..\include\frame.h">
       <Filter>Header Files\Window</Filter>
     </ClInclude>
-	<ClInclude Include="..\include\text.h">
+    <ClInclude Include="..\include\text.h">
       <Filter>Header Files\Window</Filter>
     </ClInclude>
     <ClInclude Include="..\include\fps.h">
@@ -115,6 +118,9 @@
     </ClInclude>
     <ClInclude Include="..\include\weapon.h">
       <Filter>Header Files\EntitieStuff\ItemStuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\asset_loader.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
