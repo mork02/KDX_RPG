@@ -8,7 +8,7 @@ Player::Player() : name("Advaturer"), stats(100, 0, 0)
 
 std::string Player::get_name() { return name; }
 
-Character Player::get_stats() { return stats; }
+Character& Player::get_stats() { return stats; }
 
 Inventory& Player::get_inventory() { return inventory; }
 
