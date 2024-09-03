@@ -1,9 +1,10 @@
 #include "frame.h"
 
-Frame::Frame() : window(sf::VideoMode(WINDOW_WIDTH, WiNDOW_HEIGHT), WINDOW_TITLE) 
+Frame::Frame() : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE), panel(window)
 { 
-    std::cout << "Trying to open window..." << std::endl;
+    std::cout << "opening window..." << std::endl;
     gameloop(); 
+    std::cout << "closing window..." << std::endl;
 }
 
 void Frame::gameloop()
@@ -12,7 +13,6 @@ void Frame::gameloop()
 
     while (window.isOpen())
     {
-        sf::Event event;
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
@@ -21,7 +21,7 @@ void Frame::gameloop()
         window.clear();
         fps_class.show_fps(window);
 
-        panel.update(window);
+        panel.update();
 
         window.display();
     }

@@ -10,13 +10,14 @@ private:
 	void gameloop();
 
 	const unsigned WINDOW_WIDTH = 1920;
-	const unsigned WiNDOW_HEIGHT = 1080;
+	const unsigned WINDOW_HEIGHT = 1080;
 	const std::string WINDOW_TITLE = "KDX_RPG";
 
 	FPS fps_class;
 	const int fps_value = 60;
 
 	sf::RenderWindow window;
+	sf::Event event;
 	Panel panel;
 
 
