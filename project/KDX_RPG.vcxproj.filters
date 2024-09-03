@@ -72,6 +72,9 @@
     <ClCompile Include="..\src\rect.cpp">
       <Filter>Source Files\Window</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\text.cpp">
+      <Filter>Source Files\Window</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\rect.h">
@@ -81,6 +84,9 @@
       <Filter>Header Files\Window</Filter>
     </ClInclude>
     <ClInclude Include="..\include\frame.h">
+      <Filter>Header Files\Window</Filter>
+    </ClInclude>
+	<ClInclude Include="..\include\text.h">
       <Filter>Header Files\Window</Filter>
     </ClInclude>
     <ClInclude Include="..\include\fps.h">
