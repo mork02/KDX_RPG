@@ -16,7 +16,7 @@ private:
 public:
     // Constructor declaration with default arguments
     Text(std::string showing_text_c, int size_c, float pos_x_c, float pos_y_c,
-        std::string font_path_c = "../assets/font/DarkXShadowSkyrim.ttf",
+        std::string font_path_c = "assets/font/DarkXShadowSkyrim.ttf",
         sf::Color color_c = sf::Color::White);
 
     // Getter
