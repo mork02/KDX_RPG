@@ -164,7 +164,6 @@
     <ClCompile Include="..\src\player.cpp" />
     <ClCompile Include="..\src\potion.cpp" />
     <ClCompile Include="..\src\weapon.cpp" />
-    <ClCompile Include="..\src\rect.cpp" />
     <ClCompile Include="..\src\text.cpp" />
     <ClCompile Include="..\src\asset_loader.cpp" />
     <ClCompile Include="..\src\controller.cpp" />
@@ -181,7 +180,6 @@
     <ClInclude Include="..\include\player.h" />
     <ClInclude Include="..\include\potion.h" />
     <ClInclude Include="..\include\weapon.h" />
-    <ClInclude Include="..\include\rect.h" />
     <ClInclude Include="..\include\text.h" />
     <ClInclude Include="..\include\asset_loader.h" />
     <ClInclude Include="..\include\controller.h" />

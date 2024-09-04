@@ -84,9 +84,6 @@
     <ClCompile Include="..\src\asset_loader.cpp">
       <Filter>Source Files\Window\Assets</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\rect.cpp">
-      <Filter>Source Files\Window\Assets</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\text.cpp">
       <Filter>Source Files\Window\Assets</Filter>
     </ClCompile>
@@ -126,9 +123,6 @@
       <Filter>Header Files\EntitieStuff\ItemStuff</Filter>
     </ClInclude>
     <ClInclude Include="..\include\asset_loader.h">
-      <Filter>Header Files\Window\Assets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\rect.h">
       <Filter>Header Files\Window\Assets</Filter>
     </ClInclude>
     <ClInclude Include="..\include\text.h">
