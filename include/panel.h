@@ -18,6 +18,7 @@ public:
 	Panel(sf::RenderWindow& window);
 
 	// Getter
+	Player& get_player();
 
 	// Setter
 
