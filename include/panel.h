@@ -1,7 +1,7 @@
 #pragma once
 #include "SFML/Graphics.hpp"
-#include "rect.h"
 #include "text.h"
+#include "asset_loader.h"
 #include "player.h"
 
 class Panel
@@ -9,10 +9,10 @@ class Panel
 private:
 	sf::RenderWindow& window;
 
-	Rect rect; 
 	Player user;
 
 	Text user_Health;
+	Asset_loader iron_sword_frame;
 
 public:
 	Panel(sf::RenderWindow& window);

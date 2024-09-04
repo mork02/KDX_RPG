@@ -3,7 +3,8 @@
 Panel::Panel(sf::RenderWindow& window_c)
 	: window(window_c),
 	// Text
-	user_Health(std::to_string(user.get_stats().get_hp()) + " / " + std::to_string(user.get_stats().get_max_hp()), 42, 100, 100)
+	user_Health(std::to_string(user.get_stats().get_hp()) + " / " + std::to_string(user.get_stats().get_max_hp()), 42, window.getSize().x - 200.f, 0),
+	iron_sword_frame(window_c, "assets/item_assets/old_wooden_sword_frame.png")
 {
 
 }
@@ -13,16 +14,11 @@ void Panel::update()
 	// clears the screen every frame
 	window.clear();
 
-	rect.draw_rect(window);
+	iron_sword_frame.draw();
+
 	update_user_health();
 
-	sf::Texture texture;
-	texture.loadFromFile("assets/test/picturedragonBig_thumb.png");
-	
-	sf::Sprite sprite(texture);
-	sprite.setPosition(300, 300);
 
-	window.draw(sprite);
 
 
 }
