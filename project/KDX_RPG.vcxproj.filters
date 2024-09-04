@@ -31,6 +31,18 @@
     <Filter Include="Header Files\Window">
       <UniqueIdentifier>{a38af4d9-af55-43e7-a573-fc4dc4dba277}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Window\Controller">
+      <UniqueIdentifier>{e63cef5a-15f3-4b11-9a92-2fba4fffca9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Window\Assets">
+      <UniqueIdentifier>{2c08dc5a-746d-472f-9918-8b4f031c1fd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Window\Controller">
+      <UniqueIdentifier>{9149a9a1-ffd2-49d7-af3f-7daee6684372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Window\Assets">
+      <UniqueIdentifier>{aff0e9e5-1193-4a27-a20b-992caa38193d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -69,30 +81,24 @@
     <ClCompile Include="..\src\weapon.cpp">
       <Filter>Source Files\EntitieStuff\ItemStuff</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\asset_loader.cpp">
+      <Filter>Source Files\Window\Assets</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\rect.cpp">
-      <Filter>Source Files\Window</Filter>
+      <Filter>Source Files\Window\Assets</Filter>
     </ClCompile>
     <ClCompile Include="..\src\text.cpp">
-      <Filter>Source Files\Window</Filter>
+      <Filter>Source Files\Window\Assets</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\asset_loader.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\src\controller.cpp">
+      <Filter>Source Files\Window\Controller</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\rect.h">
-      <Filter>Header Files\Window</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\panel.h">
       <Filter>Header Files\Window</Filter>
     </ClInclude>
     <ClInclude Include="..\include\frame.h">
-      <Filter>Header Files\Window</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\text.h">
-      <Filter>Header Files\Window</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\fps.h">
       <Filter>Header Files\Window</Filter>
     </ClInclude>
     <ClInclude Include="..\include\character.h">
@@ -120,7 +126,19 @@
       <Filter>Header Files\EntitieStuff\ItemStuff</Filter>
     </ClInclude>
     <ClInclude Include="..\include\asset_loader.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Window\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rect.h">
+      <Filter>Header Files\Window\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\text.h">
+      <Filter>Header Files\Window\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\fps.h">
+      <Filter>Header Files\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\controller.h">
+      <Filter>Header Files\Window\Controller</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
