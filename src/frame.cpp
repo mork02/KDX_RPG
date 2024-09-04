@@ -21,10 +21,11 @@ void Frame::gameloop()
             {
                 window.close();
             }
-            if (mouse.get_mouse().isButtonPressed(sf::Mouse::Left))
+            if (event.type == event.MouseButtonPressed && mouse.get_mouse().isButtonPressed(mouse.get_mouse().Left))
             {
                 mouse.get_player().get_stats().set_hp(-1);
             }
+
         }
         window.clear();
         fps_class.show_fps(window);
