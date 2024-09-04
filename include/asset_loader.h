@@ -6,15 +6,20 @@
 class Asset_loader
 {
 private:
+	sf::RenderWindow& window;
+
 	std::string path;
+
 	int x, y;
-	int speed;
-	int width, height;
-	
-	sf::Image image;
+	float scale;
+
+	sf::Texture texture;
+	sf::Sprite sprite;
 
 public:
-	Asset_loader(std::string path, int x, int y, int speed = 10, int width = 32, int height = 32);
+	Asset_loader(sf::RenderWindow& window, const std::string& path, int x = 0, int y = 0, float scale = 2);
+
+	void draw();
 
 };
 
