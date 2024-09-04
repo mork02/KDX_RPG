@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "fps.h"
 #include "panel.h"
+#include "controller.h"
 
 class Frame
 {
@@ -19,6 +20,8 @@ private:
 	sf::RenderWindow window;
 	sf::Event event;
 	Panel panel;
+	Mouse_controller mouse;
+	Keyboard_controller keyboard;
 
 
 public:
