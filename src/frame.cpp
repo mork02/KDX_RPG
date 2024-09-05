@@ -13,6 +13,9 @@ void Frame::gameloop()
 {
     window.setFramerateLimit(fps_value);
 
+    bool isKeyPressed = false;  
+    bool isMousePressed = false;
+
     while (window.isOpen())
     {
         while (window.pollEvent(event))
@@ -21,17 +24,38 @@ void Frame::gameloop()
             {
                 window.close();
             }
-            if (event.type == event.MouseButtonPressed && mouse.get_mouse().isButtonPressed(mouse.get_mouse().Left))
+            if (mouse.get_mouse().isButtonPressed(mouse.get_mouse().Left))
             {
-                mouse.get_player().get_stats().set_hp(-1);
+                if (!isMousePressed)
+                {
+                    mouse.get_player().get_stats().set_hp(-1);  
+                    isMousePressed = true;  
+                }
             }
+            else { isMousePressed = false; }
 
+            if (keyboard.get_keyboard().isKeyPressed(keyboard.get_keyboard().I))
+            {
+                if (!isKeyPressed) 
+                {
+
+                    if (panel.get_menu().get_visable())
+                    {
+                        panel.get_menu().set_visable(false);
+                    }
+                    else
+                    {
+                        panel.get_menu().set_visable(true);
+                    }
+                    isKeyPressed = true;  
+                }
+            }
+            else { isKeyPressed = false; }
         }
+
         window.clear();
         fps_class.show_fps(window);
-
         panel.update();
-
         window.display();
     }
 }
