@@ -43,6 +43,12 @@
     <Filter Include="Header Files\Window\Assets">
       <UniqueIdentifier>{aff0e9e5-1193-4a27-a20b-992caa38193d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Window\Szene">
+      <UniqueIdentifier>{1938b974-a0f6-47c3-b3cc-400768fd0df1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Window\Szene">
+      <UniqueIdentifier>{6d12d620-5b42-4dff-ae3c-816411fb45e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -90,6 +96,9 @@
     <ClCompile Include="..\src\controller.cpp">
       <Filter>Source Files\Window\Controller</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\menu.cpp">
+      <Filter>Source Files\Window\Szene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\panel.h">
@@ -133,6 +142,9 @@
     </ClInclude>
     <ClInclude Include="..\include\controller.h">
       <Filter>Header Files\Window\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\menu.h">
+      <Filter>Header Files\Window\Szene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

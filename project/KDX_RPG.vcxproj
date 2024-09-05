@@ -167,6 +167,7 @@
     <ClCompile Include="..\src\text.cpp" />
     <ClCompile Include="..\src\asset_loader.cpp" />
     <ClCompile Include="..\src\controller.cpp" />
+    <ClCompile Include="..\src\menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\armor.h" />
@@ -183,6 +184,7 @@
     <ClInclude Include="..\include\text.h" />
     <ClInclude Include="..\include\asset_loader.h" />
     <ClInclude Include="..\include\controller.h" />
+    <ClInclude Include="..\include\menu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
