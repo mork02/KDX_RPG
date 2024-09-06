@@ -20,8 +20,8 @@ private:
 	sf::RenderWindow window;
 	sf::Event event;
 	Panel panel;
-	Mouse_controller mouse;
-	Keyboard_controller keyboard;
+	Mouse_controller mouse_ctrl;
+	Keyboard_controller keyboard_ctrl;
 
 
 public:

@@ -1,8 +1,8 @@
 #include "frame.h"
 
 Frame::Frame() 
-    : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE), panel(window), 
-    mouse(panel.get_player()), keyboard(panel.get_player())
+    : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE), panel(window, mouse_ctrl, keyboard_ctrl), 
+    mouse_ctrl(panel.get_player(), window), keyboard_ctrl(panel.get_player())
 { 
     std::cout << "opening window..." << std::endl;
     gameloop(); 
@@ -24,17 +24,17 @@ void Frame::gameloop()
             {
                 window.close();
             }
-            if (mouse.get_mouse().isButtonPressed(mouse.get_mouse().Left))
+            if (mouse_ctrl.is_mouse_button_pressed(sf::Mouse::Left))
             {
                 if (!isMousePressed)
                 {
-                    mouse.get_player().get_stats().set_hp(-1);  
+                    mouse_ctrl.get_player().get_stats().set_hp(-1);
                     isMousePressed = true;  
                 }
             }
             else { isMousePressed = false; }
 
-            if (keyboard.get_keyboard().isKeyPressed(keyboard.get_keyboard().I))
+            if (keyboard_ctrl.get_keyboard().isKeyPressed(keyboard_ctrl.get_keyboard().Escape))
             {
                 if (!isKeyPressed) 
                 {
