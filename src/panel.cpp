@@ -1,11 +1,11 @@
 #include "panel.h"
 
-Panel::Panel(sf::RenderWindow& window_c)
-	: window(window_c),
+Panel::Panel(sf::RenderWindow& window_c, Mouse_controller& mouse_ctrl_c, Keyboard_controller& keyboard_ctrl_c)
+	: window(window_c), mouse_ctrl(mouse_ctrl_c), keyboard_ctrl(keyboard_ctrl_c),
 	// Text
 	user_Health(std::to_string(user.get_stats().get_hp()) + " / " + std::to_string(user.get_stats().get_max_hp()), 42, window.getSize().x - 200.f, 0),
 	iron_sword_frame(window_c, "assets/item_assets/old_wooden_sword_frame.png"),
-	menu(window_c)
+	menu(window_c, mouse_ctrl_c)
 {
 
 }
@@ -26,6 +26,10 @@ void Panel::update()
 Player& Panel::get_player() { return user; }
 
 Menu& Panel::get_menu() { return menu; }
+
+Mouse_controller& Panel::get_mouse_ctrl() const { return mouse_ctrl; }
+
+Keyboard_controller& Panel::get_keyboard_ctrl() const { return keyboard_ctrl; }
 
 // Setter
 
