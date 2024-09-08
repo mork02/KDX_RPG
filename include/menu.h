@@ -8,7 +8,7 @@ class Menu
 {
 private:
 	sf::RenderWindow& window;
-	Mouse_controller& mouse_controller;
+	Mouse_controller& mouse_ctrl;
 	sf::Texture texture;
 	sf::Sprite sprite;
 	Text menu_title_text;

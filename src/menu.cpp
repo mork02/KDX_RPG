@@ -1,7 +1,7 @@
 #include "menu.h"
 
 Menu::Menu(sf::RenderWindow& window_c, Mouse_controller& mouse_ctrl_c)
-    : window(window_c), mouse_controller(mouse_ctrl_c),
+    : window(window_c), mouse_ctrl(mouse_ctrl_c),
     menu_title_text("Menu", 128, 0, 0),
     menu_continue_text("Continue", 86, 0, 0), 
     menu_option_text("Option", 86, 0, 0),      
@@ -12,7 +12,7 @@ Menu::Menu(sf::RenderWindow& window_c, Mouse_controller& mouse_ctrl_c)
     }
 
     sprite.setTexture(texture);
-    sprite.setScale(scale, scale);
+    sprite.setScale((float) scale, (float) scale);
 
     center_menu();
 
@@ -21,25 +21,25 @@ Menu::Menu(sf::RenderWindow& window_c, Mouse_controller& mouse_ctrl_c)
     // MENU TITLE
     float titleXPos = xPos + (spriteBounds.width - get_text_bounds(menu_title_text).width) / 2;
     float titleYPos = yPos - 25; 
-    menu_title_text.set_position(titleXPos, titleYPos);
+    menu_title_text.set_position((int) titleXPos, (int) titleYPos);
 
     // MENU OPTIONS
     // CENTER
     float optionXPos = xPos + (spriteBounds.width - get_text_bounds(menu_option_text).width) / 2;
     float optionYPos = yPos + (spriteBounds.height / 2) - get_text_bounds(menu_option_text).height / 2;
-    menu_option_text.set_position(optionXPos, optionYPos);
+    menu_option_text.set_position((int) optionXPos, (int) optionYPos);
 
     // MENU CONMTINUE
     // 75 px above options
     float continueXPos = xPos + (spriteBounds.width - get_text_bounds(menu_continue_text).width) / 2;
     float continueYPos = optionYPos - get_text_bounds(menu_continue_text).height - 75; 
-    menu_continue_text.set_position(continueXPos, continueYPos);
+    menu_continue_text.set_position((int) continueXPos, (int) continueYPos);
 
     // MENU QUIT
     // 75 px under options
     float quitXPos = xPos + (spriteBounds.width - get_text_bounds(menu_quit_text).width) / 2;
     float quitYPos = optionYPos + get_text_bounds(menu_option_text).height + 75;
-    menu_quit_text.set_position(quitXPos, quitYPos);
+    menu_quit_text.set_position((int) quitXPos, (int) quitYPos);
 }
 
 // Getter
@@ -93,7 +93,7 @@ void Menu::center_menu()
 
 void Menu::update_text_hover()
 {
-    sf::Vector2f mousePosF = mouse_controller.get_mouse_position();
+    sf::Vector2f mousePosF = mouse_ctrl.get_mouse_position();
 
     Text* texts[] = { &menu_continue_text, &menu_option_text, &menu_quit_text };
 
@@ -103,9 +103,9 @@ void Menu::update_text_hover()
 
         if (textBounds.contains(mousePosF))
         {
-            text->get_text().setFillColor(sf::Color(225, 225, 200));
+            text->get_text().setFillColor(sf::Color(210, 170, 109));
 
-            if (mouse_controller.is_mouse_button_pressed(sf::Mouse::Left))
+            if (mouse_ctrl.is_mouse_button_pressed(sf::Mouse::Left))
             {
                 if (text == &menu_continue_text)
                 {
