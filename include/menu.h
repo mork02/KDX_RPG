@@ -33,5 +33,5 @@ public:
 	sf::FloatRect get_text_bounds(Text text);
 
 	void set_visable(bool value);
-	void draw_menu();
+	void draw();
 };

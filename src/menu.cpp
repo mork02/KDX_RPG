@@ -62,7 +62,7 @@ void Menu::set_visable(bool value)
 
 // Methods
 
-void Menu::draw_menu()
+void Menu::draw()
 {
     if (visable)
     {
