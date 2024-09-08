@@ -1,7 +1,7 @@
 #include "frame.h"
 
 Frame::Frame() 
-    : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE), panel(window, mouse_ctrl, keyboard_ctrl), 
+    : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE, sf::Style::Close), panel(window, mouse_ctrl, keyboard_ctrl), 
     mouse_ctrl(panel.get_player(), window), keyboard_ctrl(panel.get_player())
 { 
     std::cout << "opening window..." << std::endl;
