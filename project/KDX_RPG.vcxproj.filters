@@ -99,6 +99,9 @@
     <ClCompile Include="..\src\menu.cpp">
       <Filter>Source Files\Window\Szene</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\main_menu.cpp">
+      <Filter>Source Files\Window\Szene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\panel.h">
@@ -144,6 +147,9 @@
       <Filter>Header Files\Window\Controller</Filter>
     </ClInclude>
     <ClInclude Include="..\include\menu.h">
+      <Filter>Header Files\Window\Szene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\main_menu.h">
       <Filter>Header Files\Window\Szene</Filter>
     </ClInclude>
   </ItemGroup>
