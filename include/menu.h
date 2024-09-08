@@ -23,6 +23,10 @@ private:
 	int scale = 6;
 	bool visable = false;
 
+protected:
+	void center_menu(); 
+	void update_text_hover();
+
 public:
 	Menu(sf::RenderWindow& window, Mouse_controller& mouse_ctrl);
 	bool get_visable() const;
@@ -30,6 +34,4 @@ public:
 
 	void set_visable(bool value);
 	void draw_menu();
-	void center_menu(); 
-	void update_text_hover();
 };
