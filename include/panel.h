@@ -4,6 +4,7 @@
 #include "asset_loader.h"
 #include "player.h"
 #include "menu.h"
+#include "main_menu.h"
 #include "controller.h"
 
 class Panel
@@ -18,6 +19,7 @@ private:
 	Text user_Health;
 	Asset_loader iron_sword_frame;
 	Menu menu;
+	Main_menu main_menu;
 
 public:
 	Panel(sf::RenderWindow& window, Mouse_controller& mouse_ctrl, Keyboard_controller& keyboard_ctrl);

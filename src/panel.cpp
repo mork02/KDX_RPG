@@ -5,7 +5,7 @@ Panel::Panel(sf::RenderWindow& window_c, Mouse_controller& mouse_ctrl_c, Keyboar
 	// Text
 	user_Health(std::to_string(user.get_stats().get_hp()) + " / " + std::to_string(user.get_stats().get_max_hp()), 42, window.getSize().x - 200.f, 0),
 	iron_sword_frame(window_c, "assets/item_assets/old_wooden_sword_frame.png"),
-	menu(window_c, mouse_ctrl_c)
+	menu(window_c, mouse_ctrl_c), main_menu(window_c, mouse_ctrl_c)
 {
 
 }
@@ -16,7 +16,8 @@ void Panel::update()
 	window.clear();
 
 	iron_sword_frame.draw();
-	menu.draw_menu();
+	main_menu.draw();
+	menu.draw();
 	update_user_health();
 
 }
