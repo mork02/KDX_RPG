@@ -2,70 +2,37 @@
 
 Main_menu::Main_menu(sf::RenderWindow& window_c, Mouse_controller& mouse_ctrl_c)
     : window(window_c), mouse_ctrl(mouse_ctrl_c),
-    title_text("KDX RPG", 64, 0, 0)
+    background_asset(window_c, "assets/menu_assets/background_new.png"),
+    title_text("KDX RPG", 100, 0, 0),
+    new_game_text("New Game", 56, 0, 0),
+    options_text("Options", 56, 0, 0),
+    quit_text("Quit", 56, 0, 0),
+    new_game_asset(window_c, "assets/menu_assets/main_menu_sign_1.png"),
+    options_asset(window_c, "assets/menu_assets/main_menu_sign_2.png"),
+    quit_asset(window_c, "assets/menu_assets/main_menu_sign_3.png")
 {
-    if (!texture.loadFromFile(path)) {
-        std::cerr << "Error loading texture from " << path << std::endl;
-    }
-
-    sprite.setTexture(texture);
-    sprite.setScale((float)scale, (float)scale);
-
-    center_menu();
-
-    sf::FloatRect spriteBounds = sprite.getGlobalBounds();
-
-    // MENU TITLE
-    
-    /*
-    CHANGE SPRITE AND TEXT IN CENTER TOP TO DISPLAY IT AS TITLESCREEN
-    */
-
-    float titleXPos = spriteBounds.left + (spriteBounds.width - get_text_bounds(title_text).width) / 2;
-    float titleYPos = spriteBounds.top + (spriteBounds.height - get_text_bounds(title_text).height) / 2;
-    title_text.set_position((int)titleXPos, (int)titleYPos);
+    // Initialize the menu
+    update_assets();
 }
 
-sf::FloatRect Main_menu::get_text_bounds(Text text) {
-    return text.get_text().getGlobalBounds();
-}
-
-void Main_menu::center_menu()
+void Main_menu::update_assets()
 {
-    sf::Vector2u windowSize = window.getSize();
-    sf::Vector2u textureSize = texture.getSize();
+    // Center and scale the background
+    scale_background(background_asset);
 
-    xPos = (windowSize.x - (textureSize.x * sprite.getScale().x)) / 2;
-    yPos = (windowSize.y - (textureSize.y * sprite.getScale().y)) / 2;
+    center_menu(new_game_asset, 0, -115);
+    center_menu(options_asset, 0, 75);
+    center_menu(quit_asset, 0, 265);
 
-    sprite.setPosition(xPos, yPos);
-}
+    center_text_in_asset(new_game_asset, new_game_text);
+    center_text_in_asset(options_asset, options_text);
+    center_text_in_asset(quit_asset, quit_text);
 
-void Main_menu::update_text_hover()
-{
-    sf::Vector2f mousePosF = mouse_ctrl.get_mouse_position();
-
-    Text* texts[] = { &title_text };
-
-    for (Text* text : texts)
-    {
-        sf::FloatRect textBounds = text->get_text().getGlobalBounds();
-
-        if (textBounds.contains(mousePosF))
-        {
-            text->get_text().setFillColor(sf::Color(210, 170, 109));
-
-            if (mouse_ctrl.is_mouse_button_pressed(sf::Mouse::Left))
-            {
-
-            }
-        }
-        else
-        {
-            text->get_text().setFillColor(sf::Color::White);
-        }
-    }
-    
+    // Position of title text
+    sf::FloatRect text_bounds = title_text.get_text().getLocalBounds();
+    float title_X_Pos = window.getSize().x / 2.0f;
+    float title_Y_Pos = text_bounds.height;
+    title_text.set_position(title_X_Pos, title_Y_Pos);
 }
 
 void Main_menu::draw()
@@ -73,18 +40,130 @@ void Main_menu::draw()
     // Update mouse hover detection before drawing
     update_text_hover();
 
-    // draw menu background
-    window.draw(sprite);
+    // Draw menu background
+    window.draw(background_asset.get_sprite());
 
+    // Draw menu assets and text
+    window.draw(new_game_asset.get_sprite());
+    window.draw(options_asset.get_sprite());
+    window.draw(quit_asset.get_sprite());
+    window.draw(new_game_text.get_text());
+    window.draw(options_text.get_text());
+    window.draw(quit_text.get_text());
+
+    // Animate the title
     animate_title();
 
-    // draw all text
+    // Draw the title text
     title_text.draw_text(window);
+}
+
+sf::FloatRect Main_menu::get_text_bounds(Text text)
+{
+    return text.get_text().getGlobalBounds();
+}
+
+void Main_menu::center_menu(Asset_loader& asset, int x, int y)
+{
+    sf::Vector2u windowSize = window.getSize();
+    sf::Vector2u textureSize = asset.get_texture().getSize();
+
+    // Set the sprite's origin to its center
+    asset.get_sprite().setOrigin(textureSize.x / 2.0f, textureSize.y / 2.0f);
+
+    // Position the sprite in the center of the window
+    float x_Pos = (windowSize.x / 2.0f) + x;
+    float y_Pos = (windowSize.y / 2.0f) + y;
+
+    asset.get_sprite().setPosition(x_Pos, y_Pos);
+}
+
+void Main_menu::center_text_in_asset(Asset_loader& asset, Text& text)
+{
+    sf::FloatRect assetBounds = asset.get_sprite().getGlobalBounds();
+    sf::FloatRect textBounds = text.get_text().getLocalBounds();
+
+    // Set the text's origin to its center
+    text.get_text().setOrigin(
+        textBounds.left + textBounds.width / 2.0f,  // Horizontal center
+        textBounds.top + textBounds.height / 2.0f   // Vertical center
+    );
+
+    // Position the text at the center of the asset
+    text.set_position(
+        assetBounds.left + assetBounds.width / 2.0f,  // Center X
+        assetBounds.top + assetBounds.height / 2.0f   // Center Y
+    );
+}
+
+void Main_menu::update_text_hover()
+{
+    sf::Vector2f mousePosF = mouse_ctrl.get_mouse_position();
+
+    // Array of assets and corresponding texts
+    struct AssetTextPair
+    {
+        Asset_loader& asset;
+        Text& text;
+    };
+
+    AssetTextPair assetTextPairs[] = {
+        { new_game_asset, new_game_text },
+        { options_asset, options_text },
+        { quit_asset, quit_text }
+    };
+
+    for (const auto& pair : assetTextPairs)
+    {
+        sf::FloatRect assetBounds = pair.asset.get_sprite().getGlobalBounds();
+
+        // Check if the mouse is within the asset's bounds
+        if (assetBounds.contains(mousePosF))
+        {
+            // Change text color on hover
+            pair.text.get_text().setFillColor(sf::Color(210, 170, 109));
+
+            if (mouse_ctrl.is_mouse_button_pressed(sf::Mouse::Left))
+            {
+                if (&pair.text == &new_game_text)
+                {
+                    std::cout << "New game" << std::endl;
+                }
+                else if (&pair.text == &options_text)
+                {
+                    std::cout << "Options" << std::endl;
+                }
+                else if (&pair.text == &quit_text)
+                {
+                    std::cout << "Quit" << std::endl;
+                }
+            }
+        }
+        else
+        {
+            // Reset text color if not hovering
+            pair.text.get_text().setFillColor(sf::Color::White);
+        }
+    }
+}
+
+void Main_menu::scale_background(Asset_loader& asset)
+{
+    sf::Vector2u windowSize = window.getSize();
+    sf::Vector2u textureSize = asset.get_texture().getSize();
+
+    float scaleX = static_cast<float>(windowSize.x) / static_cast<float>(textureSize.x);
+    float scaleY = static_cast<float>(windowSize.y) / static_cast<float>(textureSize.y);
+
+    asset.get_sprite().setScale(scaleX, scaleY);
 }
 
 void Main_menu::animate_title()
 {
-    static bool shrinking = true;  
+    static bool shrinking = true;
+    static int frame_counter = 0;
+    const int frame_delay = 1;  
+
     unsigned int current_size = title_text.get_text().getCharacterSize();
     sf::FloatRect text_bounds = title_text.get_text().getLocalBounds();
 
@@ -93,9 +172,17 @@ void Main_menu::animate_title()
         text_bounds.top + text_bounds.height / 2.0f  // Vertical center
     );
 
+    if (frame_counter < frame_delay)
+    {
+        frame_counter++;  
+        return;
+    }
+
+    frame_counter = 0;
+
     if (shrinking)
     {
-        if (current_size > 64)
+        if (current_size > 100)
         {
             title_text.get_text().setCharacterSize(current_size - 1);
         }
@@ -112,9 +199,7 @@ void Main_menu::animate_title()
         }
         else
         {
-            // Switch to shrinking if the size hits 128
             shrinking = true;
         }
     }
 }
-
