@@ -15,9 +15,10 @@ void Panel::update()
 	// clears the screen every frame
 	window.clear();
 
-	iron_sword_frame.draw();
 	main_menu.draw();
+	
 	menu.draw();
+	window.draw(iron_sword_frame.get_sprite());
 	update_user_health();
 
 }
