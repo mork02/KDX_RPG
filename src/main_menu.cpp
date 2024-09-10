@@ -1,7 +1,7 @@
 #include "main_menu.h"
 
-Main_menu::Main_menu(sf::RenderWindow& window_c, Mouse_controller& mouse_ctrl_c)
-    : window(window_c), mouse_ctrl(mouse_ctrl_c),
+Main_menu::Main_menu(sf::RenderWindow& window_c, Input& input_c)
+    : window(window_c), input(input_c),
     background_asset(window_c, "assets/menu_assets/background_new.png"),
     title_text("KDX RPG", 100, 0, 0),
     new_game_text("New Game", 56, 0, 0),
@@ -32,7 +32,7 @@ void Main_menu::update_assets()
     sf::FloatRect text_bounds = title_text.get_text().getLocalBounds();
     float title_X_Pos = window.getSize().x / 2.0f;
     float title_Y_Pos = text_bounds.height;
-    title_text.set_position(title_X_Pos, title_Y_Pos);
+    title_text.set_position((int) title_X_Pos, (int) title_Y_Pos);
 }
 
 void Main_menu::draw()
@@ -85,66 +85,15 @@ void Main_menu::center_text_in_asset(Asset_loader& asset, Text& text)
 
     // Set the text's origin to its center
     text.get_text().setOrigin(
-        textBounds.left + textBounds.width / 2.0f,  // Horizontal center
-        textBounds.top + textBounds.height / 2.0f   // Vertical center
+        static_cast<float>(textBounds.left + textBounds.width / 2.0f),  // Horizontal center
+        static_cast<float>(textBounds.top + textBounds.height / 2.0f)   // Vertical center
     );
 
     // Position the text at the center of the asset
     text.set_position(
-        assetBounds.left + assetBounds.width / 2.0f,  // Center X
-        assetBounds.top + assetBounds.height / 2.0f   // Center Y
+        static_cast<int>(assetBounds.left + assetBounds.width / 2.0f),  // Center X
+        static_cast<int>(assetBounds.top + assetBounds.height / 2.0f)   // Center Y
     );
-}
-
-void Main_menu::update_text_hover()
-{
-    sf::Vector2f mousePosF = mouse_ctrl.get_mouse_position();
-
-    // Array of assets and corresponding texts
-    struct AssetTextPair
-    {
-        Asset_loader& asset;
-        Text& text;
-    };
-
-    AssetTextPair assetTextPairs[] = {
-        { new_game_asset, new_game_text },
-        { options_asset, options_text },
-        { quit_asset, quit_text }
-    };
-
-    for (const auto& pair : assetTextPairs)
-    {
-        sf::FloatRect assetBounds = pair.asset.get_sprite().getGlobalBounds();
-
-        // Check if the mouse is within the asset's bounds
-        if (assetBounds.contains(mousePosF))
-        {
-            // Change text color on hover
-            pair.text.get_text().setFillColor(sf::Color(210, 170, 109));
-
-            if (mouse_ctrl.is_mouse_button_pressed(sf::Mouse::Left))
-            {
-                if (&pair.text == &new_game_text)
-                {
-                    std::cout << "New game" << std::endl;
-                }
-                else if (&pair.text == &options_text)
-                {
-                    std::cout << "Options" << std::endl;
-                }
-                else if (&pair.text == &quit_text)
-                {
-                    std::cout << "Quit" << std::endl;
-                }
-            }
-        }
-        else
-        {
-            // Reset text color if not hovering
-            pair.text.get_text().setFillColor(sf::Color::White);
-        }
-    }
 }
 
 void Main_menu::scale_background(Asset_loader& asset)
@@ -162,7 +111,7 @@ void Main_menu::animate_title()
 {
     static bool shrinking = true;
     static int frame_counter = 0;
-    const int frame_delay = 1;  
+    const int frame_delay = 1;
 
     unsigned int current_size = title_text.get_text().getCharacterSize();
     sf::FloatRect text_bounds = title_text.get_text().getLocalBounds();
@@ -174,7 +123,7 @@ void Main_menu::animate_title()
 
     if (frame_counter < frame_delay)
     {
-        frame_counter++;  
+        frame_counter++;
         return;
     }
 
@@ -200,6 +149,57 @@ void Main_menu::animate_title()
         else
         {
             shrinking = true;
+        }
+    }
+}
+
+void Main_menu::update_text_hover()
+{
+    sf::Vector2f mousePosF = input.get_mouse_position();
+
+    // Array of assets and corresponding texts
+    struct AssetTextPair
+    {
+        Asset_loader& asset;
+        Text& text;
+    };
+
+    AssetTextPair assetTextPairs[] = {
+        { new_game_asset, new_game_text },
+        { options_asset, options_text },
+        { quit_asset, quit_text }
+    };
+
+    for (const auto& pair : assetTextPairs)
+    {
+        sf::FloatRect assetBounds = pair.asset.get_sprite().getGlobalBounds();
+
+        // Check if the mouse is within the asset's bounds
+        if (assetBounds.contains(mousePosF))
+        {
+            // Change text color on hover
+            pair.text.get_text().setFillColor(sf::Color(210, 170, 109));
+
+            if (input.is_mouse_button_pressed(sf::Mouse::Left))
+            {
+                if (&pair.text == &new_game_text)
+                {
+                    std::cout << "New game" << std::endl;
+                }
+                else if (&pair.text == &options_text)
+                {
+                    std::cout << "Options" << std::endl;
+                }
+                else if (&pair.text == &quit_text)
+                {
+                    window.close();
+                }
+            }
+        }
+        else
+        {
+            // Reset text color if not hovering
+            pair.text.get_text().setFillColor(sf::Color::White);
         }
     }
 }

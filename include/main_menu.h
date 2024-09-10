@@ -2,13 +2,13 @@
 #include "SFML/Graphics.hpp"
 #include "text.h"
 #include "asset_loader.h"
-#include "controller.h"
+#include "input.h"
 
 class Main_menu
 {
 private:
 	sf::RenderWindow& window;
-	Mouse_controller& mouse_ctrl;
+	Input& input;
 
 	void update_assets();
 
@@ -26,14 +26,14 @@ private:
 	float x_Pos = 0;
 	float y_Pos = 0;
 
-protected:
+private:
 	void center_menu(Asset_loader& asset, int x = 0, int y = 0);
 	void center_text_in_asset(Asset_loader& asset, Text& text);
 	void scale_background(Asset_loader& asset);
 	void update_text_hover();
 
 public:
-	Main_menu(sf::RenderWindow& window, Mouse_controller& mouse_ctrl);
+	Main_menu(sf::RenderWindow& window, Input& input);
 	void draw();
 	sf::FloatRect get_text_bounds(Text text);
 	void animate_title();
