@@ -1,11 +1,9 @@
 #include "panel.h"
 
-Panel::Panel(sf::RenderWindow& window_c, Mouse_controller& mouse_ctrl_c, Keyboard_controller& keyboard_ctrl_c)
-	: window(window_c), mouse_ctrl(mouse_ctrl_c), keyboard_ctrl(keyboard_ctrl_c),
-	// Text
-	user_Health(std::to_string(user.get_stats().get_hp()) + " / " + std::to_string(user.get_stats().get_max_hp()), 42, window.getSize().x - 200.f, 0),
-	iron_sword_frame(window_c, "assets/item_assets/old_wooden_sword_frame.png"),
-	menu(window_c, mouse_ctrl_c), main_menu(window_c, mouse_ctrl_c)
+Panel::Panel(sf::RenderWindow& window_c, Input& input_c)
+	: window(window_c), input(input_c), current_scene(Scene::Main_Menu),
+	//user_Health(std::to_string(user.get_stats().get_hp()) + " / " + std::to_string(user.get_stats().get_max_hp()), 42, window.getSize().x - 200.f, 0),
+	menu(window_c, input_c), main_menu(window_c, input_c)
 {
 
 }
@@ -15,11 +13,20 @@ void Panel::update()
 	// clears the screen every frame
 	window.clear();
 
-	main_menu.draw();
-	
-	menu.draw();
-	window.draw(iron_sword_frame.get_sprite());
-	update_user_health();
+	switch (current_scene)
+	{
+	case Scene::Main_Menu:
+		main_menu.draw();
+		break;
+	case Scene::Option_Menu:
+		break;
+	case Scene::Game_Over:
+		break;
+	case Scene::Gameplay:
+		// draw gameplay
+		menu.draw();
+		break;
+	}
 
 }
 
@@ -29,11 +36,17 @@ Player& Panel::get_player() { return user; }
 
 Menu& Panel::get_menu() { return menu; }
 
-Mouse_controller& Panel::get_mouse_ctrl() const { return mouse_ctrl; }
+Main_menu& Panel::get_main_menu() { return main_menu; }
 
-Keyboard_controller& Panel::get_keyboard_ctrl() const { return keyboard_ctrl; }
+Input& Panel::get_input() const { return input; }
+
 
 // Setter
+
+void Panel::set_scene(Scene scene)
+{
+	current_scene = scene;
+}
 
 // Methods
 
@@ -41,6 +54,7 @@ void Panel::update_user_health()
 {
 	/*Takes the users HP and Max_HP and refreshes the string in Text. Draws the text again on window*/
 
+	/*
 	std::string new_text = std::to_string(user.get_stats().get_hp()) + " / " + std::to_string(user.get_stats().get_max_hp());
 
 	if (user_Health.get_text().getString() != new_text) {
@@ -48,4 +62,5 @@ void Panel::update_user_health()
 	}
 
 	user_Health.draw_text(window);
+	*/
 }

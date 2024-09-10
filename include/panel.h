@@ -5,31 +5,31 @@
 #include "player.h"
 #include "menu.h"
 #include "main_menu.h"
-#include "controller.h"
+#include "input.h"
+#include "scene_manager.h"
 
 class Panel
 {
 private:
 	sf::RenderWindow& window;
-	Mouse_controller& mouse_ctrl;
-	Keyboard_controller& keyboard_ctrl;
+	Input& input;
 
 	Player user;
-
-	Text user_Health;
-	Asset_loader iron_sword_frame;
+	Scene current_scene;
 	Menu menu;
 	Main_menu main_menu;
 
 public:
-	Panel(sf::RenderWindow& window, Mouse_controller& mouse_ctrl, Keyboard_controller& keyboard_ctrl);
+	Panel(sf::RenderWindow& window, Input& input);
 
 	// Getter
 	Player& get_player();
 	Menu& get_menu();
-	Mouse_controller& get_mouse_ctrl() const;
-	Keyboard_controller& get_keyboard_ctrl() const;
+	Main_menu& get_main_menu();
+	Input& get_input() const;
+
 	// Setter
+	void set_scene(Scene scene);
 
 	// Methods
 	void update();
