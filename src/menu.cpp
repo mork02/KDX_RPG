@@ -1,7 +1,7 @@
 #include "menu.h"
 
-Menu::Menu(sf::RenderWindow& window_c, Mouse_controller& mouse_ctrl_c)
-    : window(window_c), mouse_ctrl(mouse_ctrl_c),
+Menu::Menu(sf::RenderWindow& window_c, Input& input_c)
+    : window(window_c), input(input_c),
     menu_title_text("Menu", 128, 0, 0),
     menu_continue_text("Continue", 86, 0, 0), 
     menu_option_text("Option", 86, 0, 0),      
@@ -93,7 +93,7 @@ void Menu::center_menu()
 
 void Menu::update_text_hover()
 {
-    sf::Vector2f mousePosF = mouse_ctrl.get_mouse_position();
+    sf::Vector2f mousePosF = input.get_mouse_position();
 
     Text* texts[] = { &menu_continue_text, &menu_option_text, &menu_quit_text };
 
@@ -105,7 +105,7 @@ void Menu::update_text_hover()
         {
             text->get_text().setFillColor(sf::Color(210, 170, 109));
 
-            if (mouse_ctrl.is_mouse_button_pressed(sf::Mouse::Left))
+            if (input.is_mouse_button_pressed(sf::Mouse::Left))
             {
                 if (text == &menu_continue_text)
                 {

@@ -2,13 +2,13 @@
 #include <iostream>
 #include "SFML/Graphics.hpp"
 #include "text.h"
-#include "controller.h"
+#include "input.h"
 
 class Menu
 {
 private:
 	sf::RenderWindow& window;
-	Mouse_controller& mouse_ctrl;
+	Input& input;
 	sf::Texture texture;
 	sf::Sprite sprite;
 	Text menu_title_text;
@@ -28,7 +28,7 @@ protected:
 	void update_text_hover();
 
 public:
-	Menu(sf::RenderWindow& window, Mouse_controller& mouse_ctrl);
+	Menu(sf::RenderWindow& window, Input& input);
 	bool get_visable() const;
 	sf::FloatRect get_text_bounds(Text text);
 
