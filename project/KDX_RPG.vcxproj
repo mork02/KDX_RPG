@@ -166,7 +166,7 @@
     <ClCompile Include="..\src\weapon.cpp" />
     <ClCompile Include="..\src\text.cpp" />
     <ClCompile Include="..\src\asset_loader.cpp" />
-    <ClCompile Include="..\src\controller.cpp" />
+    <ClCompile Include="..\src\input.cpp" />
     <ClCompile Include="..\src\menu.cpp" />
     <ClCompile Include="..\src\main_menu.cpp" />
   </ItemGroup>
@@ -184,9 +184,10 @@
     <ClInclude Include="..\include\weapon.h" />
     <ClInclude Include="..\include\text.h" />
     <ClInclude Include="..\include\asset_loader.h" />
-    <ClInclude Include="..\include\controller.h" />
+    <ClInclude Include="..\include\input.h" />
     <ClInclude Include="..\include\menu.h" />
     <ClInclude Include="..\include\main_menu.h" />
+    <ClInclude Include="..\include\scene_manager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

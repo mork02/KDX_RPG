@@ -93,7 +93,7 @@
     <ClCompile Include="..\src\text.cpp">
       <Filter>Source Files\Window\Assets</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\controller.cpp">
+    <ClCompile Include="..\src\input.cpp">
       <Filter>Source Files\Window\Controller</Filter>
     </ClCompile>
     <ClCompile Include="..\src\menu.cpp">
@@ -143,13 +143,16 @@
     <ClInclude Include="..\include\fps.h">
       <Filter>Header Files\Window</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\controller.h">
+    <ClInclude Include="..\include\input.h">
       <Filter>Header Files\Window\Controller</Filter>
     </ClInclude>
     <ClInclude Include="..\include\menu.h">
       <Filter>Header Files\Window\Szene</Filter>
     </ClInclude>
     <ClInclude Include="..\include\main_menu.h">
+      <Filter>Header Files\Window\Szene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\scene_manager.h">
       <Filter>Header Files\Window\Szene</Filter>
     </ClInclude>
   </ItemGroup>
