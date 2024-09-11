@@ -4,11 +4,14 @@
 #include "asset_loader.h"
 #include "input.h"
 
+class Panel;
+
 class Main_menu
 {
 private:
 	sf::RenderWindow& window;
 	Input& input;
+	Panel& panel;
 
 	void update_assets();
 
@@ -33,7 +36,7 @@ private:
 	void update_text_hover();
 
 public:
-	Main_menu(sf::RenderWindow& window, Input& input);
+	Main_menu(sf::RenderWindow& window, Panel& panel, Input& input);
 	void draw();
 	sf::FloatRect get_text_bounds(Text text);
 	void animate_title();

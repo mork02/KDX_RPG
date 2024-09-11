@@ -1,7 +1,9 @@
 #include "main_menu.h"
+#include "panel.h"
+#include "scene_manager.h"
 
-Main_menu::Main_menu(sf::RenderWindow& window_c, Input& input_c)
-    : window(window_c), input(input_c),
+Main_menu::Main_menu(sf::RenderWindow& window_c, Panel& panel_c, Input& input_c)
+    : window(window_c), panel(panel_c), input(input_c),
     background_asset(window_c, "assets/menu_assets/background_new.png"),
     title_text("KDX RPG", 100, 0, 0),
     new_game_text("New Game", 56, 0, 0),
@@ -185,6 +187,7 @@ void Main_menu::update_text_hover()
                 if (&pair.text == &new_game_text)
                 {
                     std::cout << "New game" << std::endl;
+                    panel.set_scene(Scene::Gameplay);
                 }
                 else if (&pair.text == &options_text)
                 {
