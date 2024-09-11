@@ -1,7 +1,9 @@
 #include "menu.h"
+#include "panel.h"
+#include "scene_manager.h"
 
-Menu::Menu(sf::RenderWindow& window_c, Input& input_c)
-    : window(window_c), input(input_c),
+Menu::Menu(sf::RenderWindow& window_c, Panel& panel_c, Input& input_c)
+    : window(window_c), panel(panel_c), input(input_c),
     menu_title_text("Menu", 128, 0, 0),
     menu_continue_text("Continue", 86, 0, 0), 
     menu_option_text("Option", 86, 0, 0),      
@@ -117,7 +119,7 @@ void Menu::update_text_hover()
                 }
                 else if (text == &menu_quit_text)
                 {
-                    window.close();
+                    panel.set_scene(Scene::Main_Menu);
                 }
             }
         }
