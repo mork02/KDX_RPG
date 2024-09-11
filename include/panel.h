@@ -4,8 +4,8 @@
 #include "asset_loader.h"
 #include "player.h"
 #include "menu.h"
-#include "main_menu.h"
 #include "input.h"
+#include "main_menu.h"
 #include "scene_manager.h"
 
 class Panel

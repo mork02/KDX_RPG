@@ -3,7 +3,7 @@
 Panel::Panel(sf::RenderWindow& window_c, Input& input_c)
 	: window(window_c), input(input_c), current_scene(Scene::Main_Menu),
 	//user_Health(std::to_string(user.get_stats().get_hp()) + " / " + std::to_string(user.get_stats().get_max_hp()), 42, window.getSize().x - 200.f, 0),
-	menu(window_c, input_c), main_menu(window_c, input_c)
+	menu(window_c, *this, input_c), main_menu(window_c, *this, input_c)
 {
 
 }
