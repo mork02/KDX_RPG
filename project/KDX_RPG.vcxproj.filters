@@ -102,6 +102,9 @@
     <ClCompile Include="..\src\main_menu.cpp">
       <Filter>Source Files\Window\Szene</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\gameplay.cpp">
+      <Filter>Source Files\Window\Szene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\panel.h">
@@ -153,6 +156,9 @@
       <Filter>Header Files\Window\Szene</Filter>
     </ClInclude>
     <ClInclude Include="..\include\scene_manager.h">
+      <Filter>Header Files\Window\Szene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\gameplay.h">
       <Filter>Header Files\Window\Szene</Filter>
     </ClInclude>
   </ItemGroup>

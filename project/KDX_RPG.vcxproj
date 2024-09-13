@@ -71,7 +71,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>C:\Users\alber\Documents\Code\C++\VS\KDX_RPG\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\alber\Documents\Code\KDX_RPG\lib;$(LibraryPath)</LibraryPath>
     <PublicIncludeDirectories>$(ProjectDir)..\include;$(ProjectDir)..\src;$(PublicIncludeDirectories)</PublicIncludeDirectories>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -169,6 +169,7 @@
     <ClCompile Include="..\src\input.cpp" />
     <ClCompile Include="..\src\menu.cpp" />
     <ClCompile Include="..\src\main_menu.cpp" />
+    <ClCompile Include="..\src\gameplay.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\armor.h" />
@@ -188,6 +189,7 @@
     <ClInclude Include="..\include\menu.h" />
     <ClInclude Include="..\include\main_menu.h" />
     <ClInclude Include="..\include\scene_manager.h" />
+    <ClInclude Include="..\include\gameplay.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
