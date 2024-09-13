@@ -221,3 +221,4 @@ void Main_menu::check_text_click()
 {
     sf::Vector2f mousePosF = input.get_mouse_position();
     process_click(mousePosF);
+}
