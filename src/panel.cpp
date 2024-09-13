@@ -2,8 +2,7 @@
 
 Panel::Panel(sf::RenderWindow& window_c, Input& input_c)
 	: window(window_c), input(input_c), current_scene(Scene::Main_Menu),
-	//user_Health(std::to_string(user.get_stats().get_hp()) + " / " + std::to_string(user.get_stats().get_max_hp()), 42, window.getSize().x - 200.f, 0),
-	menu(window_c, *this, input_c), main_menu(window_c, *this, input_c)
+	main_menu(window_c, *this, input_c), menu(window_c, *this, input_c), gameplay(window_c)
 {
 
 }
@@ -23,7 +22,7 @@ void Panel::update()
 	case Scene::Game_Over:
 		break;
 	case Scene::Gameplay:
-		// draw gameplay
+		gameplay.update();
 		menu.draw();
 		break;
 	}
@@ -32,11 +31,11 @@ void Panel::update()
 
 // Getter
 
-Player& Panel::get_player() { return user; }
-
 Menu& Panel::get_menu() { return menu; }
 
 Main_menu& Panel::get_main_menu() { return main_menu; }
+
+Gameplay& Panel::get_gameplay() { return gameplay; }
 
 Input& Panel::get_input() const { return input; }
 
@@ -49,18 +48,3 @@ void Panel::set_scene(Scene scene)
 }
 
 // Methods
-
-void Panel::update_user_health()
-{
-	/*Takes the users HP and Max_HP and refreshes the string in Text. Draws the text again on window*/
-
-	/*
-	std::string new_text = std::to_string(user.get_stats().get_hp()) + " / " + std::to_string(user.get_stats().get_max_hp());
-
-	if (user_Health.get_text().getString() != new_text) {
-		user_Health.set_text(std::to_string(user.get_stats().get_hp()) + " / " + std::to_string(user.get_stats().get_max_hp()));
-	}
-
-	user_Health.draw_text(window);
-	*/
-}

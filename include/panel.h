@@ -1,11 +1,9 @@
 #pragma once
 #include "SFML/Graphics.hpp"
-#include "text.h"
-#include "asset_loader.h"
-#include "player.h"
-#include "menu.h"
 #include "input.h"
+#include "gameplay.h"
 #include "main_menu.h"
+#include "menu.h"
 #include "scene_manager.h"
 
 class Panel
@@ -14,18 +12,18 @@ private:
 	sf::RenderWindow& window;
 	Input& input;
 
-	Player user;
 	Scene current_scene;
-	Menu menu;
 	Main_menu main_menu;
+	Menu menu;
+	Gameplay gameplay;
 
 public:
 	Panel(sf::RenderWindow& window, Input& input);
 
 	// Getter
-	Player& get_player();
 	Menu& get_menu();
 	Main_menu& get_main_menu();
+	Gameplay& get_gameplay();
 	Input& get_input() const;
 
 	// Setter
@@ -33,6 +31,5 @@ public:
 
 	// Methods
 	void update();
-	void update_user_health();
 };
 
