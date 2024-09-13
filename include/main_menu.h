@@ -33,12 +33,16 @@ private:
 	void center_menu(Asset_loader& asset, int x = 0, int y = 0);
 	void center_text_in_asset(Asset_loader& asset, Text& text);
 	void scale_background(Asset_loader& asset);
-	void update_text_hover();
+	void process_hover(const sf::Vector2f& mousePosF);
+	std::vector<std::pair<std::reference_wrapper<Asset_loader>, std::reference_wrapper<Text>>> get_text_components();
+	void process_click(const sf::Vector2f& mousePosF);
 
 public:
 	Main_menu(sf::RenderWindow& window, Panel& panel, Input& input);
 	void draw();
 	sf::FloatRect get_text_bounds(Text text);
 	void animate_title();
+	void update_text_hover();
+	void check_text_click();
 
 };

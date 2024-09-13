@@ -155,54 +155,69 @@ void Main_menu::animate_title()
     }
 }
 
-void Main_menu::update_text_hover()
+std::vector<std::pair<std::reference_wrapper<Asset_loader>, std::reference_wrapper<Text>>> Main_menu::get_text_components()
 {
-    sf::Vector2f mousePosF = input.get_mouse_position();
-
-    // Array of assets and corresponding texts
-    struct AssetTextPair
-    {
-        Asset_loader& asset;
-        Text& text;
+    // return vector of text to handle click and hover event        
+    return {
+        { std::ref(new_game_asset), std::ref(new_game_text) },
+        { std::ref(options_asset), std::ref(options_text) },
+        { std::ref(quit_asset), std::ref(quit_text) }
     };
+}
 
-    AssetTextPair assetTextPairs[] = {
-        { new_game_asset, new_game_text },
-        { options_asset, options_text },
-        { quit_asset, quit_text }
-    };
+void Main_menu::process_hover(const sf::Vector2f& mousePosF)
+{
+    auto assetTextPairs = get_text_components();
 
     for (const auto& pair : assetTextPairs)
     {
-        sf::FloatRect assetBounds = pair.asset.get_sprite().getGlobalBounds();
+        sf::FloatRect assetBounds = pair.first.get().get_sprite().getGlobalBounds();
 
-        // Check if the mouse is within the asset's bounds
         if (assetBounds.contains(mousePosF))
         {
-            // Change text color on hover
-            pair.text.get_text().setFillColor(sf::Color(210, 170, 109));
-
-            if (input.is_mouse_button_pressed(sf::Mouse::Left))
-            {
-                if (&pair.text == &new_game_text)
-                {
-                    std::cout << "New game" << std::endl;
-                    panel.set_scene(Scene::Gameplay);
-                }
-                else if (&pair.text == &options_text)
-                {
-                    std::cout << "Options" << std::endl;
-                }
-                else if (&pair.text == &quit_text)
-                {
-                    window.close();
-                }
-            }
+            pair.second.get().get_text().setFillColor(sf::Color(210, 170, 109));  // hovered
         }
         else
         {
-            // Reset text color if not hovering
-            pair.text.get_text().setFillColor(sf::Color::White);
+            pair.second.get().get_text().setFillColor(sf::Color::White);  // default
         }
     }
 }
+
+void Main_menu::process_click(const sf::Vector2f& mousePosF)
+{
+    auto assetTextPairs = get_text_components();
+
+    for (const auto& pair : assetTextPairs)
+    {
+        sf::FloatRect assetBounds = pair.first.get().get_sprite().getGlobalBounds();
+
+        if (assetBounds.contains(mousePosF))
+        {
+            if (&pair.second.get() == &new_game_text)
+            {
+                panel.set_scene(Scene::Gameplay); 
+            }
+            else if (&pair.second.get() == &options_text)
+            {
+                // Add logic
+            }
+            else if (&pair.second.get() == &quit_text)
+            {
+                window.close();
+            }
+        }
+    }
+}
+
+void Main_menu::update_text_hover()
+{
+    sf::Vector2f mousePosF = input.get_mouse_position();
+    process_hover(mousePosF);
+}
+
+// Main click method using the helper
+void Main_menu::check_text_click()
+{
+    sf::Vector2f mousePosF = input.get_mouse_position();
+    process_click(mousePosF);
