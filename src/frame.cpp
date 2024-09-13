@@ -5,7 +5,7 @@
 Frame::Frame()
     : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE, sf::Style::Close),
     panel(window, input),
-    input(window, panel.get_player()),
+    input(window, panel.get_gameplay().get_player()),
     main_menu(window, panel, input),
     menu(window, panel, input)
 {
@@ -53,7 +53,7 @@ void Frame::handle_mouse_click()
     {
         if (!input.get_isMousePressed())
         {
-            panel.get_player().get_stats().set_hp(-1);
+            panel.get_gameplay().get_player().get_stats().set_hp(-1);
             input.set_isMousePressed(true);
         }
     }
