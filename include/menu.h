@@ -27,6 +27,11 @@ private:
 	int scale = 6;
 	bool visable = false;
 
+private:
+	std::vector<std::reference_wrapper<Text>> get_menu_texts();
+	void process_hover(const sf::Vector2f& mousePosF);
+	void process_click(const sf::Vector2f& mousePosF);
+
 protected:
 	void center_menu(); 
 	void update_text_hover();
@@ -38,4 +43,6 @@ public:
 
 	void set_visable(bool value);
 	void draw();
+
+	void check_text_click();
 };
