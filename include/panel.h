@@ -25,6 +25,7 @@ public:
 	Main_menu& get_main_menu();
 	Gameplay& get_gameplay();
 	Input& get_input() const;
+	Scene& get_scene();
 
 	// Setter
 	void set_scene(Scene scene);

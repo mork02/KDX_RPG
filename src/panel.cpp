@@ -39,6 +39,8 @@ Gameplay& Panel::get_gameplay() { return gameplay; }
 
 Input& Panel::get_input() const { return input; }
 
+Scene& Panel::get_scene() { return current_scene; }
+
 
 // Setter
 
