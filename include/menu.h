@@ -25,7 +25,7 @@ private:
 	float xPos = 0;
 	float yPos = 0;
 	int scale = 6;
-	bool visable = false;
+	bool visable;
 
 private:
 	std::vector<std::reference_wrapper<Text>> get_menu_texts();

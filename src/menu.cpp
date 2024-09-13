@@ -3,7 +3,7 @@
 #include "scene_manager.h"
 
 Menu::Menu(sf::RenderWindow& window_c, Panel& panel_c, Input& input_c)
-    : window(window_c), panel(panel_c), input(input_c),
+    : window(window_c), panel(panel_c), input(input_c), visable(false),
     menu_title_text("Menu", 128, 0, 0),
     menu_continue_text("Continue", 86, 0, 0), 
     menu_option_text("Option", 86, 0, 0),      
@@ -126,7 +126,8 @@ void Menu::process_click(const sf::Vector2f& mousePosF)
         {
             if (&text.get() == &menu_continue_text)
             {
-                visable = false;  // Hide menu
+                set_visable(false);
+                std::cout << "Continue button clicked, visable: " << visable << std::endl;
             }
             else if (&text.get() == &menu_option_text)
             {
@@ -134,7 +135,7 @@ void Menu::process_click(const sf::Vector2f& mousePosF)
             }
             else if (&text.get() == &menu_quit_text)
             {
-                visable = false;
+                set_visable(false);
                 panel.set_scene(Scene::Main_Menu);  // Switch back to the main menu
             }
         }
@@ -143,12 +144,16 @@ void Menu::process_click(const sf::Vector2f& mousePosF)
 
 void Menu::update_text_hover()
 {
-    sf::Vector2f mousePosF = input.get_mouse_position();
-    process_hover(mousePosF);
+    if (visable) {
+        sf::Vector2f mousePosF = input.get_mouse_position();
+        process_hover(mousePosF);
+    }
 }
 
 void Menu::check_text_click()
 {
-    sf::Vector2f mousePosF = input.get_mouse_position();
-    process_click(mousePosF);
+    if (visable) {
+        sf::Vector2f mousePosF = input.get_mouse_position();
+        process_click(mousePosF);
+    }
 }
