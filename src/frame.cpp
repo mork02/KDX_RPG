@@ -1,9 +1,13 @@
 #include "frame.h"
+#include "main_menu.h"
+#include "menu.h"
 
 Frame::Frame()
     : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE, sf::Style::Close),
     panel(window, input),
-    input(window, panel.get_player())
+    input(window, panel.get_player()),
+    main_menu(window, panel, input),
+    menu(window, panel, input)
 {
     // window.setMouseCursorVisible(false);
 
@@ -23,6 +27,8 @@ void Frame::gameloop()
             handle_window_close_event();
             handle_mouse_click();
             handle_keyboard_input();
+            handle_main_menu_click_event();
+            handle_menu_click_event();
         }
 
         // Render and update the frame
@@ -32,7 +38,6 @@ void Frame::gameloop()
         window.display();
     }
 }
-
 
 void Frame::handle_window_close_event()
 {
@@ -71,6 +76,22 @@ void Frame::handle_keyboard_input()
     else
     {
         input.set_isKeyPressed(false);
+    }
+}
+
+void Frame::handle_main_menu_click_event()
+{
+    if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
+    {
+        main_menu.check_text_click();
+    }
+}
+
+void Frame::handle_menu_click_event()
+{
+    if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
+    {
+        menu.check_text_click();
     }
 }
 
