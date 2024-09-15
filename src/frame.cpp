@@ -44,19 +44,41 @@ void Frame::handle_window_close_event()
 
 void Frame::handle_keyboard_input()
 {
-    if (input.get_keyboard().isKeyPressed(input.get_keyboard().Escape))
-    {
-        if (!input.get_isKeyPressed())
+    if (panel.get_scene() == Scene::Gameplay) { // If scene is gameplay
+        // Handle Escape key for MENU
+        if (input.get_keyboard().isKeyPressed(input.get_keyboard().Escape))
         {
-            panel.get_menu().set_visable(!panel.get_menu().get_visable());
-            input.set_isKeyPressed(true);
+            if (!input.get_isKeyPressed())
+            {
+                // If the stats menu is visible, don't allow the main menu to open
+                if (!panel.get_stats_menu().get_visable())
+                {
+                    panel.get_menu().set_visable(!panel.get_menu().get_visable());
+                }
+                input.set_isKeyPressed(true);
+            }
+        }
+        // Handle G key for STATS MENU
+        else if (input.get_keyboard().isKeyPressed(input.get_keyboard().G))
+        {
+            if (!input.get_isKeyPressed())
+            {
+                // If the main menu is visible, don't allow the stats menu to open
+                if (!panel.get_menu().get_visable())
+                {
+                    panel.get_stats_menu().set_visable(!panel.get_stats_menu().get_visable());
+                }
+                input.set_isKeyPressed(true);
+            }
+        }
+        // Reset key pressed status if no relevant key is pressed
+        else
+        {
+            input.set_isKeyPressed(false);
         }
     }
-    else
-    {
-        input.set_isKeyPressed(false);
-    }
 }
+
 
 void Frame::handle_main_menu_click_event()
 {
