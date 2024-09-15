@@ -3,22 +3,20 @@
 #include "scene_manager.h"
 
 Menu::Menu(sf::RenderWindow& window_c, Panel& panel_c, Input& input_c)
-    : window(window_c), panel(panel_c), input(input_c), visable(false),
+    : window(window_c), panel(panel_c), input(input_c),
+    visable(false),
+    menu_asset(window_c, path),
     menu_title_text("Menu", 128, 0, 0),
     menu_continue_text("Continue", 86, 0, 0), 
     menu_option_text("Option", 86, 0, 0),      
     menu_quit_text("Back to Menu", 86, 0, 0)
 {
-    if (!texture.loadFromFile(path)) {
-        std::cerr << "Error loading texture from " << path << std::endl;
-    }
 
-    sprite.setTexture(texture);
-    sprite.setScale((float) scale, (float) scale);
+    menu_asset.get_sprite().setScale((float)scale, (float)scale);
 
     center_menu();
 
-    sf::FloatRect spriteBounds = sprite.getGlobalBounds();
+    sf::FloatRect spriteBounds = menu_asset.get_sprite().getGlobalBounds();
 
     // MENU TITLE
     float titleXPos = xPos + (spriteBounds.width - get_text_bounds(menu_title_text).width) / 2;
@@ -67,7 +65,7 @@ void Menu::draw()
         update_text_hover();
 
         // draw menu background
-        window.draw(sprite);
+        window.draw(menu_asset.get_sprite());
 
         // draw all text
         menu_title_text.draw_text(window);
@@ -80,12 +78,12 @@ void Menu::draw()
 void Menu::center_menu()
 {
     sf::Vector2u windowSize = window.getSize();
-    sf::Vector2u textureSize = texture.getSize();
+    sf::Vector2u textureSize = menu_asset.get_texture().getSize();
 
-    xPos = (windowSize.x - (textureSize.x * sprite.getScale().x)) / 2;
-    yPos = (windowSize.y - (textureSize.y * sprite.getScale().y)) / 2;
+    xPos = (windowSize.x - (textureSize.x * menu_asset.get_sprite().getScale().x)) / 2;
+    yPos = (windowSize.y - (textureSize.y * menu_asset.get_sprite().getScale().y)) / 2;
 
-    sprite.setPosition(xPos, yPos);
+    menu_asset.get_sprite().setPosition(xPos, yPos);
 }
 
 

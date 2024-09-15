@@ -3,6 +3,7 @@
 #include "SFML/Graphics.hpp"
 #include "text.h"
 #include "input.h"
+#include "asset_loader.h"
 
 class Panel;
 
@@ -13,14 +14,14 @@ private:
 	Input& input;
 	Panel& panel;
 
-	sf::Texture texture;
-	sf::Sprite sprite;
 	Text menu_title_text;
 	Text menu_continue_text;
 	Text menu_option_text;
 	Text menu_quit_text;
 
 	std::string path = "assets/menu_assets/menu/menu.png";
+
+	Asset_loader menu_asset;
 
 	float xPos = 0;
 	float yPos = 0;
