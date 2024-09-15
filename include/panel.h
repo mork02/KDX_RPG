@@ -4,6 +4,7 @@
 #include "gameplay.h"
 #include "main_menu.h"
 #include "menu.h"
+#include "stats_menu.h"
 #include "scene_manager.h"
 
 class Panel
@@ -15,6 +16,7 @@ private:
 	Scene current_scene;
 	Main_menu main_menu;
 	Menu menu;
+	Stats_menu stats_menu;
 	Gameplay gameplay;
 
 public:
@@ -22,6 +24,7 @@ public:
 
 	// Getter
 	Menu& get_menu();
+	Stats_menu& get_stats_menu();
 	Main_menu& get_main_menu();
 	Gameplay& get_gameplay();
 	Input& get_input() const;

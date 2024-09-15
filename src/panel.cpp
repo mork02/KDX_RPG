@@ -2,7 +2,7 @@
 
 Panel::Panel(sf::RenderWindow& window_c, Input& input_c)
 	: window(window_c), input(input_c), current_scene(Scene::Main_Menu),
-	main_menu(window_c, *this, input_c), menu(window_c, *this, input_c), gameplay(window_c)
+	main_menu(window_c, *this, input_c), menu(window_c, *this, input_c), gameplay(window_c), stats_menu(window_c, *this, input_c)
 {
 
 }
@@ -23,6 +23,7 @@ void Panel::update()
 		break;
 	case Scene::Gameplay:
 		gameplay.update();
+		stats_menu.draw();
 		menu.draw();
 		break;
 	}
@@ -32,6 +33,8 @@ void Panel::update()
 // Getter
 
 Menu& Panel::get_menu() { return menu; }
+
+Stats_menu& Panel::get_stats_menu() { return stats_menu; }
 
 Main_menu& Panel::get_main_menu() { return main_menu; }
 
