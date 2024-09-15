@@ -13,7 +13,10 @@ private:
 	Input& input;
 	Panel& panel;
 
-	void update_assets();
+	std::string background_path = "assets/menu_assets/main_menu/background_new.png";
+	std::string sign1_path = "assets/menu_assets/main_menu/main_menu_sign_1.png";
+	std::string sign2_path = "assets/menu_assets/main_menu/main_menu_sign_2.png";
+	std::string sign3_path = "assets/menu_assets/main_menu/main_menu_sign_3.png";
 
 	Asset_loader background_asset;
 
@@ -30,6 +33,7 @@ private:
 	float y_Pos = 0;
 
 private:
+	void update_assets();
 	void center_menu(Asset_loader& asset, int x = 0, int y = 0);
 	void center_text_in_asset(Asset_loader& asset, Text& text);
 	void scale_background(Asset_loader& asset);
