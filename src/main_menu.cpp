@@ -4,14 +4,14 @@
 
 Main_menu::Main_menu(sf::RenderWindow& window_c, Panel& panel_c, Input& input_c)
     : window(window_c), panel(panel_c), input(input_c),
-    background_asset(window_c, "assets/menu_assets/background_new.png"),
+    background_asset(window_c, "assets/menu_assets/main_menu/background_new.png"),
     title_text("KDX RPG", 100, 0, 0),
     new_game_text("New Game", 56, 0, 0),
     options_text("Options", 56, 0, 0),
     quit_text("Quit", 56, 0, 0),
-    new_game_asset(window_c, "assets/menu_assets/main_menu_sign_1.png"),
-    options_asset(window_c, "assets/menu_assets/main_menu_sign_2.png"),
-    quit_asset(window_c, "assets/menu_assets/main_menu_sign_3.png")
+    new_game_asset(window_c, "assets/menu_assets/main_menu/main_menu_sign_1.png"),
+    options_asset(window_c, "assets/menu_assets/main_menu/main_menu_sign_2.png"),
+    quit_asset(window_c, "assets/menu_assets/main_menu/main_menu_sign_3.png")
 {
     // Initialize the menu
     update_assets();

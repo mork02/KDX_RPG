@@ -20,7 +20,7 @@ private:
 	Text menu_option_text;
 	Text menu_quit_text;
 
-	std::string path = "assets/menu_assets/menu.png";
+	std::string path = "assets/menu_assets/menu/menu.png";
 
 	float xPos = 0;
 	float yPos = 0;
