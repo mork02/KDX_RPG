@@ -49,6 +49,12 @@
     <Filter Include="Header Files\Window\Szene">
       <UniqueIdentifier>{6d12d620-5b42-4dff-ae3c-816411fb45e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Window\Szene\GUI">
+      <UniqueIdentifier>{b2d877a0-b174-42bd-a483-d46220cd85d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Window\Szene\GUI">
+      <UniqueIdentifier>{492cc0f2-5b70-4931-b15e-4db4cee5e4df}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -96,14 +102,17 @@
     <ClCompile Include="..\src\input.cpp">
       <Filter>Source Files\Window\Controller</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\menu.cpp">
-      <Filter>Source Files\Window\Szene</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\main_menu.cpp">
       <Filter>Source Files\Window\Szene</Filter>
     </ClCompile>
     <ClCompile Include="..\src\gameplay.cpp">
       <Filter>Source Files\Window\Szene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\stats_menu.cpp">
+      <Filter>Source Files\Window\Szene\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\menu.cpp">
+      <Filter>Source Files\Window\Szene\GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -149,17 +158,20 @@
     <ClInclude Include="..\include\input.h">
       <Filter>Header Files\Window\Controller</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\menu.h">
-      <Filter>Header Files\Window\Szene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\main_menu.h">
-      <Filter>Header Files\Window\Szene</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\scene_manager.h">
       <Filter>Header Files\Window\Szene</Filter>
     </ClInclude>
     <ClInclude Include="..\include\gameplay.h">
       <Filter>Header Files\Window\Szene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\main_menu.h">
+      <Filter>Header Files\Window\Szene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\menu.h">
+      <Filter>Header Files\Window\Szene\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\stats_menu.h">
+      <Filter>Header Files\Window\Szene\GUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
