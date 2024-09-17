@@ -3,12 +3,14 @@
 #include "player.h"
 #include "text.h"
 #include "asset_loader.h"
+#include "tile_map.h"
 
 class Gameplay
 {
 private:
 	sf::RenderWindow& window;
 	Player user;
+	TileMap map;
 
 	Asset_loader sword;
 public:
