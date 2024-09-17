@@ -150,7 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\armor.cpp" />
-    <ClCompile Include="..\src\character.cpp" />
+    <ClCompile Include="..\src\entitie.cpp" />
     <ClCompile Include="..\src\fps.cpp" />
     <ClCompile Include="..\src\frame.cpp" />
     <ClCompile Include="..\src\inventory.cpp" />
@@ -171,10 +171,11 @@
     <ClCompile Include="..\src\main_menu.cpp" />
     <ClCompile Include="..\src\gameplay.cpp" />
     <ClCompile Include="..\src\stats_menu.cpp" />
+    <ClCompile Include="..\src\tile_map.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\armor.h" />
-    <ClInclude Include="..\include\character.h" />
+    <ClInclude Include="..\include\entitie.h" />
     <ClInclude Include="..\include\fps.h" />
     <ClInclude Include="..\include\frame.h" />
     <ClInclude Include="..\include\inventory.h" />
@@ -192,6 +193,7 @@
     <ClInclude Include="..\include\scene_manager.h" />
     <ClInclude Include="..\include\gameplay.h" />
     <ClInclude Include="..\include\stats_menu.h" />
+    <ClInclude Include="..\include\tile_map.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
