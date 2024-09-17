@@ -1,16 +1,15 @@
 #pragma once
-#include "character.h"
+#include "entitie.h"
 #include "inventory.h"
 #include "item.h"
 #include <memory>
 #include <iostream>
 #include <vector>
 
-class Player
+class Player : public Entitie
 {
 private:
     std::string name;
-    Character stats;
     Inventory inventory;
 
     Item* weapon_slot;
@@ -21,7 +20,6 @@ public:
 
     // Getter 
     std::string get_name();
-    Character& get_stats();
     Inventory& get_inventory(); 
     Item* get_weapon_slot();
     Item* get_armor_slot();

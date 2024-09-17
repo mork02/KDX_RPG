@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "character.h"
+#include "entitie.h"
 
 enum class Zone 
 {
@@ -11,7 +11,7 @@ enum class Zone
 	FIFTH_ZONE	
 };
 
-class NPC
+class NPC : public Entitie
 {
 private:
 	std::string name;
@@ -20,7 +20,6 @@ private:
 
 public:
 	NPC(std::string name, int hp, int basic_dmg, int basic_defensive, Zone zone);
-	Character stats;
 
 	// getter
 	std::string get_name();
