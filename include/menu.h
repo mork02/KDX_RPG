@@ -20,7 +20,6 @@ private:
     Text menu_quit_text;
 
     std::string path = "assets/menu_assets/menu/menu.png";
-
     Asset_loader menu_asset;
 
     float xPos = 0;
@@ -32,21 +31,19 @@ private:
     bool visable;
 
 private:
-    std::vector<std::reference_wrapper<Text>> get_menu_texts();
-    void process_hover(const sf::Vector2f& mousePosF);
-    void process_click(const sf::Vector2f& mousePosF);
-
-    void center_menu();
-    void position_menu_items();
-    void update_text_hover();
+    auto get_menu_texts() -> std::vector<std::reference_wrapper<Text>>;
+    auto process_hover(const sf::Vector2f& mousePosF) -> void;
+    auto process_click(const sf::Vector2f& mousePosF) -> void;
+    auto center_menu() -> void;
+    auto position_menu_items() -> void;
+    auto update_text_hover() -> void;
 
 public:
     Menu(sf::RenderWindow& window, Panel& panel, Input& input);
-    bool get_visable() const;
-    sf::FloatRect get_text_bounds(Text& text); // Pass by reference
+    auto get_visable() const -> bool;
+    auto get_text_bounds(Text& text) -> sf::FloatRect;  // Pass by reference
 
-    void set_visable(bool value);
-    void draw();
-
-    void check_text_click();
+    auto set_visable(bool value) -> void;
+    auto draw() -> void;
+    auto check_text_click() -> void;
 };

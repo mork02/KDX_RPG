@@ -2,7 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-class Text {
+class Text
+{
 private:
     std::string showing_text;
     int size;
@@ -14,19 +15,18 @@ private:
     sf::Font font;
 
 public:
-    // Constructor declaration with default arguments
+    // Constructor with default arguments
     Text(std::string showing_text_c, int size_c, float pos_x_c, float pos_y_c,
         std::string font_path_c = "assets/font/Minecraft.ttf",
         sf::Color color_c = sf::Color::White);
 
     // Getter
-    sf::Text& get_text();
+    auto get_text() -> sf::Text&;
 
     // Setter
-    void set_text(std::string new_text);
-    void set_position(int value_x, int value_y);
+    auto set_text(std::string new_text) -> void;
+    auto set_position(int value_x, int value_y) -> void;
 
     // Methods
-    void draw_text(sf::RenderWindow& window);
-
+    auto draw_text(sf::RenderWindow& window) -> void;
 };

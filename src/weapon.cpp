@@ -1,31 +1,42 @@
 #include "weapon.h"
 
-// init
+// Constructor
 
-Weapon::Weapon(std::string name_c, int dmg_c, int extra_dmg_c, int durability_c) : name(name_c), dmg(dmg_c), extra_dmg(extra_dmg_c), durability(durability_c), Item(Category::WEAPON) {}
+Weapon::Weapon(std::string name_c, int dmg_c, int extra_dmg_c, int durability_c)
+    : name(name_c), dmg(dmg_c), extra_dmg(extra_dmg_c), durability(durability_c), Item(Category::WEAPON) {}
 
-// getter
+// Getter
 
- // int Weapon::get_id() const { return id; }
-
-std::string Weapon::get_name() const { return name; }
-
-int Weapon::get_dmg() const { return dmg; }
-
-int Weapon::get_extra_dmg() const { return extra_dmg; }
-
-int Weapon::get_durability() const { return durability; }
-
-// methods
-
-void Weapon::display_item() const
+auto Weapon::get_name() const -> std::string
 {
-	try
-	{
-		std::cout << "Name: " << name << "\nDmg: " << dmg << " + " << extra_dmg << "\nDurability: " << durability << "\n" << std::endl;
-	}
-	catch (const std::exception&)
-	{
-		std::cout << "No item equiped!" << std::endl;
-	}
+    return name;
+}
+
+auto Weapon::get_dmg() const -> int
+{
+    return dmg;
+}
+
+auto Weapon::get_extra_dmg() const -> int
+{
+    return extra_dmg;
+}
+
+auto Weapon::get_durability() const -> int
+{
+    return durability;
+}
+
+// Methods
+
+auto Weapon::display_item() const -> void
+{
+    try
+    {
+        std::cout << "Name: " << name << "\nDmg: " << dmg << " + " << extra_dmg << "\nDurability: " << durability << "\n" << std::endl;
+    }
+    catch (const std::exception&)
+    {
+        std::cout << "No item equipped!" << std::endl;
+    }
 }

@@ -10,30 +10,29 @@
 class Panel
 {
 private:
-	sf::RenderWindow& window;
-	Input& input;
+    sf::RenderWindow& window;
+    Input& input;
 
-	Scene current_scene;
-	Main_menu main_menu;
-	Menu menu;
-	Stats_menu stats_menu;
-	Gameplay gameplay;
+    Scene current_scene;
+    Main_menu main_menu;
+    Menu menu;
+    Stats_menu stats_menu;
+    Gameplay gameplay;
 
 public:
-	Panel(sf::RenderWindow& window, Input& input);
+    Panel(sf::RenderWindow& window, Input& input);
 
-	// Getter
-	Menu& get_menu();
-	Stats_menu& get_stats_menu();
-	Main_menu& get_main_menu();
-	Gameplay& get_gameplay();
-	Input& get_input() const;
-	Scene& get_scene();
+    // Getter
+    auto get_menu() -> Menu&;
+    auto get_stats_menu() -> Stats_menu&;
+    auto get_main_menu() -> Main_menu&;
+    auto get_gameplay() -> Gameplay&;
+    auto get_input() ->Input&;
+    auto get_scene() -> Scene&;
 
-	// Setter
-	void set_scene(Scene scene);
+    // Setter
+    auto set_scene(Scene scene) -> void;
 
-	// Methods
-	void update();
+    // Methods
+    auto update() -> void;
 };
-

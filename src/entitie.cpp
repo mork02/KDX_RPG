@@ -1,42 +1,52 @@
 #include "entitie.h"
 
-Entitie::Entitie(int hp_c, int basic_dmg_c, int basic_defensive_c) : hp(hp_c), max_hp(hp_c), basic_dmg(basic_dmg_c), basic_defensive(basic_defensive_c) {}
+Entitie::Entitie(int hp_c, int basic_dmg_c, int basic_defensive_c)
+    : hp(hp_c), max_hp(hp_c), basic_dmg(basic_dmg_c), basic_defensive(basic_defensive_c) {}
 
 // Getter
 
-int Entitie::get_hp() const { return hp; }
+auto Entitie::get_hp() const -> int
+{
+    return hp;
+}
 
-int Entitie::get_max_hp() const { return max_hp; }
+auto Entitie::get_max_hp() const -> int
+{
+    return max_hp;
+}
 
-int Entitie::get_basic_dmg() const { return basic_dmg; }
+auto Entitie::get_basic_dmg() const -> int
+{
+    return basic_dmg;
+}
 
-int Entitie::get_basic_defensive() const { return basic_defensive; }
-
+auto Entitie::get_basic_defensive() const -> int
+{
+    return basic_defensive;
+}
 
 // Setter
 
-void Entitie::set_hp(int amount)
+auto Entitie::set_hp(int amount) -> void
 {
-	hp = hp + amount;
-	if (hp > max_hp) 
-	{
-		hp = max_hp;
-	}
+    hp = hp + amount;
+    if (hp > max_hp)
+    {
+        hp = max_hp;
+    }
 }
 
-void Entitie::set_max_hp(int amount)
+auto Entitie::set_max_hp(int amount) -> void
 {
-	max_hp = amount;
+    max_hp = amount;
 }
 
-void Entitie::set_basic_dmg(int amount)
+auto Entitie::set_basic_dmg(int amount) -> void
 {
-	basic_dmg = amount;
+    basic_dmg = amount;
 }
 
-void Entitie::set_basic_defensive(int amount)
+auto Entitie::set_basic_defensive(int amount) -> void
 {
-	basic_defensive = amount;
+    basic_defensive = amount;
 }
-
-// methods

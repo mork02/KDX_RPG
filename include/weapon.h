@@ -5,9 +5,9 @@
 class Weapon : public Item
 {
 private:
-    // int id;
     std::string name;
-    int dmg, extra_dmg;
+    int dmg;
+    int extra_dmg;
     int durability;
 
 public:
@@ -15,12 +15,11 @@ public:
     Weapon(std::string name, int dmg, int extra_dmg, int durability);
 
     // Getter
-    // int get_id() const override;
-    std::string get_name() const override;
-    int get_dmg() const override;
-    int get_extra_dmg() const override;
-    int get_durability() const override;
+    auto get_name() const->std::string override;
+    auto get_dmg() const -> int override;
+    auto get_extra_dmg() const -> int override;
+    auto get_durability() const -> int override;
 
     // Methods
-    void display_item() const override;
+    auto display_item() const -> void override;
 };

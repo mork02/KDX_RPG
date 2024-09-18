@@ -13,11 +13,10 @@ Main_menu::Main_menu(sf::RenderWindow& window_c, Panel& panel_c, Input& input_c)
     options_asset(window_c, sign2_path),
     quit_asset(window_c, sign3_path)
 {
-    // Initialize the menu
-    update_assets();
+    update_assets();  // Initialize the menu
 }
 
-void Main_menu::update_assets()
+auto Main_menu::update_assets() -> void
 {
     // Center and scale the background
     scale_background(background_asset);
@@ -30,86 +29,62 @@ void Main_menu::update_assets()
     center_text_in_asset(options_asset, options_text);
     center_text_in_asset(quit_asset, quit_text);
 
-    // Position of title text
+    // Position title text
     sf::FloatRect text_bounds = title_text.get_text().getLocalBounds();
     float title_X_Pos = window.getSize().x / 2.0f;
     float title_Y_Pos = text_bounds.height;
-    title_text.set_position((int) title_X_Pos, (int) title_Y_Pos);
+    title_text.set_position(static_cast<int>(title_X_Pos), static_cast<int>(title_Y_Pos));
 }
 
-void Main_menu::draw()
+auto Main_menu::draw() -> void
 {
-    // Update mouse hover detection before drawing
-    update_text_hover();
+    update_text_hover();  // Update mouse hover detection
 
-    // Draw menu background
     window.draw(background_asset.get_sprite());
-
-    // Draw menu assets and text
     window.draw(new_game_asset.get_sprite());
     window.draw(options_asset.get_sprite());
     window.draw(quit_asset.get_sprite());
+
     window.draw(new_game_text.get_text());
     window.draw(options_text.get_text());
     window.draw(quit_text.get_text());
 
-    // Animate the title
-    animate_title();
-
-    // Draw the title text
+    animate_title();  // Animate the title
     title_text.draw_text(window);
 }
 
-sf::FloatRect Main_menu::get_text_bounds(Text text)
+auto Main_menu::get_text_bounds(Text text) -> sf::FloatRect
 {
     return text.get_text().getGlobalBounds();
 }
 
-void Main_menu::center_menu(Asset_loader& asset, int x, int y)
+auto Main_menu::center_menu(Asset_loader& asset, int x, int y) -> void
 {
     sf::Vector2u windowSize = window.getSize();
     sf::Vector2u textureSize = asset.get_texture().getSize();
 
-    // Set the sprite's origin to its center
     asset.get_sprite().setOrigin(textureSize.x / 2.0f, textureSize.y / 2.0f);
-
-    // Position the sprite in the center of the window
-    float x_Pos = (windowSize.x / 2.0f) + x;
-    float y_Pos = (windowSize.y / 2.0f) + y;
-
-    asset.get_sprite().setPosition(x_Pos, y_Pos);
+    asset.get_sprite().setPosition(windowSize.x / 2.0f + x, windowSize.y / 2.0f + y);
 }
 
-void Main_menu::center_text_in_asset(Asset_loader& asset, Text& text)
+auto Main_menu::center_text_in_asset(Asset_loader& asset, Text& text) -> void
 {
     sf::FloatRect assetBounds = asset.get_sprite().getGlobalBounds();
     sf::FloatRect textBounds = text.get_text().getLocalBounds();
 
-    // Set the text's origin to its center
-    text.get_text().setOrigin(
-        static_cast<float>(textBounds.left + textBounds.width / 2.0f),  // Horizontal center
-        static_cast<float>(textBounds.top + textBounds.height / 2.0f)   // Vertical center
-    );
-
-    // Position the text at the center of the asset
-    text.set_position(
-        static_cast<int>(assetBounds.left + assetBounds.width / 2.0f),  // Center X
-        static_cast<int>(assetBounds.top + assetBounds.height / 2.0f)   // Center Y
-    );
+    text.get_text().setOrigin(textBounds.left + textBounds.width / 2.0f, textBounds.top + textBounds.height / 2.0f);
+    text.set_position(static_cast<int>(assetBounds.left + assetBounds.width / 2.0f), static_cast<int>(assetBounds.top + assetBounds.height / 2.0f));
 }
 
-void Main_menu::scale_background(Asset_loader& asset)
+auto Main_menu::scale_background(Asset_loader& asset) -> void
 {
     sf::Vector2u windowSize = window.getSize();
     sf::Vector2u textureSize = asset.get_texture().getSize();
 
-    float scaleX = static_cast<float>(windowSize.x) / static_cast<float>(textureSize.x);
-    float scaleY = static_cast<float>(windowSize.y) / static_cast<float>(textureSize.y);
-
-    asset.get_sprite().setScale(scaleX, scaleY);
+    asset.get_sprite().setScale(static_cast<float>(windowSize.x) / textureSize.x, static_cast<float>(windowSize.y) / textureSize.y);
 }
 
-void Main_menu::animate_title()
+auto Main_menu::animate_title() -> void
 {
     static bool shrinking = true;
     static int frame_counter = 0;
@@ -118,14 +93,11 @@ void Main_menu::animate_title()
     unsigned int current_size = title_text.get_text().getCharacterSize();
     sf::FloatRect text_bounds = title_text.get_text().getLocalBounds();
 
-    title_text.get_text().setOrigin(
-        text_bounds.left + text_bounds.width / 2.0f, // Horizontal center
-        text_bounds.top + text_bounds.height / 2.0f  // Vertical center
-    );
+    title_text.get_text().setOrigin(text_bounds.left + text_bounds.width / 2.0f, text_bounds.top + text_bounds.height / 2.0f);
 
     if (frame_counter < frame_delay)
     {
-        frame_counter++;
+        ++frame_counter;
         return;
     }
 
@@ -155,9 +127,8 @@ void Main_menu::animate_title()
     }
 }
 
-std::vector<std::pair<std::reference_wrapper<Asset_loader>, std::reference_wrapper<Text>>> Main_menu::get_text_components()
+auto Main_menu::get_text_components() -> std::vector<std::pair<std::reference_wrapper<Asset_loader>, std::reference_wrapper<Text>>>
 {
-    // return vector of text to handle click and hover event        
     return {
         { std::ref(new_game_asset), std::ref(new_game_text) },
         { std::ref(options_asset), std::ref(options_text) },
@@ -165,7 +136,7 @@ std::vector<std::pair<std::reference_wrapper<Asset_loader>, std::reference_wrapp
     };
 }
 
-void Main_menu::process_hover(const sf::Vector2f& mousePosF)
+auto Main_menu::process_hover(const sf::Vector2f& mousePosF) -> void
 {
     auto assetTextPairs = get_text_components();
 
@@ -175,16 +146,16 @@ void Main_menu::process_hover(const sf::Vector2f& mousePosF)
 
         if (assetBounds.contains(mousePosF))
         {
-            pair.second.get().get_text().setFillColor(sf::Color(210, 170, 109));  // hovered
+            pair.second.get().get_text().setFillColor(sf::Color(210, 170, 109));  // Hover color
         }
         else
         {
-            pair.second.get().get_text().setFillColor(sf::Color::White);  // default
+            pair.second.get().get_text().setFillColor(sf::Color::White);  // Default color
         }
     }
 }
 
-void Main_menu::process_click(const sf::Vector2f& mousePosF)
+auto Main_menu::process_click(const sf::Vector2f& mousePosF) -> void
 {
     auto assetTextPairs = get_text_components();
 
@@ -196,28 +167,27 @@ void Main_menu::process_click(const sf::Vector2f& mousePosF)
         {
             if (&pair.second.get() == &new_game_text)
             {
-                panel.set_scene(Scene::Gameplay); 
+                panel.set_scene(Scene::Gameplay);  // Start new game
             }
             else if (&pair.second.get() == &options_text)
             {
-                // Add logic
+                // Add logic for options
             }
             else if (&pair.second.get() == &quit_text)
             {
-                window.close();
+                window.close();  // Quit the game
             }
         }
     }
 }
 
-void Main_menu::update_text_hover()
+auto Main_menu::update_text_hover() -> void
 {
     sf::Vector2f mousePosF = input.get_mouse_position();
     process_hover(mousePosF);
 }
 
-// Main click method using the helper
-void Main_menu::check_text_click()
+auto Main_menu::check_text_click() -> void
 {
     sf::Vector2f mousePosF = input.get_mouse_position();
     process_click(mousePosF);

@@ -2,23 +2,30 @@
 
 Inventory::Inventory() {}
 
-// getter
+// Getter
 
-std::vector<Item*>& Inventory::get_inventory() { return inventory; }
-
-Item* Inventory::get_inv_item(int index)
+auto Inventory::get_inventory() -> std::vector<Item*>&
 {
-    return inventory[index];
+    return inventory;
 }
 
-// methods
+auto Inventory::get_inv_item(int index) -> Item*
+{
+    if (index >= 0 && index < static_cast<int>(inventory.size()))
+    {
+        return inventory[index];
+    }
+    return nullptr;  // Return nullptr if index is out of bounds
+}
 
-void Inventory::add_item(Item* obj)
+// Methods
+
+auto Inventory::add_item(Item* obj) -> void
 {
     inventory.push_back(obj);
 }
 
-void Inventory::remove_item(Item* obj)
+auto Inventory::remove_item(Item* obj) -> void
 {
     auto it = std::find(inventory.begin(), inventory.end(), obj);
     if (it != inventory.end())
@@ -31,7 +38,7 @@ void Inventory::remove_item(Item* obj)
     }
 }
 
-void Inventory::display_inventory()
+auto Inventory::display_inventory() -> void
 {
     int x = 0;
     for (const auto* item : inventory)

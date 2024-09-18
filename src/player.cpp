@@ -1,30 +1,44 @@
 #include "player.h"
 
-Player::Player() : name("Advaturer"), Entitie(100, 0, 0)
+Player::Player() : name("Adventurer"), Entitie(100, 0, 0)
 {
 }
 
 // Getter //
 
-std::string Player::get_name() { return name; }
+auto Player::get_name() -> std::string
+{
+    return name;
+}
 
-Inventory& Player::get_inventory() { return inventory; }
+auto Player::get_inventory() -> Inventory&
+{
+    return inventory;
+}
 
-Item* Player::get_weapon_slot() { return weapon_slot; }
+auto Player::get_weapon_slot() -> Item*
+{
+    return weapon_slot;
+}
 
-Item* Player::get_armor_slot() { return armor_slot; }
-//
+auto Player::get_armor_slot() -> Item*
+{
+    return armor_slot;
+}
 
 // Setter //
 
-void Player::set_name(std::string new_name) { name = new_name; }
-
-void Player::set_weapon_slot(int index)
+auto Player::set_name(std::string new_name) -> void
 {
-    if (index >= 0 && index < inventory.get_inventory().size())
+    name = new_name;
+}
+
+auto Player::set_weapon_slot(int index) -> void
+{
+    if (index >= 0 && index < static_cast<int>(inventory.get_inventory().size()))
     {
         weapon_slot = inventory.get_inventory()[index];
-        inventory.remove_item(this->weapon_slot);
+        inventory.remove_item(weapon_slot);
     }
     else
     {
@@ -32,12 +46,12 @@ void Player::set_weapon_slot(int index)
     }
 }
 
-void Player::set_armor_slot(int index)
+auto Player::set_armor_slot(int index) -> void
 {
-    if (index >= 0 && index < inventory.get_inventory().size())
+    if (index >= 0 && index < static_cast<int>(inventory.get_inventory().size()))
     {
         armor_slot = inventory.get_inventory()[index];
-        inventory.remove_item(this->armor_slot);
+        inventory.remove_item(armor_slot);
     }
     else
     {
@@ -45,16 +59,13 @@ void Player::set_armor_slot(int index)
     }
 }
 
-//
+// Methods //
 
-// Methods
-
-void Player::display_weapon_slot()
+auto Player::display_weapon_slot() -> void
 {
-    Item* item = get_weapon_slot();
-    if (item)
+    if (weapon_slot)
     {
-        item->display_item();
+        weapon_slot->display_item();
     }
     else
     {
@@ -62,12 +73,11 @@ void Player::display_weapon_slot()
     }
 }
 
-void Player::display_armor_slot()
+auto Player::display_armor_slot() -> void
 {
-    Item* item = get_armor_slot();
-    if (item)
+    if (armor_slot)
     {
-        item->display_item();
+        armor_slot->display_item();
     }
     else
     {

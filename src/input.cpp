@@ -1,36 +1,51 @@
 #include "input.h"
 
 Input::Input(sf::RenderWindow& window_c, Player& user_c)
-	: window(window_c), user(user_c)
+    : window(window_c), user(user_c)
 {}
 
 // Getter
 
-sf::Mouse Input::get_mouse() const { return mouse; }
+auto Input::get_mouse() const -> sf::Mouse
+{
+    return mouse;
+}
 
-sf::Vector2f Input::get_mouse_position() const { return window.mapPixelToCoords(mouse.getPosition(window)); }
+auto Input::get_mouse_position() const -> sf::Vector2f
+{
+    return window.mapPixelToCoords(mouse.getPosition(window));
+}
 
-sf::Keyboard Input::get_keyboard() const { return keyboard; }
+auto Input::get_keyboard() const -> sf::Keyboard
+{
+    return keyboard;
+}
 
-bool Input::get_isKeyPressed() const { return isKeyPressed; }
+auto Input::get_isKeyPressed() const -> bool
+{
+    return isKeyPressed;
+}
 
-bool Input::get_isMousePressed() const { return isMousePressed; }
+auto Input::get_isMousePressed() const -> bool
+{
+    return isMousePressed;
+}
 
 // Setter
 
-void Input::set_isKeyPressed(bool value) 
+auto Input::set_isKeyPressed(bool value) -> void
 {
-	isKeyPressed = value;
+    isKeyPressed = value;
 }
 
-void Input::set_isMousePressed(bool value) 
+auto Input::set_isMousePressed(bool value) -> void
 {
-	isMousePressed = value;
+    isMousePressed = value;
 }
 
 // Methods
 
-bool Input::is_mouse_button_pressed(sf::Mouse::Button button) const
+auto Input::is_mouse_button_pressed(sf::Mouse::Button button) const -> bool
 {
-	return mouse.isButtonPressed(button);
+    return mouse.isButtonPressed(button);
 }

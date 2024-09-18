@@ -12,7 +12,7 @@ Frame::Frame()
     std::cout << "closing window..." << std::endl;
 }
 
-void Frame::gameloop()
+auto Frame::gameloop() -> void
 {
     window.setFramerateLimit(fps_value);
 
@@ -34,7 +34,7 @@ void Frame::gameloop()
     }
 }
 
-void Frame::handle_window_close_event()
+auto Frame::handle_window_close_event() -> void
 {
     if (event.type == sf::Event::Closed)
     {
@@ -42,7 +42,7 @@ void Frame::handle_window_close_event()
     }
 }
 
-void Frame::handle_keyboard_input()
+auto Frame::handle_keyboard_input() -> void
 {
     if (panel.get_scene() == Scene::Gameplay) { // If scene is gameplay
         // Handle Escape key for MENU
@@ -79,8 +79,7 @@ void Frame::handle_keyboard_input()
     }
 }
 
-
-void Frame::handle_main_menu_click_event()
+auto Frame::handle_main_menu_click_event() -> void
 {
     if (panel.get_scene() == Scene::Main_Menu) {
         if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
@@ -90,7 +89,7 @@ void Frame::handle_main_menu_click_event()
     }
 }
 
-void Frame::handle_menu_click_event()
+auto Frame::handle_menu_click_event() -> void
 {
     if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
     {

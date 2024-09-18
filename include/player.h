@@ -12,24 +12,24 @@ private:
     std::string name;
     Inventory inventory;
 
-    Item* weapon_slot;
-    Item* armor_slot;
+    Item* weapon_slot = nullptr;
+    Item* armor_slot = nullptr;
 
 public:
     Player();
 
-    // Getter 
-    std::string get_name();
-    Inventory& get_inventory(); 
-    Item* get_weapon_slot();
-    Item* get_armor_slot();
+    // Getter
+    auto get_name() -> std::string;
+    auto get_inventory() -> Inventory&;
+    auto get_weapon_slot() -> Item*;
+    auto get_armor_slot() -> Item*;
 
-    // Setter 
-    void set_name(std::string new_name);
-    void set_weapon_slot(int id);
-    void set_armor_slot(int id);
+    // Setter
+    auto set_name(std::string new_name) -> void;
+    auto set_weapon_slot(int id) -> void;
+    auto set_armor_slot(int id) -> void;
 
     // Methods
-    void display_weapon_slot();
-    void display_armor_slot();
+    auto display_weapon_slot() -> void;
+    auto display_armor_slot() -> void;
 };

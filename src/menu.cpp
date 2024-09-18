@@ -13,25 +13,25 @@ Menu::Menu(sf::RenderWindow& window_c, Panel& panel_c, Input& input_c)
 {
     menu_asset.get_sprite().setScale(static_cast<float>(scale), static_cast<float>(scale));
     center_menu();
-    position_menu_items(); // Position all text items once
+    position_menu_items();
 }
 
-bool Menu::get_visable() const
+auto Menu::get_visable() const -> bool
 {
     return visable;
 }
 
-void Menu::set_visable(bool value)
+auto Menu::set_visable(bool value) -> void
 {
     visable = value;
 }
 
-sf::FloatRect Menu::get_text_bounds(Text& text)
+auto Menu::get_text_bounds(Text& text) -> sf::FloatRect
 {
     return text.get_text().getGlobalBounds();
 }
 
-void Menu::center_menu()
+auto Menu::center_menu() -> void
 {
     sf::Vector2u windowSize = window.getSize();
     sf::Vector2u textureSize = menu_asset.get_texture().getSize();
@@ -42,7 +42,7 @@ void Menu::center_menu()
     menu_asset.get_sprite().setPosition(xPos, yPos);
 }
 
-void Menu::position_menu_items()
+auto Menu::position_menu_items() -> void
 {
     sf::FloatRect spriteBounds = menu_asset.get_sprite().getGlobalBounds();
 
@@ -62,38 +62,38 @@ void Menu::position_menu_items()
     // Position continue 75px above option
     menu_continue_text.set_position(
         static_cast<int>(xPos + (spriteBounds.width - get_text_bounds(menu_continue_text).width) / 2),
-        static_cast<int>(optionYPos - get_text_bounds(menu_continue_text).height - 75)
+        static_cast<int>(optionYPos - get_text_bounds(menu_continue_text).height - vertical_padding)
     );
 
     // Position quit 75px below option
     menu_quit_text.set_position(
         static_cast<int>(xPos + (spriteBounds.width - get_text_bounds(menu_quit_text).width) / 2),
-        static_cast<int>(optionYPos + get_text_bounds(menu_option_text).height + 75)
+        static_cast<int>(optionYPos + get_text_bounds(menu_option_text).height + vertical_padding)
     );
 }
 
-std::vector<std::reference_wrapper<Text>> Menu::get_menu_texts()
+auto Menu::get_menu_texts() -> std::vector<std::reference_wrapper<Text>>
 {
     return { std::ref(menu_continue_text), std::ref(menu_option_text), std::ref(menu_quit_text) };
 }
 
-void Menu::process_hover(const sf::Vector2f& mousePosF)
+auto Menu::process_hover(const sf::Vector2f& mousePosF) -> void
 {
     for (auto& text : get_menu_texts())
     {
         sf::FloatRect textBounds = text.get().get_text().getGlobalBounds();
         if (textBounds.contains(mousePosF))
         {
-            text.get().get_text().setFillColor(sf::Color(210, 170, 109));  // hovered
+            text.get().get_text().setFillColor(hover_color);  // hovered
         }
         else
         {
-            text.get().get_text().setFillColor(sf::Color::White);  // default
+            text.get().get_text().setFillColor(default_color);  // default
         }
     }
 }
 
-void Menu::process_click(const sf::Vector2f& mousePosF)
+auto Menu::process_click(const sf::Vector2f& mousePosF) -> void
 {
     for (auto& text : get_menu_texts())
     {
@@ -119,7 +119,7 @@ void Menu::process_click(const sf::Vector2f& mousePosF)
     }
 }
 
-void Menu::update_text_hover()
+auto Menu::update_text_hover() -> void
 {
     if (visable)
     {
@@ -128,7 +128,7 @@ void Menu::update_text_hover()
     }
 }
 
-void Menu::draw()
+auto Menu::draw() -> void
 {
     if (visable)
     {
@@ -140,11 +140,9 @@ void Menu::draw()
             text.get().draw_text(window);
         }
     }
-
 }
 
-
-void Menu::check_text_click()
+auto Menu::check_text_click() -> void
 {
     if (visable)
     {

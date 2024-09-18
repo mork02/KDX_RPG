@@ -6,21 +6,19 @@
 class Asset_loader
 {
 private:
-	sf::RenderWindow& window;
+    sf::RenderWindow& window;
+    std::string path;
 
-	std::string path;
+    sf::Texture texture;
+    sf::Sprite sprite;
 
-	sf::Texture texture;
-	sf::Sprite sprite;
-
-	int x, y;
-	float scale;
+    int x, y;
+    float scale;
 
 public:
-	Asset_loader(sf::RenderWindow& window, const std::string& path, int x = 0, int y = 0, int width = 32, int height = 32, float scale = 4);
+    Asset_loader(sf::RenderWindow& window, const std::string& path, int x = 0, int y = 0, int width = 32, int height = 32, float scale = 4);
 
-	sf::Texture& get_texture();
-	sf::Sprite& get_sprite();
-
+    // Getter methods
+    auto get_texture() -> sf::Texture&;
+    auto get_sprite() -> sf::Sprite&;
 };
-

@@ -9,15 +9,15 @@ private:
     std::vector<Item*> inventory;
 
 public:
-    // init
+    // Constructor
     Inventory();
 
-    // getter
-    std::vector<Item*>& get_inventory(); 
-    Item* get_inv_item(int index);
+    // Getter
+    auto get_inventory() -> std::vector<Item*>&;
+    auto get_inv_item(int index) -> Item*;
 
-    // methods
-    void add_item(Item* obj);
-    void remove_item(Item* obj); 
-    void display_inventory();
+    // Methods
+    auto add_item(Item* obj) -> void;
+    auto remove_item(Item* obj) -> void;
+    auto display_inventory() -> void;
 };

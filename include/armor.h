@@ -6,7 +6,8 @@ class Armor : public Item
 {
 private:
     std::string name;
-    int defensive, extra_defensive;
+    int defensive;
+    int extra_defensive;
     int durability;
 
 public:
@@ -14,11 +15,11 @@ public:
     Armor(std::string name, int defensive, int extra_defensive, int durability);
 
     // Getter
-    std::string get_name() const override;
-    int get_defensive() const override;
-    int get_extra_defensive() const override;
-    int get_durability() const override;
+    auto get_name() const->std::string override;
+    auto get_defensive() const -> int override;
+    auto get_extra_defensive() const -> int override;
+    auto get_durability() const -> int override;
 
     // Methods
-    void display_item() const override;
+    auto display_item() const -> void override;
 };

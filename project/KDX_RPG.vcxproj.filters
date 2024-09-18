@@ -49,10 +49,10 @@
     <Filter Include="Header Files\Window\Szene">
       <UniqueIdentifier>{6d12d620-5b42-4dff-ae3c-816411fb45e4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Window\Szene\GUI">
+    <Filter Include="Header Files\Window\Szene\Menus">
       <UniqueIdentifier>{b2d877a0-b174-42bd-a483-d46220cd85d5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Window\Szene\GUI">
+    <Filter Include="Source Files\Window\Szene\Menus">
       <UniqueIdentifier>{492cc0f2-5b70-4931-b15e-4db4cee5e4df}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -109,10 +109,10 @@
       <Filter>Source Files\Window\Szene</Filter>
     </ClCompile>
     <ClCompile Include="..\src\stats_menu.cpp">
-      <Filter>Source Files\Window\Szene\GUI</Filter>
+      <Filter>Source Files\Window\Szene\Menus</Filter>
     </ClCompile>
     <ClCompile Include="..\src\menu.cpp">
-      <Filter>Source Files\Window\Szene\GUI</Filter>
+      <Filter>Source Files\Window\Szene\Menus</Filter>
     </ClCompile>
     <ClCompile Include="..\src\tile_map.cpp">
       <Filter>Source Files\Window\Assets</Filter>
@@ -171,10 +171,10 @@
       <Filter>Header Files\Window\Szene</Filter>
     </ClInclude>
     <ClInclude Include="..\include\menu.h">
-      <Filter>Header Files\Window\Szene\GUI</Filter>
+      <Filter>Header Files\Window\Szene\Menus</Filter>
     </ClInclude>
     <ClInclude Include="..\include\stats_menu.h">
-      <Filter>Header Files\Window\Szene\GUI</Filter>
+      <Filter>Header Files\Window\Szene\Menus</Filter>
     </ClInclude>
     <ClInclude Include="..\include\tile_map.h">
       <Filter>Header Files\Window\Assets</Filter>

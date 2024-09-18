@@ -4,16 +4,16 @@
 class FPS
 {
 public:
-	FPS();
+    FPS();
 
-	const unsigned int getFPS() const;
+    auto getFPS() const -> unsigned int;
 
 private:
-	unsigned int mFrame;
-	unsigned int mFps;
-	sf::Clock mClock;
+    unsigned int mFrame;
+    unsigned int mFps;
+    sf::Clock mClock;
 
 public:
-	void update();
-	void show_fps(sf::RenderWindow &window);
+    auto update() -> void;
+    auto show_fps(sf::RenderWindow& window) -> void;
 };
