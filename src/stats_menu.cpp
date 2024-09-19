@@ -1,124 +1,38 @@
+// CStats_menu.cpp
 #include "stats_menu.h"
-#include "panel.h"
-#include "scene_manager.h"
 
-Stats_menu::Stats_menu(sf::RenderWindow& window_c, Panel& panel_c, Input& input_c)
-    : window(window_c), panel(panel_c), input(input_c), 
-    visable(false),
-    stats_asset(window_c, menu_path)
+CStats_menu::CStats_menu(sf::RenderWindow& window_c) : CMenu(window_c, EMenuType::Stats),
+background_asset(window_c, background_path)
 {
-    stats_asset.get_sprite().setScale((float)scale, (float)scale);
-
-    center_menu();
-
-    sf::FloatRect spriteBounds = stats_asset.get_sprite().getGlobalBounds();
-
-
+    set_visible(true);
+    center_asset(background_asset);
 }
 
-bool Stats_menu::get_visable() const
+auto CStats_menu::get_visible() const -> bool
 {
-    return visable;
+    return visible;
 }
 
-sf::FloatRect Stats_menu::get_text_bounds(Text text) {
-    return text.get_text().getGlobalBounds();
+auto CStats_menu::set_visible(bool value) -> void
+{
+    visible = value;
 }
 
-void Stats_menu::set_visable(bool value)
+auto CStats_menu::draw() -> void
 {
-    visable = value;
-}
 
-void Stats_menu::draw()
-{
-    // This method displays everything thats important for menu
-    if (visable)
+    if (visible)
     {
-        // Update mouse hover detection before drawing
-        update_text_hover();
-
-        // draw menu background
-        window.draw(stats_asset.get_sprite());
-
-        // draw all text
+        window.draw(background_asset.get_sprite());
     }
 }
 
-void Stats_menu::center_menu()
+auto CStats_menu::center_asset(Asset_loader& asset) -> void
 {
-    sf::Vector2u windowSize = window.getSize();
-    sf::Vector2u textureSize = stats_asset.get_texture().getSize();
+    sf::Vector2u texture_size = asset.get_texture().getSize();
+    sf::Vector2u window_size = window.getSize();
 
-    float centered_x = (windowSize.x - (textureSize.x * stats_asset.get_sprite().getScale().x)) / 2;
-    float centered_y = (windowSize.y - (textureSize.y * stats_asset.get_sprite().getScale().y)) / 2;
+    asset.get_sprite().setOrigin(texture_size.x / 2.0f, texture_size.y / 2.0f);
+    asset.get_sprite().setPosition(window_size.x / 2.0f, window_size.y / 2.0f);
 
-    stats_asset.get_sprite().setPosition(centered_x, centered_y);
-}
-
-void Stats_menu::process_hover(const sf::Vector2f& mousePosF)
-{
-    /*
-    auto texts = get_menu_texts();
-
-    for (auto& text : texts)
-    {
-        sf::FloatRect textBounds = text.get().get_text().getGlobalBounds();
-
-        if (textBounds.contains(mousePosF))
-        {
-            text.get().get_text().setFillColor(sf::Color(210, 170, 109)); // hovered
-        }
-        else
-        {
-            text.get().get_text().setFillColor(sf::Color::White); // defualt
-        }
-    }
-    */
-}
-
-void Stats_menu::process_click(const sf::Vector2f& mousePosF)
-{
-    /*
-    auto texts = get_menu_texts();
-
-    for (auto& text : texts)
-    {
-        sf::FloatRect textBounds = text.get().get_text().getGlobalBounds();
-
-        if (textBounds.contains(mousePosF))
-        {
-            if (&text.get() == &menu_continue_text)
-            {
-                set_visable(false);
-                std::cout << "Continue button clicked, visable: " << visable << std::endl;
-            }
-            else if (&text.get() == &menu_option_text)
-            {
-                // Add logic
-            }
-            else if (&text.get() == &menu_quit_text)
-            {
-                set_visable(false);
-                panel.set_scene(Scene::Main_Menu);  // Switch back to the main menu
-            }
-        }
-    }
-    */
-}
-
-void Stats_menu::update_text_hover()
-{
-    if (visable) {
-        sf::Vector2f mousePosF = input.get_mouse_position();
-        process_hover(mousePosF);
-    }
-}
-
-void Stats_menu::check_text_click()
-{
-    if (visable) {
-        sf::Vector2f mousePosF = input.get_mouse_position();
-        process_click(mousePosF);
-    }
 }
