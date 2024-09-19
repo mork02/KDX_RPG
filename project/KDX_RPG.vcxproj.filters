@@ -69,7 +69,7 @@
     <ClCompile Include="..\src\panel.cpp">
       <Filter>Source Files\Window</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\entitie.cpp">
+    <ClCompile Include="..\src\entity.cpp">
       <Filter>Source Files\EntitieStuff</Filter>
     </ClCompile>
     <ClCompile Include="..\src\inventory.cpp">
@@ -125,7 +125,7 @@
     <ClInclude Include="..\include\frame.h">
       <Filter>Header Files\Window</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\entitie.h">
+    <ClInclude Include="..\include\entity.h">
       <Filter>Header Files\EntitieStuff</Filter>
     </ClInclude>
     <ClInclude Include="..\include\inventory.h">
