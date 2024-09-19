@@ -6,7 +6,7 @@
 
 class Panel;
 
-class Main_menu
+class CTitle_Screen
 {
 private:
     sf::RenderWindow& window;
@@ -42,7 +42,7 @@ private:
     auto process_click(const sf::Vector2f& mousePosF) -> void;
 
 public:
-    Main_menu(sf::RenderWindow& window, Panel& panel, Input& input);
+    CTitle_Screen(sf::RenderWindow& window, Panel& panel, Input& input);
 
     auto draw() -> void;
     auto get_text_bounds(Text text) -> sf::FloatRect;

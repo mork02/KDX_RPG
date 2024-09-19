@@ -1,8 +1,8 @@
-#include "main_menu.h"
+#include "title_screen.h"
 #include "panel.h"
 #include "scene_manager.h"
 
-Main_menu::Main_menu(sf::RenderWindow& window_c, Panel& panel_c, Input& input_c)
+CTitle_Screen::CTitle_Screen(sf::RenderWindow& window_c, Panel& panel_c, Input& input_c)
     : window(window_c), panel(panel_c), input(input_c),
     background_asset(window_c, background_path),
     title_text("KDX RPG", 100, 0, 0),
@@ -16,7 +16,7 @@ Main_menu::Main_menu(sf::RenderWindow& window_c, Panel& panel_c, Input& input_c)
     update_assets();  // Initialize the menu
 }
 
-auto Main_menu::update_assets() -> void
+auto CTitle_Screen::update_assets() -> void
 {
     // Center and scale the background
     scale_background(background_asset);
@@ -36,7 +36,7 @@ auto Main_menu::update_assets() -> void
     title_text.set_position(static_cast<int>(title_X_Pos), static_cast<int>(title_Y_Pos));
 }
 
-auto Main_menu::draw() -> void
+auto CTitle_Screen::draw() -> void
 {
     update_text_hover();  // Update mouse hover detection
 
@@ -53,12 +53,12 @@ auto Main_menu::draw() -> void
     title_text.draw_text(window);
 }
 
-auto Main_menu::get_text_bounds(Text text) -> sf::FloatRect
+auto CTitle_Screen::get_text_bounds(Text text) -> sf::FloatRect
 {
     return text.get_text().getGlobalBounds();
 }
 
-auto Main_menu::center_menu(Asset_loader& asset, int x, int y) -> void
+auto CTitle_Screen::center_menu(Asset_loader& asset, int x, int y) -> void
 {
     sf::Vector2u windowSize = window.getSize();
     sf::Vector2u textureSize = asset.get_texture().getSize();
@@ -67,7 +67,7 @@ auto Main_menu::center_menu(Asset_loader& asset, int x, int y) -> void
     asset.get_sprite().setPosition(windowSize.x / 2.0f + x, windowSize.y / 2.0f + y);
 }
 
-auto Main_menu::center_text_in_asset(Asset_loader& asset, Text& text) -> void
+auto CTitle_Screen::center_text_in_asset(Asset_loader& asset, Text& text) -> void
 {
     sf::FloatRect assetBounds = asset.get_sprite().getGlobalBounds();
     sf::FloatRect textBounds = text.get_text().getLocalBounds();
@@ -76,7 +76,7 @@ auto Main_menu::center_text_in_asset(Asset_loader& asset, Text& text) -> void
     text.set_position(static_cast<int>(assetBounds.left + assetBounds.width / 2.0f), static_cast<int>(assetBounds.top + assetBounds.height / 2.0f));
 }
 
-auto Main_menu::scale_background(Asset_loader& asset) -> void
+auto CTitle_Screen::scale_background(Asset_loader& asset) -> void
 {
     sf::Vector2u windowSize = window.getSize();
     sf::Vector2u textureSize = asset.get_texture().getSize();
@@ -84,7 +84,7 @@ auto Main_menu::scale_background(Asset_loader& asset) -> void
     asset.get_sprite().setScale(static_cast<float>(windowSize.x) / textureSize.x, static_cast<float>(windowSize.y) / textureSize.y);
 }
 
-auto Main_menu::animate_title() -> void
+auto CTitle_Screen::animate_title() -> void
 {
     static bool shrinking = true;
     static int frame_counter = 0;
@@ -127,7 +127,7 @@ auto Main_menu::animate_title() -> void
     }
 }
 
-auto Main_menu::get_text_components() -> std::vector<std::pair<std::reference_wrapper<Asset_loader>, std::reference_wrapper<Text>>>
+auto CTitle_Screen::get_text_components() -> std::vector<std::pair<std::reference_wrapper<Asset_loader>, std::reference_wrapper<Text>>>
 {
     return {
         { std::ref(new_game_asset), std::ref(new_game_text) },
@@ -136,7 +136,7 @@ auto Main_menu::get_text_components() -> std::vector<std::pair<std::reference_wr
     };
 }
 
-auto Main_menu::process_hover(const sf::Vector2f& mousePosF) -> void
+auto CTitle_Screen::process_hover(const sf::Vector2f& mousePosF) -> void
 {
     auto assetTextPairs = get_text_components();
 
@@ -155,7 +155,7 @@ auto Main_menu::process_hover(const sf::Vector2f& mousePosF) -> void
     }
 }
 
-auto Main_menu::process_click(const sf::Vector2f& mousePosF) -> void
+auto CTitle_Screen::process_click(const sf::Vector2f& mousePosF) -> void
 {
     auto assetTextPairs = get_text_components();
 
@@ -181,13 +181,13 @@ auto Main_menu::process_click(const sf::Vector2f& mousePosF) -> void
     }
 }
 
-auto Main_menu::update_text_hover() -> void
+auto CTitle_Screen::update_text_hover() -> void
 {
     sf::Vector2f mousePosF = input.get_mouse_position();
     process_hover(mousePosF);
 }
 
-auto Main_menu::check_text_click() -> void
+auto CTitle_Screen::check_text_click() -> void
 {
     sf::Vector2f mousePosF = input.get_mouse_position();
     process_click(mousePosF);
