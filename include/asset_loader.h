@@ -16,7 +16,7 @@ private:
     float scale;
 
 public:
-    Asset_loader(sf::RenderWindow& window, const std::string& path, int x = 0, int y = 0, int width = 32, int height = 32, float scale = 4);
+    Asset_loader(sf::RenderWindow& window, const std::string& path, int x = 0, int y = 0, int width = 32, int height = 32, float scale = 2);
 
     // Getter methods
     auto get_texture() -> sf::Texture&;
