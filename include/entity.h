@@ -1,6 +1,6 @@
 #pragma once
 
-class Entitie
+class CEntity
 {
 private:
     int hp, max_hp;
@@ -9,7 +9,7 @@ private:
 
 public:
     // Constructor
-    Entitie(int HP, int basic_DMG, int basic_DEFENSIVE);
+    CEntity(int HP, int basic_DMG, int basic_DEFENSIVE);
 
     // Getter
     auto get_hp() const -> int;
