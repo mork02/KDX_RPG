@@ -167,7 +167,6 @@
     <ClCompile Include="..\src\text.cpp" />
     <ClCompile Include="..\src\asset_loader.cpp" />
     <ClCompile Include="..\src\input.cpp" />
-    <ClCompile Include="..\src\menu.cpp" />
     <ClCompile Include="..\src\main_menu.cpp" />
     <ClCompile Include="..\src\gameplay.cpp" />
     <ClCompile Include="..\src\stats_menu.cpp" />

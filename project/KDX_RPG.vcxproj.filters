@@ -111,9 +111,6 @@
     <ClCompile Include="..\src\stats_menu.cpp">
       <Filter>Source Files\Window\Szene\Menus</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\menu.cpp">
-      <Filter>Source Files\Window\Szene\Menus</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\tile_map.cpp">
       <Filter>Source Files\Window\Assets</Filter>
     </ClCompile>
