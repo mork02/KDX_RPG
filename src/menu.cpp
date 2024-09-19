@@ -6,7 +6,7 @@ Menu::Menu(sf::RenderWindow& window_c, Panel& panel_c, Input& input_c)
     : window(window_c), panel(panel_c), input(input_c),
     visable(false),
     menu_asset(window_c, path),
-    menu_title_text("Menu", 128, 0, 0),
+    menu_title_text("Pause", 128, 0, 0),
     menu_continue_text("Continue", 86, 0, 0),
     menu_option_text("Option", 86, 0, 0),
     menu_quit_text("Back to Menu", 86, 0, 0)
@@ -74,7 +74,7 @@ auto Menu::position_menu_items() -> void
 
 auto Menu::get_menu_texts() -> std::vector<std::reference_wrapper<Text>>
 {
-    return { std::ref(menu_continue_text), std::ref(menu_option_text), std::ref(menu_quit_text) };
+    return { std::ref(menu_continue_text), std::ref(menu_option_text), std::ref(menu_quit_text)};
 }
 
 auto Menu::process_hover(const sf::Vector2f& mousePosF) -> void
@@ -134,6 +134,7 @@ auto Menu::draw() -> void
     {
         update_text_hover();
         window.draw(menu_asset.get_sprite());
+        window.draw(menu_title_text.get_text());
 
         for (auto& text : get_menu_texts())
         {
