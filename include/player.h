@@ -1,12 +1,12 @@
 #pragma once
-#include "entitie.h"
+#include "entity.h"
 #include "inventory.h"
 #include "item.h"
 #include <memory>
 #include <iostream>
 #include <vector>
 
-class Player : public Entitie
+class Player : public CEntity
 {
 private:
     std::string name;

@@ -1,6 +1,6 @@
 #include "player.h"
 
-Player::Player() : name("Adventurer"), Entitie(100, 0, 0)
+Player::Player() : name("Adventurer"), CEntity(100, 0, 0)
 {
 }
 
