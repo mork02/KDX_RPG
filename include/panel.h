@@ -2,8 +2,7 @@
 #include "SFML/Graphics.hpp"
 #include "input.h"
 #include "gameplay.h"
-#include "main_menu.h"
-#include "menu.h"
+#include "title_screen.h"
 #include "stats_menu.h"
 #include "scene_manager.h"
 
@@ -14,18 +13,16 @@ private:
     Input& input;
 
     Scene current_scene;
-    Main_menu main_menu;
-    Menu menu;
-    Stats_menu stats_menu;
+    CTitle_Screen main_menu;
+    CStats_menu stats_menu;
     Gameplay gameplay;
 
 public:
     Panel(sf::RenderWindow& window, Input& input);
 
     // Getter
-    auto get_menu() -> Menu&;
-    auto get_stats_menu() -> Stats_menu&;
-    auto get_main_menu() -> Main_menu&;
+    auto get_stats_menu() -> CStats_menu&;
+    auto get_main_menu() -> CTitle_Screen&;
     auto get_gameplay() -> Gameplay&;
     auto get_input() ->Input&;
     auto get_scene() -> Scene&;

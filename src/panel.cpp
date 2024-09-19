@@ -2,16 +2,17 @@
 
 Panel::Panel(sf::RenderWindow& window_c, Input& input_c)
     : window(window_c), input(input_c), current_scene(Scene::Main_Menu),
-    main_menu(window_c, *this, input_c), menu(window_c, *this, input_c),
-    gameplay(window_c), stats_menu(window_c, *this, input_c)
+    main_menu(window_c, *this, input_c),
+    gameplay(window_c), 
+    stats_menu(window_c)
 {
 }
 
 auto Panel::update() -> void
 {
     // clears the screen every frame
-    window.clear();
-
+    stats_menu.draw();
+    /*
     switch (current_scene)
     {
     case Scene::Main_Menu:
@@ -24,24 +25,20 @@ auto Panel::update() -> void
     case Scene::Gameplay:
         gameplay.update();
         stats_menu.draw();
-        menu.draw();
         break;
     }
+    */
+
 }
 
 // Getter
 
-auto Panel::get_menu() -> Menu&
-{
-    return menu;
-}
-
-auto Panel::get_stats_menu() -> Stats_menu&
+auto Panel::get_stats_menu() -> CStats_menu&
 {
     return stats_menu;
 }
 
-auto Panel::get_main_menu() -> Main_menu&
+auto Panel::get_main_menu() -> CTitle_Screen&
 {
     return main_menu;
 }
