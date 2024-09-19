@@ -167,7 +167,7 @@
     <ClCompile Include="..\src\text.cpp" />
     <ClCompile Include="..\src\asset_loader.cpp" />
     <ClCompile Include="..\src\input.cpp" />
-    <ClCompile Include="..\src\main_menu.cpp" />
+    <ClCompile Include="..\src\title_screen.cpp" />
     <ClCompile Include="..\src\gameplay.cpp" />
     <ClCompile Include="..\src\stats_menu.cpp" />
     <ClCompile Include="..\src\tile_map.cpp" />
@@ -188,7 +188,7 @@
     <ClInclude Include="..\include\asset_loader.h" />
     <ClInclude Include="..\include\input.h" />
     <ClInclude Include="..\include\menu.h" />
-    <ClInclude Include="..\include\main_menu.h" />
+    <ClInclude Include="..\include\title_screen.h" />
     <ClInclude Include="..\include\scene_manager.h" />
     <ClInclude Include="..\include\gameplay.h" />
     <ClInclude Include="..\include\stats_menu.h" />
