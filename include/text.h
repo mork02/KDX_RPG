@@ -7,16 +7,20 @@ class Text
 private:
     std::string showing_text;
     int size;
-    float xPos;
-    float yPos;
+    float x;
+    float y;
     std::string font_path;
     sf::Color color;
     sf::Text text;
     sf::Font font;
 
+    bool hoverable;
+
 public:
-    // Constructor with default arguments
-    Text(std::string showing_text_c, int size_c, float pos_x_c, float pos_y_c,
+    // Constructor with hoverable argument
+    Text(std::string showing_text_c, int size_c, 
+        bool hoverable_c = false,
+        float pos_x_c = 0.f, float pos_y_c = 0.f,
         std::string font_path_c = "assets/font/Minecraft.ttf",
         sf::Color color_c = sf::Color::White);
 
@@ -29,4 +33,5 @@ public:
 
     // Methods
     auto draw_text(sf::RenderWindow& window) -> void;
+    auto update_hover_state(sf::RenderWindow& window) -> void;
 };
