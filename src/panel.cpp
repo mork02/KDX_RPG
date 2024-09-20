@@ -1,30 +1,29 @@
 #include "panel.h"
 
 Panel::Panel(sf::RenderWindow& window_c, Input& input_c)
-    : window(window_c), input(input_c), current_scene(Scene::Main_Menu),
-    main_menu(window_c, *this, input_c),
+    : window(window_c), input(input_c), current_scene(ESceneType::Main_Menu),
+    main_menu(window_c),
     gameplay(window_c), 
-    stats_menu(window_c)
-{
-}
+    stats_menu(window_c), pause_menu(window_c)
+{}
 
 auto Panel::update() -> void
 {
     // clears the screen every frame
-    stats_menu.draw();
+    
+    main_menu.draw();
+    //current_menu->draw();
+
     /*
     switch (current_scene)
     {
     case Scene::Main_Menu:
         main_menu.draw();
         break;
-    case Scene::Option_Menu:
-        break;
-    case Scene::Game_Over:
-        break;
     case Scene::Gameplay:
         gameplay.update();
-        stats_menu.draw();
+        break;
+    case Scene::Game_Over:
         break;
     }
     */
@@ -53,14 +52,14 @@ auto Panel::get_input() -> Input&
     return input;
 }
 
-auto Panel::get_scene() -> Scene&
+auto Panel::get_scene() -> ESceneType&
 {
     return current_scene;
 }
 
 // Setter
 
-auto Panel::set_scene(Scene scene) -> void
+auto Panel::set_scene(ESceneType scene) -> void
 {
     current_scene = scene;
 }
