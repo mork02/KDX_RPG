@@ -8,6 +8,7 @@ class CStats_menu : public CMenu
 {
 private:
     const std::string background_path = "assets/menu_assets/stats_menu/stats_menu.png";
+    float background_scale = 6;
     Asset_loader background_asset;
 
 private:

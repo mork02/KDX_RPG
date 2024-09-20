@@ -1,10 +1,9 @@
-// CStats_menu.cpp
 #include "stats_menu.h"
 
 CStats_menu::CStats_menu(sf::RenderWindow& window_c) : CMenu(window_c, EMenuType::Stats),
 background_asset(window_c, background_path)
 {
-    set_visible(true);
+    background_asset.set_scale(background_scale);
     center_asset(background_asset);
 }
 
