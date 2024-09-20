@@ -21,4 +21,6 @@ public:
     // Getter methods
     auto get_texture() -> sf::Texture&;
     auto get_sprite() -> sf::Sprite&;
+
+    auto set_scale(float value) -> void;
 };

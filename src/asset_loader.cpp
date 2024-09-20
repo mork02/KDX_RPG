@@ -22,3 +22,8 @@ auto Asset_loader::get_sprite() -> sf::Sprite&
 {
     return sprite;
 }
+
+auto Asset_loader::set_scale(float value) -> void
+{
+    sprite.setScale(value, value);
+}
