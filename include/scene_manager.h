@@ -1,8 +1,7 @@
 #pragma once
-enum class Scene
+enum class ESceneType
 {
 	Main_Menu,
-	Option_Menu,
 	Game_Over,
 	Gameplay
 };
