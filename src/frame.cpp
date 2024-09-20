@@ -49,10 +49,9 @@ auto Frame::handle_keyboard_input() -> void
 
 auto Frame::handle_main_menu_click_event() -> void
 {
-    if (panel.get_scene() == Scene::Main_Menu) {
+    if (panel.get_scene() == ESceneType::Main_Menu) {
         if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
         {
-            panel.get_main_menu().check_text_click();
         }
     }
 }
