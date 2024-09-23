@@ -5,7 +5,7 @@
 #include "panel.h"
 #include "input.h"
 
-class Frame
+class CFrame
 {
 private:
     const unsigned WINDOW_WIDTH = 1920;
@@ -15,16 +15,15 @@ private:
 
     sf::RenderWindow window;
     sf::Event event;
-    Panel panel;
-    Input input;
+    CPanel panel;
+    CInput input;
     FPS fps_class;
 
     auto gameloop() -> void;
     auto handle_window_close_event() -> void;
     auto handle_keyboard_input() -> void;
-    auto handle_main_menu_click_event() -> void;
-    auto handle_menu_click_event() -> void;
+    auto handle_mouse_click_event() -> void;
 
 public:
-    Frame();
+    CFrame();
 };

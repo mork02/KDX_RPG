@@ -1,9 +1,9 @@
 #include "frame.h"
 
-Frame::Frame()
+CFrame::CFrame()
     : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE, sf::Style::Close),
     panel(window, input),
-    input(window, panel.get_gameplay().get_player())
+    input(window)
 {
     // window.setMouseCursorVisible(false);
 
@@ -12,7 +12,7 @@ Frame::Frame()
     std::cout << "closing window..." << std::endl;
 }
 
-auto Frame::gameloop() -> void
+auto CFrame::gameloop() -> void
 {
     window.setFramerateLimit(fps_value);
 
@@ -22,8 +22,7 @@ auto Frame::gameloop() -> void
         {
             handle_window_close_event();
             handle_keyboard_input();
-            handle_main_menu_click_event();
-            handle_menu_click_event();
+            handle_mouse_click_event();
         }
 
         // Render and update the frame
@@ -34,7 +33,7 @@ auto Frame::gameloop() -> void
     }
 }
 
-auto Frame::handle_window_close_event() -> void
+auto CFrame::handle_window_close_event() -> void
 {
     if (event.type == sf::Event::Closed)
     {
@@ -42,24 +41,32 @@ auto Frame::handle_window_close_event() -> void
     }
 }
 
-auto Frame::handle_keyboard_input() -> void
+auto CFrame::handle_keyboard_input() -> void
 {
-
-}
-
-auto Frame::handle_main_menu_click_event() -> void
-{
-    if (panel.get_scene() == ESceneType::Main_Menu) {
-        if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
+    // Inputs in Gameplay
+    if (panel.get_scene() == ESceneType::Gameplay)
+    {
+        // Escape | Pause menu
+        if (event.type == sf::Event::KeyPressed && input.get_keyboard().isKeyPressed(input.get_keyboard().Escape))
         {
+            panel.set_current_menu(&panel.get_pause_menu());
+        }
+        if (panel.get_current_menu() != &panel.get_pause_menu())
+        {
+            // G | Stats menu
+            if (event.type == sf::Event::KeyPressed && input.get_keyboard().isKeyPressed(input.get_keyboard().G))
+            {
+                panel.set_current_menu(&panel.get_stats_menu());
+            }
         }
     }
+    // Inputs in Title Screen
+    if (panel.get_scene() == ESceneType::Title_screen)
+    {
+    }
 }
 
-auto Frame::handle_menu_click_event() -> void
+auto CFrame::handle_mouse_click_event() -> void
 {
-    if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
-    {
-       
-    }
+    panel.get_title_screen().handle_click_event(event);
 }
