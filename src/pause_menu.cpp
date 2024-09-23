@@ -8,8 +8,6 @@ CPause_menu::CPause_menu(sf::RenderWindow& window_c)
     options_text("Options", 89, true),
     back_to_title_text("Back to Title", 89, true)
 {
-    set_visible(true);
-
     background_asset.set_scale(background_scale);
     center_asset(background_asset);
 
