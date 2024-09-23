@@ -3,15 +3,15 @@
 #include "text.h"
 #include "asset_loader.h"
 
+class CPanel;
+
 class CTitle_Screen
 {
 private:
     sf::RenderWindow& window;
+    CPanel& panel;
 
     std::string background_path = "assets/menu_assets/main_menu/background_new.png";
-    std::string sign1_path = "assets/menu_assets/main_menu/main_menu_sign_1.png";
-    std::string sign2_path = "assets/menu_assets/main_menu/main_menu_sign_2.png";
-    std::string sign3_path = "assets/menu_assets/main_menu/main_menu_sign_3.png";
 
     Asset_loader background_asset;
 
@@ -20,16 +20,15 @@ private:
     Text options_text;
     Text quit_text;
 
+    sf::FloatRect new_Game_text_bounds = {};
+    sf::FloatRect options_text_bounds = {};
+    sf::FloatRect quit_text_bounds = {};
+
+    // title animation
     float fade_alpha = 0.0f;
     float fade_increment = 2.0f;
     bool increasing = true;
 
-    /*
-
-    Asset_loader new_game_asset;
-    Asset_loader options_asset;
-    Asset_loader quit_asset;
-*/
 private:
     auto scale_background(Asset_loader& asset) -> void;
     auto position_texts() -> void;
@@ -40,8 +39,9 @@ private:
     auto get_text_components() -> std::vector<std::reference_wrapper<Text>>;
 
 public:
-    CTitle_Screen(sf::RenderWindow& window);
+    CTitle_Screen(sf::RenderWindow& window, CPanel& panel);
 
+    auto handle_click_event(sf::Event& current_event) -> void;
     auto draw() -> void;
 
 };
