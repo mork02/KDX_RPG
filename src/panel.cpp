@@ -1,18 +1,18 @@
 #include "panel.h"
 
-Panel::Panel(sf::RenderWindow& window_c, Input& input_c)
-    : window(window_c), input(input_c), current_scene(ESceneType::Main_Menu),
-    main_menu(window_c),
+CPanel::CPanel(sf::RenderWindow& window_c, CInput& input_c)
+    : window(window_c), input(input_c), scene(ESceneType::Title_screen),
+    title_screen(window_c, *this),
     gameplay(window_c), 
     stats_menu(window_c), pause_menu(window_c)
 {}
 
-auto Panel::update() -> void
+auto CPanel::update() -> void
 {
     // clears the screen every frame
     
-    main_menu.draw();
-    //current_menu->draw();
+    title_screen.draw();
+    current_menu->draw();
 
     /*
     switch (current_scene)
@@ -32,34 +32,51 @@ auto Panel::update() -> void
 
 // Getter
 
-auto Panel::get_stats_menu() -> CStats_menu&
+auto CPanel::get_stats_menu() -> CStats_menu&
 {
     return stats_menu;
 }
 
-auto Panel::get_main_menu() -> CTitle_Screen&
+auto CPanel::get_pause_menu() -> CPause_menu&
 {
-    return main_menu;
+    return pause_menu;
 }
 
-auto Panel::get_gameplay() -> Gameplay&
+auto CPanel::get_title_screen() -> CTitle_Screen&
+{
+    return title_screen;
+}
+
+auto CPanel::get_gameplay() -> Gameplay&
 {
     return gameplay;
 }
 
-auto Panel::get_input() -> Input&
+auto CPanel::get_input() -> CInput&
 {
     return input;
 }
 
-auto Panel::get_scene() -> ESceneType&
+auto CPanel::get_scene() -> ESceneType&
 {
-    return current_scene;
+    return scene;
+}
+
+auto CPanel::get_current_menu() -> CMenu*
+{
+    return current_menu;
 }
 
 // Setter
 
-auto Panel::set_scene(ESceneType scene) -> void
+auto CPanel::set_scene(ESceneType new_scene) -> void
 {
-    current_scene = scene;
+    scene = new_scene;
+}
+
+auto CPanel::set_current_menu(CMenu* new_menu) -> void
+{
+    current_menu->set_visible(false);
+    current_menu = new_menu; 
+    current_menu->set_visible(true);
 }

@@ -7,33 +7,39 @@
 #include "pause_menu.h"
 #include "scene_manager.h"
 
-class Panel
+class CPanel
 {
 private:
     sf::RenderWindow& window;
-    Input& input;
+    CInput& input;
 
-    ESceneType current_scene;
-    CTitle_Screen main_menu;
+    ESceneType scene;
+    CTitle_Screen title_screen;
     Gameplay gameplay;
 
     CStats_menu stats_menu;
     CPause_menu pause_menu;
 
-    CMenu* current_menu = &pause_menu;
+    // FIX -> SHOULD NOT BE ON PAUSE MENU FOR FRAME KEYBOARD EVENTS | frame.cpp -> line 54
+    CMenu* current_menu = nullptr;
 
 public:
-    Panel(sf::RenderWindow& window, Input& input);
+    CPanel(sf::RenderWindow& window, CInput& input);
 
     // Getter
-    auto get_stats_menu() -> CStats_menu&;
-    auto get_main_menu() -> CTitle_Screen&;
-    auto get_gameplay() -> Gameplay&;
-    auto get_input() ->Input&;
     auto get_scene() -> ESceneType&;
+    auto get_title_screen() -> CTitle_Screen&;
+    auto get_gameplay() -> Gameplay&;
+
+    auto get_current_menu() -> CMenu*;
+    auto get_stats_menu() -> CStats_menu&;
+    auto get_pause_menu() -> CPause_menu&;
+
+    auto get_input() ->CInput&;
 
     // Setter
-    auto set_scene(ESceneType scene) -> void;
+    auto set_scene(ESceneType new_scene) -> void;
+    auto set_current_menu(CMenu* new_menu) -> void;
 
     // Methods
     auto update() -> void;
