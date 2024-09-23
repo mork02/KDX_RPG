@@ -1,8 +1,9 @@
 #pragma once
 enum class ESceneType
 {
-	Main_Menu,
+	Title_screen,
 	Game_Over,
-	Gameplay
+	Gameplay,
+	Default
 };
 
