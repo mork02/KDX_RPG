@@ -1,4 +1,5 @@
 #include "text.h"
+#include "scene_manager.h"
 
 Text::Text(std::string showing_text_c, int size_c, bool hoverable_c, float x_c, float y_c, std::string font_path_c, sf::Color color_c)
     : showing_text(showing_text_c), size(size_c), hoverable(hoverable_c), x(x_c), y(y_c), font_path(font_path_c), color(color_c)
@@ -15,6 +16,11 @@ Text::Text(std::string showing_text_c, int size_c, bool hoverable_c, float x_c, 
 auto Text::get_text() -> sf::Text&
 {
     return text;
+}
+
+auto Text::get_text_Bounds() -> sf::FloatRect
+{
+    return text.getGlobalBounds();
 }
 
 // Setter
@@ -41,7 +47,7 @@ auto Text::update_hover_state(sf::RenderWindow& window) -> void
     if (!hoverable) return;
 
     sf::Vector2i mouse_pos = sf::Mouse::getPosition(window);
-    sf::FloatRect text_bounds = text.getGlobalBounds();
+    sf::FloatRect text_bounds = get_text_Bounds();
 
     if (text_bounds.contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
     {

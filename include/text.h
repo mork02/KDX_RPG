@@ -16,8 +16,10 @@ private:
 
     bool hoverable;
 
+private:
+    auto update_hover_state(sf::RenderWindow& window) -> void;
+
 public:
-    // Constructor with hoverable argument
     Text(std::string showing_text_c, int size_c, 
         bool hoverable_c = false,
         float pos_x_c = 0.f, float pos_y_c = 0.f,
@@ -26,6 +28,7 @@ public:
 
     // Getter
     auto get_text() -> sf::Text&;
+    auto get_text_Bounds() -> sf::FloatRect;
 
     // Setter
     auto set_text(std::string new_text) -> void;
@@ -33,5 +36,4 @@ public:
 
     // Methods
     auto draw_text(sf::RenderWindow& window) -> void;
-    auto update_hover_state(sf::RenderWindow& window) -> void;
 };
