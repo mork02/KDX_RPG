@@ -114,8 +114,8 @@
     <ClCompile Include="..\src\tile_map.cpp">
       <Filter>Source Files\Window\Assets</Filter>
     </ClCompile>
-    <ClCompile Include="pause_menu.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\src\pause_menu.cpp">
+      <Filter>Source Files\Window\Szene\Menus</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -179,8 +179,8 @@
     <ClInclude Include="..\include\tile_map.h">
       <Filter>Header Files\Window\Assets</Filter>
     </ClInclude>
-    <ClInclude Include="pause_menu.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\include\pause_menu.h">
+      <Filter>Header Files\Window\Szene\Menus</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
