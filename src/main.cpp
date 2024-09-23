@@ -3,7 +3,7 @@
 int main()
 {
 
-    Frame();
+    CFrame();
 
     return 0;
 }
