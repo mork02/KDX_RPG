@@ -7,16 +7,6 @@ background_asset(window_c, background_path)
     center_asset(background_asset);
 }
 
-auto CStats_menu::get_visible() const -> bool
-{
-    return visible;
-}
-
-auto CStats_menu::set_visible(bool value) -> void
-{
-    visible = value;
-}
-
 auto CStats_menu::draw() -> void
 {
 

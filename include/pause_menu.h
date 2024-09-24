@@ -25,8 +25,6 @@ private:
 public:
     CPause_menu(sf::RenderWindow& window_c);
 
-    auto get_visible() const -> bool override;
-    auto set_visible(bool value) -> void override;
     auto draw() -> void override;
 };
 

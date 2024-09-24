@@ -14,16 +14,6 @@ CPause_menu::CPause_menu(sf::RenderWindow& window_c)
     set_text_position();
 }
 
-auto CPause_menu::get_visible() const -> bool
-{
-    return visible;
-}
-
-auto CPause_menu::set_visible(bool value) -> void
-{
-    visible = value;
-}
-
 auto CPause_menu::get_text_components() -> std::vector<std::reference_wrapper<Text>>
 {
     return {
