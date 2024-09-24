@@ -18,7 +18,7 @@ private:
     Zone zone;
 
 public:
-    NPC(std::string name, int hp, int basic_dmg, int basic_defensive, Zone zone);
+    NPC(std::string name, int hp, int max_hp, int basic_dmg, int basic_defensive, Zone zone);
 
     // Getter
     auto get_name() -> std::string;
