@@ -1,9 +1,10 @@
 #include "title_screen.h"
 #include "scene_manager.h"
 #include "panel.h"
+#include "input.h"
 
-CTitle_Screen::CTitle_Screen(sf::RenderWindow& window_c, CPanel& panel_c) : 
-window(window_c), panel(panel_c),
+CTitle_Screen::CTitle_Screen(sf::RenderWindow& window_c, CPanel& panel_c, CInput& input_c) : 
+window(window_c), panel(panel_c), input(input_c),
 background_asset(window_c, background_path),
 title_text("KDX RPG", 168, false),
 new_game_text("New Game", 136, true),
@@ -93,22 +94,24 @@ auto CTitle_Screen::animate_title_text() -> void
 
 auto CTitle_Screen::handle_click_event(sf::Event& current_event) -> void
 {
-    if (current_event.type == sf::Event::MouseButtonPressed && current_event.mouseButton.button == sf::Mouse::Left && panel.get_scene() == ESceneType::Title_screen)
-    {
-        sf::Vector2i mouse_pos = sf::Mouse::getPosition(window);
+    if (panel.get_scene() == ESceneType::Title_screen) {
+        if (current_event.type == sf::Event::MouseButtonPressed && current_event.mouseButton.button == input.get_mouse().Left && panel.get_scene() == ESceneType::Title_screen)
+        {
+            sf::Vector2f mouse_pos = input.get_mouse_position();
 
-        if (new_Game_text_bounds.contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
-        {
-            panel.set_scene(ESceneType::Gameplay);
-        }
-        else if (options_text_bounds.contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
-        {
-            // add some logic !
-            std::cout << "Options clicked!" << std::endl;
-        }
-        else if (quit_text_bounds.contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
-        {
-            window.close();
+            if (new_Game_text_bounds.contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
+            {
+                panel.set_scene(ESceneType::Gameplay);
+            }
+            else if (options_text_bounds.contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
+            {
+                // add some logic !
+                std::cout << "Options clicked!" << std::endl;
+            }
+            else if (quit_text_bounds.contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
+            {
+                window.close();
+            }
         }
     }
 }

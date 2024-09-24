@@ -13,7 +13,7 @@ private:
     sf::RenderWindow& window;
     CInput& input;
 
-    ESceneType scene;
+    ESceneType scene = ESceneType::Title_screen;
     CTitle_Screen title_screen;
     Gameplay gameplay;
 
@@ -21,7 +21,7 @@ private:
     CPause_menu pause_menu;
 
     // FIX -> SHOULD NOT BE ON PAUSE MENU FOR FRAME KEYBOARD EVENTS | frame.cpp -> line 54
-    CMenu* current_menu = nullptr;
+    CMenu* current_menu;
 
 public:
     CPanel(sf::RenderWindow& window, CInput& input);
