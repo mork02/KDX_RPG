@@ -14,7 +14,9 @@ auto CPanel::update() -> void
     // clears the screen every frame
     
     title_screen.draw();
-    current_menu->draw();
+    if (current_menu != nullptr) {
+        current_menu->draw();
+    }
 
     /*
     switch (current_scene)
@@ -78,7 +80,22 @@ auto CPanel::set_scene(ESceneType new_scene) -> void
 
 auto CPanel::set_current_menu(CMenu* new_menu) -> void {
     if (new_menu == nullptr) {
-        std::cout << "current_menu is being set to nullptr" << std::endl;
+        if (current_menu != nullptr) {
+            current_menu->set_visible(false);
+        }
+        current_menu = nullptr;
+        return;
     }
+
+    try {
+        if (current_menu != nullptr) {
+            current_menu->set_visible(false);
+        }
+    }
+    catch (const std::exception& e) {
+        std::cerr << "Error setting current menu visibility: " << e.what() << std::endl;
+    }
+
     current_menu = new_menu;
+    current_menu->set_visible(true);
 }
