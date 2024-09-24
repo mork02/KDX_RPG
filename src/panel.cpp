@@ -1,11 +1,13 @@
 #include "panel.h"
 
 CPanel::CPanel(sf::RenderWindow& window_c, CInput& input_c)
-    : window(window_c), input(input_c), scene(ESceneType::Title_screen),
-    title_screen(window_c, *this),
+    : window(window_c), input(input_c),
+    title_screen(window_c, *this, input_c),
     gameplay(window_c), 
     stats_menu(window_c), pause_menu(window_c)
-{}
+{
+    current_menu = nullptr;
+}
 
 auto CPanel::update() -> void
 {
@@ -74,9 +76,9 @@ auto CPanel::set_scene(ESceneType new_scene) -> void
     scene = new_scene;
 }
 
-auto CPanel::set_current_menu(CMenu* new_menu) -> void
-{
-    current_menu->set_visible(false);
-    current_menu = new_menu; 
-    current_menu->set_visible(true);
+auto CPanel::set_current_menu(CMenu* new_menu) -> void {
+    if (new_menu == nullptr) {
+        std::cout << "current_menu is being set to nullptr" << std::endl;
+    }
+    current_menu = new_menu;
 }
