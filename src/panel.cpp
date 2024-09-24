@@ -5,16 +5,15 @@ CPanel::CPanel(sf::RenderWindow& window_c, CInput& input_c)
     title_screen(window_c, *this, input_c),
     gameplay(window_c), 
     stats_menu(window_c), pause_menu(window_c)
-{
-    current_menu = nullptr;
-}
+{}
 
 auto CPanel::update() -> void
 {
     // clears the screen every frame
     
     title_screen.draw();
-    if (current_menu != nullptr) {
+    if (current_menu != nullptr) 
+    {
         current_menu->draw();
     }
 

@@ -20,8 +20,7 @@ private:
     CStats_menu stats_menu;
     CPause_menu pause_menu;
 
-    // FIX -> SHOULD NOT BE ON PAUSE MENU FOR FRAME KEYBOARD EVENTS | frame.cpp -> line 54
-    CMenu* current_menu;
+    CMenu* current_menu = nullptr;
 
 public:
     CPanel(sf::RenderWindow& window, CInput& input);
