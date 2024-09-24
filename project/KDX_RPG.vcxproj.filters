@@ -69,9 +69,6 @@
     <ClCompile Include="..\src\panel.cpp">
       <Filter>Source Files\Window</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\entity.cpp">
-      <Filter>Source Files\EntitieStuff</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\inventory.cpp">
       <Filter>Source Files\EntitieStuff</Filter>
     </ClCompile>

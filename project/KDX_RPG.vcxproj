@@ -150,7 +150,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\armor.cpp" />
-    <ClCompile Include="..\src\entity.cpp" />
     <ClCompile Include="..\src\fps.cpp" />
     <ClCompile Include="..\src\frame.cpp" />
     <ClCompile Include="..\src\inventory.cpp" />
