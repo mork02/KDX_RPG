@@ -5,6 +5,8 @@
 #include "asset_loader.h"
 #include "text.h"
 
+class CPanel;
+
 class CPause_menu : public CMenu
 {
 private:
@@ -16,8 +18,6 @@ private:
     Text options_text;
     Text back_to_title_text;
 
-
-private:
     auto center_asset(Asset_loader& asset) -> void;
     auto get_text_components() -> std::vector<std::reference_wrapper<Text>>;
     auto set_text_position() -> void;
@@ -26,5 +26,7 @@ public:
     CPause_menu(sf::RenderWindow& window_c);
 
     auto draw() -> void override;
+    auto handle_click_event(CPanel& panel) -> void override;
 };
+
 

@@ -1,4 +1,5 @@
 #include "pause_menu.h"
+#include "panel.h"
 
 CPause_menu::CPause_menu(sf::RenderWindow& window_c)
     : CMenu(window_c, EMenuType::Pause),
@@ -10,7 +11,6 @@ CPause_menu::CPause_menu(sf::RenderWindow& window_c)
 {
     background_asset.set_scale(background_scale);
     center_asset(background_asset);
-
     set_text_position();
 }
 
@@ -26,50 +26,64 @@ auto CPause_menu::get_text_components() -> std::vector<std::reference_wrapper<Te
 
 auto CPause_menu::set_text_position() -> void
 {
-    // HELPED BY GPT!!!
-    //
     // Adjust title position to fit inside the brown box
     title_text.set_position(
         static_cast<int>(window.getSize().x / 2.0f - title_text.get_text().getGlobalBounds().width / 2),
-        static_cast<int>(window.getSize().y * 0.15f)  // Move "Pause" to fit inside the brown box
+        static_cast<int>(window.getSize().y * 0.15f)
     );
 
     // Define the area of the gray field
-    float gray_field_top = window.getSize().y * 0.35f;  // Top of the gray field
-    float gray_field_height = window.getSize().y * 0.4f;  // Height of the gray field
+    float gray_field_top = window.getSize().y * 0.35f;
+    float gray_field_height = window.getSize().y * 0.4f;
+    float option_spacing = gray_field_height / 5.0f;
 
-    // Calculate vertical spacing between the options
-    float option_spacing = gray_field_height / 5.0f;  // Spacing to distribute options evenly
-
-    // Position "Continue" closer to the top of the gray field
+    // Position text components inside the gray field
     continue_text.set_position(
         static_cast<int>(window.getSize().x / 2.0f - continue_text.get_text().getGlobalBounds().width / 2),
-        static_cast<int>(gray_field_top + option_spacing * 0.1f)  // Closer to the top of the gray field
+        static_cast<int>(gray_field_top + option_spacing * 0.1f)
     );
 
-    // Position "Options" at the center of the gray field
     options_text.set_position(
         static_cast<int>(window.getSize().x / 2.0f - options_text.get_text().getGlobalBounds().width / 2),
-        static_cast<int>(gray_field_top + option_spacing * 1.6f)  // Center the "Options" text
+        static_cast<int>(gray_field_top + option_spacing * 1.6f)
     );
 
-    // Position "Back to Title" slightly higher than before
     back_to_title_text.set_position(
         static_cast<int>(window.getSize().x / 2.0f - back_to_title_text.get_text().getGlobalBounds().width / 2),
-        static_cast<int>(gray_field_top + option_spacing * 3.2f)  // Moved up slightly
+        static_cast<int>(gray_field_top + option_spacing * 3.2f)
     );
 }
 
 auto CPause_menu::draw() -> void
 {
-    if (visible)
+    if (visible) 
     {
         window.draw(background_asset.get_sprite());
 
-        for (const auto& text : get_text_components())
+        for (const auto& text : get_text_components()) 
         {
             text.get().draw_text(window);
         }
+    }
+}
+
+auto CPause_menu::handle_click_event(CPanel& panel) -> void
+{
+    sf::Vector2i mouse_pos = sf::Mouse::getPosition(window);
+
+    if (continue_text.get_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
+    {
+        panel.set_current_menu(nullptr);
+    }
+    else if (options_text.get_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
+    {
+        // add some logic !
+        std::cout << "Options clicked!" << std::endl;
+    }
+    else if (back_to_title_text.get_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
+    {
+        panel.set_current_menu(nullptr);
+        panel.set_scene(ESceneType::Title_screen);
     }
 }
 
