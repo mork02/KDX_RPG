@@ -21,6 +21,10 @@ public:
     // Getter methods
     auto get_texture() -> sf::Texture&;
     auto get_sprite() -> sf::Sprite&;
+    auto get_Global_sprite_bounds() -> sf::FloatRect;
+    auto get_Local_sprite_bounds() -> sf::FloatRect;
 
     auto set_scale(float value) -> void;
+
+    auto center_asset() -> void;
 };
