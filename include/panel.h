@@ -3,8 +3,9 @@
 #include "input.h"
 #include "gameplay.h"
 #include "title_screen.h"
-#include "stats_menu.h"
 #include "pause_menu.h"
+#include "option_menu.h"
+#include "stats_menu.h"
 #include "scene_manager.h"
 
 class CPanel
@@ -17,8 +18,9 @@ private:
     CTitle_Screen title_screen;
     Gameplay gameplay;
 
-    std::unique_ptr<CStats_menu> stats_menu;
     std::unique_ptr<CPause_menu> pause_menu;
+    std::unique_ptr<COption_menu> option_menu;
+    std::unique_ptr<CStats_menu> stats_menu;
 
     CMenu* current_menu = nullptr;
 
@@ -31,8 +33,9 @@ public:
     auto get_gameplay() -> Gameplay&;
 
     auto get_current_menu() -> CMenu*;
-    auto get_stats_menu() -> CStats_menu&;
     auto get_pause_menu() -> CPause_menu&;
+    auto get_options_menu() -> COption_menu&;
+    auto get_stats_menu() -> CStats_menu&;
 
     auto get_input() ->CInput&;
 

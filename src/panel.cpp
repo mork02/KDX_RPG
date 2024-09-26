@@ -7,6 +7,7 @@ CPanel::CPanel(sf::RenderWindow& window_c, CInput& input_c)
 {
     pause_menu = std::make_unique<CPause_menu>(window_c);
     stats_menu = std::make_unique<CStats_menu>(window_c);
+    option_menu = std::make_unique<COption_menu>(window_c);
 }
 
 auto CPanel::update() -> void
@@ -36,6 +37,11 @@ auto CPanel::get_stats_menu() -> CStats_menu&
 auto CPanel::get_pause_menu() -> CPause_menu&
 {
     return *pause_menu;
+}
+
+auto CPanel::get_options_menu() -> COption_menu&
+{
+    return *option_menu;
 }
 
 auto CPanel::get_title_screen() -> CTitle_Screen&
