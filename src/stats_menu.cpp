@@ -5,7 +5,7 @@ CStats_menu::CStats_menu(sf::RenderWindow& window_c) : CMenu(window_c, EMenuType
 background_asset(window_c, background_path)
 {
     background_asset.set_scale(background_scale);
-    center_asset(background_asset);
+    background_asset.center_asset();
 }
 
 auto CStats_menu::draw() -> void
@@ -26,14 +26,4 @@ auto CStats_menu::handle_click_event(CPanel& panel) -> void
     {
     }
     */
-}
-
-auto CStats_menu::center_asset(Asset_loader& asset) -> void
-{
-    sf::Vector2u texture_size = asset.get_texture().getSize();
-    sf::Vector2u window_size = window.getSize();
-
-    asset.get_sprite().setOrigin(texture_size.x / 2.0f, texture_size.y / 2.0f);
-    asset.get_sprite().setPosition(window_size.x / 2.0f, window_size.y / 2.0f);
-
 }

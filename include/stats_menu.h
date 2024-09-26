@@ -13,8 +13,6 @@ private:
     float background_scale = 6;
     Asset_loader background_asset;
 
-    auto center_asset(Asset_loader& asset) -> void;
-
 public:
     CStats_menu(sf::RenderWindow& window_c);
 
