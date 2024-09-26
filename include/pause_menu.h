@@ -18,7 +18,6 @@ private:
     Text options_text;
     Text back_to_title_text;
 
-    auto center_asset(Asset_loader& asset) -> void;
     auto get_text_components() -> std::vector<std::reference_wrapper<Text>>;
     auto set_text_position() -> void;
 
