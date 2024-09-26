@@ -1,4 +1,5 @@
 #include "stats_menu.h"
+#include "panel.h"
 
 CStats_menu::CStats_menu(sf::RenderWindow& window_c) : CMenu(window_c, EMenuType::Stats),
 background_asset(window_c, background_path)
@@ -14,6 +15,17 @@ auto CStats_menu::draw() -> void
     {
         window.draw(background_asset.get_sprite());
     }
+}
+
+auto CStats_menu::handle_click_event(CPanel& panel) -> void
+{
+    /*
+    // placeholder
+    sf::Vector2i mouse_pos = sf::Mouse::getPosition(window);
+    if (continue_text.get_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
+    {
+    }
+    */
 }
 
 auto CStats_menu::center_asset(Asset_loader& asset) -> void
