@@ -10,7 +10,6 @@ class CTitle_Screen
 {
 private:
     sf::RenderWindow& window;
-    CPanel& panel;
     CInput& input;
 
     std::string background_path = "assets/menu_assets/main_menu/background_new.png";
@@ -41,9 +40,9 @@ private:
     auto get_text_components() -> std::vector<std::reference_wrapper<Text>>;
 
 public:
-    CTitle_Screen(sf::RenderWindow& window, CPanel& panel, CInput& input);
+    CTitle_Screen(sf::RenderWindow& window, CInput& input);
 
-    auto handle_click_event(sf::Event& current_event) -> void;
-    auto draw() -> void;
+    auto handle_click_event(CPanel& panel) -> void;
+    auto draw(CPanel& panel) -> void;
 
 };
