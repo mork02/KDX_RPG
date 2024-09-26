@@ -2,34 +2,27 @@
 
 CPanel::CPanel(sf::RenderWindow& window_c, CInput& input_c)
     : window(window_c), input(input_c),
-    title_screen(window_c, *this, input_c),
-    gameplay(window_c), 
-    stats_menu(window_c), pause_menu(window_c)
-{}
+    title_screen(window_c, input_c),
+    gameplay(window_c)
+{
+    pause_menu = std::make_unique<CPause_menu>(window_c);
+    stats_menu = std::make_unique<CStats_menu>(window_c);
+}
 
 auto CPanel::update() -> void
-{
-    // clears the screen every frame
-    
-    title_screen.draw();
-    if (current_menu != nullptr) 
+{ 
+    switch (scene)
     {
-        current_menu->draw();
-    }
-
-    /*
-    switch (current_scene)
-    {
-    case Scene::Main_Menu:
-        main_menu.draw();
+    case ESceneType::Title_screen:
+        title_screen.draw(*this);
         break;
-    case Scene::Gameplay:
+    case ESceneType::Gameplay:
         gameplay.update();
+        if (current_menu) { current_menu->draw(); }
         break;
-    case Scene::Game_Over:
+    case ESceneType::Game_Over:
         break;
     }
-    */
 
 }
 
@@ -37,12 +30,12 @@ auto CPanel::update() -> void
 
 auto CPanel::get_stats_menu() -> CStats_menu&
 {
-    return stats_menu;
+    return *stats_menu;
 }
 
 auto CPanel::get_pause_menu() -> CPause_menu&
 {
-    return pause_menu;
+    return *pause_menu;
 }
 
 auto CPanel::get_title_screen() -> CTitle_Screen&
@@ -78,23 +71,17 @@ auto CPanel::set_scene(ESceneType new_scene) -> void
 }
 
 auto CPanel::set_current_menu(CMenu* new_menu) -> void {
-    if (new_menu == nullptr) {
-        if (current_menu != nullptr) {
-            current_menu->set_visible(false);
-        }
+    if (current_menu) { current_menu->set_visible(false); }
+
+    if (!new_menu) 
+    {
         current_menu = nullptr;
         return;
     }
 
     try {
-        if (current_menu != nullptr) {
-            current_menu->set_visible(false);
-        }
+        current_menu = new_menu;
+        current_menu->set_visible(true);
     }
-    catch (const std::exception& e) {
-        std::cerr << "Error setting current menu visibility: " << e.what() << std::endl;
-    }
-
-    current_menu = new_menu;
-    current_menu->set_visible(true);
+    catch (const std::exception& e) { std::cerr << "Error setting current menu visibility: " << e.what() << std::endl; }
 }

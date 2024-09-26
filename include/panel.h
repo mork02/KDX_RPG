@@ -17,8 +17,8 @@ private:
     CTitle_Screen title_screen;
     Gameplay gameplay;
 
-    CStats_menu stats_menu;
-    CPause_menu pause_menu;
+    std::unique_ptr<CStats_menu> stats_menu;
+    std::unique_ptr<CPause_menu> pause_menu;
 
     CMenu* current_menu = nullptr;
 
