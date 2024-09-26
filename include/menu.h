@@ -6,9 +6,10 @@ class CPanel;
 
 enum class EMenuType
 {
-    Stats,
+    Pause,
+    Options,
     Inventory,
-    Pause
+    Stats
 };
 
 class CMenu
