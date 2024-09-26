@@ -18,9 +18,14 @@ auto Text::get_text() -> sf::Text&
     return text;
 }
 
-auto Text::get_text_Bounds() -> sf::FloatRect
+auto Text::get_Global_text_Bounds() -> sf::FloatRect
 {
     return text.getGlobalBounds();
+}
+
+auto Text::get_Local_text_Bounds() -> sf::FloatRect
+{
+    return text.getLocalBounds();
 }
 
 // Setter
@@ -47,7 +52,7 @@ auto Text::update_hover_state(sf::RenderWindow& window) -> void
     if (!hoverable) return;
 
     sf::Vector2i mouse_pos = sf::Mouse::getPosition(window);
-    sf::FloatRect text_bounds = get_text_Bounds();
+    sf::FloatRect text_bounds = get_Global_text_Bounds();
 
     if (text_bounds.contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
     {

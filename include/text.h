@@ -28,7 +28,8 @@ public:
 
     // Getter
     auto get_text() -> sf::Text&;
-    auto get_text_Bounds() -> sf::FloatRect;
+    auto get_Global_text_Bounds() -> sf::FloatRect;
+    auto get_Local_text_Bounds() -> sf::FloatRect;
 
     // Setter
     auto set_text(std::string new_text) -> void;
