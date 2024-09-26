@@ -108,10 +108,13 @@
     <ClCompile Include="..\src\stats_menu.cpp">
       <Filter>Source Files\Window\Szene\Menus</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\tile_map.cpp">
+    <ClCompile Include="..\src\tile_map_loader.cpp">
       <Filter>Source Files\Window\Assets</Filter>
     </ClCompile>
     <ClCompile Include="..\src\pause_menu.cpp">
+      <Filter>Source Files\Window\Szene\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\option_menu.cpp">
       <Filter>Source Files\Window\Szene\Menus</Filter>
     </ClCompile>
   </ItemGroup>
@@ -173,10 +176,13 @@
     <ClInclude Include="..\include\stats_menu.h">
       <Filter>Header Files\Window\Szene\Menus</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\tile_map.h">
+    <ClInclude Include="..\include\tile_map_loader.h">
       <Filter>Header Files\Window\Assets</Filter>
     </ClInclude>
     <ClInclude Include="..\include\pause_menu.h">
+      <Filter>Header Files\Window\Szene\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\option_menu.h">
       <Filter>Header Files\Window\Szene\Menus</Filter>
     </ClInclude>
   </ItemGroup>

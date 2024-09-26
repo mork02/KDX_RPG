@@ -169,8 +169,9 @@
     <ClCompile Include="..\src\title_screen.cpp" />
     <ClCompile Include="..\src\gameplay.cpp" />
     <ClCompile Include="..\src\stats_menu.cpp" />
-    <ClCompile Include="..\src\tile_map.cpp" />
+    <ClCompile Include="..\src\tile_map_loader.cpp" />
     <ClCompile Include="..\src\pause_menu.cpp" />
+    <ClCompile Include="..\src\option_menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\armor.h" />
@@ -192,8 +193,9 @@
     <ClInclude Include="..\include\scene_manager.h" />
     <ClInclude Include="..\include\gameplay.h" />
     <ClInclude Include="..\include\stats_menu.h" />
-    <ClInclude Include="..\include\tile_map.h" />
+    <ClInclude Include="..\include\tile_map_loader.h" />
     <ClInclude Include="..\include\pause_menu.h" />
+    <ClInclude Include="..\include\option_menu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
