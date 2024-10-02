@@ -2,12 +2,13 @@
 
 Gameplay::Gameplay(sf::RenderWindow& window_c) :
 	window(window_c),
-	user(),
-	sword(window_c, "assets/item_assets/iron_sword_frame.png") {}
-
-Player& Gameplay::get_player() { return user; }
+	tile_map("assets/test.png", 3, 2)
+{
+	tile_map.addLayer(ELayers::Ground, "assets/csv/test.csv");
+	tile_map.addLayer(ELayers::Player, "assets/csv/test2.csv");
+}
 
 void Gameplay::update() 
 {
-	window.draw(sword.get_sprite());
+	tile_map.draw(window);
 }
