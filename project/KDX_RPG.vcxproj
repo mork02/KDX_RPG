@@ -190,12 +190,13 @@
     <ClInclude Include="..\include\input.h" />
     <ClInclude Include="..\include\menu.h" />
     <ClInclude Include="..\include\title_screen.h" />
-    <ClInclude Include="..\include\scene_manager.h" />
+    <ClInclude Include="..\include\scene_enum.h" />
     <ClInclude Include="..\include\gameplay.h" />
     <ClInclude Include="..\include\stats_menu.h" />
     <ClInclude Include="..\include\tile_map_loader.h" />
     <ClInclude Include="..\include\pause_menu.h" />
     <ClInclude Include="..\include\option_menu.h" />
+    <ClInclude Include="..\include\layers_enum.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

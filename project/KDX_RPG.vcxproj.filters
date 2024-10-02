@@ -55,6 +55,9 @@
     <Filter Include="Source Files\Window\Szene\Menus">
       <UniqueIdentifier>{492cc0f2-5b70-4931-b15e-4db4cee5e4df}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Enum">
+      <UniqueIdentifier>{d2a47747-fd49-47d7-ace0-b1f6a29ef6f6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -93,9 +96,6 @@
     <ClCompile Include="..\src\asset_loader.cpp">
       <Filter>Source Files\Window\Assets</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\text.cpp">
-      <Filter>Source Files\Window\Assets</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\input.cpp">
       <Filter>Source Files\Window\Controller</Filter>
     </ClCompile>
@@ -116,6 +116,9 @@
     </ClCompile>
     <ClCompile Include="..\src\option_menu.cpp">
       <Filter>Source Files\Window\Szene\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\text.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -161,7 +164,7 @@
     <ClInclude Include="..\include\input.h">
       <Filter>Header Files\Window\Controller</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\scene_manager.h">
+    <ClInclude Include="..\include\scene_enum.h">
       <Filter>Header Files\Window\Szene</Filter>
     </ClInclude>
     <ClInclude Include="..\include\gameplay.h">
@@ -184,6 +187,9 @@
     </ClInclude>
     <ClInclude Include="..\include\option_menu.h">
       <Filter>Header Files\Window\Szene\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\layers_enum.h">
+      <Filter>Header Files\Enum</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
