@@ -12,7 +12,6 @@ CTile_Map_Loader::CTile_Map_Loader(const std::string& tilesetFile, int tilesPerR
     }
 }
 
-// Lädt einen Layer aus einer CSV-Datei und erstellt die Sprites
 auto CTile_Map_Loader::addLayer(ELayers layerType, const std::string& filename_csv) -> bool 
 {
     std::ifstream file(filename_csv);
