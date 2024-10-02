@@ -1,5 +1,5 @@
 #include "text.h"
-#include "scene_manager.h"
+#include "scene_enum.h"
 
 Text::Text(std::string showing_text_c, int size_c, bool hoverable_c, float x_c, float y_c, std::string font_path_c, sf::Color color_c)
     : showing_text(showing_text_c), size(size_c), hoverable(hoverable_c), x(x_c), y(y_c), font_path(font_path_c), color(color_c)

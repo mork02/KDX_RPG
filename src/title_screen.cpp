@@ -1,5 +1,5 @@
 #include "title_screen.h"
-#include "scene_manager.h"
+#include "scene_enum.h"
 #include "panel.h"
 #include "input.h"
 

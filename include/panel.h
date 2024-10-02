@@ -6,7 +6,7 @@
 #include "pause_menu.h"
 #include "option_menu.h"
 #include "stats_menu.h"
-#include "scene_manager.h"
+#include "scene_enum.h"
 
 class CPanel
 {
