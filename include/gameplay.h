@@ -11,8 +11,10 @@ private:
 	sf::RenderWindow& window;
 	CTile_Map_Loader tile_map;
 
+	auto loadLevel() -> void;
+
 public:
 	Gameplay(sf::RenderWindow& window);
 
-	void update();
+	auto update() -> void;
 };
