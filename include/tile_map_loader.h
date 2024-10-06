@@ -15,10 +15,11 @@ public:
 private:
     auto createLayerSprites(ELayers layerType, const std::vector<std::vector<int>>& tilemap) -> void;
 
-    sf::Texture tileset;
+    sf::Texture tile_textures;
     std::map<ELayers, std::vector<sf::Sprite>> layers;
     int tileWidth = 32;
     int tileHeight = 32;
+    float scale = 2.0f;
     int tilesPerRow;
     int tilesPerColumn;
 };

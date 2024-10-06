@@ -3,10 +3,10 @@
 #include <sstream>
 #include <iostream>
 
-CTile_Map_Loader::CTile_Map_Loader(const std::string& tilesetFile, int tilesPerRow, int tilesPerColumn)
+CTile_Map_Loader::CTile_Map_Loader(const std::string& tilesetFile_image, int tilesPerRow, int tilesPerColumn)
     : tilesPerRow(tilesPerRow), tilesPerColumn(tilesPerColumn) 
 {
-    if (!tileset.loadFromFile(tilesetFile)) 
+    if (!tile_textures.loadFromFile(tilesetFile_image))
     {
         std::cerr << "Error: Cant load Image." << std::endl;
     }
@@ -48,26 +48,26 @@ auto CTile_Map_Loader::createLayerSprites(ELayers layerType, const std::vector<s
 {
     std::vector<sf::Sprite> layerSprites;
 
-    for (int y = 0; y < tilemap.size(); ++y) 
+    for (std::size_t y = 0; y < tilemap.size(); ++y)
     {
-        for (int x = 0; x < tilemap[y].size(); ++x) 
+        for (std::size_t x = 0; x < tilemap[y].size(); ++x)
         {
             int tileType = tilemap[y][x];
 
             if (tileType == -1) continue;
 
-            int tilesetX = (tileType - 1) % tilesPerRow;
-            int tilesetY = (tileType - 1) / tilesPerRow;
+            int tilesetX = (tileType) % tilesPerRow;
+            int tilesetY = (tileType) / tilesPerRow;
 
-            sf::Sprite tile(tileset);
+            sf::Sprite tile(tile_textures);
             tile.setTextureRect(sf::IntRect(
                 tilesetX * tileWidth,
                 tilesetY * tileHeight,
                 tileWidth,
                 tileHeight
             ));
-
-            tile.setPosition(x * tileWidth, y * tileHeight);
+            tile.setScale(scale, scale);
+            tile.setPosition((float) x * tileWidth * scale, (float) y * tileHeight * scale);
             layerSprites.push_back(tile);
         }
     }
