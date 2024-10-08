@@ -120,6 +120,9 @@
     <ClCompile Include="..\src\text.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\animation_loader.cpp">
+      <Filter>Source Files\Window\Assets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\panel.h">
@@ -190,6 +193,12 @@
     </ClInclude>
     <ClInclude Include="..\include\layers_enum.h">
       <Filter>Header Files\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\animation_enum.h">
+      <Filter>Header Files\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\animation_loader.h">
+      <Filter>Header Files\Window\Assets</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

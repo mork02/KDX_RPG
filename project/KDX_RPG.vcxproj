@@ -172,6 +172,7 @@
     <ClCompile Include="..\src\tile_map_loader.cpp" />
     <ClCompile Include="..\src\pause_menu.cpp" />
     <ClCompile Include="..\src\option_menu.cpp" />
+    <ClCompile Include="..\src\animation_loader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\armor.h" />
@@ -197,6 +198,8 @@
     <ClInclude Include="..\include\pause_menu.h" />
     <ClInclude Include="..\include\option_menu.h" />
     <ClInclude Include="..\include\layers_enum.h" />
+    <ClInclude Include="..\include\animation_loader.h" />
+    <ClInclude Include="..\include\animation_enum.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
