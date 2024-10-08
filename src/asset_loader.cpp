@@ -1,7 +1,10 @@
 #include "asset_loader.h"
 
-Asset_loader::Asset_loader(sf::RenderWindow& window_c, const std::string& path_c, int x_c, int y_c, int width_c, int height_c, float scale_c)
-    : window(window_c), path(path_c), x(x_c), y(y_c), scale(scale_c)
+CAsset_loader::CAsset_loader(sf::RenderWindow& window_c, const std::string& path_c, bool isAnimated, int x_c, int y_c)
+    : window(window_c), CAnimation_loader(), 
+    path(path_c), 
+    is_animated(isAnimated), 
+    x(x_c), y(y_c)
 {
     if (!texture.loadFromFile(path))
     {
@@ -11,39 +14,62 @@ Asset_loader::Asset_loader(sf::RenderWindow& window_c, const std::string& path_c
     sprite.setTexture(texture);
     sprite.setPosition(static_cast<float>(x), static_cast<float>(y));
     sprite.setScale(scale, scale);
+
+    if (is_animated)
+    {
+        setup_animation(texture, width, height);
+    }
 }
 
-auto Asset_loader::center_asset() -> void
+auto CAsset_loader::center_asset() -> void
 {
     sf::Vector2u texture_size = texture.getSize();
     sf::Vector2u window_size = window.getSize();
 
     sprite.setOrigin(texture_size.x / 2.0f, texture_size.y / 2.0f);
     sprite.setPosition(window_size.x / 2.0f, window_size.y / 2.0f);
-
 }
 
-auto Asset_loader::get_texture() -> sf::Texture&
+auto CAsset_loader::draw() -> void
+{
+    if (is_animated) update();
+    window.draw(sprite);
+}
+
+auto CAsset_loader::get_texture() -> sf::Texture&
 {
     return texture;
 }
 
-auto Asset_loader::get_sprite() -> sf::Sprite&
+auto CAsset_loader::get_sprite() -> sf::Sprite&
 {
     return sprite;
 }
 
-auto Asset_loader::get_Local_sprite_bounds() -> sf::FloatRect
+auto CAsset_loader::get_Local_sprite_bounds() -> sf::FloatRect
 {
     return sprite.getLocalBounds();
 }
 
-auto Asset_loader::get_Global_sprite_bounds() -> sf::FloatRect
+auto CAsset_loader::get_Global_sprite_bounds() -> sf::FloatRect
 {
     return sprite.getGlobalBounds();
 }
 
-auto Asset_loader::set_scale(float value) -> void
+auto CAsset_loader::set_scale(float value) -> void
 {
     sprite.setScale(value, value);
+}
+
+auto CAsset_loader::update() -> void
+{
+    if (is_animated)
+    {
+        if (frame_timer.getElapsedTime().asSeconds() >= frame_duration)
+        {
+            current_frame = (current_frame + 1) % get_total_frames(); 
+            sprite.setTextureRect(get_frame_rect(current_frame));
+            frame_timer.restart();
+        }
+    }
 }
