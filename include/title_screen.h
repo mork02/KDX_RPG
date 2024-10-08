@@ -14,7 +14,7 @@ private:
 
     std::string background_path = "assets/menu_assets/main_menu/background_new.png";
 
-    Asset_loader background_asset;
+    CAsset_loader background_asset;
 
     Text title_text;
     Text new_game_text;
@@ -31,12 +31,12 @@ private:
     bool increasing = true;
 
 private:
-    auto scale_background(Asset_loader& asset) -> void;
+    auto scale_background(CAsset_loader& asset) -> void;
     auto position_texts() -> void;
 
     auto animate_title_text() -> void;
 
-    auto get_asset_components() -> std::vector<std::reference_wrapper<Asset_loader>>;
+    auto get_asset_components() -> std::vector<std::reference_wrapper<CAsset_loader>>;
     auto get_text_components() -> std::vector<std::reference_wrapper<Text>>;
 
 public:

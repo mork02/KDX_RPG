@@ -30,7 +30,7 @@ auto CTitle_Screen::draw(CPanel& panel) -> void
     }
 }
 
-auto CTitle_Screen::scale_background(Asset_loader& asset) -> void
+auto CTitle_Screen::scale_background(CAsset_loader& asset) -> void
 {
     sf::Vector2u windowSize = window.getSize();
     sf::Vector2u textureSize = asset.get_texture().getSize();
@@ -106,7 +106,7 @@ auto CTitle_Screen::handle_click_event(CPanel& panel) -> void
     }
 }
 
-auto CTitle_Screen::get_asset_components() -> std::vector<std::reference_wrapper<Asset_loader>>
+auto CTitle_Screen::get_asset_components() -> std::vector<std::reference_wrapper<CAsset_loader>>
 {
     return {
         { std::ref(background_asset) }

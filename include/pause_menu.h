@@ -12,7 +12,7 @@ class CPause_menu : public CMenu
 private:
     const std::string background_path = "assets/menu_assets/pause_menu/pause.png";
     float background_scale = 6;
-    Asset_loader background_asset;
+    CAsset_loader background_asset;
     Text title_text;
     Text continue_text;
     Text options_text;
