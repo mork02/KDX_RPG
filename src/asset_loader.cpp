@@ -15,10 +15,7 @@ CAsset_loader::CAsset_loader(sf::RenderWindow& window_c, const std::string& path
     sprite.setPosition(static_cast<float>(x), static_cast<float>(y));
     sprite.setScale(scale, scale);
 
-    if (is_animated)
-    {
-        setup_animation(texture, width, height);
-    }
+    if (is_animated)    setup_animation(texture);
 }
 
 auto CAsset_loader::center_asset() -> void
@@ -32,7 +29,7 @@ auto CAsset_loader::center_asset() -> void
 
 auto CAsset_loader::draw() -> void
 {
-    if (is_animated) update();
+    if (is_animated)    update(sprite);
     window.draw(sprite);
 }
 
@@ -59,17 +56,4 @@ auto CAsset_loader::get_Global_sprite_bounds() -> sf::FloatRect
 auto CAsset_loader::set_scale(float value) -> void
 {
     sprite.setScale(value, value);
-}
-
-auto CAsset_loader::update() -> void
-{
-    if (is_animated)
-    {
-        if (frame_timer.getElapsedTime().asSeconds() >= frame_duration)
-        {
-            current_frame = (current_frame + 1) % get_total_frames(); 
-            sprite.setTextureRect(get_frame_rect(current_frame));
-            frame_timer.restart();
-        }
-    }
 }
