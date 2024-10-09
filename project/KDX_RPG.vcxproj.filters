@@ -66,9 +66,6 @@
     <ClCompile Include="..\src\fps.cpp">
       <Filter>Source Files\Window</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\frame.cpp">
-      <Filter>Source Files\Window</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\panel.cpp">
       <Filter>Source Files\Window</Filter>
     </ClCompile>
@@ -117,10 +114,13 @@
     <ClCompile Include="..\src\option_menu.cpp">
       <Filter>Source Files\Window\Szene\Menus</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\text.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\animation_loader.cpp">
+      <Filter>Source Files\Window\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\text.cpp">
+      <Filter>Source Files\Window\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\frame.cpp">
       <Filter>Source Files\Window\Assets</Filter>
     </ClCompile>
   </ItemGroup>
@@ -161,9 +161,6 @@
     <ClInclude Include="..\include\text.h">
       <Filter>Header Files\Window\Assets</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\fps.h">
-      <Filter>Header Files\Window</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\input.h">
       <Filter>Header Files\Window\Controller</Filter>
     </ClInclude>
@@ -198,6 +195,9 @@
       <Filter>Header Files\Enum</Filter>
     </ClInclude>
     <ClInclude Include="..\include\animation_loader.h">
+      <Filter>Header Files\Window\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\fps.h">
       <Filter>Header Files\Window\Assets</Filter>
     </ClInclude>
   </ItemGroup>
