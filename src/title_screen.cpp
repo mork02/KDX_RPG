@@ -5,7 +5,7 @@
 
 CTitle_Screen::CTitle_Screen(sf::RenderWindow& window_c, CInput& input_c) : 
 window(window_c), input(input_c),
-background_asset(window_c, background_path),
+background_asset(window_c, background_path, false),
 title_text("KDX RPG", 168, false),
 new_game_text("New Game", 136, true),
 options_text("Options", 136, true),
@@ -65,10 +65,6 @@ auto CTitle_Screen::position_texts() -> void
         static_cast<float>(windowSize.x / 2.0f - quit_text.get_text().getGlobalBounds().width / 2.0f),
         static_cast<float>(gray_field_top + option_spacing * 2.9f - 75)
     );
-
-    new_Game_text_bounds = new_game_text.get_text().getGlobalBounds();
-    options_text_bounds = options_text.get_text().getGlobalBounds();
-    quit_text_bounds = quit_text.get_text().getGlobalBounds();
 }
 
 auto CTitle_Screen::animate_title_text() -> void
@@ -91,16 +87,16 @@ auto CTitle_Screen::handle_click_event(CPanel& panel) -> void
 {
     sf::Vector2f mouse_pos = input.get_mouse_position();
 
-    if (new_Game_text_bounds.contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
+    if (new_game_text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
     {
         panel.set_scene(ESceneType::Gameplay);
     }
-    else if (options_text_bounds.contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
+    else if (options_text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
     {
-        // add some logic !
+        // TODO: add some logic !
         std::cout << "Options clicked!" << std::endl;
     }
-    else if (quit_text_bounds.contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
+    else if (quit_text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
     {
         window.close();
     }

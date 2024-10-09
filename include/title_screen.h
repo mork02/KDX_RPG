@@ -21,10 +21,6 @@ private:
     Text options_text;
     Text quit_text;
 
-    sf::FloatRect new_Game_text_bounds = {};
-    sf::FloatRect options_text_bounds = {};
-    sf::FloatRect quit_text_bounds = {};
-
     // title animation
     float fade_alpha = 0.0f;
     float fade_increment = 2.0f;
