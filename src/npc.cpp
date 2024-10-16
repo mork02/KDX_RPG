@@ -1,16 +1,10 @@
 #include "npc.h"
 
-NPC::NPC(std::string name_c, int hp_c, int max_hp_c, int basic_dmg_c, int basic_defensive_c, Zone zone_c)
-    : name(name_c), zone(zone_c), CEntity(hp_c, max_hp_c, basic_dmg_c, basic_defensive_c)
+NPC::NPC(std::string cName, int cHP, int cMax_HP, int cBasic_Dmg, int cBasic_Defensive, Zone cZone)
+    : CEntity(cName, cHP, cMax_HP, cBasic_Dmg, cBasic_Defensive), zone(cZone)
 {
 }
 
-// Getter
-
-auto NPC::get_name() -> std::string
-{
-    return name;  // Return the NPC's name
-}
 
 auto NPC::get_zone() -> Zone
 {
