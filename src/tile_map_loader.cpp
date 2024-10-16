@@ -3,10 +3,10 @@
 #include <sstream>
 #include <iostream>
 
-CTile_Map_Loader::CTile_Map_Loader(const std::string& tilesetFile_image, int tilesPerRow, int tilesPerColumn)
+CTile_Map_Loader::CTile_Map_Loader(const std::string& ctilesetFile_image, int ctiles_Row, int ctiles_Column)
     : tilesPerRow(tilesPerRow), tilesPerColumn(tilesPerColumn) 
 {
-    if (!tile_textures.loadFromFile(tilesetFile_image))
+    if (!tile_textures.loadFromFile(ctilesetFile_image))
     {
         std::cerr << "Error: Cant load Image." << std::endl;
     }

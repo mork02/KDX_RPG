@@ -3,9 +3,9 @@
 #include "panel.h"
 #include "input.h"
 
-CTitle_Screen::CTitle_Screen(sf::RenderWindow& window_c, CInput& input_c) : 
-window(window_c), input(input_c),
-background_asset(window_c, background_path, false),
+CTitle_Screen::CTitle_Screen(sf::RenderWindow& cWindow, CInput& cInput) : 
+window(cWindow), input(cInput),
+background_asset(cWindow, background_path, false),
 title_text("KDX RPG", 168, false),
 new_game_text("New Game", 136, true),
 options_text("Options", 136, true),
