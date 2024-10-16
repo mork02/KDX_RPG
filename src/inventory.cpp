@@ -2,7 +2,6 @@
 
 Inventory::Inventory() {}
 
-// Getter
 
 auto Inventory::get_inventory() -> std::vector<Item*>&
 {
@@ -18,7 +17,6 @@ auto Inventory::get_inv_item(int index) -> Item*
     return nullptr;  // Return nullptr if index is out of bounds
 }
 
-// Methods
 
 auto Inventory::add_item(Item* obj) -> void
 {
