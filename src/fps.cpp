@@ -1,17 +1,17 @@
 #include "fps.h"
 
-FPS::FPS() : mFrame(0), mFps(0) {}
+CFPS::CFPS() : mFrame(0), mFps(0) {}
 
 // Getter
 
-auto FPS::getFPS() const -> unsigned int
+auto CFPS::getFPS() const -> unsigned int
 {
     return mFps;
 }
 
 // Methods
 
-auto FPS::update() -> void
+auto CFPS::update() -> void
 {
     if (mClock.getElapsedTime().asSeconds() >= 1.f)
     {
@@ -23,7 +23,7 @@ auto FPS::update() -> void
     ++mFrame;
 }
 
-auto FPS::show_fps(sf::RenderWindow& window) -> void
+auto CFPS::show_fps(sf::RenderWindow& window) -> void
 {
     update();
     std::ostringstream ss;

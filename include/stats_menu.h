@@ -9,12 +9,12 @@ class CPanel;
 class CStats_menu : public CMenu
 {
 private:
-    const std::string background_path = "assets/menu_assets/stats_menu/stats_menu.png";
-    float background_scale = 6;
-    CAsset_loader background_asset;
+    const std::string mBackground_Path = "assets/menu_assets/stats_menu/stats_menu.png";
+    float mBackground_Scale = 6;
+    CAsset_loader mBackground_Asset;
 
 public:
-    CStats_menu(sf::RenderWindow& window_c);
+    CStats_menu(sf::RenderWindow& Window);
 
     auto draw() -> void override;
     auto handle_click_event(CPanel& panel) -> void override;

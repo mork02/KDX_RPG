@@ -1,6 +1,6 @@
 #include "player.h"
 
-CPlayer::CPlayer() 
-	: CEntity("Advanturer", 100, 100, 0, 0), Inventory()
+CPlayer::CPlayer(sf::RenderWindow& Window) 
+	: CEntity(Window, "assets/character_assets/test.png", true, "Advanturer", 100, 100, 0, 0), CInventory()
 {
 }

@@ -11,13 +11,17 @@ enum class Zone
     FIFTH_ZONE
 };
 
-class NPC : public CEntity
+class CNPC : public CEntity
 {
 private:
-    Zone zone;
+    Zone mZone;
 
 public:
-    NPC(std::string name, int hp, int max_hp, int basic_dmg, int basic_defensive, Zone zone);
+    CNPC
+    (sf::RenderWindow& Window, std::string Path, bool IsAnimated,
+        std::string Name, int HP, int MaxHP, int BasicDMG, int BasicDEF,
+        Zone Zone
+    );
 
     auto get_zone() -> Zone;
 };

@@ -1,34 +1,34 @@
 #include "inventory.h"
 
-Inventory::Inventory() {}
+CInventory::CInventory() {}
 
 
-auto Inventory::get_inventory() -> std::vector<Item*>&
+auto CInventory::get_inventory() -> std::vector<Item*>&
 {
-    return inventory;
+    return mInventory;
 }
 
-auto Inventory::get_inv_item(int index) -> Item*
+auto CInventory::get_inv_item(int index) -> Item*
 {
-    if (index >= 0 && index < static_cast<int>(inventory.size()))
+    if (index >= 0 && index < static_cast<int>(mInventory.size()))
     {
-        return inventory[index];
+        return mInventory[index];
     }
-    return nullptr;  // Return nullptr if index is out of bounds
+    return nullptr;
 }
 
 
-auto Inventory::add_item(Item* obj) -> void
+auto CInventory::add_item(Item* obj) -> void
 {
-    inventory.push_back(obj);
+    mInventory.push_back(obj);
 }
 
-auto Inventory::remove_item(Item* obj) -> void
+auto CInventory::remove_item(Item* obj) -> void
 {
-    auto it = std::find(inventory.begin(), inventory.end(), obj);
-    if (it != inventory.end())
+    auto item = std::find(mInventory.begin(), mInventory.end(), obj);
+    if (item != mInventory.end())
     {
-        inventory.erase(it);
+        mInventory.erase(item);
     }
     else
     {
@@ -36,10 +36,10 @@ auto Inventory::remove_item(Item* obj) -> void
     }
 }
 
-auto Inventory::display_inventory() -> void
+auto CInventory::display_inventory() -> void
 {
     int x = 0;
-    for (const auto* item : inventory)
+    for (const auto* item : mInventory)
     {
         std::cout << "ID: " << x << std::endl;
         item->display_item();

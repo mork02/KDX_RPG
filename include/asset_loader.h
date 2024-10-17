@@ -7,17 +7,17 @@
 class CAsset_loader : public CAnimation_loader
 {
 private:
-    sf::RenderWindow& window;
-    std::string path;
-    sf::Texture texture;
-    sf::Sprite sprite;
+    sf::RenderWindow& mWindow;
+    std::string mPath;
+    sf::Texture mTexture;
+    sf::Sprite mSprite;
 
-    int x, y;
-    float scale = 2.0f;
-    bool is_animated;
+    int mX, mY;
+    float mScale = 2.0f;
+    bool mIs_Animated;
 
 public:
-    CAsset_loader(sf::RenderWindow& window, const std::string& path, bool isAnimated = false, int x = 0, int y = 0);
+    CAsset_loader(sf::RenderWindow& Window, const std::string& Path, bool Is_Animated = false, int X = 0, int Y = 0);
 
     auto get_texture()  -> sf::Texture&;
     auto get_sprite()   -> sf::Sprite&;
@@ -27,4 +27,6 @@ public:
     auto set_scale(float value) -> void;
     auto center_asset() -> void;
     auto draw() -> void;
+
+    auto set_Position(float x, float y) -> void;
 };

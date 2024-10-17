@@ -9,22 +9,22 @@ class CInput;
 class CTitle_Screen
 {
 private:
-    sf::RenderWindow& window;
-    CInput& input;
+    sf::RenderWindow& mWindow;
+    CInput& mInput;
 
-    std::string background_path = "assets/menu_assets/main_menu/background_new.png";
+    std::string mBackground_Path = "assets/menu_assets/main_menu/background_new.png";
 
-    CAsset_loader background_asset;
+    CAsset_loader mBackground_Asset;
 
-    Text title_text;
-    Text new_game_text;
-    Text options_text;
-    Text quit_text;
+    CText mTitle_Text;
+    CText mNew_Game_Text;
+    CText mOptions_Text;
+    CText mQuit_Text;
 
     // title animation
-    float fade_alpha = 0.0f;
-    float fade_increment = 2.0f;
-    bool increasing = true;
+    float mFade_Alpha = 0.0f;
+    float mFade_Increment = 2.0f;
+    bool mIncreasing = true;
 
 private:
     auto scale_background(CAsset_loader& asset) -> void;
@@ -33,10 +33,10 @@ private:
     auto animate_title_text() -> void;
 
     auto get_asset_components() -> std::vector<std::reference_wrapper<CAsset_loader>>;
-    auto get_text_components() -> std::vector<std::reference_wrapper<Text>>;
+    auto get_text_components() -> std::vector<std::reference_wrapper<CText>>;
 
 public:
-    CTitle_Screen(sf::RenderWindow& window, CInput& input);
+    CTitle_Screen(sf::RenderWindow& Window, CInput& Input);
 
     auto handle_click_event(CPanel& panel) -> void;
     auto draw(CPanel& panel) -> void;

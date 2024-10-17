@@ -1,12 +1,11 @@
 #include "npc.h"
 
-NPC::NPC(std::string cName, int cHP, int cMax_HP, int cBasic_Dmg, int cBasic_Defensive, Zone cZone)
-    : CEntity(cName, cHP, cMax_HP, cBasic_Dmg, cBasic_Defensive), zone(cZone)
-{
-}
+CNPC::CNPC(sf::RenderWindow& Window, std::string Path, bool IsAnimated, std::string Name, int HP, int MaxHP, int BasicDMG, int BasicDEF, Zone Zone)
+    : CEntity(Window, Path, IsAnimated, Name, HP, MaxHP, BasicDMG, BasicDEF),
+    mZone(Zone) {}
 
 
-auto NPC::get_zone() -> Zone
+auto CNPC::get_zone() -> Zone
 {
-    return zone;  // Return the NPC's zone
+    return mZone;
 }

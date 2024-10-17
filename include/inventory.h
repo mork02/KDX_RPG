@@ -3,13 +3,13 @@
 #include <vector>
 #include "item.h"
 
-class Inventory
+class CInventory
 {
 private:
-    std::vector<Item*> inventory;
+    std::vector<Item*> mInventory;
 
 public:
-    Inventory();
+    CInventory();
 
     auto get_inventory() -> std::vector<Item*>&;
     auto get_inv_item(int index) -> Item*;

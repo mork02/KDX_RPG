@@ -1,19 +1,19 @@
 #include "stats_menu.h"
 #include "panel.h"
 
-CStats_menu::CStats_menu(sf::RenderWindow& window_c) : CMenu(window_c, EMenuType::Stats),
-background_asset(window_c, background_path)
+CStats_menu::CStats_menu(sf::RenderWindow& Window) : CMenu(Window, EMenuType::Stats),
+mBackground_Asset(Window, mBackground_Path)
 {
-    background_asset.set_scale(background_scale);
-    background_asset.center_asset();
+    mBackground_Asset.set_scale(mBackground_Scale);
+    mBackground_Asset.center_asset();
 }
 
 auto CStats_menu::draw() -> void
 {
 
-    if (visible)
+    if (mVisible)
     {
-        window.draw(background_asset.get_sprite());
+        mWindow.draw(mBackground_Asset.get_sprite());
     }
 }
 

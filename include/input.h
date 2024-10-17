@@ -4,15 +4,15 @@
 class CInput
 {
 private:
-    sf::RenderWindow& window;
-    sf::Mouse mouse;
-    sf::Keyboard keyboard;
+    sf::RenderWindow& mWindow;
+    sf::Mouse mMouse;
+    sf::Keyboard mKeyboard;
 
-    bool isKeyPressed = false;
-    bool isMousePressed = false;
+    bool mIs_Key_Pressed = false;
+    bool mIs_Mouse_Pressed = false;
 
 public:
-    CInput(sf::RenderWindow& window);
+    CInput(sf::RenderWindow& Window);
 
     // Getter
     auto get_mouse() const->sf::Mouse;

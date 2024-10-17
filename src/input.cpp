@@ -1,44 +1,44 @@
 #include "input.h"
 
-CInput::CInput(sf::RenderWindow& window_c)
-    : window(window_c)
+CInput::CInput(sf::RenderWindow& Window)
+    : mWindow(Window)
 {}
 
 // Getter
 
 auto CInput::get_mouse() const -> sf::Mouse
 {
-    return mouse;
+    return mMouse;
 }
 
 auto CInput::get_mouse_position() const -> sf::Vector2f
 {
-    return window.mapPixelToCoords(mouse.getPosition(window));
+    return mWindow.mapPixelToCoords(mMouse.getPosition(mWindow));
 }
 
 auto CInput::get_keyboard() const -> sf::Keyboard
 {
-    return keyboard;
+    return mKeyboard;
 }
 
 auto CInput::get_isKeyPressed() const -> bool
 {
-    return isKeyPressed;
+    return mIs_Key_Pressed;
 }
 
 auto CInput::get_isMousePressed() const -> bool
 {
-    return isMousePressed;
+    return mIs_Mouse_Pressed;
 }
 
 // Setter
 
 auto CInput::set_isKeyPressed(bool value) -> void
 {
-    isKeyPressed = value;
+    mIs_Key_Pressed = value;
 }
 
 auto CInput::set_isMousePressed(bool value) -> void
 {
-    isMousePressed = value;
+    mIs_Mouse_Pressed = value;
 }

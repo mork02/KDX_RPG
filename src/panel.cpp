@@ -1,25 +1,25 @@
 #include "panel.h"
 
-CPanel::CPanel(sf::RenderWindow& window_c, CInput& input_c)
-    : window(window_c), input(input_c),
-    title_screen(window_c, input_c),
-    gameplay(window_c)
+CPanel::CPanel(sf::RenderWindow& Window, CInput& Input)
+    : mWindow(Window), mInput(Input),
+    mTitle_Screen(Window, Input),
+    mGameplay(Window)
 {
-    pause_menu = std::make_unique<CPause_menu>(window_c);
-    stats_menu = std::make_unique<CStats_menu>(window_c);
-    option_menu = std::make_unique<COption_menu>(window_c);
+    mPause_Menu = std::make_unique<CPause_menu>(Window);
+    mStats_Menu = std::make_unique<CStats_menu>(Window);
+    mOption_Menu = std::make_unique<COption_menu>(Window);
 }
 
 auto CPanel::update() -> void
 { 
-    switch (scene)
+    switch (mScene)
     {
     case ESceneType::Title_screen:
-        title_screen.draw(*this);
+        mTitle_Screen.draw(*this);
         break;
     case ESceneType::Gameplay:
-        gameplay.update();
-        if (current_menu) { current_menu->draw(); }
+        mGameplay.update();
+        if (mCurrent_Menu) { mCurrent_Menu->draw(); }
         break;
     case ESceneType::Game_Over:
         break;
@@ -27,67 +27,63 @@ auto CPanel::update() -> void
 
 }
 
-// Getter
-
 auto CPanel::get_stats_menu() -> CStats_menu&
 {
-    return *stats_menu;
+    return *mStats_Menu;
 }
 
 auto CPanel::get_pause_menu() -> CPause_menu&
 {
-    return *pause_menu;
+    return *mPause_Menu;
 }
 
 auto CPanel::get_options_menu() -> COption_menu&
 {
-    return *option_menu;
+    return *mOption_Menu;
 }
 
 auto CPanel::get_title_screen() -> CTitle_Screen&
 {
-    return title_screen;
+    return mTitle_Screen;
 }
 
 auto CPanel::get_gameplay() -> Gameplay&
 {
-    return gameplay;
+    return mGameplay;
 }
 
 auto CPanel::get_input() -> CInput&
 {
-    return input;
+    return mInput;
 }
 
 auto CPanel::get_scene() -> ESceneType&
 {
-    return scene;
+    return mScene;
 }
 
 auto CPanel::get_current_menu() -> CMenu*
 {
-    return current_menu;
+    return mCurrent_Menu;
 }
-
-// Setter
 
 auto CPanel::set_scene(ESceneType new_scene) -> void
 {
-    scene = new_scene;
+    mScene = new_scene;
 }
 
 auto CPanel::set_current_menu(CMenu* new_menu) -> void {
-    if (current_menu) { current_menu->set_visible(false); }
+    if (mCurrent_Menu) { mCurrent_Menu->set_visible(false); }
 
     if (!new_menu) 
     {
-        current_menu = nullptr;
+        mCurrent_Menu = nullptr;
         return;
     }
 
     try {
-        current_menu = new_menu;
-        current_menu->set_visible(true);
+        mCurrent_Menu = new_menu;
+        mCurrent_Menu->set_visible(true);
     }
     catch (const std::exception& e) { std::cerr << "Error setting current menu visibility: " << e.what() << std::endl; }
 }

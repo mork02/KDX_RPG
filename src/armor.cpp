@@ -1,40 +1,34 @@
 #include "armor.h"
 
-// Constructor
-
-Armor::Armor(std::string name_c, int defensive_c, int extra_defensive_c, int durability_c)
-    : name(name_c), defensive(defensive_c), extra_defensive(extra_defensive_c), durability(durability_c), Item(Category::ARMOR) {}
-
-// Getter
+Armor::Armor(std::string Name, int DEF, int Extra_DEF, int Durability)
+    : mName(Name), mDEF(DEF), mExtra_DEF(Extra_DEF), mDurability(Durability), Item(Category::ARMOR) {}
 
 auto Armor::get_name() const -> std::string
 {
-    return name;
+    return mName;
 }
 
 auto Armor::get_defensive() const -> int
 {
-    return defensive;
+    return mDEF;
 }
 
 auto Armor::get_extra_defensive() const -> int
 {
-    return extra_defensive;
+    return mExtra_DEF;
 }
 
 auto Armor::get_durability() const -> int
 {
-    return durability;
+    return mDurability;
 }
-
-// Methods
 
 auto Armor::display_item() const -> void
 {
     try
     {
-        std::cout << "Name: " << name << "\nDefensive: " << defensive << " + " << extra_defensive
-            << "\nDurability: " << durability << "\n" << std::endl;
+        std::cout << "Name: " << mName << "\nDefensive: " << mDEF << " + " << mExtra_DEF
+            << "\nDurability: " << mDurability << "\n" << std::endl;
     }
     catch (const std::exception&)
     {

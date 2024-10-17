@@ -3,10 +3,10 @@
 #include <sstream>
 #include <iostream>
 
-CTile_Map_Loader::CTile_Map_Loader(const std::string& ctilesetFile_image, int ctiles_Row, int ctiles_Column)
-    : tilesPerRow(tilesPerRow), tilesPerColumn(tilesPerColumn) 
+CTile_Map_Loader::CTile_Map_Loader(const std::string& Tileset_File, int Tiles_Row, int Tiles_Column)
+    : mTiles_Per_Row(mTiles_Per_Row), mTiles_Per_Column(mTiles_Per_Column) 
 {
-    if (!tile_textures.loadFromFile(ctilesetFile_image))
+    if (!mTile_Textures.loadFromFile(Tileset_File))
     {
         std::cerr << "Error: Cant load Image." << std::endl;
     }
@@ -56,27 +56,27 @@ auto CTile_Map_Loader::createLayerSprites(ELayers layerType, const std::vector<s
 
             if (tileType == -1) continue;
 
-            int tilesetX = (tileType) % tilesPerRow;
-            int tilesetY = (tileType) / tilesPerRow;
+            int tilesetX = (tileType) % mTiles_Per_Row;
+            int tilesetY = (tileType) / mTiles_Per_Row;
 
-            sf::Sprite tile(tile_textures);
+            sf::Sprite tile(mTile_Textures);
             tile.setTextureRect(sf::IntRect(
-                tilesetX * tileWidth,
-                tilesetY * tileHeight,
-                tileWidth,
-                tileHeight
+                tilesetX * mTile_Width,
+                tilesetY * mTile_Height,
+                mTile_Width,
+                mTile_Height
             ));
-            tile.setScale(scale, scale);
-            tile.setPosition((float) x * tileWidth * scale, (float) y * tileHeight * scale);
+            tile.setScale(mScale, mScale);
+            tile.setPosition((float) x * mTile_Width * mScale, (float) y * mTile_Height * mScale);
             layerSprites.push_back(tile);
         }
     }
-    layers[layerType] = layerSprites;
+    mLayers[layerType] = layerSprites;
 }
 
 auto CTile_Map_Loader::draw(sf::RenderWindow& window) -> void 
 {
-    for (const auto& layer : layers) 
+    for (const auto& layer : mLayers) 
     {
         for (const auto& tile : layer.second) 
         {

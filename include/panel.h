@@ -11,23 +11,22 @@
 class CPanel
 {
 private:
-    sf::RenderWindow& window;
-    CInput& input;
+    sf::RenderWindow& mWindow;
+    CInput& mInput;
 
-    ESceneType scene = ESceneType::Title_screen;
-    CTitle_Screen title_screen;
-    Gameplay gameplay;
+    ESceneType mScene = ESceneType::Title_screen;
+    CTitle_Screen mTitle_Screen;
+    Gameplay mGameplay;
 
-    std::unique_ptr<CPause_menu> pause_menu;
-    std::unique_ptr<COption_menu> option_menu;
-    std::unique_ptr<CStats_menu> stats_menu;
+    std::unique_ptr<CPause_menu> mPause_Menu;
+    std::unique_ptr<COption_menu> mOption_Menu;
+    std::unique_ptr<CStats_menu> mStats_Menu;
 
-    CMenu* current_menu = nullptr;
+    CMenu* mCurrent_Menu = nullptr;
 
 public:
-    CPanel(sf::RenderWindow& window, CInput& input);
+    CPanel(sf::RenderWindow& Window, CInput& Input);
 
-    // Getter
     auto get_scene() -> ESceneType&;
     auto get_title_screen() -> CTitle_Screen&;
     auto get_gameplay() -> Gameplay&;
@@ -39,10 +38,8 @@ public:
 
     auto get_input() ->CInput&;
 
-    // Setter
     auto set_scene(ESceneType new_scene) -> void;
     auto set_current_menu(CMenu* new_menu) -> void;
 
-    // Methods
     auto update() -> void;
 };

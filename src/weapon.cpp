@@ -1,39 +1,35 @@
 #include "weapon.h"
 
-// Constructor
-
-Weapon::Weapon(std::string name_c, int dmg_c, int extra_dmg_c, int durability_c)
-    : name(name_c), dmg(dmg_c), extra_dmg(extra_dmg_c), durability(durability_c), Item(Category::WEAPON) {}
-
-// Getter
+Weapon::Weapon(std::string Name, int DMG, int Extra_DMG, int Durability)
+    : mName(Name), mDMG(DMG), mExtra_DMG(Extra_DMG), mDurability(Durability),
+    Item(Category::WEAPON)
+{}
 
 auto Weapon::get_name() const -> std::string
 {
-    return name;
+    return mName;
 }
 
 auto Weapon::get_dmg() const -> int
 {
-    return dmg;
+    return mDMG;
 }
 
 auto Weapon::get_extra_dmg() const -> int
 {
-    return extra_dmg;
+    return mExtra_DMG;
 }
 
 auto Weapon::get_durability() const -> int
 {
-    return durability;
+    return mDurability;
 }
-
-// Methods
 
 auto Weapon::display_item() const -> void
 {
     try
     {
-        std::cout << "Name: " << name << "\nDmg: " << dmg << " + " << extra_dmg << "\nDurability: " << durability << "\n" << std::endl;
+        std::cout << "Name: " << mName << "\nDmg: " << mDMG << " + " << mExtra_DMG << "\nDurability: " << mDurability << "\n" << std::endl;
     }
     catch (const std::exception&)
     {

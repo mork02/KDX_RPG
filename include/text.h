@@ -2,39 +2,36 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-class Text
+class CText
 {
 private:
-    std::string showing_text;
-    int size;
-    float x;
-    float y;
-    std::string font_path;
-    sf::Color color;
-    sf::Text text;
-    sf::Font font;
+    std::string mShowing_Text;
+    int mSize;
+    float mX;
+    float mY;
+    std::string mFont_Path;
+    sf::Color mColor;
+    sf::Text mText;
+    sf::Font mFont;
 
-    bool hoverable;
+    bool mHoverable;
 
 private:
     auto update_hover_state(sf::RenderWindow& window) -> void;
 
 public:
-    Text(std::string showing_text_c, int size_c, 
-        bool hoverable_c = false,
-        float pos_x_c = 0.f, float pos_y_c = 0.f,
-        std::string font_path_c = "assets/font/Minecraft.ttf",
-        sf::Color color_c = sf::Color::White);
+    CText(std::string Showing_Text, int Size, 
+        bool Hoverable = false,
+        float X = 0.f, float Y = 0.f,
+        std::string Font_Path = "assets/font/Minecraft.ttf",
+        sf::Color Color = sf::Color::White);
 
-    // Getter
     auto get_text() -> sf::Text&;
     auto get_Global_text_Bounds() -> sf::FloatRect;
     auto get_Local_text_Bounds() -> sf::FloatRect;
 
-    // Setter
     auto set_text(std::string new_text) -> void;
     auto set_position(int value_x, int value_y) -> void;
 
-    // Methods
     auto draw_text(sf::RenderWindow& window) -> void;
 };

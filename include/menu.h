@@ -15,18 +15,18 @@ enum class EMenuType
 class CMenu
 {
 protected:
-    sf::RenderWindow& window;
-    EMenuType menuType;
-    bool visible;
+    sf::RenderWindow& mWindow;
+    EMenuType mMenu_Type;
+    bool mVisible;
 
 public:
-    CMenu(sf::RenderWindow& window_c, EMenuType menuType_c) : window(window_c), menuType(menuType_c), visible(false) {}
+    CMenu(sf::RenderWindow& Window, EMenuType Menu_Type) : mWindow(Window), mMenu_Type(Menu_Type), mVisible(false) {}
     virtual ~CMenu() = default;
 
-    virtual auto get_visible() const -> bool { return visible; };
-    virtual auto set_visible(bool value) -> void { visible = value; };
+    virtual auto get_visible() const -> bool { return mVisible; };
+    virtual auto set_visible(bool value) -> void { mVisible = value; };
     virtual auto draw() -> void = 0;
     virtual auto handle_click_event(CPanel& panel) -> void = 0;
 
-    virtual auto get_menu_name() const -> const EMenuType& { return menuType; }
+    virtual auto get_menu_name() const -> const EMenuType& { return mMenu_Type; }
 };

@@ -1,82 +1,82 @@
 #include "pause_menu.h"
 #include "panel.h"
 
-CPause_menu::CPause_menu(sf::RenderWindow& window_c)
-    : CMenu(window_c, EMenuType::Pause),
-    background_asset(window_c, background_path),
-    title_text("Pause", 109, false),
-    continue_text("Continue", 89, true),
-    options_text("Options", 89, true),
-    back_to_title_text("Back to Title", 89, true)
+CPause_menu::CPause_menu(sf::RenderWindow& Window)
+    : CMenu(Window, EMenuType::Pause),
+    mBackground_Asset(Window, mBackground_Path),
+    mTitle_Text("Pause", 109, false),
+    mContinue_Text("Continue", 89, true),
+    mOptions_Text("Options", 89, true),
+    mBack_To_Title_Text("Back to Title", 89, true)
 {
-    background_asset.set_scale(background_scale);
-    background_asset.center_asset();
+    mBackground_Asset.set_scale(mBackground_Scale);
+    mBackground_Asset.center_asset();
     set_text_position();
 }
 
-auto CPause_menu::get_text_components() -> std::vector<std::reference_wrapper<Text>>
+auto CPause_menu::get_text_components() -> std::vector<std::reference_wrapper<CText>>
 {
     return {
-        { std::ref(title_text) },
-        { std::ref(continue_text) },
-        { std::ref(options_text) },
-        { std::ref(back_to_title_text) }
+        { std::ref(mTitle_Text) },
+        { std::ref(mContinue_Text) },
+        { std::ref(mOptions_Text) },
+        { std::ref(mBack_To_Title_Text) }
     };
 }
 
 auto CPause_menu::set_text_position() -> void
 {
-    title_text.set_position(
-        static_cast<int>(window.getSize().x / 2.0f - title_text.get_text().getGlobalBounds().width / 2),
-        static_cast<int>(window.getSize().y * 0.15f)
+    mTitle_Text.set_position(
+        static_cast<int>(mWindow.getSize().x / 2.0f - mTitle_Text.get_text().getGlobalBounds().width / 2),
+        static_cast<int>(mWindow.getSize().y * 0.15f)
     );
 
-    float gray_field_top = window.getSize().y * 0.35f;
-    float gray_field_height = window.getSize().y * 0.4f;
+    float gray_field_top = mWindow.getSize().y * 0.35f;
+    float gray_field_height = mWindow.getSize().y * 0.4f;
     float option_spacing = gray_field_height / 5.0f;
 
-    continue_text.set_position(
-        static_cast<int>(window.getSize().x / 2.0f - continue_text.get_text().getGlobalBounds().width / 2),
+    mContinue_Text.set_position(
+        static_cast<int>(mWindow.getSize().x / 2.0f - mContinue_Text.get_text().getGlobalBounds().width / 2),
         static_cast<int>(gray_field_top + option_spacing * 0.1f)
     );
 
-    options_text.set_position(
-        static_cast<int>(window.getSize().x / 2.0f - options_text.get_text().getGlobalBounds().width / 2),
+    mOptions_Text.set_position(
+        static_cast<int>(mWindow.getSize().x / 2.0f - mOptions_Text.get_text().getGlobalBounds().width / 2),
         static_cast<int>(gray_field_top + option_spacing * 1.6f)
     );
 
-    back_to_title_text.set_position(
-        static_cast<int>(window.getSize().x / 2.0f - back_to_title_text.get_text().getGlobalBounds().width / 2),
+    mBack_To_Title_Text.set_position(
+        static_cast<int>(mWindow.getSize().x / 2.0f - mBack_To_Title_Text.get_text().getGlobalBounds().width / 2),
         static_cast<int>(gray_field_top + option_spacing * 3.2f)
     );
 }
 
 auto CPause_menu::draw() -> void
 {
-    if (visible) 
+    if (mVisible) 
     {
-        window.draw(background_asset.get_sprite());
+        mWindow.draw(mBackground_Asset.get_sprite());
 
         for (const auto& text : get_text_components()) 
         {
-            text.get().draw_text(window);
+            text.get().draw_text(mWindow);
         }
     }
 }
 
 auto CPause_menu::handle_click_event(CPanel& panel) -> void
 {
-    sf::Vector2i mouse_pos = sf::Mouse::getPosition(window);
+    sf::Vector2i mouse_pos = sf::Mouse::getPosition(mWindow);
 
-    if (continue_text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
+    if (mContinue_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
     {
         panel.set_current_menu(nullptr);
     }
-    else if (options_text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
+    else if (mOptions_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
     {
         panel.set_current_menu(&panel.get_options_menu());
     }
-    else if (back_to_title_text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
+    else if (mBack_To_Title_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
     {
         panel.set_current_menu(nullptr);
         panel.set_scene(ESceneType::Title_screen);

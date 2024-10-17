@@ -1,10 +1,10 @@
 #include "SFML/Graphics.hpp"
 #include <sstream>
 
-class FPS
+class CFPS
 {
 public:
-    FPS();
+    CFPS();
 
     auto getFPS() const -> unsigned int;
 

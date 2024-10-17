@@ -5,14 +5,14 @@
 class Armor : public Item
 {
 private:
-    std::string name;
-    int defensive;
-    int extra_defensive;
-    int durability;
+    std::string mName;
+    int mDEF;
+    int mExtra_DEF;
+    int mDurability;
 
 public:
     // Constructor with category parameter
-    Armor(std::string name, int defensive, int extra_defensive, int durability);
+    Armor(std::string Name, int DEF, int Extra_DEF, int Durability);
 
     // Getter
     auto get_name() const->std::string override;

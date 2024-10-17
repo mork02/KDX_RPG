@@ -3,38 +3,38 @@
 CAnimation_loader::CAnimation_loader()
 {}
 
-auto CAnimation_loader::setup_animation(const sf::Texture& texture, float frame_duration, unsigned frame_width, unsigned frame_height) -> void
+auto CAnimation_loader::setup_animation(const sf::Texture& Texture, float Frame_Duration, unsigned Frame_Width, unsigned Frame_Height) -> void
 {
-    sf::Vector2u texture_size = texture.getSize();
-    for (unsigned y = 0; y < texture_size.y; y += frame_height)
+    sf::Vector2u texture_size = Texture.getSize();
+    for (unsigned y = 0; y < texture_size.y; y += Frame_Height)
     {
-        for (unsigned x = 0; x < texture_size.x; x += frame_width)
+        for (unsigned x = 0; x < texture_size.x; x += Frame_Width)
         {
-            frames.emplace_back(sf::IntRect(x, y, frame_width, frame_height));
+            mFrames.emplace_back(sf::IntRect(x, y, Frame_Width, Frame_Height));
         }
     }
 }
 
 auto CAnimation_loader::get_frame_rect(unsigned frame_index) -> sf::IntRect
 {
-    if (frame_index < frames.size())
+    if (frame_index < mFrames.size())
     {
-        return frames[frame_index];
+        return mFrames[frame_index];
     }
     return sf::IntRect();
 }
 
 auto CAnimation_loader::get_total_frames() -> unsigned
 {
-    return frames.size();
+    return mFrames.size();
 }
 
 auto CAnimation_loader::update(sf::Sprite& sprite) -> void
 {
-    if (frame_timer.getElapsedTime().asSeconds() >= frame_duration)
+    if (mFrame_Timer.getElapsedTime().asSeconds() >= mFrame_Duration)
     {
-        current_frame = (current_frame + 1) % get_total_frames();
-        sprite.setTextureRect(get_frame_rect(current_frame));
-        frame_timer.restart();
+        mCurrent_Frame = (mCurrent_Frame + 1) % get_total_frames();
+        sprite.setTextureRect(get_frame_rect(mCurrent_Frame));
+        mFrame_Timer.restart();
     }
 }
