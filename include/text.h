@@ -31,7 +31,7 @@ public:
     auto get_Local_text_Bounds() -> sf::FloatRect;
 
     auto set_text(std::string new_text) -> void;
-    auto set_position(int value_x, int value_y) -> void;
+    auto set_position(float value_x, float value_y) -> void;
 
     auto draw_text(sf::RenderWindow& window) -> void;
 };
