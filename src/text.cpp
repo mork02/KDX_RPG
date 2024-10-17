@@ -36,9 +36,9 @@ auto CText::set_text(std::string new_text) -> void
     mText.setString(new_text);
 }
 
-auto CText::set_position(int value_x, int value_y) -> void
+auto CText::set_position(float value_x, float value_y) -> void
 {
-    mText.setPosition(static_cast<float>(value_x), static_cast<float>(value_y));
+    mText.setPosition(value_x, value_y);
 }
 
 auto CText::draw_text(sf::RenderWindow& window) -> void

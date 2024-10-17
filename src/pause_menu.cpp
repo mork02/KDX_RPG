@@ -27,8 +27,8 @@ auto CPause_menu::get_text_components() -> std::vector<std::reference_wrapper<CT
 auto CPause_menu::set_text_position() -> void
 {
     mTitle_Text.set_position(
-        static_cast<int>(mWindow.getSize().x / 2.0f - mTitle_Text.get_text().getGlobalBounds().width / 2),
-        static_cast<int>(mWindow.getSize().y * 0.15f)
+        mWindow.getSize().x / 2.0f - mTitle_Text.get_text().getGlobalBounds().width / 2,
+        mWindow.getSize().y * 0.15f
     );
 
     float gray_field_top = mWindow.getSize().y * 0.35f;
@@ -36,18 +36,18 @@ auto CPause_menu::set_text_position() -> void
     float option_spacing = gray_field_height / 5.0f;
 
     mContinue_Text.set_position(
-        static_cast<int>(mWindow.getSize().x / 2.0f - mContinue_Text.get_text().getGlobalBounds().width / 2),
-        static_cast<int>(gray_field_top + option_spacing * 0.1f)
+        mWindow.getSize().x / 2.0f - mContinue_Text.get_text().getGlobalBounds().width / 2,
+        gray_field_top + option_spacing * 0.1f
     );
 
     mOptions_Text.set_position(
-        static_cast<int>(mWindow.getSize().x / 2.0f - mOptions_Text.get_text().getGlobalBounds().width / 2),
-        static_cast<int>(gray_field_top + option_spacing * 1.6f)
+        mWindow.getSize().x / 2.0f - mOptions_Text.get_text().getGlobalBounds().width / 2,
+        gray_field_top + option_spacing * 1.6f
     );
 
     mBack_To_Title_Text.set_position(
-        static_cast<int>(mWindow.getSize().x / 2.0f - mBack_To_Title_Text.get_text().getGlobalBounds().width / 2),
-        static_cast<int>(gray_field_top + option_spacing * 3.2f)
+        mWindow.getSize().x / 2.0f - mBack_To_Title_Text.get_text().getGlobalBounds().width / 2,
+        gray_field_top + option_spacing * 3.2f
     );
 }
 

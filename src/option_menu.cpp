@@ -23,8 +23,8 @@ auto COption_menu::get_text_components() -> std::vector<std::reference_wrapper<C
 auto COption_menu::set_text_position() -> void
 {
 	mTitle_Text.set_position(
-		static_cast<int>(mWindow.getSize().x / 2.0f - mTitle_Text.get_text().getGlobalBounds().width / 2),
-		static_cast<int>(mWindow.getSize().y * 0.15f)
+		mWindow.getSize().x / 2.0f - mTitle_Text.get_text().getGlobalBounds().width / 2,
+		mWindow.getSize().y * 0.15f
 	);
 
 	float gray_field_top = mWindow.getSize().y * 0.35f;
@@ -32,8 +32,8 @@ auto COption_menu::set_text_position() -> void
 	float middle_spacing = gray_field_height / 5.0f;
 
 	mBack_Text.set_position(
-		static_cast<int>(mWindow.getSize().x / 2.0f - mBack_Text.get_text().getGlobalBounds().width / 2),
-		static_cast<int>(gray_field_top + middle_spacing * 3.2f)
+		mWindow.getSize().x / 2.0f - mBack_Text.get_text().getGlobalBounds().width / 2,
+		gray_field_top + middle_spacing * 3.2f
 	);
 
 }
