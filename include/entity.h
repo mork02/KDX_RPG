@@ -12,8 +12,8 @@ private:
     int mBasic_DEF;
 
 public:
-    CEntity(sf::RenderWindow& Window, const std::string& Path, bool IsAnimated, std::string Name, int HP, int Max_HP, int Basic_DMG, int Basic_DEF)
-        : CAsset_loader(Window, Path, IsAnimated),
+    CEntity(sf::RenderWindow& Window, const std::string& Path, bool IsAnimated, bool Debug_Mode, std::string Name, int HP, int Max_HP, int Basic_DMG, int Basic_DEF)
+        : CAsset_loader(Window, Path, IsAnimated, Debug_Mode),
         mName(Name),
         mHP(HP), mMax_HP(Max_HP),
         mBasic_DMG(Basic_DMG), mBasic_DEF(Basic_DEF)
