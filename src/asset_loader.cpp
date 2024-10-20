@@ -20,15 +20,7 @@ CAsset_loader::CAsset_loader(sf::RenderWindow& Window, const std::string& Path, 
 
     if (mIs_Animated)    setup_animation(mTexture);
 }
-
-auto CAsset_loader::center_asset() -> void
-{
-    sf::Vector2u texture_size = mTexture.getSize();
-    sf::Vector2u window_size = mWindow.getSize();
-
-    mSprite.setOrigin(texture_size.x / 2.0f, texture_size.y / 2.0f);
-    mSprite.setPosition(window_size.x / 2.0f, window_size.y / 2.0f);
-}
+// debugging stuff
 
 auto CAsset_loader::debug_Coordinates() -> void
 {
@@ -65,6 +57,17 @@ auto CAsset_loader::debug() -> void
 {
     debug_Box();
     debug_Coordinates();
+}
+
+///
+
+auto CAsset_loader::center_asset() -> void
+{
+    sf::Vector2u texture_size = mTexture.getSize();
+    sf::Vector2u window_size = mWindow.getSize();
+
+    mSprite.setOrigin(texture_size.x / 2.0f, texture_size.y / 2.0f);
+    mSprite.setPosition(window_size.x / 2.0f, window_size.y / 2.0f);
 }
 
 auto CAsset_loader::update_Coordinates() -> void

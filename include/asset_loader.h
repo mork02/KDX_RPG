@@ -19,10 +19,11 @@ private:
     bool mIs_Animated;
     bool mDebug_Mode;
 
-    auto update_Coordinates() -> void;
     auto debug_Coordinates() -> void;
     auto debug_Box() -> void;
     auto debug() -> void;
+
+    auto update_Coordinates() -> void;
 
 public:
     CAsset_loader(sf::RenderWindow& Window, const std::string& Path, bool Is_Animated = false, bool Debug_Mode = false);
@@ -32,9 +33,9 @@ public:
     auto get_Global_sprite_bounds() -> sf::FloatRect;
     auto get_Local_sprite_bounds()  -> sf::FloatRect;
 
-    auto draw() -> void;
-
-    auto center_asset() -> void;
     auto set_scale(float value) -> void;
     auto set_Position(float x, float y) -> void;
+
+    auto center_asset() -> void;
+    auto draw() -> void;
 };
