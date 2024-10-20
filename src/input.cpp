@@ -31,6 +31,11 @@ auto CInput::get_isMousePressed() const -> bool
     return mIs_Mouse_Pressed;
 }
 
+auto CInput::get_Movement_Speed() const -> float
+{
+    return mMovement_Speed;
+}
+
 // Setter
 
 auto CInput::set_isKeyPressed(bool value) -> void

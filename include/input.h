@@ -8,6 +8,8 @@ private:
     sf::Mouse mMouse;
     sf::Keyboard mKeyboard;
 
+    float mMovement_Speed = 150.0f;
+
     bool mIs_Key_Pressed = false;
     bool mIs_Mouse_Pressed = false;
 
@@ -22,6 +24,8 @@ public:
 
     auto get_isKeyPressed() const -> bool;
     auto get_isMousePressed() const -> bool;
+
+    auto get_Movement_Speed() const -> float;
 
     // Setter
     auto set_isKeyPressed(bool value) -> void;
