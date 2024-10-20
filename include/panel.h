@@ -36,8 +36,6 @@ public:
     auto get_options_menu() -> COption_menu&;
     auto get_stats_menu() -> CStats_menu&;
 
-    auto get_input() ->CInput&;
-
     auto set_scene(ESceneType new_scene) -> void;
     auto set_current_menu(CMenu* new_menu) -> void;
 

@@ -3,7 +3,7 @@
 CPanel::CPanel(sf::RenderWindow& Window, CInput& Input)
     : mWindow(Window), mInput(Input),
     mTitle_Screen(Window, Input),
-    mGameplay(Window)
+    mGameplay(Window, Input)
 {
     mPause_Menu = std::make_unique<CPause_menu>(Window);
     mStats_Menu = std::make_unique<CStats_menu>(Window);
@@ -50,11 +50,6 @@ auto CPanel::get_title_screen() -> CTitle_Screen&
 auto CPanel::get_gameplay() -> Gameplay&
 {
     return mGameplay;
-}
-
-auto CPanel::get_input() -> CInput&
-{
-    return mInput;
 }
 
 auto CPanel::get_scene() -> ESceneType&
