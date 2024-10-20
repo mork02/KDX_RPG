@@ -18,11 +18,12 @@ auto CFrame::gameloop() -> void
         while (mWindow.pollEvent(mEvent))
         {
             handle_window_close_event();
-            handle_keyboard_input();
-            handle_mouse_click_event();
+            handle_menu_mouse_input();
+            handle_gameplay_mouse_input();
+            handle_menu_keyboard_input();
         }
 
-        mWindow.clear(sf::Color::White);
+        mWindow.clear(sf::Color::Red);
         mPanel.update();
         mFPS_class.show_fps(mWindow);
         mWindow.display();
@@ -37,7 +38,7 @@ auto CFrame::handle_window_close_event() -> void
     }
 }
 
-auto CFrame::handle_keyboard_input() -> void
+auto CFrame::handle_menu_keyboard_input() -> void
 {
     if (mPanel.get_scene() == ESceneType::Gameplay) 
     {
@@ -71,9 +72,7 @@ auto CFrame::handle_keyboard_input() -> void
     }
 }
 
-
-
-auto CFrame::handle_mouse_click_event() -> void
+auto CFrame::handle_menu_mouse_input() -> void
 {
     if (mEvent.type == sf::Event::MouseButtonPressed && mEvent.mouseButton.button == sf::Mouse::Left)
     {
@@ -90,5 +89,13 @@ auto CFrame::handle_mouse_click_event() -> void
                 mPanel.get_current_menu()->handle_click_event(mPanel);
             }
         }
+    }
+}
+
+auto CFrame::handle_gameplay_mouse_input() -> void
+{
+    if (mPanel.get_scene() == ESceneType::Gameplay)
+    {
+        mPanel.get_gameplay().handle_mouse_input(&mEvent);
     }
 }

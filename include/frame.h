@@ -21,8 +21,9 @@ private:
 
     auto gameloop() -> void;
     auto handle_window_close_event() -> void;
-    auto handle_keyboard_input() -> void;
-    auto handle_mouse_click_event() -> void;
+    auto handle_menu_keyboard_input() -> void;
+    auto handle_menu_mouse_input() -> void;
+    auto handle_gameplay_mouse_input() -> void;
 
 public:
     CFrame();
