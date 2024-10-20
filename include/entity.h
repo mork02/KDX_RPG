@@ -6,7 +6,7 @@ class CEntity : public CAsset_loader
 {
 private:
     std::string mName;
-    unsigned mID;
+    // unsigned mID;
     int mHP, mMax_HP;
     int mBasic_DMG;
     int mBasic_DEF;
@@ -21,7 +21,7 @@ public:
     virtual ~CEntity() = default;
 
     virtual auto get_name() const -> std::string { return mName; }
-    virtual auto get_id() const -> unsigned { return mID; }
+    // virtual auto get_id() const -> unsigned { return mID; }
     virtual auto get_hp() const -> int { return mHP; }
     virtual auto get_max_hp() const -> int { return mMax_HP; }
     virtual auto get_basic_dmg() const -> int { return mBasic_DMG; }
@@ -45,4 +45,5 @@ public:
         mHP += HP;
         if (mHP > mMax_HP) mHP = mMax_HP;
     }
+    virtual auto handle_movement(float delta_time) -> void {}
 };
