@@ -4,6 +4,7 @@
 #include <memory>
 #include "tile_map_loader.h"
 #include "player.h"
+#include "warrior.h"
 #include "entity.h"
 #include "input.h"
 
@@ -15,8 +16,8 @@ private:
 	CInput& mInput;
 
 	std::unique_ptr<CPlayer> mPlayer;
+	std::unique_ptr<CWarrior> mWarrior;
 
-	const float mMove_Speed = 5.0f;
 	std::vector<CEntity*> mShown_Entities = {};
 
 	auto loadLevel() -> void;
