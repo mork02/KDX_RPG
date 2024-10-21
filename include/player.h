@@ -7,10 +7,9 @@
 class CPlayer : public CEntity, public CInventory
 {
 private:
-    CInput* mInput;
 
 public:
-    CPlayer(sf::RenderWindow& Window, CInput* Input);
+    CPlayer(sf::RenderWindow& Window);
 
-    auto handle_movement(float delta_time) -> void override;
+    auto handle_movement(float delta_time, CInput& Input) -> void override;
 };
