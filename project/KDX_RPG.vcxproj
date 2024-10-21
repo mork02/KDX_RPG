@@ -162,6 +162,7 @@
     <ClCompile Include="..\src\panel.cpp" />
     <ClCompile Include="..\src\player.cpp" />
     <ClCompile Include="..\src\potion.cpp" />
+    <ClCompile Include="..\src\warrior.cpp" />
     <ClCompile Include="..\src\weapon.cpp" />
     <ClCompile Include="..\src\text.cpp" />
     <ClCompile Include="..\src\asset_loader.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="..\include\panel.h" />
     <ClInclude Include="..\include\player.h" />
     <ClInclude Include="..\include\potion.h" />
+    <ClInclude Include="..\include\warrior.h" />
     <ClInclude Include="..\include\weapon.h" />
     <ClInclude Include="..\include\text.h" />
     <ClInclude Include="..\include\asset_loader.h" />
