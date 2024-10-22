@@ -4,9 +4,10 @@
 CText::CText(std::string Showing_Text, int Size,
     bool Hoverable,
     float X, float Y,
-    std::string Font_Path,
-    sf::Color Color)
-    : mShowing_Text(Showing_Text), mSize(Size), mHoverable(Hoverable), mX(X), mY(Y), mFont_Path(Font_Path), mColor(Color)
+    sf::Color Color,
+    std::string Font_Path
+    )
+    : mShowing_Text(Showing_Text), mSize(Size), mHoverable(Hoverable), mX(X), mY(Y), mColor(Color), mFont_Path(Font_Path)
 {
     mFont.loadFromFile(Font_Path);
     mText.setString(Showing_Text);

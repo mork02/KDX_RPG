@@ -23,8 +23,8 @@ public:
     CText(std::string Showing_Text, int Size, 
         bool Hoverable = false,
         float X = 0.f, float Y = 0.f,
-        std::string Font_Path = "assets/font/Minecraft.ttf",
-        sf::Color Color = sf::Color::White);
+        sf::Color Color = sf::Color::White,
+        std::string Font_Path = "assets/font/Minecraft.ttf");
 
     auto get_text() -> sf::Text&;
     auto get_Global_text_Bounds() -> sf::FloatRect;
