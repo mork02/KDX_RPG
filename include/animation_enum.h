@@ -1,16 +1,5 @@
 #pragma once
 
-enum class EPlayer_animation
-{
-	IDLE,
-	UP,
-	RIGHT,
-	DOWN,
-	LEFT,
-	JUMP
-
-};
-
 enum class EEntity_animation
 {
 	IDLE,
@@ -19,4 +8,3 @@ enum class EEntity_animation
 	DOWN,
 	LEFT
 };
-
