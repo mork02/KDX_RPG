@@ -2,7 +2,7 @@
 
 CPanel::CPanel(sf::RenderWindow& Window, CInput& Input)
     : mWindow(Window), mInput(Input),
-    mTitle_Screen(Window, Input),
+    mTitle_Screen(Window),
     mGameplay(Window, Input)
 {
     mPause_Menu = std::make_unique<CPause_menu>(Window);
@@ -15,7 +15,7 @@ auto CPanel::update() -> void
     switch (mScene)
     {
     case ESceneType::Title_screen:
-        mTitle_Screen.draw(*this);
+        mTitle_Screen.draw();
         break;
     case ESceneType::Gameplay:
         mGameplay.update();
