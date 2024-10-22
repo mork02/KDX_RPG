@@ -2,35 +2,33 @@
 
 CFrame::CFrame()
     : mWindow(sf::VideoMode(mWINDOW_WIDTH, mWINDOW_HEIGHT), mWINDOW_TITLE, sf::Style::Close),
-    mPanel(mWindow, mInput),
-    mInput(mWindow)
+    mPanel(mWindow, mInput)
 {
     // window.setMouseCursorVisible(false);
+    mWindow.setFramerateLimit(mFPS_Value);
     gameloop();
 }
 
 auto CFrame::gameloop() -> void
 {
-    mWindow.setFramerateLimit(mFPS_Value);
-
     while (mWindow.isOpen())
     {
         while (mWindow.pollEvent(mEvent))
         {
-            handle_window_close_event();
-            handle_menu_mouse_input();
-            handle_gameplay_mouse_input();
-            handle_menu_keyboard_input();
+            event_window_close();
+            event_menu_keyboard_input();
+            event_menu_mouse_input();
+            event_gameplay_mouse_input();
         }
 
         mWindow.clear(sf::Color::Red);
         mPanel.update();
-        mFPS_class.show_fps(mWindow);
+        mFPS.show_fps(mWindow);
         mWindow.display();
     }
 }
 
-auto CFrame::handle_window_close_event() -> void
+auto CFrame::event_window_close() -> void
 {
     if (mEvent.type == sf::Event::Closed)
     {
@@ -38,7 +36,7 @@ auto CFrame::handle_window_close_event() -> void
     }
 }
 
-auto CFrame::handle_menu_keyboard_input() -> void
+auto CFrame::event_menu_keyboard_input() -> void
 {
     if (mPanel.get_scene() == ESceneType::Gameplay) 
     {
@@ -72,13 +70,13 @@ auto CFrame::handle_menu_keyboard_input() -> void
     }
 }
 
-auto CFrame::handle_menu_mouse_input() -> void
+auto CFrame::event_menu_mouse_input() -> void
 {
     if (mEvent.type == sf::Event::MouseButtonPressed && mEvent.mouseButton.button == sf::Mouse::Left)
     {
         if (mPanel.get_scene() == ESceneType::Title_screen) 
         {
-            mPanel.get_title_screen().handle_click_event(mPanel);
+            mPanel.get_title_screen().handle_click_event(mPanel, mInput);
         }
 
         if (mPanel.get_scene() == ESceneType::Gameplay)
@@ -92,10 +90,10 @@ auto CFrame::handle_menu_mouse_input() -> void
     }
 }
 
-auto CFrame::handle_gameplay_mouse_input() -> void
+auto CFrame::event_gameplay_mouse_input() -> void
 {
     if (mPanel.get_scene() == ESceneType::Gameplay)
     {
-        mPanel.get_gameplay().handle_mouse_input(&mEvent);
+        mPanel.get_gameplay().handle_mouse_input();
     }
 }

@@ -8,8 +8,8 @@
 class CFrame
 {
 private:
-    const unsigned mWINDOW_WIDTH = 1920;
-    const unsigned mWINDOW_HEIGHT = 1080;
+    unsigned mWINDOW_WIDTH = 1080;
+    unsigned mWINDOW_HEIGHT = 720;
     const std::string mWINDOW_TITLE = "KDX_RPG";
     const int mFPS_Value = 60;
 
@@ -17,13 +17,13 @@ private:
     sf::Event mEvent;
     CPanel mPanel;
     CInput mInput;
-    CFPS mFPS_class;
+    CFPS mFPS;
 
     auto gameloop() -> void;
-    auto handle_window_close_event() -> void;
-    auto handle_menu_keyboard_input() -> void;
-    auto handle_menu_mouse_input() -> void;
-    auto handle_gameplay_mouse_input() -> void;
+    auto event_window_close() -> void;
+    auto event_menu_keyboard_input() -> void;
+    auto event_menu_mouse_input() -> void;
+    auto event_gameplay_mouse_input() -> void;
 
 public:
     CFrame();
