@@ -2,15 +2,14 @@
 #include "SFML/Graphics.hpp"
 #include "text.h"
 #include "asset_loader.h"
+#include "input.h"
 
 class CPanel;
-class CInput;
 
 class CTitle_Screen
 {
 private:
     sf::RenderWindow& mWindow;
-    CInput& mInput;
 
     std::string mBackground_Path = "assets/menu_assets/main_menu/background_new.png";
 
@@ -27,7 +26,8 @@ private:
     bool mIncreasing = true;
 
 private:
-    auto scale_background(CAsset_loader& asset) -> void;
+    auto scale_background() -> void;
+    auto scale_text() -> void;
     auto position_texts() -> void;
 
     auto animate_title_text() -> void;
@@ -36,9 +36,9 @@ private:
     auto get_text_components() -> std::vector<std::reference_wrapper<CText>>;
 
 public:
-    CTitle_Screen(sf::RenderWindow& Window, CInput& Input);
+    CTitle_Screen(sf::RenderWindow& Window);
 
-    auto handle_click_event(CPanel& panel) -> void;
-    auto draw(CPanel& panel) -> void;
+    auto handle_click_event(CPanel& panel, CInput& Input) -> void;
+    auto draw() -> void;
 
 };
