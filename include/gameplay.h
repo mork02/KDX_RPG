@@ -26,6 +26,6 @@ private:
 public:
 	Gameplay(sf::RenderWindow& Window, CInput& Input);
 
-	auto handle_mouse_input(sf::Event* current_event) -> void;
+	auto handle_mouse_input() -> void;
 	auto update() -> void;
 };

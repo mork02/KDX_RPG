@@ -20,7 +20,7 @@ auto Gameplay::loadLevel() -> void
 
 }
 
-auto Gameplay::handle_mouse_input(sf::Event* current_event) -> void
+auto Gameplay::handle_mouse_input() -> void
 {
 
 }
