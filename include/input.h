@@ -4,7 +4,6 @@
 class CInput
 {
 private:
-    sf::RenderWindow& mWindow;
     sf::Mouse mMouse;
     sf::Keyboard mKeyboard;
 
@@ -14,11 +13,11 @@ private:
     bool mIs_Mouse_Pressed = false;
 
 public:
-    CInput(sf::RenderWindow& Window);
+    CInput();
 
     // Getter
     auto get_mouse() const->sf::Mouse;
-    auto get_mouse_position() const->sf::Vector2f;
+    auto get_mouse_position(sf::RenderWindow& Window) const->sf::Vector2f;
 
     auto get_keyboard() const->sf::Keyboard;
 

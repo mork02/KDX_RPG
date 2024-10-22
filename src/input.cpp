@@ -1,8 +1,6 @@
 #include "input.h"
 
-CInput::CInput(sf::RenderWindow& Window)
-    : mWindow(Window)
-{}
+CInput::CInput() {}
 
 // Getter
 
@@ -11,9 +9,9 @@ auto CInput::get_mouse() const -> sf::Mouse
     return mMouse;
 }
 
-auto CInput::get_mouse_position() const -> sf::Vector2f
+auto CInput::get_mouse_position(sf::RenderWindow& Window) const -> sf::Vector2f
 {
-    return mWindow.mapPixelToCoords(mMouse.getPosition(mWindow));
+    return Window.mapPixelToCoords(mMouse.getPosition(Window));
 }
 
 auto CInput::get_keyboard() const -> sf::Keyboard
