@@ -3,24 +3,25 @@
 #include "panel.h"
 #include "input.h"
 
-CTitle_Screen::CTitle_Screen(sf::RenderWindow& Window) : 
-mWindow(Window),
-mBackground_Asset(Window, mBackground_Path, false),
-mTitle_Text("KDX RPG", 168, false),
-mNew_Game_Text("New Game", 136, true),
-mOptions_Text("Options", 136, true),
-mQuit_Text("Quit", 136, true)
+CTitle_Screen::CTitle_Screen(sf::RenderWindow& Window) :
+    mWindow(Window),
+    mBackground_Asset(Window, mBackground_Path, false),
+    mTitle_Text("KDX RPG", 168, false),
+    mNew_Game_Text("New Game", 136, true),
+    mOptions_Text("Options", 136, true),
+    mQuit_Text("Quit", 136, true)
 {
     scale_background();
     scale_text();
     position_texts();
 }
 
+
 auto CTitle_Screen::draw() -> void
 {
     for (auto const asset : get_asset_components())
     {
-        mWindow.draw(asset.get().get_sprite());
+        mWindow.draw(asset.get().get_Sprite());
     }
     
     animate_title_text();
@@ -34,9 +35,9 @@ auto CTitle_Screen::draw() -> void
 auto CTitle_Screen::scale_background() -> void
 {
     sf::Vector2u windowSize = mWindow.getSize();
-    sf::Vector2u textureSize = mBackground_Asset.get_texture().getSize();
+    sf::Vector2u textureSize = mBackground_Asset.get_Texture().getSize();
 
-    mBackground_Asset.get_sprite().setScale(static_cast<float>(windowSize.x) / textureSize.x, static_cast<float>(windowSize.y) / textureSize.y);
+    mBackground_Asset.get_Sprite().setScale(static_cast<float>(windowSize.x) / textureSize.x, static_cast<float>(windowSize.y) / textureSize.y);
 }
 
 auto CTitle_Screen::scale_text() -> void
@@ -93,16 +94,15 @@ auto CTitle_Screen::handle_click_event(CPanel& panel, CInput& Input) -> void
 {
     sf::Vector2f mouse_pos = Input.get_mouse_position(mWindow);
 
-    if (mNew_Game_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
+    if (mNew_Game_Text.get_Global_text_Bounds().contains(mouse_pos.x, mouse_pos.y))
     {
         panel.set_scene(ESceneType::Gameplay);
     }
-    else if (mOptions_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
+    else if (mOptions_Text.get_Global_text_Bounds().contains(mouse_pos.x, mouse_pos.y))
     {
-        // TODO: add some logic !
         std::cout << "Options clicked!" << std::endl;
     }
-    else if (mQuit_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
+    else if (mQuit_Text.get_Global_text_Bounds().contains(mouse_pos.x, mouse_pos.y))
     {
         mWindow.close();
     }

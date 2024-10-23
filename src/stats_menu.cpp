@@ -13,7 +13,7 @@ auto CStats_menu::draw() -> void
 
     if (mVisible)
     {
-        mWindow.draw(mBackground_Asset.get_sprite());
+        mWindow.draw(mBackground_Asset.get_Sprite());
     }
 }
 

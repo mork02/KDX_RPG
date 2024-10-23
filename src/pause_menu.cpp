@@ -55,7 +55,7 @@ auto CPause_menu::draw() -> void
 {
     if (mVisible) 
     {
-        mWindow.draw(mBackground_Asset.get_sprite());
+        mWindow.draw(mBackground_Asset.get_Sprite());
 
         for (const auto& text : get_text_components()) 
         {
