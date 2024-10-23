@@ -7,7 +7,7 @@ private:
     sf::Mouse mMouse;
     sf::Keyboard mKeyboard;
 
-    float mMovement_Speed = 50.0f;
+    float mMovement_Speed = 150.0f;
 
     bool mIs_Key_Pressed = false;
     bool mIs_Mouse_Pressed = false;
