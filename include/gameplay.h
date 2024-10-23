@@ -3,7 +3,6 @@
 #include <iostream>
 #include <memory>
 #include "tile_map_loader.h"
-#include "player.h"
 #include "warrior.h"
 #include "entity.h"
 #include "input.h"
@@ -15,7 +14,6 @@ private:
 	sf::Clock mClock;
 	CInput& mInput;
 
-	std::unique_ptr<CPlayer> mPlayer;
 	std::unique_ptr<CWarrior> mWarrior;
 
 	std::vector<CEntity*> mShown_Entities = {};

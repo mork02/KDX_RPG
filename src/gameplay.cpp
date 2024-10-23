@@ -1,36 +1,35 @@
 #include "gameplay.h"
 
-Gameplay::Gameplay(sf::RenderWindow& Window, CInput& Input) :
-    mWindow(Window), mInput(Input)
+Gameplay::Gameplay(sf::RenderWindow& Window, CInput& Input)
+    : mWindow(Window), mInput(Input)
 {
-    mPlayer = std::make_unique<CPlayer>(Window);
     mWarrior = std::make_unique<CWarrior>(Window);
-    loadLevel();
     loadEntities();
-}
-
-auto Gameplay::loadEntities() -> void
-{
-    // mShown_Entities.push_back(mPlayer.get());
-    mShown_Entities.push_back(mWarrior.get());
 }
 
 auto Gameplay::loadLevel() -> void
 {
+    // TODO: load level
+}
 
+auto Gameplay::loadEntities() -> void
+{
+    mShown_Entities.reserve(10);
+    mShown_Entities.push_back(mWarrior.get());
 }
 
 auto Gameplay::handle_mouse_input() -> void
 {
-
+    // TODO: add mouse input
 }
 
 auto Gameplay::update() -> void
 {
     float delta_time = mClock.restart().asSeconds();
-    for (auto& entities : mShown_Entities)
+
+    for (auto& entity : mShown_Entities)
     {
-        entities->draw();
-        entities->handle_movement(delta_time, mInput);
+        entity->handle_movement(delta_time, mInput);
+        entity->draw();
     }
 }
