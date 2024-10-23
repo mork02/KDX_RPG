@@ -4,7 +4,6 @@ CFrame::CFrame()
     : mWindow(sf::VideoMode(mWINDOW_WIDTH, mWINDOW_HEIGHT), mWINDOW_TITLE, sf::Style::Close),
     mPanel(mWindow, mInput)
 {
-    // window.setMouseCursorVisible(false);
     mWindow.setFramerateLimit(mFPS_Value);
     gameloop();
 }
@@ -15,10 +14,7 @@ auto CFrame::gameloop() -> void
     {
         while (mWindow.pollEvent(mEvent))
         {
-            event_window_close();
-            event_menu_keyboard_input();
-            event_menu_mouse_input();
-            event_gameplay_mouse_input();
+            handle_input_events();
         }
 
         mWindow.clear(sf::Color::Red);
@@ -28,72 +24,81 @@ auto CFrame::gameloop() -> void
     }
 }
 
-auto CFrame::event_window_close() -> void
+auto CFrame::handle_input_events() -> void
 {
     if (mEvent.type == sf::Event::Closed)
     {
         mWindow.close();
     }
-}
 
-auto CFrame::event_menu_keyboard_input() -> void
-{
-    if (mPanel.get_scene() == ESceneType::Gameplay) 
+    switch (mPanel.get_scene())
     {
-        // Escape | Pause menu
-        if (mEvent.type == sf::Event::KeyPressed && mInput.get_keyboard().isKeyPressed(mInput.get_keyboard().Escape)) 
-        {
-            if (mPanel.get_current_menu() == &mPanel.get_pause_menu()) 
-            {
-                mPanel.set_current_menu(nullptr);
-            }
-            else 
-            {
-                mPanel.set_current_menu(&mPanel.get_pause_menu());
-            }
-        }
-
-        // G | Stats menu
-        if (mPanel.get_current_menu() != &mPanel.get_pause_menu()) {
-            if (mEvent.type == sf::Event::KeyPressed && mInput.get_keyboard().isKeyPressed(mInput.get_keyboard().G)) 
-            {
-                if (mPanel.get_current_menu() == &mPanel.get_stats_menu()) 
-                {
-                    mPanel.set_current_menu(nullptr);
-                }
-                else 
-                {
-                    mPanel.set_current_menu(&mPanel.get_stats_menu());
-                }
-            }
-        }
+    case ESceneType::Title_screen:
+        handle_title_screen_input();
+        break;
+    case ESceneType::Gameplay:
+        handle_gameplay_input();
+        break;
+    default:
+        break;
     }
 }
 
-auto CFrame::event_menu_mouse_input() -> void
+auto CFrame::handle_title_screen_input() -> void
 {
     if (mEvent.type == sf::Event::MouseButtonPressed && mEvent.mouseButton.button == sf::Mouse::Left)
     {
-        if (mPanel.get_scene() == ESceneType::Title_screen) 
-        {
-            mPanel.get_title_screen().handle_click_event(mPanel, mInput);
-        }
+        mPanel.get_title_screen().handle_click_event(mPanel, mInput);
+    }
+}
 
-        if (mPanel.get_scene() == ESceneType::Gameplay)
+auto CFrame::handle_gameplay_input() -> void
+{
+    if (mEvent.type == sf::Event::KeyPressed)
+    {
+        if (mInput.get_keyboard().isKeyPressed(mInput.get_keyboard().Escape))
         {
-            // Gameplay menus
-            if (mPanel.get_current_menu()) 
-            {
-                mPanel.get_current_menu()->handle_click_event(mPanel);
-            }
+            toggle_pause_menu();
+        }
+        else if (mInput.get_keyboard().isKeyPressed(mInput.get_keyboard().G))
+        {
+            toggle_stats_menu();
+        }
+    }
+
+    if (mEvent.type == sf::Event::MouseButtonPressed && mEvent.mouseButton.button == sf::Mouse::Left)
+    {
+        if (mPanel.get_current_menu())
+        {
+            mPanel.get_current_menu()->handle_click_event(mPanel);
+        }
+        else
+        {
+            mPanel.get_gameplay().handle_mouse_input();
         }
     }
 }
 
-auto CFrame::event_gameplay_mouse_input() -> void
+auto CFrame::toggle_pause_menu() -> void
 {
-    if (mPanel.get_scene() == ESceneType::Gameplay)
+    if (mPanel.get_current_menu() == &mPanel.get_pause_menu())
     {
-        mPanel.get_gameplay().handle_mouse_input();
+        mPanel.set_current_menu(nullptr);
+    }
+    else
+    {
+        mPanel.set_current_menu(&mPanel.get_pause_menu());
+    }
+}
+
+auto CFrame::toggle_stats_menu() -> void
+{
+    if (mPanel.get_current_menu() == &mPanel.get_stats_menu())
+    {
+        mPanel.set_current_menu(nullptr);
+    }
+    else
+    {
+        mPanel.set_current_menu(&mPanel.get_stats_menu());
     }
 }
