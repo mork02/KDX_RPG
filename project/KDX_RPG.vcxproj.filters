@@ -72,9 +72,6 @@
     <ClCompile Include="..\src\npc.cpp">
       <Filter>Source Files\EntitieStuff</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\player.cpp">
-      <Filter>Source Files\EntitieStuff</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\item.cpp">
       <Filter>Source Files\EntitieStuff\ItemStuff</Filter>
     </ClCompile>
@@ -141,9 +138,6 @@
       <Filter>Header Files\EntitieStuff</Filter>
     </ClInclude>
     <ClInclude Include="..\include\npc.h">
-      <Filter>Header Files\EntitieStuff</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\player.h">
       <Filter>Header Files\EntitieStuff</Filter>
     </ClInclude>
     <ClInclude Include="..\include\armor.h">
