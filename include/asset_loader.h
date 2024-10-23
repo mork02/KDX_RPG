@@ -5,33 +5,27 @@
 #include "animation_loader.h"
 #include "text.h"
 
-class CAsset_loader : public CAnimation_loader
+class CAsset_loader : private CAnimation_loader
 {
 private:
     sf::RenderWindow& mWindow;
     std::string mPath;
     sf::Texture mTexture;
     sf::Sprite mSprite;
-    CText mCoordinates;
 
     float mX, mY;
-    float mScale = 2.0f;
+    unsigned mFrame_Width, mFrame_Height;
+    float mScale = 4.0f;
     bool mIs_Animated;
-    bool mDebug_Mode;
-
-    auto debug_Coordinates() -> void;
-    auto debug_Box() -> void;
-    auto debug() -> void;
 
     auto update_Coordinates() -> void;
 
 public:
-    CAsset_loader(sf::RenderWindow& Window, const std::string& Path, bool Is_Animated = false, bool Debug_Mode = false);
+    CAsset_loader(sf::RenderWindow& Window, const std::string& Path, bool Is_Animated = false, unsigned Row = 0, unsigned Frame_Length = 0, unsigned Frame_Width = 32, unsigned Frame_Height = 32);
 
-    auto get_texture()  -> sf::Texture&;
-    auto get_sprite()   -> sf::Sprite&;
+    auto get_Texture()  -> sf::Texture&;
+    auto get_Sprite()   -> sf::Sprite&;
     auto get_Global_sprite_bounds() -> sf::FloatRect;
-    auto get_Local_sprite_bounds()  -> sf::FloatRect;
 
     auto set_scale(float value) -> void;
     auto set_Position(float x, float y) -> void;
