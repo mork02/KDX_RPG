@@ -11,7 +11,7 @@ CPanel::CPanel(sf::RenderWindow& Window, CInput& Input)
 }
 
 auto CPanel::update() -> void
-{ 
+{
     switch (mScene)
     {
     case ESceneType::Title_screen:
@@ -19,12 +19,12 @@ auto CPanel::update() -> void
         break;
     case ESceneType::Gameplay:
         mGameplay.update();
-        if (mCurrent_Menu) { mCurrent_Menu->draw(); }
         break;
     case ESceneType::Game_Over:
         break;
     }
 
+    if (mCurrent_Menu) mCurrent_Menu->draw();
 }
 
 auto CPanel::get_stats_menu() -> CStats_menu&
