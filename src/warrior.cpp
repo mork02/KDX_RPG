@@ -1,7 +1,7 @@
 #include "warrior.h"
 
-CWarrior::CWarrior(sf::RenderWindow& Window, std::string Asset_Path, bool Is_Animated, bool Debug_Mode)
-	: CEntity(Window, Asset_Path, Is_Animated, Debug_Mode,
+CWarrior::CWarrior(sf::RenderWindow& Window, std::string Asset_Path, bool Is_Animated)
+	: CEntity(Window, Asset_Path, Is_Animated, (unsigned)EEntity_State::IDLE, (unsigned)EEntity_Length::IDLE,
 		"Warrior", 100, 100, 10, 10)
 {}
 
