@@ -14,7 +14,8 @@ CAsset_loader::CAsset_loader(sf::RenderWindow& Window, const std::string& Path, 
 
     mSprite.setTexture(mTexture);
     mSprite.setPosition(mX, mY);
-    mSprite.setScale(mScale, mScale);
+
+    adjust_scale_to_window();
 
     if (mIs_Animated)
     {
@@ -25,6 +26,12 @@ CAsset_loader::CAsset_loader(sf::RenderWindow& Window, const std::string& Path, 
 
         mSprite.setTextureRect(get_frame_rect(0));
     }
+}
+
+auto CAsset_loader::adjust_scale_to_window() -> void
+{
+    // TODO: add logic to scale asset to window with resolution
+    // mWindow.getSize();
 }
 
 auto CAsset_loader::center_asset() -> void

@@ -30,6 +30,7 @@ public:
     auto set_scale(float value) -> void;
     auto set_Position(float x, float y) -> void;
 
+    auto adjust_scale_to_window() -> void;
     auto center_asset() -> void;
     auto draw() -> void;
 };
