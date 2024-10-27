@@ -4,8 +4,8 @@
 COption_menu::COption_menu(sf::RenderWindow& Window)
 	: CMenu(Window, EMenuType::Options),
 	mBackground_Asset(Window, mBackground_Path),
-	mTitle_Text("Options", 109, false),
-	mBack_Text("Back", 89, true)
+	mTitle_Text(Window, "Options", 109, false),
+	mBack_Text(Window, "Back", 89, true)
 {
 	mBackground_Asset.set_scale(mBackground_Scale);
 	mBackground_Asset.center_asset();
@@ -46,7 +46,7 @@ auto COption_menu::draw() -> void
 
 		for (const auto& text : get_text_components())
 		{
-			text.get().draw_text(mWindow);
+			text.get().draw_text();
 		}
 	}
 }

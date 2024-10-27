@@ -4,10 +4,10 @@
 CPause_menu::CPause_menu(sf::RenderWindow& Window)
     : CMenu(Window, EMenuType::Pause),
     mBackground_Asset(Window, mBackground_Path),
-    mTitle_Text("Pause", 109, false),
-    mContinue_Text("Continue", 89, true),
-    mOptions_Text("Options", 89, true),
-    mBack_To_Title_Text("Back to Title", 89, true)
+    mTitle_Text(Window, "Pause", 109, false),
+    mContinue_Text(Window, "Continue", 89, true),
+    mOptions_Text(Window, "Options", 89, true),
+    mBack_To_Title_Text(Window, "Back to Title", 89, true)
 {
     mBackground_Asset.set_scale(mBackground_Scale);
     mBackground_Asset.center_asset();
@@ -59,7 +59,7 @@ auto CPause_menu::draw() -> void
 
         for (const auto& text : get_text_components()) 
         {
-            text.get().draw_text(mWindow);
+            text.get().draw_text();
         }
     }
 }

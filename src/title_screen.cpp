@@ -6,10 +6,10 @@
 CTitle_Screen::CTitle_Screen(sf::RenderWindow& Window) :
     mWindow(Window),
     mBackground_Asset(Window, mBackground_Path, false),
-    mTitle_Text("KDX RPG", 168, false),
-    mNew_Game_Text("New Game", 136, true),
-    mOptions_Text("Options", 136, true),
-    mQuit_Text("Quit", 136, true)
+    mTitle_Text(Window, "KDX RPG", 168, false),
+    mNew_Game_Text(Window, "New Game", 136, true),
+    mOptions_Text(Window, "Options", 136, true),
+    mQuit_Text(Window, "Quit", 136, true)
 {
     scale_background();
     scale_text();
@@ -28,7 +28,7 @@ auto CTitle_Screen::draw() -> void
 
     for (auto const& text : get_text_components())
     {
-        text.get().draw_text(mWindow);
+        text.get().draw_text();
     }
 }
 
