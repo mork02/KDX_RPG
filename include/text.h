@@ -5,6 +5,7 @@
 class CText
 {
 private:
+    sf::RenderWindow& mWindow;
     std::string mShowing_Text;
     int mSize;
     float mX;
@@ -17,10 +18,12 @@ private:
     bool mHoverable;
 
 private:
-    auto update_hover_state(sf::RenderWindow& window) -> void;
+    auto update_hover_state() -> void;
 
 public:
-    CText(std::string Showing_Text, int Size, 
+    CText(
+        sf::RenderWindow& Window,
+        std::string Showing_Text, int Size, 
         bool Hoverable = false,
         float X = 0.f, float Y = 0.f,
         sf::Color Color = sf::Color::White,
@@ -33,5 +36,5 @@ public:
     auto set_text(std::string new_text) -> void;
     auto set_position(float value_x, float value_y) -> void;
 
-    auto draw_text(sf::RenderWindow& window) -> void;
+    auto draw_text() -> void;
 };
