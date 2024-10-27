@@ -20,7 +20,10 @@ protected:
     bool mVisible;
 
 public:
-    CMenu(sf::RenderWindow& Window, EMenuType Menu_Type) : mWindow(Window), mMenu_Type(Menu_Type), mVisible(false) {}
+    CMenu(sf::RenderWindow& Window, EMenuType Menu_Type) : mWindow(Window), mMenu_Type(Menu_Type), mVisible(false) 
+    {
+    // TODO: add the whole render asset / asset_Loader into here, beacuase every menu has a asset/png
+    }
     virtual ~CMenu() = default;
 
     virtual auto get_visible() const -> bool { return mVisible; };
