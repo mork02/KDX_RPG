@@ -8,7 +8,7 @@ class CWarrior : public CEntity
 private:
 
 public:
-	CWarrior(sf::RenderWindow& Window, std::string Asset_Path = "assets/character_assets/AnimationSheet_Character.png", bool Is_Animated = true);
+	CWarrior(sf::RenderWindow& Window);
 
 	auto handle_movement(float delta_time, CInput& Input) -> void override;
 };

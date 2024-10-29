@@ -1,16 +1,15 @@
 #include "pause_menu.h"
 #include "panel.h"
 
-CPause_menu::CPause_menu(sf::RenderWindow& Window)
-    : CMenu(Window, EMenuType::Pause),
-    mBackground_Asset(Window, mBackground_Path),
+CPause_menu::CPause_menu(sf::RenderWindow& Window) : 
+    CMenu(Window, EMenuType::Pause),
     mTitle_Text(Window, "Pause", 109, false),
     mContinue_Text(Window, "Continue", 89, true),
     mOptions_Text(Window, "Options", 89, true),
     mBack_To_Title_Text(Window, "Back to Title", 89, true)
 {
-    mBackground_Asset.set_scale(mBackground_Scale);
-    mBackground_Asset.center_asset();
+    mAsset.init(mPath);
+    mAsset.center_asset();
     set_text_position();
 }
 
@@ -53,9 +52,9 @@ auto CPause_menu::set_text_position() -> void
 
 auto CPause_menu::draw() -> void
 {
-    if (mVisible) 
+    if (get_visible()) 
     {
-        mWindow.draw(mBackground_Asset.get_Sprite());
+        mWindow.draw(mAsset.get_Sprite());
 
         for (const auto& text : get_text_components()) 
         {

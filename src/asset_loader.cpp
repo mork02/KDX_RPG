@@ -1,15 +1,17 @@
 #include "asset_loader.h"
 
-CAsset_loader::CAsset_loader(sf::RenderWindow& Window, const std::string& Path, bool Is_Animated, unsigned Row, unsigned Frame_Length, unsigned Frame_Width, unsigned Frame_Height) :
+CAsset_loader::CAsset_loader(sf::RenderWindow& Window) :
     mWindow(Window), CAnimation_loader(),
-    mPath(Path),
-    mIs_Animated(Is_Animated),
-    mX(0), mY(0),
-    mFrame_Width(Frame_Width), mFrame_Height(Frame_Height)
+    mX(0), mY(0)
+{}
+
+auto CAsset_loader::init(std::string Path, bool Is_Animated, unsigned Row, unsigned Frame_Length, unsigned Frame_Width, unsigned Frame_Height) -> void
 {
-    if (!mTexture.loadFromFile(mPath) && mIs_Animated)
+    mIs_Animated = Is_Animated;
+
+    if (!mTexture.loadFromFile(Path))
     {
-        std::cerr << "Error loading texture from " << mPath << std::endl;
+        std::cerr << "Error loading texture from " << Path << std::endl;
     }
 
     mSprite.setTexture(mTexture);
@@ -17,12 +19,12 @@ CAsset_loader::CAsset_loader(sf::RenderWindow& Window, const std::string& Path, 
 
     adjust_scale_to_window();
 
-    if (mIs_Animated)
+    if (Is_Animated)
     {
         if (Row == 0) Row = 1;
         if (Frame_Length == 0) Frame_Length = 1;
 
-        setup_animation(mTexture, Row, Frame_Length, mFrame_Width, mFrame_Height);
+        setup_animation(mTexture, Row, Frame_Length, Frame_Width, Frame_Height);
 
         mSprite.setTextureRect(get_frame_rect(0));
     }

@@ -1,14 +1,13 @@
 #include "option_menu.h"
 #include "panel.h"
 
-COption_menu::COption_menu(sf::RenderWindow& Window)
-	: CMenu(Window, EMenuType::Options),
-	mBackground_Asset(Window, mBackground_Path),
+COption_menu::COption_menu(sf::RenderWindow& Window) : 
+	CMenu(Window, EMenuType::Options),
 	mTitle_Text(Window, "Options", 109, false),
 	mBack_Text(Window, "Back", 89, true)
 {
-	mBackground_Asset.set_scale(mBackground_Scale);
-	mBackground_Asset.center_asset();
+	mAsset.init(mPath);
+	mAsset.center_asset();
 	set_text_position();
 }
 
@@ -40,9 +39,9 @@ auto COption_menu::set_text_position() -> void
 
 auto COption_menu::draw() -> void
 {
-	if (mVisible)
+	if (get_visible())
 	{
-		mWindow.draw(mBackground_Asset.get_Sprite());
+		mWindow.draw(mAsset.get_Sprite());
 
 		for (const auto& text : get_text_components())
 		{

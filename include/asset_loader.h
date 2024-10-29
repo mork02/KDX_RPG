@@ -9,19 +9,18 @@ class CAsset_loader : private CAnimation_loader
 {
 private:
     sf::RenderWindow& mWindow;
-    std::string mPath;
     sf::Texture mTexture;
     sf::Sprite mSprite;
 
-    float mX, mY;
-    unsigned mFrame_Width, mFrame_Height;
-    float mScale = 4.0f;
     bool mIs_Animated;
+    float mX, mY;
 
     auto update_Coordinates() -> void;
 
 public:
-    CAsset_loader(sf::RenderWindow& Window, const std::string& Path, bool Is_Animated = false, unsigned Row = 0, unsigned Frame_Length = 0, unsigned Frame_Width = 32, unsigned Frame_Height = 32);
+    CAsset_loader(sf::RenderWindow& Window);
+
+    auto init(std::string Path, bool Is_Animated = false, unsigned Row = 0, unsigned Frame_Length = 0, unsigned Frame_Width = 32, unsigned Frame_Height = 32) -> void;
 
     auto get_Texture()  -> sf::Texture&;
     auto get_Sprite()   -> sf::Sprite&;

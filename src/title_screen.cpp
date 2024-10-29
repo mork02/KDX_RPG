@@ -5,12 +5,13 @@
 
 CTitle_Screen::CTitle_Screen(sf::RenderWindow& Window) :
     mWindow(Window),
-    mBackground_Asset(Window, mBackground_Path, false),
+    mBackground_Asset(Window),
     mTitle_Text(Window, "KDX RPG", 168, false),
     mNew_Game_Text(Window, "New Game", 136, true),
     mOptions_Text(Window, "Options", 136, true),
     mQuit_Text(Window, "Quit", 136, true)
 {
+    mBackground_Asset.init(mBackground_Path);
     scale_background();
     scale_text();
     position_texts();
