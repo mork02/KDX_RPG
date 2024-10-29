@@ -29,9 +29,9 @@ auto CInput::get_isMousePressed() const -> bool
     return mIs_Mouse_Pressed;
 }
 
-auto CInput::get_Movement_Speed() const -> float
+auto CInput::get_Movement_Speed(float delta_time) const -> float
 {
-    return mMovement_Speed;
+    return mMovement_Speed * delta_time;
 }
 
 // Setter
