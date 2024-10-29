@@ -18,7 +18,7 @@ private:
 
 public:
     CNPC
-    (sf::RenderWindow& Window, std::string Path, bool IsAnimated, unsigned Row, unsigned Frame_Length,
+    (sf::RenderWindow& Window,
         std::string Name, int HP, int MaxHP, int BasicDMG, int BasicDEF,
         Zone Zone
     );
