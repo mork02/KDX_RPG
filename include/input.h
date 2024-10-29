@@ -24,7 +24,7 @@ public:
     auto get_isKeyPressed() const -> bool;
     auto get_isMousePressed() const -> bool;
 
-    auto get_Movement_Speed() const -> float;
+    auto get_Movement_Speed(float delta_time) const -> float;
 
     // Setter
     auto set_isKeyPressed(bool value) -> void;
