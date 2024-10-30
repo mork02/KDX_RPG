@@ -35,6 +35,8 @@ auto CAnimation_loader::get_total_frames() -> unsigned
     return mFrames.size();
 }
 
+// TODO: fix animations. Doesnt go back to frame 0
+
 auto CAnimation_loader::update(sf::Sprite& sprite) -> void
 {
     if (mFrame_Timer.getElapsedTime().asMilliseconds() >= mFrame_Duration)
