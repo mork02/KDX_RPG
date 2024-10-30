@@ -2,10 +2,10 @@
 #include "SFML/Graphics.hpp"
 #include <iostream>
 #include <memory>
-#include "tile_map_loader.h"
 #include "warrior.h"
 #include "entity.h"
 #include "input.h"
+#include "camera.h"
 
 class Gameplay
 {
@@ -13,6 +13,8 @@ private:
 	sf::RenderWindow& mWindow;
 	sf::Clock mClock;
 	CInput& mInput;
+	CCamera mCamera;
+	CAsset_loader mBackground;
 
 	std::unique_ptr<CWarrior> mWarrior;
 
