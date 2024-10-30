@@ -16,7 +16,7 @@ private:
 
 	std::unique_ptr<CWarrior> mWarrior;
 
-	std::vector<CEntity*> mShown_Entities = {};
+	std::vector<CEntity*> mEntities;
 
 	auto loadLevel() -> void;
 	auto loadEntities() -> void;
