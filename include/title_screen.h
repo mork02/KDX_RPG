@@ -13,7 +13,7 @@ private:
 
     std::string mBackground_Path = "assets/menu_assets/main_menu/background_new.png";
 
-    CAsset_loader mBackground_Asset;
+    CAsset_loader mAsset;
 
     CText mTitle_Text;
     CText mNew_Game_Text;
@@ -25,13 +25,9 @@ private:
     float mFade_Increment = 2.0f;
     bool mIncreasing = true;
 
-private:
     auto scale_background() -> void;
-    auto scale_text() -> void;
     auto position_texts() -> void;
-
     auto animate_title_text() -> void;
-
     auto get_asset_components() -> std::vector<std::reference_wrapper<CAsset_loader>>;
     auto get_text_components() -> std::vector<std::reference_wrapper<CText>>;
 

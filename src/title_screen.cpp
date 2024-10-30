@@ -5,15 +5,14 @@
 
 CTitle_Screen::CTitle_Screen(sf::RenderWindow& Window) :
     mWindow(Window),
-    mBackground_Asset(Window),
+    mAsset(Window),
     mTitle_Text(Window, "KDX RPG", 168, false),
     mNew_Game_Text(Window, "New Game", 136, true),
     mOptions_Text(Window, "Options", 136, true),
     mQuit_Text(Window, "Quit", 136, true)
 {
-    mBackground_Asset.init(mBackground_Path);
+    mAsset.init(mBackground_Path);
     scale_background();
-    scale_text();
     position_texts();
 }
 
@@ -36,14 +35,9 @@ auto CTitle_Screen::draw() -> void
 auto CTitle_Screen::scale_background() -> void
 {
     sf::Vector2u windowSize = mWindow.getSize();
-    sf::Vector2u textureSize = mBackground_Asset.get_Texture().getSize();
+    sf::Vector2u textureSize = mAsset.get_Texture().getSize();
 
-    mBackground_Asset.get_Sprite().setScale(static_cast<float>(windowSize.x) / textureSize.x, static_cast<float>(windowSize.y) / textureSize.y);
-}
-
-auto CTitle_Screen::scale_text() -> void
-{
-    // TODO: add scale text stuff
+    mAsset.get_Sprite().setScale(static_cast<float>(windowSize.x) / textureSize.x, static_cast<float>(windowSize.y) / textureSize.y);
 }
 
 auto CTitle_Screen::position_texts() -> void
@@ -112,7 +106,7 @@ auto CTitle_Screen::handle_click_event(CPanel& panel, CInput& Input) -> void
 auto CTitle_Screen::get_asset_components() -> std::vector<std::reference_wrapper<CAsset_loader>>
 {
     return {
-        { std::ref(mBackground_Asset) }
+        { std::ref(mAsset) }
     };
 }
 
