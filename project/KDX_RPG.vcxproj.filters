@@ -123,6 +123,9 @@
     <ClCompile Include="..\src\warrior.cpp">
       <Filter>Source Files\EntitieStuff</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\camera.cpp">
+      <Filter>Source Files\Window\Controller</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\panel.h">
@@ -199,6 +202,9 @@
     </ClInclude>
     <ClInclude Include="..\include\warrior.h">
       <Filter>Header Files\EntitieStuff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\camera.h">
+      <Filter>Header Files\Window\Controller</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
