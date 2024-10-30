@@ -8,8 +8,9 @@ private:
     std::vector<sf::IntRect> mFrames;
 
     unsigned int mCurrent_Frame = 0;
-    float mFrame_Duration = 250.f;
+    float mFrame_Duration = .25f;
     sf::Clock mFrame_Timer;
+    // TODO: add frame_duration changer for handling animation speed like walking and running
 
 protected:
     CAnimation_loader();
@@ -18,4 +19,5 @@ protected:
     auto get_frame_rect(unsigned frame_index) -> sf::IntRect;
     auto get_total_frames() -> unsigned;
     auto update(sf::Sprite& sprite) -> void;
+
 };

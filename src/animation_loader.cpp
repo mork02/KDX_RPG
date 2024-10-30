@@ -38,11 +38,11 @@ auto CAnimation_loader::update(sf::Sprite& sprite) -> void
 {
     if (mFrame_Timer.getElapsedTime() >= sf::seconds(mFrame_Duration))
     {
-        // std::cout << "1. Current Frame -> " << mCurrent_Frame << std::endl;
+        std::cout << "1. Current Frame -> " << mCurrent_Frame << std::endl;
         mCurrent_Frame = (mCurrent_Frame + 1) % get_total_frames();
-        // std::cout << "2. Next Frame -> " << mCurrent_Frame << std::endl;
+        std::cout << "2. Next Frame -> " << mCurrent_Frame << std::endl;
         sprite.setTextureRect(get_frame_rect(mCurrent_Frame));
-        // std::cout << "3. Current Timer -> " << (float) mFrame_Timer.getElapsedTime().asSeconds() << std::endl;
+        std::cout << "3. Current Timer -> " << (float) mFrame_Timer.getElapsedTime().asSeconds() << std::endl;
         mFrame_Timer.restart();
     }
 }
