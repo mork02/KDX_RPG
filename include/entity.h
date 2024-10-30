@@ -25,13 +25,13 @@ public:
 
     virtual ~CEntity() = default;
 
-    auto get_name() const -> std::string { return mName; }
+    auto get_name() -> std::string& { return mName; }
     // virtual auto get_id() const -> unsigned { return mID; }
-    auto get_hp() const -> int { return mHP; }
-    auto get_max_hp() const -> int { return mMax_HP; }
-    auto get_basic_dmg() const -> int { return mBasic_DMG; }
-    auto get_basic_defensive() const -> int { return mBasic_DEF; }
-    auto get_Asset() const -> CAsset_loader { return mAsset; }
+    auto get_hp() -> int& { return mHP; }
+    auto get_max_hp() -> int& { return mMax_HP; }
+    auto get_basic_dmg() -> int& { return mBasic_DMG; }
+    auto get_basic_defensive() -> int& { return mBasic_DEF; }
+    auto get_Asset() -> CAsset_loader& { return mAsset; }
 
     auto set_name(std::string Name) -> void { mName = Name; }
     auto set_hp(int HP) -> void { mHP = HP; }
