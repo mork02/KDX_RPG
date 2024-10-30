@@ -14,8 +14,8 @@ auto Gameplay::loadLevel() -> void
 
 auto Gameplay::loadEntities() -> void
 {
-    mShown_Entities.reserve(10);
-    mShown_Entities.push_back(mWarrior.get());
+    mEntities.reserve(10);
+    mEntities.push_back(mWarrior.get());
 }
 
 auto Gameplay::handle_mouse_input() -> void
@@ -27,9 +27,9 @@ auto Gameplay::update() -> void
 {
     float delta_time = mClock.restart().asSeconds();
 
-    for (auto& entity : mShown_Entities)
+    for (auto& entity : mEntities)
     {
         entity->handle_movement(delta_time, mInput);
-        entity->draw();
+        entity->get_Asset().draw();
     }
 }
