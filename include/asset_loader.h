@@ -13,9 +13,6 @@ private:
     sf::Sprite mSprite;
 
     bool mIs_Animated;
-    float mX, mY;
-
-    auto update_Coordinates() -> void;
 
 public:
     CAsset_loader(sf::RenderWindow& Window);
