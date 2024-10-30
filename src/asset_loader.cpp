@@ -1,8 +1,7 @@
 #include "asset_loader.h"
 
 CAsset_loader::CAsset_loader(sf::RenderWindow& Window) :
-    mWindow(Window), CAnimation_loader(),
-    mX(0), mY(0)
+    mWindow(Window), CAnimation_loader()
 {}
 
 auto CAsset_loader::init(std::string Path, bool Is_Animated, unsigned Row, unsigned Frame_Length, unsigned Frame_Width, unsigned Frame_Height) -> void
@@ -15,7 +14,6 @@ auto CAsset_loader::init(std::string Path, bool Is_Animated, unsigned Row, unsig
     }
 
     mSprite.setTexture(mTexture);
-    mSprite.setPosition(mX, mY);
 
     adjust_scale_to_window();
 
@@ -45,17 +43,10 @@ auto CAsset_loader::center_asset() -> void
     mSprite.setPosition(window_size.x / 2.0f, window_size.y / 2.0f);
 }
 
-auto CAsset_loader::update_Coordinates() -> void
-{
-    mX = get_Global_sprite_bounds().getPosition().x;
-    mY = get_Global_sprite_bounds().getPosition().y;
-}
-
 auto CAsset_loader::draw() -> void
 {
-    if (mIs_Animated) update(mSprite);
+    if (mIs_Animated)   update(mSprite);
 
-    update_Coordinates();
     mWindow.draw(mSprite);
 }
 
