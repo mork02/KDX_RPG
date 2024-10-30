@@ -3,19 +3,21 @@
 #include "asset_loader.h"
 #include "input.h"
 
-class CEntity : public CAsset_loader
+class CEntity
 {
-private:
+protected:
     std::string mName;
     // unsigned mID;
     int mHP, mMax_HP;
     int mBasic_DMG;
     int mBasic_DEF;
 
+    CAsset_loader mAsset;
+
 public:
     CEntity(sf::RenderWindow& Window, std::string Name, int HP, int Max_HP, int Basic_DMG, int Basic_DEF)
         : 
-        CAsset_loader(Window),
+        mAsset(Window),
         mName(Name),
         mHP(HP), mMax_HP(Max_HP),
         mBasic_DMG(Basic_DMG), mBasic_DEF(Basic_DEF)
@@ -29,6 +31,7 @@ public:
     auto get_max_hp() const -> int { return mMax_HP; }
     auto get_basic_dmg() const -> int { return mBasic_DMG; }
     auto get_basic_defensive() const -> int { return mBasic_DEF; }
+    auto get_Asset() const -> CAsset_loader { return mAsset; }
 
     auto set_name(std::string Name) -> void { mName = Name; }
     auto set_hp(int HP) -> void { mHP = HP; }
