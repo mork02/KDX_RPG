@@ -1,9 +1,9 @@
 #include "panel.h"
 
-CPanel::CPanel(sf::RenderWindow& Window, CInput& Input)
-    : mWindow(Window), mInput(Input),
+CPanel::CPanel(sf::RenderWindow& Window, sf::Event& Event)
+    : mWindow(Window), mEvent(Event), mInput(),
     mTitle_Screen(Window),
-    mGameplay(Window, Input)
+    mGameplay(Window, mInput)
 {
     mPause_Menu = std::make_unique<CPause_menu>(Window);
     mStats_Menu = std::make_unique<CStats_menu>(Window);
@@ -12,7 +12,7 @@ CPanel::CPanel(sf::RenderWindow& Window, CInput& Input)
 
 auto CPanel::update() -> void
 {
-    switch (mScene)
+    switch (mCurrent_Scene)
     {
     case ESceneType::Title_screen:
         mTitle_Screen.draw();
@@ -27,9 +27,11 @@ auto CPanel::update() -> void
     if (mCurrent_Menu) mCurrent_Menu->draw();
 }
 
-auto CPanel::get_stats_menu() -> CStats_menu&
+// getter
+
+auto CPanel::get_option_menu() -> COption_menu&
 {
-    return *mStats_Menu;
+    return *mOption_Menu;
 }
 
 auto CPanel::get_pause_menu() -> CPause_menu&
@@ -37,34 +39,16 @@ auto CPanel::get_pause_menu() -> CPause_menu&
     return *mPause_Menu;
 }
 
-auto CPanel::get_options_menu() -> COption_menu&
+auto CPanel::get_stats_menu() -> CStats_menu&
 {
-    return *mOption_Menu;
+    return *mStats_Menu;
 }
 
-auto CPanel::get_title_screen() -> CTitle_Screen&
-{
-    return mTitle_Screen;
-}
-
-auto CPanel::get_gameplay() -> Gameplay&
-{
-    return mGameplay;
-}
-
-auto CPanel::get_scene() -> ESceneType&
-{
-    return mScene;
-}
-
-auto CPanel::get_current_menu() -> CMenu*
-{
-    return mCurrent_Menu;
-}
+// setter
 
 auto CPanel::set_scene(ESceneType new_scene) -> void
 {
-    mScene = new_scene;
+    mCurrent_Scene = new_scene;
 }
 
 auto CPanel::set_current_menu(CMenu* new_menu) -> void {
@@ -81,4 +65,56 @@ auto CPanel::set_current_menu(CMenu* new_menu) -> void {
         mCurrent_Menu->set_visible(true);
     }
     catch (const std::exception& e) { std::cerr << "Error setting current menu visibility: " << e.what() << std::endl; }
+}
+
+// events
+
+auto CPanel::handle_event() -> void
+{
+    event_close();
+    event_mouse();
+    event_keyboard();
+}
+
+auto CPanel::event_close() -> void
+{
+    if (mEvent.type == sf::Event::Closed)
+    {
+        mWindow.close();
+    }
+}
+
+auto CPanel::event_mouse() -> void
+{
+    if (mEvent.type == sf::Event::MouseButtonPressed 
+        && mEvent.mouseButton.button == sf::Mouse::Left 
+        && mCurrent_Scene == ESceneType::Title_screen)
+    {
+        mTitle_Screen.handle_click_event(*this, mInput);
+    }
+
+    if (mEvent.type == sf::Event::MouseButtonPressed 
+        && mEvent.mouseButton.button == sf::Mouse::Left
+        && mCurrent_Scene == ESceneType::Gameplay)
+    {
+        if (mCurrent_Menu)  mCurrent_Menu->handle_click_event(*this);
+        else    mGameplay.handle_mouse_input();
+    }
+
+}
+
+auto CPanel::event_keyboard() -> void
+{
+    if (mEvent.type == sf::Event::KeyPressed 
+        && mCurrent_Scene == ESceneType::Gameplay)
+    {
+        if (mInput.get_keyboard().isKeyPressed(mInput.get_keyboard().Escape))
+        {
+            set_current_menu(mPause_Menu.get());
+        }
+        if (mInput.get_keyboard().isKeyPressed(mInput.get_keyboard().G))
+        {
+            set_current_menu(mStats_Menu.get());
+        }
+    }
 }
