@@ -1,8 +1,7 @@
 #include "entity.h"
 #include "input.h"
-#include "animation_enum.h"
 
-enum EAnimation
+enum EAnimation_Warrior
 {
 	A_IDLE = 1,
 	L_IDLE = 2,
@@ -24,7 +23,7 @@ enum EAnimation
 class CWarrior : public CEntity
 {
 private:
-	auto init_Asset() -> void;
+	auto init_asset() -> void override;
 
 public:
 	CWarrior(sf::RenderWindow& Window);
