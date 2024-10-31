@@ -2,8 +2,9 @@
 #include "SFML/Graphics.hpp"
 #include <iostream>
 #include <memory>
-#include "warrior.h"
 #include "entity.h"
+#include "warrior.h"
+#include "goblin.h"
 #include "input.h"
 #include "camera.h"
 
@@ -14,11 +15,10 @@ private:
 	sf::Clock mClock;
 	CInput& mInput;
 	CCamera mCamera;
-	CAsset_loader mBackground;
 
 	std::unique_ptr<CWarrior> mWarrior;
 
-	std::vector<CEntity*> mEntities;
+	std::vector<std::unique_ptr<CEntity>> mEntities;
 
 	auto loadLevel() -> void;
 	auto loadEntities() -> void;

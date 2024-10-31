@@ -1,12 +1,10 @@
 #include "gameplay.h"
 
 Gameplay::Gameplay(sf::RenderWindow& Window, CInput& Input)
-    : mWindow(Window), mInput(Input), mCamera(Window), mBackground(Window)
+    : mWindow(Window), mInput(Input), mCamera(Window)
 {
     mWarrior = std::make_unique<CWarrior>(Window);
     loadEntities();
-    mBackground.init("./assets/menu_assets/main_menu/background.png");
-    mBackground.set_scale(10);
 }
 
 auto Gameplay::loadLevel() -> void
@@ -17,7 +15,7 @@ auto Gameplay::loadLevel() -> void
 auto Gameplay::loadEntities() -> void
 {
     mEntities.reserve(10);
-    mEntities.push_back(mWarrior.get());
+    mEntities.push_back(std::move(std::make_unique<CGoblin>(mWindow)));
 }
 
 auto Gameplay::handle_mouse_input() -> void
@@ -29,12 +27,11 @@ auto Gameplay::update() -> void
 {
     float delta_time = mClock.restart().asSeconds();
 
-    mBackground.draw();
-
     for (auto& entity : mEntities)
     {
-        entity->handle_movement(delta_time, mInput);
         entity->get_Asset().draw();
     }
-    mCamera.update(mEntities[0]);
+    mWarrior->handle_movement(delta_time, mInput);
+    mWarrior->get_Asset().draw();
+    mCamera.update(mWarrior.get());
 }
