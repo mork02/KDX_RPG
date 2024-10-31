@@ -51,5 +51,6 @@ public:
         mHP += HP;
         if (mHP > mMax_HP) mHP = mMax_HP;
     }
-    virtual auto handle_movement(float delta_time, CInput& Input) -> void {}
+    virtual auto handle_movement(float delta_time, CInput& Input) -> void { 0; }
+    virtual auto init_asset() -> void { 0; }
 };
