@@ -58,6 +58,12 @@
     <Filter Include="Header Files\Enum">
       <UniqueIdentifier>{d2a47747-fd49-47d7-ace0-b1f6a29ef6f6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\EntitieStuff\Entities">
+      <UniqueIdentifier>{4d76f3e3-9625-4c1a-95ce-113b15974140}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EntitieStuff\Entities">
+      <UniqueIdentifier>{ec1f8a41-5418-4219-a4ed-89a8154fb4ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -67,9 +73,6 @@
       <Filter>Source Files\Window</Filter>
     </ClCompile>
     <ClCompile Include="..\src\inventory.cpp">
-      <Filter>Source Files\EntitieStuff</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\npc.cpp">
       <Filter>Source Files\EntitieStuff</Filter>
     </ClCompile>
     <ClCompile Include="..\src\item.cpp">
@@ -120,11 +123,14 @@
     <ClCompile Include="..\src\fps.cpp">
       <Filter>Source Files\Window\Assets</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\warrior.cpp">
-      <Filter>Source Files\EntitieStuff</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\camera.cpp">
       <Filter>Source Files\Window\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\warrior.cpp">
+      <Filter>Source Files\EntitieStuff\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\goblin.cpp">
+      <Filter>Source Files\EntitieStuff\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -138,9 +144,6 @@
       <Filter>Header Files\EntitieStuff</Filter>
     </ClInclude>
     <ClInclude Include="..\include\inventory.h">
-      <Filter>Header Files\EntitieStuff</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\npc.h">
       <Filter>Header Files\EntitieStuff</Filter>
     </ClInclude>
     <ClInclude Include="..\include\armor.h">
@@ -188,9 +191,6 @@
     <ClInclude Include="..\include\layers_enum.h">
       <Filter>Header Files\Enum</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\animation_enum.h">
-      <Filter>Header Files\Enum</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\animation_loader.h">
       <Filter>Header Files\Window\Assets</Filter>
     </ClInclude>
@@ -201,10 +201,13 @@
       <Filter>Header Files\Enum</Filter>
     </ClInclude>
     <ClInclude Include="..\include\warrior.h">
-      <Filter>Header Files\EntitieStuff</Filter>
+      <Filter>Header Files\EntitieStuff\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\camera.h">
-      <Filter>Header Files\Window\Controller</Filter>
+    <ClInclude Include="..\include\camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\goblin.h">
+      <Filter>Header Files\EntitieStuff\Entities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
