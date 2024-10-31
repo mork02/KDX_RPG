@@ -37,9 +37,6 @@
     <Filter Include="Source Files\Window\Assets">
       <UniqueIdentifier>{2c08dc5a-746d-472f-9918-8b4f031c1fd3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Window\Controller">
-      <UniqueIdentifier>{9149a9a1-ffd2-49d7-af3f-7daee6684372}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Window\Assets">
       <UniqueIdentifier>{aff0e9e5-1193-4a27-a20b-992caa38193d}</UniqueIdentifier>
     </Filter>
@@ -63,6 +60,9 @@
     </Filter>
     <Filter Include="Source Files\EntitieStuff\Entities">
       <UniqueIdentifier>{ec1f8a41-5418-4219-a4ed-89a8154fb4ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Window\Controller">
+      <UniqueIdentifier>{9149a9a1-ffd2-49d7-af3f-7daee6684372}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
