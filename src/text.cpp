@@ -1,6 +1,8 @@
 #include "text.h"
 #include "scene_enum.h"
 
+// TODO: add scaling/resizing with window width and height
+
 CText::CText(
     sf::RenderWindow& Window,
     std::string Showing_Text, int Size,

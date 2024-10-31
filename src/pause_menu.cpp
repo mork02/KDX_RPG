@@ -73,7 +73,7 @@ auto CPause_menu::handle_click_event(CPanel& panel) -> void
     }
     else if (mOptions_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
     {
-        panel.set_current_menu(&panel.get_options_menu());
+        panel.set_current_menu(&panel.get_option_menu());
     }
     else if (mBack_To_Title_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
     {

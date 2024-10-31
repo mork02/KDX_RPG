@@ -25,6 +25,7 @@ auto Gameplay::handle_mouse_input() -> void
 
 auto Gameplay::update() -> void
 {
+    // add collusion class to detect collusion between entities
     float delta_time = mClock.restart().asSeconds();
 
     for (auto& entity : mEntities)
