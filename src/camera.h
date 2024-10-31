@@ -8,7 +8,7 @@ private:
     sf::View mCamera;
     sf::RenderWindow& mWindow;
     float mMoveSpeed;
-    float mCamera_Zoom = 1.05f;
+    float mCamera_Zoom = 1.f;
 
 public:
     CCamera(sf::RenderWindow& Window);
@@ -17,3 +17,8 @@ public:
 
     auto update(CEntity* entity) -> void;
 };
+
+/* TODO:
+    - add menus to Camera
+    - add reset camera if in back to menu
+    */
