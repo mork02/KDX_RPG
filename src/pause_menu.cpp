@@ -65,19 +65,22 @@ auto CPause_menu::draw() -> void
 
 auto CPause_menu::handle_click_event(CPanel& panel) -> void
 {
-    sf::Vector2i mouse_pos = sf::Mouse::getPosition(mWindow);
+    sf::Vector2f mouse_pos = mWindow.mapPixelToCoords(sf::Mouse::getPosition(mWindow));
 
-    if (mContinue_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
     {
-        panel.set_current_menu(nullptr);
-    }
-    else if (mOptions_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
-    {
-        panel.set_current_menu(&panel.get_option_menu());
-    }
-    else if (mBack_To_Title_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
-    {
-        panel.set_current_menu(nullptr);
-        panel.set_scene(ESceneType::Title_screen);
+        if (mContinue_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
+        {
+            panel.set_current_menu(nullptr);
+        }
+        else if (mOptions_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
+        {
+            panel.set_current_menu(&panel.get_option_menu());
+        }
+        else if (mBack_To_Title_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
+        {
+            panel.set_current_menu(nullptr);
+            panel.set_scene(ESceneType::Title_screen);
+        }
     }
 }

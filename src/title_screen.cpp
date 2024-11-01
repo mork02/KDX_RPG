@@ -1,7 +1,6 @@
 #include "title_screen.h"
 #include "scene_enum.h"
 #include "panel.h"
-#include "input.h"
 
 CTitle_Screen::CTitle_Screen(sf::RenderWindow& Window) :
     mWindow(Window),
@@ -19,6 +18,8 @@ CTitle_Screen::CTitle_Screen(sf::RenderWindow& Window) :
 
 auto CTitle_Screen::draw() -> void
 {
+    mMouse_Position = mWindow.mapPixelToCoords(sf::Mouse::getPosition(mWindow));
+    
     for (auto const asset : get_asset_components())
     {
         mWindow.draw(asset.get().get_Sprite());
@@ -85,21 +86,23 @@ auto CTitle_Screen::animate_title_text() -> void
     mTitle_Text.get_text().setFillColor(color);
 }
 
-auto CTitle_Screen::handle_click_event(CPanel& panel, CInput& Input) -> void
+auto CTitle_Screen::handle_click_event(CPanel& panel) -> void
 {
-    sf::Vector2f mouse_pos = Input.get_mouse_position(mWindow);
-
-    if (mNew_Game_Text.get_Global_text_Bounds().contains(mouse_pos.x, mouse_pos.y))
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
     {
-        panel.set_scene(ESceneType::Gameplay);
-    }
-    else if (mOptions_Text.get_Global_text_Bounds().contains(mouse_pos.x, mouse_pos.y))
-    {
-        std::cout << "Options clicked!" << std::endl;
-    }
-    else if (mQuit_Text.get_Global_text_Bounds().contains(mouse_pos.x, mouse_pos.y))
-    {
-        mWindow.close();
+        if (mNew_Game_Text.get_Global_text_Bounds().contains(mMouse_Position.x, mMouse_Position.y))
+        {
+            panel.set_scene(ESceneType::Gameplay);
+        }
+        else if (mOptions_Text.get_Global_text_Bounds().contains(mMouse_Position.x, mMouse_Position.y))
+        {
+            std::cout << "Option!" << std::endl;
+        }
+        else if (mQuit_Text.get_Global_text_Bounds().contains(mMouse_Position.x, mMouse_Position.y))
+        {
+            std::cout << "Exit!" << std::endl;
+            mWindow.close();
+        }
     }
 }
 
