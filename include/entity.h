@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include "asset_loader.h"
-#include "input.h"
 
 class CEntity
 {
@@ -51,6 +50,7 @@ public:
         mHP += HP;
         if (mHP > mMax_HP) mHP = mMax_HP;
     }
-    virtual auto handle_movement(float delta_time, CInput& Input) -> void { 0; }
+    virtual auto handle_animations() -> void { 0; }
     virtual auto init_asset() -> void { 0; }
+    virtual auto update(float dt) -> void { 0; }
 };

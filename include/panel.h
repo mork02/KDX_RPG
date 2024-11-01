@@ -1,6 +1,5 @@
 #pragma once
 #include "SFML/Graphics.hpp"
-#include "input.h"
 #include "gameplay.h"
 #include "title_screen.h"
 #include "pause_menu.h"
@@ -13,7 +12,6 @@ class CPanel
 private:
     sf::RenderWindow& mWindow;
     sf::Event& mEvent;
-    CInput mInput;
 
     ESceneType mCurrent_Scene = ESceneType::Title_screen;
     CTitle_Screen mTitle_Screen;
@@ -39,6 +37,6 @@ public:
     auto set_scene(ESceneType new_scene) -> void;
     auto set_current_menu(CMenu* new_menu) -> void;
 
-    auto handle_event() -> void;
+    auto handle_events() -> void;
     auto update() -> void;
 };
