@@ -2,6 +2,7 @@
 #include "scene_enum.h"
 
 // TODO: add scaling/resizing with window width and height
+// TODO: internet said change view and not scale :KEKL:
 
 CText::CText(
     sf::RenderWindow& Window,
@@ -29,11 +30,6 @@ auto CText::get_text() -> sf::Text&
 auto CText::get_Global_text_Bounds() -> sf::FloatRect
 {
     return mText.getGlobalBounds();
-}
-
-auto CText::get_Local_text_Bounds() -> sf::FloatRect
-{
-    return mText.getLocalBounds();
 }
 
 auto CText::set_text(std::string new_text) -> void

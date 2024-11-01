@@ -10,7 +10,6 @@ private:
     unsigned int mCurrent_Frame = 0;
     float mFrame_Duration = .25f;
     sf::Clock mFrame_Timer;
-    // TODO: add frame_duration changer for handling animation speed like walking and running
 
 protected:
     CAnimation_loader();
