@@ -159,13 +159,14 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\src\movement.cpp" />
     <ClCompile Include="..\src\panel.cpp" />
+    <ClCompile Include="..\src\player_movement.cpp" />
     <ClCompile Include="..\src\potion.cpp" />
     <ClCompile Include="..\src\warrior.cpp" />
     <ClCompile Include="..\src\weapon.cpp" />
     <ClCompile Include="..\src\text.cpp" />
     <ClCompile Include="..\src\asset_loader.cpp" />
-    <ClCompile Include="..\src\input.cpp" />
     <ClCompile Include="..\src\title_screen.cpp" />
     <ClCompile Include="..\src\gameplay.cpp" />
     <ClCompile Include="..\src\stats_menu.cpp" />
@@ -182,13 +183,14 @@
     <ClInclude Include="..\include\frame.h" />
     <ClInclude Include="..\include\inventory.h" />
     <ClInclude Include="..\include\item.h" />
+    <ClInclude Include="..\include\movement.h" />
     <ClInclude Include="..\include\panel.h" />
+    <ClInclude Include="..\include\player_movement.h" />
     <ClInclude Include="..\include\potion.h" />
     <ClInclude Include="..\include\warrior.h" />
     <ClInclude Include="..\include\weapon.h" />
     <ClInclude Include="..\include\text.h" />
     <ClInclude Include="..\include\asset_loader.h" />
-    <ClInclude Include="..\include\input.h" />
     <ClInclude Include="..\include\menu.h" />
     <ClInclude Include="..\include\title_screen.h" />
     <ClInclude Include="..\include\scene_enum.h" />

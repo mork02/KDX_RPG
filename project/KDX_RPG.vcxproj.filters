@@ -90,9 +90,6 @@
     <ClCompile Include="..\src\asset_loader.cpp">
       <Filter>Source Files\Window\Assets</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\input.cpp">
-      <Filter>Source Files\Window\Controller</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\title_screen.cpp">
       <Filter>Source Files\Window\Szene</Filter>
     </ClCompile>
@@ -132,6 +129,12 @@
     <ClCompile Include="..\src\goblin.cpp">
       <Filter>Source Files\EntitieStuff\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\movement.cpp">
+      <Filter>Source Files\Window\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\player_movement.cpp">
+      <Filter>Source Files\Window\Controller</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\panel.h">
@@ -163,9 +166,6 @@
     </ClInclude>
     <ClInclude Include="..\include\text.h">
       <Filter>Header Files\Window\Assets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\input.h">
-      <Filter>Header Files\Window\Controller</Filter>
     </ClInclude>
     <ClInclude Include="..\include\gameplay.h">
       <Filter>Header Files\Window\Szene</Filter>
@@ -203,11 +203,17 @@
     <ClInclude Include="..\include\warrior.h">
       <Filter>Header Files\EntitieStuff\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\goblin.h">
       <Filter>Header Files\EntitieStuff\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\camera.h">
+      <Filter>Header Files\Window\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\movement.h">
+      <Filter>Header Files\Window\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\player_movement.h">
+      <Filter>Header Files\Window\Controller</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
