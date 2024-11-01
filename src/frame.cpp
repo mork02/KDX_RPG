@@ -14,7 +14,7 @@ auto CFrame::gameloop() -> void
     {
         while (mWindow.pollEvent(mEvent))
         {
-            mPanel.handle_event();
+            mPanel.handle_events();
         }
 
         mWindow.clear(sf::Color::Red);
