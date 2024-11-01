@@ -5,7 +5,6 @@
 #include "entity.h"
 #include "warrior.h"
 #include "goblin.h"
-#include "input.h"
 #include "camera.h"
 
 class Gameplay
@@ -13,7 +12,6 @@ class Gameplay
 private:
 	sf::RenderWindow& mWindow;
 	sf::Clock mClock;
-	CInput& mInput;
 	CCamera mCamera;
 
 	std::unique_ptr<CWarrior> mWarrior;
@@ -22,10 +20,10 @@ private:
 
 	auto loadLevel() -> void;
 	auto loadEntities() -> void;
-
 public:
-	Gameplay(sf::RenderWindow& Window, CInput& Input);
+	Gameplay(sf::RenderWindow& Window);
 
-	auto handle_mouse_input() -> void;
+	auto event_mouse(sf::Event& Event) -> void;
+	auto event_keyboard(sf::Event& Event) -> void;
 	auto update() -> void;
 };
