@@ -2,7 +2,6 @@
 #include "SFML/Graphics.hpp"
 #include "text.h"
 #include "asset_loader.h"
-#include "input.h"
 
 class CPanel;
 
@@ -20,6 +19,8 @@ private:
     CText mOptions_Text;
     CText mQuit_Text;
 
+    sf::Vector2f mMouse_Position;
+
     // title animation
     float mFade_Alpha = 0.0f;
     float mFade_Increment = 2.0f;
@@ -34,7 +35,7 @@ private:
 public:
     CTitle_Screen(sf::RenderWindow& Window);
 
-    auto handle_click_event(CPanel& panel, CInput& Input) -> void;
+    auto handle_click_event(CPanel& panel) -> void;
     auto draw() -> void;
 
 };
