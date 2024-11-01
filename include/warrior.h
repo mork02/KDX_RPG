@@ -1,5 +1,5 @@
 #include "entity.h"
-#include "input.h"
+#include "player_movement.h"
 
 enum EAnimation_Warrior
 {
@@ -20,7 +20,7 @@ enum EAnimation_Warrior
 };
 
 #pragma once
-class CWarrior : public CEntity
+class CWarrior : public CEntity, public CPlayer_Movement
 {
 private:
 	auto init_asset() -> void override;
@@ -28,6 +28,7 @@ private:
 public:
 	CWarrior(sf::RenderWindow& Window);
 
-	auto handle_movement(float delta_time, CInput& Input) -> void override;
+	auto handle_animations() -> void override;
+	auto update(float dt) -> void override;
 };
 
