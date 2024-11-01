@@ -1,9 +1,9 @@
 #include "panel.h"
 
 CPanel::CPanel(sf::RenderWindow& Window, sf::Event& Event)
-    : mWindow(Window), mEvent(Event), mInput(),
+    : mWindow(Window), mEvent(Event),
     mTitle_Screen(Window),
-    mGameplay(Window, mInput)
+    mGameplay(Window)
 {
     mPause_Menu = std::make_unique<CPause_menu>(Window);
     mStats_Menu = std::make_unique<CStats_menu>(Window);
@@ -69,7 +69,7 @@ auto CPanel::set_current_menu(CMenu* new_menu) -> void {
 
 // events
 
-auto CPanel::handle_event() -> void
+auto CPanel::handle_events() -> void
 {
     event_close();
     event_mouse();
@@ -86,35 +86,28 @@ auto CPanel::event_close() -> void
 
 auto CPanel::event_mouse() -> void
 {
-    if (mEvent.type == sf::Event::MouseButtonPressed 
-        && mEvent.mouseButton.button == sf::Mouse::Left 
-        && mCurrent_Scene == ESceneType::Title_screen)
+    if (mEvent.type == sf::Event::MouseButtonPressed ||
+        mEvent.type == sf::Event::MouseButtonReleased ||
+        mEvent.type == sf::Event::MouseMoved)
     {
-        mTitle_Screen.handle_click_event(*this, mInput);
+        if (mCurrent_Scene == ESceneType::Title_screen) mTitle_Screen.handle_click_event(*this);
+        if (mCurrent_Scene == ESceneType::Gameplay)
+        {
+            if (mCurrent_Menu)  mCurrent_Menu->handle_click_event(*this);
+            mGameplay.event_mouse(mEvent);
+        }
     }
-
-    if (mEvent.type == sf::Event::MouseButtonPressed 
-        && mEvent.mouseButton.button == sf::Mouse::Left
-        && mCurrent_Scene == ESceneType::Gameplay)
-    {
-        if (mCurrent_Menu)  mCurrent_Menu->handle_click_event(*this);
-        else    mGameplay.handle_mouse_input();
-    }
-
 }
 
 auto CPanel::event_keyboard() -> void
 {
-    if (mEvent.type == sf::Event::KeyPressed 
-        && mCurrent_Scene == ESceneType::Gameplay)
+    if (mCurrent_Scene == ESceneType::Gameplay)
     {
-        if (mInput.get_keyboard().isKeyPressed(mInput.get_keyboard().Escape))
+        if (mEvent.type == sf::Event::KeyPressed || mEvent.type == sf::Event::KeyReleased)
         {
-            set_current_menu(mPause_Menu.get());
-        }
-        if (mInput.get_keyboard().isKeyPressed(mInput.get_keyboard().G))
-        {
-            set_current_menu(mStats_Menu.get());
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))   set_current_menu(mPause_Menu.get());
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::G))    set_current_menu(mStats_Menu.get());
+            mGameplay.event_keyboard(mEvent);
         }
     }
 }
