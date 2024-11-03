@@ -3,10 +3,10 @@
 
 CPause_menu::CPause_menu(sf::RenderWindow& Window) : 
     CMenu(Window, EMenuType::Pause),
-    mTitle_Text(Window, "Pause", 109, false),
-    mContinue_Text(Window, "Continue", 89, true),
-    mOptions_Text(Window, "Options", 89, true),
-    mBack_To_Title_Text(Window, "Back to Title", 89, true)
+    mTitle_Text(Window, "Pause", ECharacter_Size::LARGE, false),
+    mContinue_Text(Window, "Continue", ECharacter_Size::MEDIUM, true),
+    mOptions_Text(Window, "Options", ECharacter_Size::MEDIUM, true),
+    mBack_To_Title_Text(Window, "Back to Title", ECharacter_Size::MEDIUM, true)
 {
     mAsset.init(mPath);
     mAsset.center_asset();
@@ -26,7 +26,7 @@ auto CPause_menu::get_text_components() -> std::vector<std::reference_wrapper<CT
 auto CPause_menu::set_text_position() -> void
 {
     mTitle_Text.set_position(
-        mWindow.getSize().x / 2.0f - mTitle_Text.get_text().getGlobalBounds().width / 2,
+        mWindow.getSize().x / 2.0f - mTitle_Text.get_Global_text_Bounds().width / 2,
         mWindow.getSize().y * 0.15f
     );
 
@@ -35,17 +35,17 @@ auto CPause_menu::set_text_position() -> void
     float option_spacing = gray_field_height / 5.0f;
 
     mContinue_Text.set_position(
-        mWindow.getSize().x / 2.0f - mContinue_Text.get_text().getGlobalBounds().width / 2,
+        mWindow.getSize().x / 2.0f - mContinue_Text.get_Global_text_Bounds().width / 2,
         gray_field_top + option_spacing * 0.1f
     );
 
     mOptions_Text.set_position(
-        mWindow.getSize().x / 2.0f - mOptions_Text.get_text().getGlobalBounds().width / 2,
+        mWindow.getSize().x / 2.0f - mOptions_Text.get_Global_text_Bounds().width / 2,
         gray_field_top + option_spacing * 1.6f
     );
 
     mBack_To_Title_Text.set_position(
-        mWindow.getSize().x / 2.0f - mBack_To_Title_Text.get_text().getGlobalBounds().width / 2,
+        mWindow.getSize().x / 2.0f - mBack_To_Title_Text.get_Global_text_Bounds().width / 2,
         gray_field_top + option_spacing * 3.2f
     );
 }
@@ -58,7 +58,7 @@ auto CPause_menu::draw() -> void
 
         for (const auto& text : get_text_components()) 
         {
-            text.get().draw_text();
+            text.get().update();
         }
     }
 }

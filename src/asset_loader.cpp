@@ -1,7 +1,7 @@
 #include "asset_loader.h"
 
 CAsset_loader::CAsset_loader(sf::RenderWindow& Window) :
-    mWindow(Window), CAnimation_loader(), mD_Coordinates(Window, "", 16)
+    mWindow(Window), CAnimation_loader(), mD_Coordinates(Window, "", ECharacter_Size::VERY_SMALL)
 {}
 
 auto CAsset_loader::init(std::string Path, bool Is_Animated, unsigned Row, unsigned Frame_Length, unsigned Frame_Width, unsigned Frame_Height) -> void
@@ -103,12 +103,12 @@ auto CAsset_loader::set_origin_center() -> void
 
 auto CAsset_loader::Debugging() -> void
 {
-    float mX = mSprite.getPosition().x;
-    float mY = mSprite.getPosition().y;
+    float X = mSprite.getPosition().x;
+    float Y = mSprite.getPosition().y;
     sf::FloatRect sprite_bounds = mSprite.getGlobalBounds();
     sf::RectangleShape debug_box(sf::Vector2f(sprite_bounds.width, sprite_bounds.height));
 
-    std::string text = ("X: " + std::to_string(mX) + " / " + "Y: " + std::to_string(mY));
+    std::string text = ("X: " + std::to_string(X) + " / " + "Y: " + std::to_string(Y));
     mD_Coordinates.set_text(text);
     mD_Coordinates.set_position(sprite_bounds.left, sprite_bounds.top + sprite_bounds.height);
 
@@ -117,7 +117,7 @@ auto CAsset_loader::Debugging() -> void
     debug_box.setOutlineThickness(2.0f);
     debug_box.setFillColor(sf::Color::Transparent);
 
-    mD_Coordinates.draw_text();
+    mD_Coordinates.update();
     mWindow.draw(debug_box);
     // std::cout << "X: " << mX << "Y: " << m | Y << std::endl;
 }

@@ -3,8 +3,8 @@
 
 COption_menu::COption_menu(sf::RenderWindow& Window) : 
 	CMenu(Window, EMenuType::Options),
-	mTitle_Text(Window, "Options", 109, false),
-	mBack_Text(Window, "Back", 89, true)
+	mTitle_Text(Window, "Options", ECharacter_Size::LARGE, false),
+	mBack_Text(Window, "Back", ECharacter_Size::MEDIUM, true)
 {
 	mAsset.init(mPath);
 	mAsset.center_asset();
@@ -22,7 +22,7 @@ auto COption_menu::get_text_components() -> std::vector<std::reference_wrapper<C
 auto COption_menu::set_text_position() -> void
 {
 	mTitle_Text.set_position(
-		mWindow.getSize().x / 2.0f - mTitle_Text.get_text().getGlobalBounds().width / 2,
+		mWindow.getSize().x / 2.0f - mTitle_Text.get_Global_text_Bounds().width / 2,
 		mWindow.getSize().y * 0.15f
 	);
 
@@ -31,7 +31,7 @@ auto COption_menu::set_text_position() -> void
 	float middle_spacing = gray_field_height / 5.0f;
 
 	mBack_Text.set_position(
-		mWindow.getSize().x / 2.0f - mBack_Text.get_text().getGlobalBounds().width / 2,
+		mWindow.getSize().x / 2.0f - mBack_Text.get_Global_text_Bounds().width / 2,
 		gray_field_top + middle_spacing * 3.2f
 	);
 
@@ -45,7 +45,7 @@ auto COption_menu::draw() -> void
 
 		for (const auto& text : get_text_components())
 		{
-			text.get().draw_text();
+			text.get().update();
 		}
 	}
 }

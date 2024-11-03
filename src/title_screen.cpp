@@ -5,10 +5,10 @@
 CTitle_Screen::CTitle_Screen(sf::RenderWindow& Window) :
     mWindow(Window),
     mAsset(Window),
-    mTitle_Text(Window, "KDX RPG", 168, false),
-    mNew_Game_Text(Window, "New Game", 136, true),
-    mOptions_Text(Window, "Options", 136, true),
-    mQuit_Text(Window, "Quit", 136, true)
+    mTitle_Text(Window, "KDX RPG", ECharacter_Size::LARGE, false),
+    mNew_Game_Text(Window, "New Game", ECharacter_Size::MEDIUM, true),
+    mOptions_Text(Window, "Options", ECharacter_Size::MEDIUM , true),
+    mQuit_Text(Window, "Quit", ECharacter_Size::MEDIUM, true)
 {
     mAsset.init(mBackground_Path);
     scale_background();
@@ -29,7 +29,7 @@ auto CTitle_Screen::draw() -> void
 
     for (auto const& text : get_text_components())
     {
-        text.get().draw_text();
+        text.get().update();
     }
 }
 
@@ -45,8 +45,8 @@ auto CTitle_Screen::position_texts() -> void
 {
     sf::Vector2u windowSize = mWindow.getSize();
 
-    mTitle_Text.get_text().setPosition(
-        static_cast<float>(windowSize.x / 2.0f - mTitle_Text.get_text().getGlobalBounds().width / 2.0f),
+    mTitle_Text.set_position(
+        static_cast<float>(windowSize.x / 2.0f - mTitle_Text.get_Global_text_Bounds().width / 2.0f),
         static_cast<float>(windowSize.y * 0.01f)
     );
 
@@ -54,18 +54,18 @@ auto CTitle_Screen::position_texts() -> void
     float gray_field_height = windowSize.y * 0.4f;
     float option_spacing = gray_field_height / 3.0f;
 
-    mNew_Game_Text.get_text().setPosition(
-        static_cast<float>(windowSize.x / 2.0f - mNew_Game_Text.get_text().getGlobalBounds().width / 2.0f),
+    mNew_Game_Text.set_position(
+        static_cast<float>(windowSize.x / 2.0f - mNew_Game_Text.get_Global_text_Bounds().width / 2.0f),
         static_cast<float>(gray_field_top + option_spacing * 0.1f - 75)
     );
 
-    mOptions_Text.get_text().setPosition(
-        static_cast<float>(windowSize.x / 2.0f - mOptions_Text.get_text().getGlobalBounds().width / 2.0f),
+    mOptions_Text.set_position(
+        static_cast<float>(windowSize.x / 2.0f - mOptions_Text.get_Global_text_Bounds().width / 2.0f),
         static_cast<float>(gray_field_top + option_spacing * 1.5f - 75)
     );
 
-    mQuit_Text.get_text().setPosition(
-        static_cast<float>(windowSize.x / 2.0f - mQuit_Text.get_text().getGlobalBounds().width / 2.0f),
+    mQuit_Text.set_position(
+        static_cast<float>(windowSize.x / 2.0f - mQuit_Text.get_Global_text_Bounds().width / 2.0f),
         static_cast<float>(gray_field_top + option_spacing * 2.9f - 75)
     );
 }
@@ -81,9 +81,9 @@ auto CTitle_Screen::animate_title_text() -> void
         mIncreasing = false;
     }
 
-    sf::Color color = mTitle_Text.get_text().getFillColor();
+    sf::Color color = mTitle_Text.get_color();
     color.a = static_cast<sf::Uint8>(mFade_Alpha);
-    mTitle_Text.get_text().setFillColor(color);
+    mTitle_Text.set_color(color);
 }
 
 auto CTitle_Screen::handle_click_event(CPanel& panel) -> void
