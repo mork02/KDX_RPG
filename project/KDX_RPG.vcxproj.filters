@@ -129,9 +129,6 @@
     <ClCompile Include="..\src\goblin.cpp">
       <Filter>Source Files\EntitieStuff\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\movement.cpp">
-      <Filter>Source Files\Window\Controller</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\player_movement.cpp">
       <Filter>Source Files\Window\Controller</Filter>
     </ClCompile>
