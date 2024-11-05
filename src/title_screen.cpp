@@ -88,21 +88,18 @@ auto CTitle_Screen::animate_title_text() -> void
 
 auto CTitle_Screen::handle_click_event(CPanel& panel) -> void
 {
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    if (mNew_Game_Text.get_Global_text_Bounds().contains(mMouse_Position.x, mMouse_Position.y))
     {
-        if (mNew_Game_Text.get_Global_text_Bounds().contains(mMouse_Position.x, mMouse_Position.y))
-        {
-            panel.set_scene(ESceneType::Gameplay);
-        }
-        else if (mOptions_Text.get_Global_text_Bounds().contains(mMouse_Position.x, mMouse_Position.y))
-        {
-            std::cout << "Option!" << std::endl;
-        }
-        else if (mQuit_Text.get_Global_text_Bounds().contains(mMouse_Position.x, mMouse_Position.y))
-        {
-            std::cout << "Exit!" << std::endl;
-            mWindow.close();
-        }
+        panel.set_scene(ESceneType::Gameplay);
+    }
+    else if (mOptions_Text.get_Global_text_Bounds().contains(mMouse_Position.x, mMouse_Position.y))
+    {
+        std::cout << "Option!" << std::endl;
+    }
+    else if (mQuit_Text.get_Global_text_Bounds().contains(mMouse_Position.x, mMouse_Position.y))
+    {
+        std::cout << "Exit!" << std::endl;
+        mWindow.close();
     }
 }
 

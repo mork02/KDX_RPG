@@ -26,6 +26,7 @@ private:
     auto event_close() -> void;
     auto event_mouse() -> void;
     auto event_keyboard() -> void;
+    auto handle_window_resolution() -> void;
 
 public:
     CPanel(sf::RenderWindow& Window, sf::Event& Event);
