@@ -1,5 +1,4 @@
 #include "text.h"
-#include "scene_enum.h"
 #include <iostream>
 
 CText::CText(
@@ -42,7 +41,7 @@ auto CText::configure(float x, float y, ECharacter_Size Character_Size) -> void
 
 auto CText::set_size(ECharacter_Size Character_Size) -> void
 {
-    mText.setCharacterSize(mStandard_Size * static_cast<int>(Character_Size));
+    mText.setCharacterSize(static_cast<unsigned>(mStandard_Size) * static_cast<unsigned>(Character_Size));
 }
 
 auto CText::set_color(sf::Color Color) -> void
