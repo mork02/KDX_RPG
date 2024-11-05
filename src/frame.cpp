@@ -1,25 +1,25 @@
 #include "frame.h"
 
 CFrame::CFrame()
-    : mWindow(sf::VideoMode(mWINDOW_WIDTH, mWINDOW_HEIGHT), mWINDOW_TITLE, sf::Style::Close),
-    mPanel(mWindow, mEvent)
+    : Window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE, sf::Style::Close),
+    Panel(Window, Event)
 {
-    mWindow.setFramerateLimit(mFPS_Value);
+    Window.setFramerateLimit(FPS_Value);
     gameloop();
 }
 
 auto CFrame::gameloop() -> void
 {
-    while (mWindow.isOpen())
+    while (Window.isOpen())
     {
-        while (mWindow.pollEvent(mEvent))
+        while (Window.pollEvent(Event))
         {
-            mPanel.handle_events();
+            Panel.handle_events();
         }
 
-        mWindow.clear(sf::Color::Red);
-        mPanel.update();
-        mFPS.show_fps(mWindow);
-        mWindow.display();
+        Window.clear(sf::Color::Red);
+        Panel.update();
+        FPS.show_fps(Window);
+        Window.display();
     }
 }
