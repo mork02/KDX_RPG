@@ -192,7 +192,6 @@
     <ClInclude Include="..\include\asset_loader.h" />
     <ClInclude Include="..\include\menu.h" />
     <ClInclude Include="..\include\title_screen.h" />
-    <ClInclude Include="..\include\scene_enum.h" />
     <ClInclude Include="..\include\gameplay.h" />
     <ClInclude Include="..\include\stats_menu.h" />
     <ClInclude Include="..\include\tile_map_loader.h" />

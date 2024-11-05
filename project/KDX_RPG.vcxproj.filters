@@ -194,9 +194,6 @@
     <ClInclude Include="..\include\fps.h">
       <Filter>Header Files\Window\Assets</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\scene_enum.h">
-      <Filter>Header Files\Enum</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\warrior.h">
       <Filter>Header Files\EntitieStuff\Entities</Filter>
     </ClInclude>
