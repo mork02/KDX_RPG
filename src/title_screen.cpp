@@ -1,5 +1,4 @@
 #include "title_screen.h"
-#include "scene_enum.h"
 #include "panel.h"
 
 CTitle_Screen::CTitle_Screen(sf::RenderWindow& Window) :
@@ -90,7 +89,7 @@ auto CTitle_Screen::handle_click_event(CPanel& panel) -> void
 {
     if (mNew_Game_Text.get_Global_text_Bounds().contains(mMouse_Position.x, mMouse_Position.y))
     {
-        panel.set_scene(ESceneType::Gameplay);
+        panel.set_scene(ESceneType::GAMEPLAY);
     }
     else if (mOptions_Text.get_Global_text_Bounds().contains(mMouse_Position.x, mMouse_Position.y))
     {

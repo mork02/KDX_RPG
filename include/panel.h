@@ -2,10 +2,13 @@
 #include "SFML/Graphics.hpp"
 #include "gameplay.h"
 #include "title_screen.h"
-#include "pause_menu.h"
-#include "option_menu.h"
-#include "stats_menu.h"
-#include "scene_enum.h"
+
+enum ESceneType
+{
+    TITLE_SCREEN = 1,
+    GAMEPLAY = 2,
+    GAME_OVER = 3
+};
 
 class CPanel
 {
@@ -13,15 +16,9 @@ private:
     sf::RenderWindow& mWindow;
     sf::Event& mEvent;
 
-    ESceneType mCurrent_Scene = ESceneType::Title_screen;
+    ESceneType mCurrent_Scene = ESceneType::TITLE_SCREEN;
     CTitle_Screen mTitle_Screen;
-    Gameplay mGameplay;
-
-    std::unique_ptr<CPause_menu> mPause_Menu;
-    std::unique_ptr<COption_menu> mOption_Menu;
-    std::unique_ptr<CStats_menu> mStats_Menu;
-
-    CMenu* mCurrent_Menu = nullptr;
+    CGameplay mGameplay;
 
     auto event_close() -> void;
     auto event_mouse() -> void;
@@ -31,12 +28,8 @@ private:
 public:
     CPanel(sf::RenderWindow& Window, sf::Event& Event);
 
-    auto get_option_menu() -> COption_menu&;
-    auto get_pause_menu() -> CPause_menu&;
-    auto get_stats_menu() -> CStats_menu&;
-
+    auto get_gameplay() -> CGameplay&;
     auto set_scene(ESceneType new_scene) -> void;
-    auto set_current_menu(CMenu* new_menu) -> void;
 
     auto handle_events() -> void;
     auto update() -> void;

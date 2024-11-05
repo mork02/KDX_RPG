@@ -23,7 +23,7 @@ public:
     CPause_menu(sf::RenderWindow& Window);
 
     auto draw() -> void override;
-    auto handle_click_event(CPanel& panel) -> void override;
+    auto handle_click_event(CGameplay& Gameplay, CPanel* Panel) -> void override;
 };
 
 

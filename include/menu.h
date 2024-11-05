@@ -3,8 +3,6 @@
 #include "asset_loader.h"
 #include "SFML/Graphics.hpp"
 
-class CPanel;
-
 enum class EMenuType
 {
     Pause,
@@ -13,6 +11,8 @@ enum class EMenuType
     Stats
 };
 
+class CGameplay;
+class CPanel;
 class CMenu
 {
 private:
@@ -32,11 +32,10 @@ public:
     virtual ~CMenu() = default;
 
     auto get_visible() const -> bool { return mVisible; };
-    
     auto set_visible(bool value) -> void { mVisible = value; };
 
     virtual auto draw() -> void = 0;
-    virtual auto handle_click_event(CPanel& panel) -> void = 0;
+    virtual auto handle_click_event(CGameplay& Gameplay, CPanel* Panel) -> void = 0;
 
-    auto get_menu_name() const -> const EMenuType& { return mMenu_Type; }
+    auto get_menu_name() -> const EMenuType& { return mMenu_Type; }
 };
