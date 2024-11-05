@@ -17,7 +17,7 @@ auto CStats_menu::draw() -> void
     }
 }
 
-auto CStats_menu::handle_click_event(CPanel& panel) -> void
+auto CStats_menu::handle_click_event(CGameplay& Gameplay, CPanel* Panel) -> void
 {
 
 }

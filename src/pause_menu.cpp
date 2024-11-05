@@ -1,5 +1,7 @@
 #include "pause_menu.h"
+#include "gameplay.h"
 #include "panel.h"
+
 
 CPause_menu::CPause_menu(sf::RenderWindow& Window) : 
     CMenu(Window, EMenuType::Pause),
@@ -63,21 +65,21 @@ auto CPause_menu::draw() -> void
     }
 }
 
-auto CPause_menu::handle_click_event(CPanel& panel) -> void
+auto CPause_menu::handle_click_event(CGameplay& Gameplay, CPanel* Panel) -> void
 {
     sf::Vector2f mouse_pos = mWindow.mapPixelToCoords(sf::Mouse::getPosition(mWindow));
 
     if (mContinue_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
     {
-        panel.set_current_menu(nullptr);
+        Gameplay.set_current_menu(nullptr);
     }
     else if (mOptions_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
     {
-        panel.set_current_menu(&panel.get_option_menu());
+        Gameplay.set_current_menu(&Gameplay.get_option_menu());
     }
     else if (mBack_To_Title_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
     {
-        panel.set_current_menu(nullptr);
-        panel.set_scene(ESceneType::Title_screen);
+        Gameplay.set_current_menu(nullptr);
+        Panel->set_scene(ESceneType::TITLE_SCREEN);
     }
 }
