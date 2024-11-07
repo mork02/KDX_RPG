@@ -68,7 +68,7 @@ auto CAsset_loader::set_scale(float value) -> void
 
 auto CAsset_loader::set_Position(float x, float y) -> void
 {
-    mSprite.move(x, y);
+    mSprite.setPosition(x, y);
 }
 
 auto CAsset_loader::set_animation_param(unsigned Row, unsigned Frame_Length, unsigned Frame_Width, unsigned Frame_Height) -> void
