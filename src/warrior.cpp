@@ -1,9 +1,8 @@
 #include "warrior.h"
 
-
 CWarrior::CWarrior(sf::RenderWindow& Window) :
-    CEntity(Window,
-	"Warrior", 100, 100, 10, 10)
+    CEntity(Window, "Warrior", 100, 100, 10, 10),
+    CPlayer_Movement()
 {
     init_asset();
 }
@@ -47,10 +46,10 @@ auto CWarrior::handle_animations() -> void
     mAsset.set_animation_param(EAnimation_Warrior::A_IDLE, EAnimation_Warrior::L_IDLE);
 }
 
-auto CWarrior::update(float dt) -> void
+auto CWarrior::update(float delta_time) -> void
 {
+    handle_movement(delta_time);
+    mAsset.set_Position(get_Position().x, get_Position().y);
     handle_animations();
-    handle_movement(dt);
-    mAsset.set_Position(mPosition.x, mPosition.y);
     mAsset.draw();
 }
