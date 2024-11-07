@@ -26,18 +26,18 @@ private:
 	std::unique_ptr<CWarrior> mWarrior;
 	std::vector<std::unique_ptr<CEntity>> mEntities;
 
-	auto loadLevel() -> void;
-	auto loadEntities() -> void;
+	auto load_Level() -> void;
+	auto load_Entities() -> void;
 public:
 	CGameplay(sf::RenderWindow& Window);
 
-	auto get_option_menu() -> COption_menu&;
-	auto get_pause_menu() -> CPause_menu&;
-	auto get_stats_menu() -> CStats_menu&;
+	auto get_menu_options() -> COption_menu&;
+	auto get_menu_pause() -> CPause_menu&;
+	auto get_menu_stats() -> CStats_menu&;
 
 	auto set_current_menu(CMenu* new_menu) -> void;
 
 	auto event_mouse(sf::Event& Event, CPanel* Panel) -> void;
 	auto event_keyboard(sf::Event& Event) -> void;
-	auto update() -> void;
+	auto update(float delta_time) -> void;
 };

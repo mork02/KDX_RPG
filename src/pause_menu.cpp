@@ -75,7 +75,7 @@ auto CPause_menu::handle_click_event(CGameplay& Gameplay, CPanel* Panel) -> void
     }
     else if (mOptions_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
     {
-        Gameplay.set_current_menu(&Gameplay.get_option_menu());
+        Gameplay.set_current_menu(&Gameplay.get_menu_options());
     }
     else if (mBack_To_Title_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
     {

@@ -9,38 +9,45 @@ CGameplay::CGameplay(sf::RenderWindow& Window)
     mOption_Menu = std::make_unique<COption_menu>(Window);
 
     mWarrior = std::make_unique<CWarrior>(Window);
-    loadEntities();
+    load_Entities();
 }
 
-auto CGameplay::loadLevel() -> void
+auto CGameplay::load_Level() -> void
 {
     // TODO: load level
 }
 
-auto CGameplay::loadEntities() -> void
+auto CGameplay::load_Entities() -> void
 {
     mEntities.reserve(10);
     mEntities.push_back(std::move(std::make_unique<CGoblin>(mWindow)));
 }
 
-auto CGameplay::get_option_menu() -> COption_menu&
+auto CGameplay::get_menu_options() -> COption_menu&
 {
     return *mOption_Menu;
 }
 
-auto CGameplay::get_pause_menu() -> CPause_menu&
+auto CGameplay::get_menu_pause() -> CPause_menu&
 {
     return *mPause_Menu;
 }
 
-auto CGameplay::get_stats_menu() -> CStats_menu&
+auto CGameplay::get_menu_stats() -> CStats_menu&
 {
     return *mStats_Menu;
 }
 
-auto CGameplay::set_current_menu(CMenu* new_menu) -> void 
+auto CGameplay::set_current_menu(CMenu* new_menu) -> void
 {
-    if (mCurrent_Menu) mCurrent_Menu->set_visible(false);
+    if (mCurrent_Menu == new_menu)
+    {
+        mCurrent_Menu->set_visible(false);
+        mCurrent_Menu = nullptr;
+        return;
+    }
+
+    if (mCurrent_Menu)  mCurrent_Menu->set_visible(false);
 
     if (!new_menu)
     {
@@ -63,13 +70,13 @@ auto CGameplay::event_mouse(sf::Event& Event, CPanel* Panel) -> void
 
 auto CGameplay::event_keyboard(sf::Event& Event) -> void
 {
-    mWarrior->set_direction();
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))   set_current_menu(mPause_Menu.get());
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::G))    set_current_menu(mStats_Menu.get());
+    mWarrior->set_direction(Event);
+    if (Event.key.code == sf::Keyboard::Escape)   set_current_menu(mPause_Menu.get());
+    if (Event.key.code == sf::Keyboard::G)   set_current_menu(mStats_Menu.get());
 }
 
-auto CGameplay::update() -> void
+
+auto CGameplay::update(float delta_time) -> void
 {
     // TODO: add collusion class to detect collusion between entities
 
@@ -78,7 +85,7 @@ auto CGameplay::update() -> void
         entity->get_Asset().draw();
     }
     
-    mWarrior->update(mClock.restart().asSeconds());
+    mWarrior->update(delta_time);
     // mCamera.update(mWarrior.get());
     if (mCurrent_Menu) mCurrent_Menu->draw();
 }

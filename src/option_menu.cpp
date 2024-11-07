@@ -55,6 +55,6 @@ auto COption_menu::handle_click_event(CGameplay& Gameplay, CPanel* Panel) -> voi
     sf::Vector2f mouse_pos = mWindow.mapPixelToCoords(sf::Mouse::getPosition(mWindow));
 	if (mBack_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
 	{
-		Gameplay.set_current_menu(&Gameplay.get_pause_menu());
+		Gameplay.set_current_menu(&Gameplay.get_menu_pause());
 	}
 }
