@@ -14,23 +14,21 @@ class CPanel
 {
 private:
     sf::RenderWindow& mWindow;
-    sf::Event& mEvent;
 
     ESceneType mCurrent_Scene = ESceneType::TITLE_SCREEN;
     CTitle_Screen mTitle_Screen;
     CGameplay mGameplay;
 
-    auto event_close() -> void;
-    auto event_mouse() -> void;
-    auto event_keyboard() -> void;
+    auto event_close(sf::Event& Event) -> void;
+    auto event_mouse(sf::Event& Event) -> void;
     auto handle_window_resolution() -> void;
 
 public:
-    CPanel(sf::RenderWindow& Window, sf::Event& Event);
+    CPanel(sf::RenderWindow& Window);
 
     auto get_gameplay() -> CGameplay&;
     auto set_scene(ESceneType new_scene) -> void;
 
-    auto handle_events() -> void;
-    auto update() -> void;
+    auto handle_events(sf::Event& Event) -> void;
+    auto update(float delta_time) -> void;
 };

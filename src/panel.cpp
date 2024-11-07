@@ -1,12 +1,12 @@
 #include "panel.h"
 
-CPanel::CPanel(sf::RenderWindow& Window, sf::Event& Event)
-    : mWindow(Window), mEvent(Event),
+CPanel::CPanel(sf::RenderWindow& Window)
+    : mWindow(Window),
     mTitle_Screen(Window),
     mGameplay(Window)
 {}
 
-auto CPanel::update() -> void
+auto CPanel::update(float delta_time) -> void
 {
     switch (mCurrent_Scene)
     {
@@ -14,7 +14,7 @@ auto CPanel::update() -> void
         mTitle_Screen.draw();
         break;
     case ESceneType::GAMEPLAY:
-        mGameplay.update();
+        mGameplay.update(delta_time);
         break;
     case ESceneType::GAME_OVER:
         break;
@@ -33,70 +33,33 @@ auto CPanel::set_scene(ESceneType new_scene) -> void
 
 // events // 
 
-auto CPanel::handle_events() -> void
+auto CPanel::handle_events(sf::Event& Event) -> void
 {
-    switch (mEvent.type)
+    if (Event.type == sf::Event::Closed)   event_close(Event);
+    if (Event.type == sf::Event::KeyPressed || Event.type == sf::Event::KeyReleased)
     {
-        case sf::Event::Closed:
-            event_close();
-            break;
-
-        case sf::Event::KeyPressed:
-            event_keyboard();
-            break;
-
-        case sf::Event::KeyReleased:
-            break;
-
-        case sf::Event::MouseButtonPressed:
-            event_mouse();
-            break;
-
-        case sf::Event::MouseButtonReleased:
-            break;
-
-        default:
-            break;
-        }
-}
-
-auto CPanel::event_close() -> void
-{
-    if (mEvent.type == sf::Event::Closed)
-    {
-        mWindow.close();
+        if (mCurrent_Scene == ESceneType::GAMEPLAY) mGameplay.event_keyboard(Event);
+        handle_window_resolution();
     }
+    event_mouse(Event);
 }
 
-auto CPanel::event_mouse() -> void
+auto CPanel::event_close(sf::Event& Event) -> void
 {
-    if (mEvent.mouseButton.button == sf::Mouse::Left)
+    if (Event.type == sf::Event::Closed)    mWindow.close();
+}
+
+auto CPanel::event_mouse(sf::Event& Event) -> void
+{
+    if (Event.type == sf::Event::MouseButtonPressed)
     {
-        if (mCurrent_Scene == ESceneType::TITLE_SCREEN)
+        if (Event.mouseButton.button == sf::Mouse::Left)
         {
-            // handle left click on Titlescreen //
-            mTitle_Screen.handle_click_event(*this);
-        }
-        if (mCurrent_Scene == ESceneType::GAMEPLAY)
-        {
-            // handle left click on Gameplay //
-            mGameplay.event_mouse(mEvent, this);
+            if (mCurrent_Scene == ESceneType::TITLE_SCREEN) mTitle_Screen.handle_click_event(*this);
+            if (mCurrent_Scene == ESceneType::GAMEPLAY) mGameplay.event_mouse(Event, this);
         }
     }
-    if (mEvent.mouseButton.button == sf::Mouse::Right)
-    {
-        // handle right clicks //
-    }
 
-}
-
-auto CPanel::event_keyboard() -> void
-{
-    if (mCurrent_Scene == ESceneType::GAMEPLAY)
-    {
-        mGameplay.event_keyboard(mEvent);
-    }
-    handle_window_resolution();
 }
 
 auto CPanel::handle_window_resolution() -> void
