@@ -17,6 +17,8 @@ private:
 	sf::Clock mClock;
 	CCamera mCamera;
 
+	// TODO: add menu icons on screen to point to click open menu
+	// no keyboard input anymore
 	std::unique_ptr<CPause_menu> mPause_Menu;
 	std::unique_ptr<COption_menu> mOption_Menu;
 	std::unique_ptr<CStats_menu> mStats_Menu;
