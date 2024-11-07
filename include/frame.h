@@ -16,6 +16,7 @@ private:
     sf::Event Event;
     CPanel Panel;
     CFPS FPS;
+    sf::Clock Clock;
 
     auto gameloop() -> void;
 public:
