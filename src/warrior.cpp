@@ -11,7 +11,6 @@ auto CWarrior::init_asset() -> void
 {
     mAsset.init("assets/character_assets/AnimationSheet_Character.png", true, EAnimation_Warrior::A_IDLE, EAnimation_Warrior::L_IDLE);
     mAsset.set_debug(true);
-    mAsset.set_scale(3);
     mAsset.set_origin_center();
 }
 

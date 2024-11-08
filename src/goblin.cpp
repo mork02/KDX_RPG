@@ -14,7 +14,6 @@ auto CGoblin::init_asset() -> void
     // TODO: add ai movement
     mAsset.init("assets/character_assets/wolf_tailwag_tf-shadow.png", true, EAnimation_Goblin::A_SIT_FRONT, EAnimation_Goblin::L_SIT_FRONT);
     mAsset.set_debug(true);
-    mAsset.set_scale(3);
     mAsset.set_origin_center();
     mAsset.get_Sprite().setPosition(500, 500);
 }
