@@ -14,7 +14,28 @@ CGameplay::CGameplay(sf::RenderWindow& Window)
 
 auto CGameplay::load_Level() -> void
 {
-    // TODO: load level
+    sf::Color color1 = sf::Color(190, 190, 190);
+    sf::Color color2 = sf::Color(100, 100, 100);
+
+    for (int y = 0; y < mWindow.getSize().y; y += 48)
+    {
+        for (int x = 0; x < mWindow.getSize().x; x += 48)
+        {
+            sf::RectangleShape rect(sf::Vector2f(48.f, 48.f));
+            rect.setPosition(static_cast<float>(x), static_cast<float>(y));
+
+            if ((x / 48 + y / 48) % 2 == 0)
+            {
+                rect.setFillColor(color1);
+            }
+            else
+            {
+                rect.setFillColor(color2);
+            }
+
+            mWindow.draw(rect);
+        }
+    }
 }
 
 auto CGameplay::load_Entities() -> void
@@ -79,6 +100,7 @@ auto CGameplay::event_keyboard(sf::Event& Event) -> void
 auto CGameplay::update(float delta_time) -> void
 {
     // TODO: add collusion class to detect collusion between entities
+    load_Level();
 
     for (auto& entity : mEntities)
     {
