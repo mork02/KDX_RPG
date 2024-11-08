@@ -25,6 +25,8 @@ auto CAsset_loader::init(std::string Path, bool Is_Animated, unsigned Row, unsig
         mSprite.setTextureRect(get_frame_rect(0));
     }
 
+    set_scale(3); // scales everythin by 3 and if i need bigger or smaller, scalee it by hand
+
 }
 
 
@@ -98,7 +100,7 @@ auto CAsset_loader::set_origin_center() -> void
 {
     sf::FloatRect bounds = mSprite.getLocalBounds();
     mSprite.setOrigin(bounds.width / 2.0f, bounds.height / 2.0f);
-    mSprite.setPosition(bounds.getPosition().x + bounds.width / 2 * mScale , bounds.getPosition().y + bounds.height / 2 * mScale);
+    // mSprite.setPosition(bounds.getPosition().x + bounds.width / 2 * mScale , bounds.getPosition().y + bounds.height / 2 * mScale);
 }
 
 auto CAsset_loader::Debugging() -> void
