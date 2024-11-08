@@ -78,7 +78,7 @@ auto CText::update_hover_state() -> void
 {
     if (!mHoverable) return;
 
-    sf::Vector2i mouse_pos = sf::Mouse::getPosition(mWindow);
+    sf::Vector2f mouse_pos = mWindow.mapPixelToCoords(sf::Mouse::getPosition(mWindow));
     sf::FloatRect text_bounds = get_Global_text_Bounds();
 
     if (text_bounds.contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
