@@ -12,6 +12,7 @@ public:
 	virtual ~CMovement() {}
 
 	auto get_Position() -> sf::Vector2f& { return mPosition; }
+	auto set_Position(float x, float y) -> void { mPosition = { x, y }; }
 	auto get_Direction() -> sf::Vector2f& { return mDirection; }
 
 	virtual auto handle_movement(float delta_time) -> void = 0;

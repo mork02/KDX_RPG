@@ -3,7 +3,9 @@
 
 CPlayer_Movement::CPlayer_Movement() :
 	CMovement()
-{}
+{
+	set_Position(250.f, 250.f);
+}
 
 auto CPlayer_Movement::handle_movement(float delta_time) -> void
 {
