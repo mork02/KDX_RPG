@@ -61,26 +61,27 @@ auto CGameplay::get_menu_stats() -> CStats_menu&
 
 auto CGameplay::set_current_menu(CMenu* new_menu) -> void
 {
-    if (mCurrent_Menu == new_menu)
-    {
+    if (mCurrent_Menu == new_menu) {
+        if (mCurrent_Menu) mCurrent_Menu->set_visible(false);
+        mCurrent_Menu = nullptr;
+        return;
+    }
+
+    if (mCurrent_Menu) {
         mCurrent_Menu->set_visible(false);
-        mCurrent_Menu = nullptr;
-        return;
     }
 
-    if (mCurrent_Menu)  mCurrent_Menu->set_visible(false);
+    mCurrent_Menu = new_menu;
 
-    if (!new_menu)
-    {
-        mCurrent_Menu = nullptr;
-        return;
+    if (mCurrent_Menu) {
+        try {
+            mCurrent_Menu->set_visible(true);
+        }
+        catch (const std::exception& e) {
+            std::cerr << "Error setting current menu visibility: " << e.what() << std::endl;
+            mCurrent_Menu = nullptr;
+        }
     }
-
-    try {
-        mCurrent_Menu = new_menu;
-        mCurrent_Menu->set_visible(true);
-    }
-    catch (const std::exception& e) { std::cerr << "Error setting current menu visibility: " << e.what() << std::endl; }
 }
 
 auto CGameplay::event_mouse(sf::Event& Event, CPanel* Panel) -> void
