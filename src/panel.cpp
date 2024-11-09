@@ -36,7 +36,7 @@ auto CPanel::set_scene(ESceneType new_scene) -> void
 auto CPanel::handle_events(sf::Event& Event) -> void
 {
     if (Event.type == sf::Event::Closed)   event_close(Event);
-    if (Event.type == sf::Event::KeyPressed || Event.type == sf::Event::KeyReleased)
+    if (Event.type == sf::Event::KeyPressed)
     {
         if (mCurrent_Scene == ESceneType::GAMEPLAY) mGameplay.event_keyboard(Event);
         handle_window_resolution();
