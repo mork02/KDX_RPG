@@ -12,6 +12,7 @@ CPause_menu::CPause_menu(sf::RenderWindow& Window) :
 {
     mAsset.init(mPath);
     mAsset.center_asset();
+    mAsset.get_Sprite().setScale(6, 6);
     set_text_position();
 }
 
@@ -29,7 +30,7 @@ auto CPause_menu::set_text_position() -> void
 {
     mTitle_Text.set_position(
         mWindow.getSize().x / 2.0f - mTitle_Text.get_Global_text_Bounds().width / 2,
-        mWindow.getSize().y * 0.15f
+        mWindow.getSize().y * 0.125f
     );
 
     float gray_field_top = mWindow.getSize().y * 0.35f;

@@ -15,7 +15,7 @@ private:
     bool mIs_Animated;
     unsigned mCurrent_Row = 0;
     unsigned mCurrent_Frame_Length = 0;
-    float mScale = 1.f;
+    sf::Vector2f mScale;
 
     bool mDebug = false;
     CText mD_Coordinates;
@@ -29,9 +29,8 @@ public:
 
     auto get_Texture()  -> sf::Texture&;
     auto get_Sprite()   -> sf::Sprite&;
-    auto get_Scale() -> float&;
+    auto get_Scale() -> sf::Vector2f&;
 
-    auto set_scale(float value) -> void;
     auto set_Position(float x, float y) -> void;
     auto set_debug(bool value) -> void;
     auto set_animation_param(unsigned Row, unsigned Frame_Length, unsigned Frame_Width = 32, unsigned Frame_Height = 32) -> void;

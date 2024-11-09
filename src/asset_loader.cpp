@@ -25,10 +25,11 @@ auto CAsset_loader::init(std::string Path, bool Is_Animated, unsigned Row, unsig
         mSprite.setTextureRect(get_frame_rect(0));
     }
 
-    set_scale(3); // scales everythin by 3 and if i need bigger or smaller, scalee it by hand
+    // scaling //
+    mScale = { 3, 3 };
+    mSprite.setScale(mScale.x, mScale.y);
 
 }
-
 
 auto CAsset_loader::center_asset() -> void
 {
@@ -57,15 +58,9 @@ auto CAsset_loader::get_Sprite() -> sf::Sprite&
     return mSprite;
 }
 
-auto CAsset_loader::get_Scale() -> float&
+auto CAsset_loader::get_Scale() -> sf::Vector2f&
 {
     return mScale;
-}
-
-auto CAsset_loader::set_scale(float value) -> void
-{
-    mScale = value;
-    mSprite.setScale(mScale, mScale);
 }
 
 auto CAsset_loader::set_Position(float x, float y) -> void
@@ -92,8 +87,8 @@ auto CAsset_loader::set_animation_param(unsigned Row, unsigned Frame_Length, uns
 
 auto CAsset_loader::set_direction(bool value) -> void
 {
-    if (value) mSprite.setScale(mScale, mScale);
-    else mSprite.setScale(-mScale, mScale);
+    if (value) mSprite.setScale(mScale.x, mScale.y);
+    else mSprite.setScale(-mScale.x, mScale.y);
 }
 
 auto CAsset_loader::set_origin_center() -> void
