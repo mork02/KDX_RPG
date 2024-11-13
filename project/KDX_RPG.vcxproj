@@ -151,6 +151,7 @@
   <ItemGroup>
     <ClCompile Include="..\src\armor.cpp" />
     <ClCompile Include="..\src\camera.cpp" />
+    <ClCompile Include="..\src\collision.cpp" />
     <ClCompile Include="..\src\fps.cpp" />
     <ClCompile Include="..\src\frame.cpp" />
     <ClCompile Include="..\src\inventory.cpp" />
@@ -177,6 +178,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\armor.h" />
+    <ClInclude Include="..\include\collision.h" />
     <ClInclude Include="..\include\entity.h" />
     <ClInclude Include="..\include\fps.h" />
     <ClInclude Include="..\include\frame.h" />

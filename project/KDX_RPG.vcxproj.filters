@@ -132,6 +132,9 @@
     <ClCompile Include="..\src\player_movement.cpp">
       <Filter>Source Files\Window\Controller</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\collision.cpp">
+      <Filter>Source Files\Window\Assets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\panel.h">
@@ -208,6 +211,9 @@
     </ClInclude>
     <ClInclude Include="..\include\player_movement.h">
       <Filter>Header Files\Window\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\collision.h">
+      <Filter>Header Files\Window\Assets</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
