@@ -4,8 +4,9 @@
 CStats_menu::CStats_menu(sf::RenderWindow& Window) : 
     CMenu(Window, EMenuType::Stats)
 {
-    mAsset.init(mPath);
-    mAsset.center_asset();
+    init_asset(mPath);
+    get_Sprite().setScale(6, 6);
+    center_asset();
 }
 
 auto CStats_menu::draw() -> void
@@ -13,7 +14,7 @@ auto CStats_menu::draw() -> void
 
     if (get_visible())
     {
-        mWindow.draw(mAsset.get_Sprite());
+        mWindow.draw(get_Sprite());
     }
 }
 

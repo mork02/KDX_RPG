@@ -13,20 +13,20 @@ enum class EMenuType
 
 class CGameplay;
 class CPanel;
-class CMenu
+
+class CMenu : public CAsset_loader
 {
 private:
     bool mVisible;
 
 protected:
     sf::RenderWindow& mWindow;
-    CAsset_loader mAsset;
     EMenuType mMenu_Type;
 
 public:
     CMenu(sf::RenderWindow& Window, EMenuType Menu_Type) :
         mWindow(Window), mMenu_Type(Menu_Type),
-        mAsset(Window),
+        CAsset_loader(Window),
         mVisible(false) 
     {}
     virtual ~CMenu() = default;

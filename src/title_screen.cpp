@@ -9,7 +9,7 @@ CTitle_Screen::CTitle_Screen(sf::RenderWindow& Window) :
     mOptions_Text(Window, "Options", ECharacter_Size::MEDIUM , true),
     mQuit_Text(Window, "Quit", ECharacter_Size::MEDIUM, true)
 {
-    mAsset.init(mBackground_Path);
+    mAsset.init_asset(mBackground_Path);
     scale_background();
     position_texts();
 }

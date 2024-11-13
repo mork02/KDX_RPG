@@ -10,9 +10,9 @@ CPause_menu::CPause_menu(sf::RenderWindow& Window) :
     mOptions_Text(Window, "Options", ECharacter_Size::MEDIUM, true),
     mBack_To_Title_Text(Window, "Back to Title", ECharacter_Size::MEDIUM, true)
 {
-    mAsset.init(mPath);
-    mAsset.center_asset();
-    mAsset.get_Sprite().setScale(6, 6);
+    init_asset(mPath);
+    center_asset();
+    get_Sprite().setScale(6, 6);
     set_text_position();
 }
 
@@ -57,7 +57,7 @@ auto CPause_menu::draw() -> void
 {
     if (get_visible()) 
     {
-        mWindow.draw(mAsset.get_Sprite());
+        mWindow.draw(get_Sprite());
 
         for (const auto& text : get_text_components()) 
         {

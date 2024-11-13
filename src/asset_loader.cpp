@@ -4,10 +4,8 @@ CAsset_loader::CAsset_loader(sf::RenderWindow& Window) :
     mWindow(Window), CAnimation_loader(), mD_Coordinates(Window, "", ECharacter_Size::VERY_SMALL)
 {}
 
-auto CAsset_loader::init(std::string Path, bool Is_Animated, unsigned Row, unsigned Frame_Length, unsigned Frame_Width, unsigned Frame_Height) -> void
+auto CAsset_loader::init_asset(std::string Path) -> void
 {
-    mIs_Animated = Is_Animated;
-
     if (!mTexture.loadFromFile(Path))
     {
         std::cerr << "Error loading texture from " << Path << std::endl;
@@ -15,7 +13,22 @@ auto CAsset_loader::init(std::string Path, bool Is_Animated, unsigned Row, unsig
 
     mSprite.setTexture(mTexture);
 
-    if (Is_Animated)
+    mScale = { 3, 3 };
+    mSprite.setScale(mScale.x, mScale.y);
+
+}
+
+auto CAsset_loader::init_animation(std::string Path, unsigned Row, unsigned Frame_Length, unsigned Frame_Width, unsigned Frame_Height) -> void
+{
+    mIs_Animated = true;
+
+    if (!mTexture.loadFromFile(Path))
+    {
+        std::cerr << "Error loading texture from " << Path << std::endl;
+    }
+    mSprite.setTexture(mTexture);
+
+    if (mIs_Animated)
     {
         if (Row == 0) Row = 1;
         if (Frame_Length == 0) Frame_Length = 1;
@@ -25,10 +38,8 @@ auto CAsset_loader::init(std::string Path, bool Is_Animated, unsigned Row, unsig
         mSprite.setTextureRect(get_frame_rect(0));
     }
 
-    // scaling //
     mScale = { 3, 3 };
     mSprite.setScale(mScale.x, mScale.y);
-
 }
 
 auto CAsset_loader::center_asset() -> void

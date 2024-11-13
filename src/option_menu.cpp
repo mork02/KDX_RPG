@@ -6,8 +6,9 @@ COption_menu::COption_menu(sf::RenderWindow& Window) :
 	mTitle_Text(Window, "Options", ECharacter_Size::LARGE, false),
 	mBack_Text(Window, "Back", ECharacter_Size::MEDIUM, true)
 {
-	mAsset.init(mPath);
-	mAsset.center_asset();
+	init_asset(mPath);
+	get_Sprite().setScale(6, 6);
+	center_asset();
 	set_text_position();
 }
 
@@ -41,7 +42,7 @@ auto COption_menu::draw() -> void
 {
 	if (get_visible())
 	{
-		mWindow.draw(mAsset.get_Sprite());
+		mWindow.draw(get_Sprite());
 
 		for (const auto& text : get_text_components())
 		{

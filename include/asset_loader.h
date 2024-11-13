@@ -25,7 +25,8 @@ private:
 public:
     CAsset_loader(sf::RenderWindow& Window);
 
-    auto init(std::string Path, bool Is_Animated = false, unsigned Row = 1, unsigned Frame_Length = 1, unsigned Frame_Width = 32, unsigned Frame_Height = 32) -> void;
+    auto init_asset(std::string Path) -> void;
+    auto init_animation(std::string Path, unsigned Row = 1, unsigned Frame_Length = 1, unsigned Frame_Width = 32, unsigned Frame_Height = 32) -> void;
 
     auto get_Texture()  -> sf::Texture&;
     auto get_Sprite()   -> sf::Sprite&;
