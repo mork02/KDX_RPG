@@ -12,7 +12,7 @@ auto CGoblin::init_asset() -> void
     // TODO: add different spawn system
     // TODO: add goblin texture
     // TODO: add ai movement
-    mAsset.init_animation("assets/character_assets/wolf_tailwag_tf-shadow.png", EAnimation_Goblin::A_SIT_FRONT, EAnimation_Goblin::L_SIT_FRONT);
+    mAsset.init_animation("assets/character_assets/goblin_idle.png", 1, 8, 64, 64);
     mAsset.set_debug(true);
     mAsset.set_origin_center();
     mAsset.get_Sprite().setPosition(500, 500);
