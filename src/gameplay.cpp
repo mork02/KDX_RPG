@@ -92,9 +92,11 @@ auto CGameplay::event_mouse(sf::Event& Event, CPanel* Panel) -> void
 
 auto CGameplay::event_keyboard(sf::Event& Event) -> void
 {
+    if (Event.type == sf::Event::KeyPressed) {
+        if (Event.key.code == sf::Keyboard::Escape)   set_current_menu(mPause_Menu.get());
+        if (Event.key.code == sf::Keyboard::G)   set_current_menu(mStats_Menu.get());
+    }
     mWarrior->set_direction(Event);
-    if (Event.key.code == sf::Keyboard::Escape)   set_current_menu(mPause_Menu.get());
-    if (Event.key.code == sf::Keyboard::G)   set_current_menu(mStats_Menu.get());
 }
 
 
