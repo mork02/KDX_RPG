@@ -33,7 +33,11 @@ public:
     auto get_Asset() -> CAsset_loader& { return mAsset; }
 
     auto set_name(std::string Name) -> void { mName = Name; }
-    auto set_hp(int HP) -> void { mHP = HP; }
+    auto set_hp(int HP) -> void 
+    { 
+        mHP = HP; 
+        if (mHP <= 0)   mHP = 0;
+    }
     auto set_max_hp(int Max_HP) -> void { mMax_HP = Max_HP; }
     auto set_basic_dmg(int Basic_DMG) -> void { mBasic_DMG = Basic_DMG; }
     auto set_basic_defensive(int Basic_DEF) -> void { mBasic_DEF = Basic_DEF; }
