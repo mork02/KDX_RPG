@@ -1,4 +1,5 @@
 #include "gameplay.h"
+#include "collision.h"
 
 CGameplay::CGameplay(sf::RenderWindow& Window)
     : mWindow(Window), mCamera(Window)
@@ -108,6 +109,10 @@ auto CGameplay::update(float delta_time) -> void
     for (auto& entity : mEntities)
     {
         entity->get_Asset().draw();
+        if (CCollision::check_collision(mWarrior.get(), entity.get()))
+        {
+
+        }
     }
     
     mWarrior->update(delta_time);
