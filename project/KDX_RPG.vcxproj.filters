@@ -135,6 +135,9 @@
     <ClCompile Include="..\src\collision.cpp">
       <Filter>Source Files\Window\Assets</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\statusbar.cpp">
+      <Filter>Source Files\Window\Assets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\panel.h">
@@ -213,6 +216,9 @@
       <Filter>Header Files\Window\Controller</Filter>
     </ClInclude>
     <ClInclude Include="..\include\collision.h">
+      <Filter>Header Files\Window\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\statusbar.h">
       <Filter>Header Files\Window\Assets</Filter>
     </ClInclude>
   </ItemGroup>
