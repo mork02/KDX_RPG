@@ -10,7 +10,7 @@ class CTitle_Screen
 private:
     sf::RenderWindow& mWindow;
 
-    std::string mBackground_Path = "assets/menu_assets/main_menu/background_new.png";
+    std::string mBackground_Path = "assets/menus/title/background_new.png";
 
     CAsset_loader mAsset;
 

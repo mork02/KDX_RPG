@@ -9,7 +9,7 @@ CWarrior::CWarrior(sf::RenderWindow& Window) :
 
 auto CWarrior::init_asset() -> void
 {
-    mAsset.init_animation("assets/character_assets/AnimationSheet_Character.png", EAnimation_Warrior::A_IDLE, EAnimation_Warrior::L_IDLE);
+    mAsset.init_animation("./assets/entities/AnimationSheet_Character.png", EAnimation_Warrior::A_IDLE, EAnimation_Warrior::L_IDLE);
     mAsset.set_debug(true);
     mAsset.set_origin_center();
 }

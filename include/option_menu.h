@@ -8,7 +8,7 @@ class CPanel;
 class COption_menu : public CMenu
 {
 private:
-	const std::string mPath = "./assets/menu_assets/pause_menu/pause.png";
+	const std::string mPath = "./assets/menus/pause/pause.png";
 
 	CText mTitle_Text;
 	CText mBack_Text;

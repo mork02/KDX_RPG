@@ -8,7 +8,7 @@ class CPanel;
 class CStats_menu : public CMenu
 {
 private:
-    const std::string mPath = "./assets/menu_assets/stats_menu/stats_menu.png";
+    const std::string mPath = "./assets/menus/stats/stats_menu.png";
 
 public:
     CStats_menu(sf::RenderWindow& Window);
