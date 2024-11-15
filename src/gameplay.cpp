@@ -110,8 +110,8 @@ auto CGameplay::update(float delta_time) -> void
     {
         entity->get_Asset().draw();
         if (CCollision::check_collision(mWarrior.get(), entity.get()))
-        {
-
+        { 
+            std::cout << "Collision between: " << "\033[1;31m " << mWarrior->get_name() << " \033[0m" << " and " << "\033[1;31m " << entity.get()->get_name() << " \033[0m" << std::endl;
         }
     }
     

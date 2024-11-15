@@ -4,7 +4,7 @@
 CStatusBar::CStatusBar(sf::RenderWindow& Window) :
 	mAsset(Window)
 {
-	mAsset.init_asset()
+	// mAsset.init_asset()
 }
 
 auto CStatusBar::update(CEntity* entity) -> void
