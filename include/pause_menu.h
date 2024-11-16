@@ -4,8 +4,6 @@
 #include "menu.h"
 #include "text.h"
 
-class CPanel;
-
 class CPause_menu : public CMenu
 {
 private:
@@ -23,7 +21,7 @@ public:
     CPause_menu(sf::RenderWindow& Window);
 
     auto draw() -> void override;
-    auto handle_click_event(CGameplay& Gameplay, CPanel* Panel) -> void override;
+    auto handle_events(CGameplay& Gameplay, CGameManager* GameManager) -> void override;
 };
 
 

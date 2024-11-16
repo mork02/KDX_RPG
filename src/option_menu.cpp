@@ -1,8 +1,8 @@
 #include "option_menu.h"
-#include "panel.h"
+#include "gameplay.h"
 
 COption_menu::COption_menu(sf::RenderWindow& Window) : 
-	CMenu(Window, EMenuType::Options),
+	CMenu(Window, EMenuState::OPTIONS),
 	mTitle_Text(Window, "Options", ECharacter_Size::LARGE, false),
 	mBack_Text(Window, "Back", ECharacter_Size::MEDIUM, true)
 {
@@ -46,16 +46,16 @@ auto COption_menu::draw() -> void
 
 		for (const auto& text : get_text_components())
 		{
-			text.get().update();
+			text.get().render();
 		}
 	}
 }
 
-auto COption_menu::handle_click_event(CGameplay& Gameplay, CPanel* Panel) -> void
+auto COption_menu::handle_events(CGameplay& Gameplay, CGameManager* GameManager) -> void
 {
     sf::Vector2f mouse_pos = mWindow.mapPixelToCoords(sf::Mouse::getPosition(mWindow));
 	if (mBack_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
 	{
-		Gameplay.set_current_menu(&Gameplay.get_menu_pause());
+		Gameplay.set_menu(EMenuState::PAUSE);
 	}
 }

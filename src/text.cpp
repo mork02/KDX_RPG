@@ -68,7 +68,7 @@ auto CText::set_position(float value_x, float value_y) -> void
     mText.setPosition(value_x, value_y);
 }
 
-auto CText::update() -> void
+auto CText::render() -> void
 {
     update_hover_state();
     mWindow.draw(mText);

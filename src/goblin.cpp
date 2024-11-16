@@ -17,3 +17,12 @@ auto CGoblin::init_asset() -> void
     mAsset.set_origin_center();
     mAsset.get_Sprite().setPosition(500, 500);
 }
+
+auto CGoblin::render() -> void
+{
+    mAsset.draw();
+}
+
+auto CGoblin::update(float delta_time) -> void
+{
+}

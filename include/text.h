@@ -42,5 +42,5 @@ public:
     auto set_text(std::string new_text) -> void;
     auto set_position(float value_x, float value_y) -> void;
 
-    auto update() -> void;
+    auto render() -> void;
 };

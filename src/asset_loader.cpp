@@ -125,7 +125,7 @@ auto CAsset_loader::Debugging() -> void
     debug_box.setOutlineThickness(2.0f);
     debug_box.setFillColor(sf::Color::Transparent);
 
-    mD_Coordinates.update();
+    mD_Coordinates.render();
     mWindow.draw(debug_box);
     // std::cout << "X: " << mX << "Y: " << m | Y << std::endl;
 }

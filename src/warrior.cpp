@@ -45,10 +45,14 @@ auto CWarrior::handle_animations() -> void
     mAsset.set_animation_param(EAnimation_Warrior::A_IDLE, EAnimation_Warrior::L_IDLE);
 }
 
+auto CWarrior::render() -> void
+{
+    mAsset.draw();
+}
+
 auto CWarrior::update(float delta_time) -> void
 {
     handle_movement(delta_time);
     mAsset.set_Position(get_Position().x, get_Position().y);
     handle_animations();
-    mAsset.draw();
 }

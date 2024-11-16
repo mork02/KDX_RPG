@@ -1,9 +1,10 @@
-#include "frame.h"
+#include "game_manager.h"
 
 int main()
 {
 
-    CFrame();
+    CGameManager GameManager;
+    GameManager.Run();
 
     return 0;
 }

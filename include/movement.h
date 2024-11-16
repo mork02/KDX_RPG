@@ -16,7 +16,7 @@ public:
 	auto get_Direction() -> sf::Vector2f& { return mDirection; }
 
 	virtual auto handle_movement(float delta_time) -> void = 0;
-	virtual auto set_direction(sf::Event& Event) -> void = 0;
+	virtual auto set_direction(sf::Event* Event) -> void = 0;
 
 };
 

@@ -2,17 +2,10 @@
 #include <iostream>
 #include "asset_loader.h"
 #include "SFML/Graphics.hpp"
-
-enum class EMenuType
-{
-    Pause,
-    Options,
-    Inventory,
-    Stats
-};
+#include "enums.h"
 
 class CGameplay;
-class CPanel;
+class CGameManager;
 
 class CMenu : public CAsset_loader
 {
@@ -21,10 +14,10 @@ private:
 
 protected:
     sf::RenderWindow& mWindow;
-    EMenuType mMenu_Type;
+    EMenuState mMenu_Type;
 
 public:
-    CMenu(sf::RenderWindow& Window, EMenuType Menu_Type) :
+    CMenu(sf::RenderWindow& Window, EMenuState Menu_Type) :
         mWindow(Window), mMenu_Type(Menu_Type),
         CAsset_loader(Window),
         mVisible(false) 
@@ -35,7 +28,7 @@ public:
     auto set_visible(bool value) -> void { mVisible = value; };
 
     virtual auto draw() -> void = 0;
-    virtual auto handle_click_event(CGameplay& Gameplay, CPanel* Panel) -> void = 0;
+    virtual auto handle_events(CGameplay& Gameplay, CGameManager* GameManager) -> void = 0;
 
-    auto get_menu_name() -> const EMenuType& { return mMenu_Type; }
+    auto get_menu_name() -> const EMenuState& { return mMenu_Type; }
 };

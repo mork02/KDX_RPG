@@ -9,12 +9,14 @@
 #include "warrior.h"
 #include "goblin.h"
 #include "camera.h"
+#include "enums.h"
+
+class CGameManager;
 
 class CGameplay
 {
 private:
 	sf::RenderWindow& mWindow;
-	sf::Clock mClock;
 	CCamera mCamera;
 
 	// TODO: add menu icons on screen to point to click open menu
@@ -24,6 +26,8 @@ private:
 	std::unique_ptr<CStats_menu> mStats_Menu;
 
 	CMenu* mCurrent_Menu = nullptr;
+	CMenu* mNew_Menu = nullptr;
+
 
 	std::unique_ptr<CWarrior> mWarrior;
 	std::vector<std::unique_ptr<CEntity>> mEntities;
@@ -33,13 +37,9 @@ private:
 public:
 	CGameplay(sf::RenderWindow& Window);
 
-	auto get_menu_options() -> COption_menu&;
-	auto get_menu_pause() -> CPause_menu&;
-	auto get_menu_stats() -> CStats_menu&;
-
-	auto set_current_menu(CMenu* new_menu) -> void;
-
-	auto event_mouse(sf::Event& Event, CPanel* Panel) -> void;
-	auto event_keyboard(sf::Event& Event) -> void;
+	auto set_menu(EMenuState MenuState) -> void;
+ 
+	auto handle_events(CGameManager* GameManager, sf::Event* Event) -> void;
+	auto render() -> void;
 	auto update(float delta_time) -> void;
 };

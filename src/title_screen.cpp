@@ -1,5 +1,5 @@
 #include "title_screen.h"
-#include "panel.h"
+#include "game_manager.h"
 
 CTitle_Screen::CTitle_Screen(sf::RenderWindow& Window) :
     mWindow(Window),
@@ -15,7 +15,7 @@ CTitle_Screen::CTitle_Screen(sf::RenderWindow& Window) :
 }
 
 
-auto CTitle_Screen::draw() -> void
+auto CTitle_Screen::render() -> void
 {
     mMouse_Position = mWindow.mapPixelToCoords(sf::Mouse::getPosition(mWindow));
     
@@ -23,13 +23,18 @@ auto CTitle_Screen::draw() -> void
     {
         mWindow.draw(asset.get().get_Sprite());
     }
-    
-    animate_title_text();
 
     for (auto const& text : get_text_components())
     {
-        text.get().update();
+        text.get().render();
     }
+    
+    animate_title_text();
+
+}
+
+auto CTitle_Screen::update() -> void
+{
 }
 
 auto CTitle_Screen::scale_background() -> void
@@ -85,20 +90,26 @@ auto CTitle_Screen::animate_title_text() -> void
     mTitle_Text.set_color(color);
 }
 
-auto CTitle_Screen::handle_click_event(CPanel& panel) -> void
+auto CTitle_Screen::handle_events(CGameManager* GameManager, sf::Event* Event) -> void
 {
-    if (mNew_Game_Text.get_Global_text_Bounds().contains(mMouse_Position.x, mMouse_Position.y))
+    if (Event->type == sf::Event::MouseButtonPressed)
     {
-        panel.set_scene(ESceneType::GAMEPLAY);
-    }
-    else if (mOptions_Text.get_Global_text_Bounds().contains(mMouse_Position.x, mMouse_Position.y))
-    {
-        std::cout << "Option!" << std::endl;
-    }
-    else if (mQuit_Text.get_Global_text_Bounds().contains(mMouse_Position.x, mMouse_Position.y))
-    {
-        std::cout << "Exit!" << std::endl;
-        mWindow.close();
+        if (Event->key.code == sf::Mouse::Left)
+        {
+            if (mNew_Game_Text.get_Global_text_Bounds().contains(mMouse_Position.x, mMouse_Position.y))
+            {
+                GameManager->set_GameState(EGameState::GAMEPLAY);
+            }
+            else if (mOptions_Text.get_Global_text_Bounds().contains(mMouse_Position.x, mMouse_Position.y))
+            {
+                std::cout << "Option!" << std::endl;
+            }
+            else if (mQuit_Text.get_Global_text_Bounds().contains(mMouse_Position.x, mMouse_Position.y))
+            {
+                std::cout << "Exit!" << std::endl;
+                mWindow.close();
+            }
+        }
     }
 }
 

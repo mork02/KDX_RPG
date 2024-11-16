@@ -56,5 +56,6 @@ public:
     }
     virtual auto handle_animations() -> void { 0; }
     virtual auto init_asset() -> void { 0; }
+    virtual auto render() -> void { 0; }
     virtual auto update(float delta_time) -> void { 0; }
 };

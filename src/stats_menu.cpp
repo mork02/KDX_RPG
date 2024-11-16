@@ -2,7 +2,7 @@
 #include "panel.h"
 
 CStats_menu::CStats_menu(sf::RenderWindow& Window) : 
-    CMenu(Window, EMenuType::Stats)
+    CMenu(Window, EMenuState::STATS)
 {
     init_asset(mPath);
     get_Sprite().setScale(6, 6);
@@ -18,7 +18,7 @@ auto CStats_menu::draw() -> void
     }
 }
 
-auto CStats_menu::handle_click_event(CGameplay& Gameplay, CPanel* Panel) -> void
+auto CStats_menu::handle_events(CGameplay& Gameplay, CGameManager* GameManager) -> void
 {
 
 }

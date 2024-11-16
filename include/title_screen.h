@@ -3,7 +3,7 @@
 #include "text.h"
 #include "asset_loader.h"
 
-class CPanel;
+class CGameManager;
 
 class CTitle_Screen
 {
@@ -35,7 +35,8 @@ private:
 public:
     CTitle_Screen(sf::RenderWindow& Window);
 
-    auto handle_click_event(CPanel& panel) -> void;
-    auto draw() -> void;
+    auto handle_events(CGameManager* GameManager, sf::Event* Event) -> void;
+    auto render() -> void;
+    auto update() -> void;
 
 };

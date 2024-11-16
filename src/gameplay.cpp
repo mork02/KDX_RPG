@@ -1,5 +1,5 @@
 #include "gameplay.h"
-#include "collision.h"
+// #include "collision.h"
 
 CGameplay::CGameplay(sf::RenderWindow& Window)
     : mWindow(Window), mCamera(Window)
@@ -45,24 +45,14 @@ auto CGameplay::load_Entities() -> void
     mEntities.push_back(std::move(std::make_unique<CGoblin>(mWindow)));
 }
 
-auto CGameplay::get_menu_options() -> COption_menu&
+auto CGameplay::set_menu(EMenuState MenuState) -> void
 {
-    return *mOption_Menu;
-}
-
-auto CGameplay::get_menu_pause() -> CPause_menu&
-{
-    return *mPause_Menu;
-}
-
-auto CGameplay::get_menu_stats() -> CStats_menu&
-{
-    return *mStats_Menu;
-}
-
-auto CGameplay::set_current_menu(CMenu* new_menu) -> void
-{
-    if (mCurrent_Menu == new_menu) {
+    if (MenuState == EMenuState::PAUSE)   mNew_Menu = mPause_Menu.get();
+    if (MenuState == EMenuState::STATS)   mNew_Menu = mStats_Menu.get();
+    if (MenuState == EMenuState::OPTIONS) mNew_Menu = mOption_Menu.get();
+    if (MenuState == EMenuState::NULLPTR) mNew_Menu = nullptr;
+    
+    if (mCurrent_Menu == mNew_Menu) {
         if (mCurrent_Menu) mCurrent_Menu->set_visible(false);
         mCurrent_Menu = nullptr;
         return;
@@ -72,7 +62,7 @@ auto CGameplay::set_current_menu(CMenu* new_menu) -> void
         mCurrent_Menu->set_visible(false);
     }
 
-    mCurrent_Menu = new_menu;
+    mCurrent_Menu = mNew_Menu;
 
     if (mCurrent_Menu) {
         try {
@@ -85,37 +75,43 @@ auto CGameplay::set_current_menu(CMenu* new_menu) -> void
     }
 }
 
-auto CGameplay::event_mouse(sf::Event& Event, CPanel* Panel) -> void
+auto CGameplay::handle_events(CGameManager* GameManager, sf::Event* Event) -> void
 {
-    if (mCurrent_Menu)  mCurrent_Menu->handle_click_event(*this, Panel);
-    // TODO: add mouse input
-}
+    if (Event->type == sf::Event::MouseButtonPressed)
+    {
+        if (Event->key.code == sf::Mouse::Left)
+        {
+            if (mCurrent_Menu)  mCurrent_Menu->handle_events(*this, GameManager);
+        }
+    }
 
-auto CGameplay::event_keyboard(sf::Event& Event) -> void
-{
-    if (Event.type == sf::Event::KeyPressed) {
-        if (Event.key.code == sf::Keyboard::Escape)   set_current_menu(mPause_Menu.get());
-        if (Event.key.code == sf::Keyboard::G)   set_current_menu(mStats_Menu.get());
+    if (Event->type == sf::Event::KeyPressed) {
+        if (Event->key.code == sf::Keyboard::Escape)   set_menu(EMenuState::PAUSE);
+        if (Event->key.code == sf::Keyboard::G)   set_menu(EMenuState::STATS);
     }
     mWarrior->set_direction(Event);
 }
 
+auto CGameplay::render() -> void
+{
+    load_Level();
+    for (auto& entity : mEntities)
+    {
+        entity->render();
+    }
+    mWarrior->render();
+    if (mCurrent_Menu) mCurrent_Menu->draw();
+}
 
 auto CGameplay::update(float delta_time) -> void
 {
-    // TODO: add collusion class to detect collusion between entities
-    load_Level();
-
     for (auto& entity : mEntities)
     {
-        entity->get_Asset().draw();
-        if (CCollision::check_collision(mWarrior.get(), entity.get()))
-        { 
-            std::cout << "Collision between: " << "\033[1;31m " << mWarrior->get_name() << " \033[0m" << " and " << "\033[1;31m " << entity.get()->get_name() << " \033[0m" << std::endl;
-        }
+        entity->update(delta_time);
     }
-    
     mWarrior->update(delta_time);
     // mCamera.update(mWarrior.get());
-    if (mCurrent_Menu) mCurrent_Menu->draw();
+
+    
+    // TODO: add collusion class to detect collusion between entities
 }
