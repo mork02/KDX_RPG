@@ -153,14 +153,13 @@
     <ClCompile Include="..\src\camera.cpp" />
     <ClCompile Include="..\src\collision.cpp" />
     <ClCompile Include="..\src\fps.cpp" />
-    <ClCompile Include="..\src\frame.cpp" />
+    <ClCompile Include="..\src\game_manager.cpp" />
     <ClCompile Include="..\src\inventory.cpp" />
     <ClCompile Include="..\src\item.cpp" />
     <ClCompile Include="..\src\main.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\src\panel.cpp" />
     <ClCompile Include="..\src\player_movement.cpp" />
     <ClCompile Include="..\src\potion.cpp" />
     <ClCompile Include="..\src\statusbar.cpp" />
@@ -182,11 +181,10 @@
     <ClInclude Include="..\include\collision.h" />
     <ClInclude Include="..\include\entity.h" />
     <ClInclude Include="..\include\fps.h" />
-    <ClInclude Include="..\include\frame.h" />
+    <ClInclude Include="..\include\game_manager.h" />
     <ClInclude Include="..\include\inventory.h" />
     <ClInclude Include="..\include\item.h" />
     <ClInclude Include="..\include\movement.h" />
-    <ClInclude Include="..\include\panel.h" />
     <ClInclude Include="..\include\player_movement.h" />
     <ClInclude Include="..\include\potion.h" />
     <ClInclude Include="..\include\statusbar.h" />
@@ -201,10 +199,10 @@
     <ClInclude Include="..\include\tile_map_loader.h" />
     <ClInclude Include="..\include\pause_menu.h" />
     <ClInclude Include="..\include\option_menu.h" />
-    <ClInclude Include="..\include\layers_enum.h" />
     <ClInclude Include="..\include\animation_loader.h" />
     <ClInclude Include="..\include\camera.h" />
     <ClInclude Include="..\include\goblin.h" />
+    <ClInclude Include="..\include\enums.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
