@@ -1,6 +1,5 @@
 #include "entity.h"
 #include "player_movement.h"
-#include "enums.h"
 
 #pragma once
 class CWarrior : public CEntity, public CPlayer_Movement

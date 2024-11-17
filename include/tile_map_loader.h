@@ -3,7 +3,7 @@
 #include <vector>
 #include <map>
 #include <string>
-#include "layers_enum.h"
+#include "enums.h"
 
 class CTile_Map_Loader {
 private:

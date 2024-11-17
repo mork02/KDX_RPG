@@ -1,5 +1,4 @@
 #include "stats_menu.h"
-#include "panel.h"
 
 CStats_menu::CStats_menu(sf::RenderWindow& Window) : 
     CMenu(Window, EMenuState::STATS)

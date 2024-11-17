@@ -1,6 +1,6 @@
 #pragma once
 
-enum EGameState
+enum class EGameState
 {
     TITLE_SCREEN,
     GAMEPLAY,

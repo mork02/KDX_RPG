@@ -1,4 +1,5 @@
 #include "warrior.h"
+#include "enums.h"
 
 CWarrior::CWarrior(sf::RenderWindow& Window) :
     CEntity(Window, "Warrior", 100, 100, 10, 10),
