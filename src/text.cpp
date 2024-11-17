@@ -93,7 +93,7 @@ auto CText::update_hover_state() -> void
 
 auto CText::init_Standard_Size() -> void
 {
-    sf::Vector2u baseResolution(1920, 1080);
+    sf::Vector2u baseResolution(mWindow.getSize().x, mWindow.getSize().y);
     sf::Vector2u windowSize = mWindow.getSize();
 
     float scaleX = static_cast<float>(windowSize.x) / baseResolution.x;
