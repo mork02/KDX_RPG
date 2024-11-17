@@ -1,7 +1,7 @@
 #include "game_manager.h"
 
 CGameManager::CGameManager() :
-	Window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE, sf::Style::Close),
+	Window(sf::VideoMode(Resolution[Resolution_Index].first, Resolution[Resolution_Index].second), WINDOW_TITLE, sf::Style::Close), Event(),
     Title_Screen(Window), Gameplay(Window)
 {
 	Window.setFramerateLimit(FPS_Value);
@@ -56,15 +56,40 @@ auto CGameManager::handle_events() -> void
     while (Window.pollEvent(Event))
     {
         if (Event.type == sf::Event::Closed)    Window.close();
+        configure_resolution();
+
         switch (GameState)
         {
-        case TITLE_SCREEN:
+        case EGameState::TITLE_SCREEN:
             Title_Screen.handle_events(this, &Event);
             break;
-        case GAMEPLAY:
+        case EGameState::GAMEPLAY:
             Gameplay.handle_events(this, &Event);
             break;
-        case GAME_OVER:
+        case EGameState::GAME_OVER:
+            break;
+        default:
+            break;
+        }
+    }
+}
+
+auto CGameManager::configure_resolution() -> void {
+    if (Event.type == sf::Event::KeyPressed) {
+        switch (Event.key.code) {
+        case sf::Keyboard::Add:
+            if (Resolution_Index < Resolution.size() - 1) {
+                Resolution_Index++;
+                auto [width, height] = Resolution.at(Resolution_Index);
+                Window.setSize(sf::Vector2u(width, height));
+            }
+            break;
+        case sf::Keyboard::Subtract:
+            if (Resolution_Index > 0) {
+                Resolution_Index--;
+                auto [width, height] = Resolution.at(Resolution_Index);
+                Window.setSize(sf::Vector2u(width, height));
+            }
             break;
         default:
             break;
