@@ -1,6 +1,7 @@
 #include "collision.h"
+#include "enums.h"
 
-auto CCollision::check_collision(CEntity* x, CEntity* y) -> bool
+auto CCollision::entity_check(CEntity* x, CEntity* y) -> bool
 {
 	if (x->get_Asset().get_Sprite().getGlobalBounds().intersects(y->get_Asset().get_Sprite().getGlobalBounds()))
 	{
