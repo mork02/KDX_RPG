@@ -10,6 +10,7 @@ public:
 	CGoblin(sf::RenderWindow& Window);
 
 	auto render() -> void override;
+	auto handle_events(sf::RenderWindow& Window, sf::Event& Event) -> void override;
 	auto update(float delta_time) -> void override;
 };
 
