@@ -33,6 +33,7 @@ private:
 
 	auto handle_events() -> void;
 	auto configure_resolution() -> void;
+	auto resize_window() -> void;
 	auto render() -> void;
 	auto update(float delta_time) -> void;
 

@@ -61,10 +61,10 @@ auto CGameManager::handle_events() -> void
         switch (GameState)
         {
         case EGameState::TITLE_SCREEN:
-            Title_Screen.handle_events(this, &Event);
+            Title_Screen.handle_events(*this, Event);
             break;
         case EGameState::GAMEPLAY:
-            Gameplay.handle_events(this, &Event);
+            Gameplay.handle_events(*this, Event);
             break;
         case EGameState::GAME_OVER:
             break;
@@ -77,22 +77,26 @@ auto CGameManager::handle_events() -> void
 auto CGameManager::configure_resolution() -> void {
     if (Event.type == sf::Event::KeyPressed) {
         switch (Event.key.code) {
-        case sf::Keyboard::Add:
+        case sf::Keyboard::F2:
             if (Resolution_Index < Resolution.size() - 1) {
                 Resolution_Index++;
-                auto [width, height] = Resolution.at(Resolution_Index);
-                Window.setSize(sf::Vector2u(width, height));
+                resize_window();
             }
             break;
-        case sf::Keyboard::Subtract:
+        case sf::Keyboard::F1:
             if (Resolution_Index > 0) {
                 Resolution_Index--;
-                auto [width, height] = Resolution.at(Resolution_Index);
-                Window.setSize(sf::Vector2u(width, height));
+                resize_window();
             }
             break;
         default:
             break;
         }
     }
+}
+
+auto CGameManager::resize_window() -> void
+{
+    auto [width, height] = Resolution.at(Resolution_Index);
+    Window.setSize(sf::Vector2u(width, height));
 }
