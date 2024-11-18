@@ -35,7 +35,7 @@ private:
 public:
     CTitle_Screen(sf::RenderWindow& Window);
 
-    auto handle_events(CGameManager* GameManager, sf::Event* Event) -> void;
+    auto handle_events(CGameManager& GameManager, sf::Event& Event) -> void;
     auto render() -> void;
     auto update() -> void;
 

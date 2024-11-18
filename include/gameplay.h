@@ -39,7 +39,7 @@ public:
 
 	auto set_menu(EMenuState MenuState) -> void;
  
-	auto handle_events(CGameManager* GameManager, sf::Event* Event) -> void;
+	auto handle_events(CGameManager& GameManager, sf::Event& Event) -> void;
 	auto render() -> void;
 	auto update(float delta_time) -> void;
 };

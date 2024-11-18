@@ -18,9 +18,9 @@ auto CGameplay::load_Level() -> void
     sf::Color color1 = sf::Color(190, 190, 190);
     sf::Color color2 = sf::Color(100, 100, 100);
 
-    for (int y = 0; y < mWindow.getSize().y; y += 48)
+    for (unsigned y = 0; y < mWindow.getSize().y; y += 48)
     {
-        for (int x = 0; x < mWindow.getSize().x; x += 48)
+        for (unsigned x = 0; x < mWindow.getSize().x; x += 48)
         {
             sf::RectangleShape rect(sf::Vector2f(48.f, 48.f));
             rect.setPosition(static_cast<float>(x), static_cast<float>(y));
@@ -75,21 +75,22 @@ auto CGameplay::set_menu(EMenuState MenuState) -> void
     }
 }
 
-auto CGameplay::handle_events(CGameManager* GameManager, sf::Event* Event) -> void
+auto CGameplay::handle_events(CGameManager& GameManager, sf::Event& Event) -> void
 {
-    if (Event->type == sf::Event::MouseButtonPressed)
+    if (Event.type == sf::Event::MouseButtonPressed)
     {
-        if (Event->key.code == sf::Mouse::Left)
+        if (Event.key.code == sf::Mouse::Left)
         {
-            if (mCurrent_Menu)  mCurrent_Menu->handle_events(*this, GameManager);
+            if (mCurrent_Menu)  mCurrent_Menu->handle_events(*this, &GameManager);
         }
     }
 
-    if (Event->type == sf::Event::KeyPressed) {
-        if (Event->key.code == sf::Keyboard::Escape)   set_menu(EMenuState::PAUSE);
-        if (Event->key.code == sf::Keyboard::G)   set_menu(EMenuState::STATS);
+    mWarrior.get()->handle_events(mWindow, Event);
+
+    if (Event.type == sf::Event::KeyPressed) {
+        if (Event.key.code == sf::Keyboard::Escape)   set_menu(EMenuState::PAUSE);
+        if (Event.key.code == sf::Keyboard::G)   set_menu(EMenuState::STATS);
     }
-    mWarrior->set_direction(Event);
 }
 
 auto CGameplay::render() -> void

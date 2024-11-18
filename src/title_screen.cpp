@@ -90,15 +90,15 @@ auto CTitle_Screen::animate_title_text() -> void
     mTitle_Text.set_color(color);
 }
 
-auto CTitle_Screen::handle_events(CGameManager* GameManager, sf::Event* Event) -> void
+auto CTitle_Screen::handle_events(CGameManager& GameManager, sf::Event& Event) -> void
 {
-    if (Event->type == sf::Event::MouseButtonPressed)
+    if (Event.type == sf::Event::MouseButtonPressed)
     {
-        if (Event->key.code == sf::Mouse::Left)
+        if (Event.key.code == sf::Mouse::Left)
         {
             if (mNew_Game_Text.get_Global_text_Bounds().contains(mMouse_Position.x, mMouse_Position.y))
             {
-                GameManager->set_GameState(EGameState::GAMEPLAY);
+                GameManager.set_GameState(EGameState::GAMEPLAY);
             }
             else if (mOptions_Text.get_Global_text_Bounds().contains(mMouse_Position.x, mMouse_Position.y))
             {
