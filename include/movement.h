@@ -1,22 +1,20 @@
 #pragma once
 #include "SFML/Graphics.hpp"
+#include "asset_loader.h"
+#include "enums.h"
 
 class CMovement
 {
 protected:
-	float mMove_Speed = 250.f;
+	float mMovement_Speed = 250.f;
 	sf::Vector2f mPosition = { 0.f, 0.f };
-	sf::Vector2f mDirection = { 0.f, 0.f };
+
+	virtual auto handle_movement(float delta_time, CAsset_loader& Asset) -> void = 0;
 
 public:
 	virtual ~CMovement() {}
 
-	auto get_Position() -> sf::Vector2f& { return mPosition; }
-	auto set_Position(float x, float y) -> void { mPosition = { x, y }; }
-	auto get_Direction() -> sf::Vector2f& { return mDirection; }
-
-	virtual auto handle_movement(float delta_time) -> void = 0;
-	virtual auto set_direction(sf::Event* Event) -> void = 0;
-
+	auto get_position() -> sf::Vector2f& { return mPosition; }
+	virtual auto update(float delta_time, CAsset_loader& Asset) -> void = 0;
 };
 

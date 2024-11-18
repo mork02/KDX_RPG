@@ -1,43 +1,61 @@
-#include "player_movement.h"
 #include <iostream>
+#include "player_movement.h"
 
 CPlayer_Movement::CPlayer_Movement() :
 	CMovement()
+{}
+
+void CPlayer_Movement::handle_movement(float delta_time, CAsset_loader& Asset)
 {
-	set_Position(250.f, 250.f);
+    if (std::abs(mPosition.x - mTargeted_Position.x) > 10.0f)
+    {
+        if (mPosition.x < mTargeted_Position.x)
+        {
+            mPosition.x += mMovement_Speed * delta_time;
+            Asset.set_animation_param(EAnimation_Warrior::A_RIGHT, EAnimation_Warrior::L_RIGHT);
+            Asset.set_direction(true);
+        }
+        else if (mPosition.x > mTargeted_Position.x)
+        {
+            mPosition.x -= mMovement_Speed * delta_time;
+            Asset.set_animation_param(EAnimation_Warrior::A_LEFT, EAnimation_Warrior::L_LEFT);
+            Asset.set_direction(false);
+        }
+    }
+
+    else if (std::abs(mPosition.y - mTargeted_Position.y) > 10.0f)
+    {
+        if (mPosition.y < mTargeted_Position.y)
+        {
+            mPosition.y += mMovement_Speed * delta_time;
+            Asset.set_animation_param(EAnimation_Warrior::A_DOWN, EAnimation_Warrior::L_DOWN);
+        }
+        else if (mPosition.y > mTargeted_Position.y)
+        {
+            mPosition.y -= mMovement_Speed * delta_time;
+            Asset.set_animation_param(EAnimation_Warrior::A_UP, EAnimation_Warrior::L_UP);
+        }
+    }
+
+    if (std::abs(mPosition.x - mTargeted_Position.x) <= 10.0f &&
+        std::abs(mPosition.y - mTargeted_Position.y) <= 10.0f)
+    {
+        Asset.set_animation_param(EAnimation_Warrior::A_IDLE, EAnimation_Warrior::L_IDLE);
+    }
+
 }
 
-auto CPlayer_Movement::handle_movement(float delta_time) -> void
+auto CPlayer_Movement::handle_events(sf::RenderWindow& Window, sf::Event& Event) -> void
 {
-	if (mDirection.x != 0 || mDirection.y != 0)
-	{
-		float magnitude = std::sqrt(mDirection.x * mDirection.x + mDirection.y * mDirection.y);
-		mDirection.x /= magnitude;
-		mDirection.y /= magnitude;
-	}
-
-	mPosition += mDirection * mMove_Speed * delta_time;
-
-	//std::cout << "Position: " << mPosition.x << " | " << mPosition.y << std::endl;
-	//std::cout << "Direction: " << mDirection.x << " | " << mDirection.y << std::endl;
+	if (Event.type == sf::Event::MouseButtonPressed)
+		if (Event.key.code == sf::Mouse::Left)
+		{
+			mTargeted_Position = Window.mapPixelToCoords(sf::Mouse::getPosition(Window));
+		}
 }
 
-auto CPlayer_Movement::set_direction(sf::Event* Event) -> void
+auto CPlayer_Movement::update(float delta_time, CAsset_loader& Asset) -> void
 {
-
-	if (Event->type == sf::Event::KeyPressed)
-	{
-		if (Event->key.code == sf::Keyboard::W) mDirection.y = -1;
-		if (Event->key.code == sf::Keyboard::A) mDirection.x = -1;
-		if (Event->key.code == sf::Keyboard::S) mDirection.y = 1;
-		if (Event->key.code == sf::Keyboard::D) mDirection.x = 1;
-	}
-
-	if (Event->type == sf::Event::KeyReleased)
-	{
-		if (Event->key.code == sf::Keyboard::W) mDirection.y = 0;
-		if (Event->key.code == sf::Keyboard::A) mDirection.x = 0;
-		if (Event->key.code == sf::Keyboard::S) mDirection.y = 0;
-		if (Event->key.code == sf::Keyboard::D) mDirection.x = 0;
-	}
+	handle_movement(delta_time, Asset);
 }
+
