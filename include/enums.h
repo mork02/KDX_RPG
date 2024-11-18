@@ -35,6 +35,7 @@ enum EAnimation_Warrior
 
 enum class ELayers
 {
-	Ground,
-	Player,
+	GROUND,
+	PLAYER,
+	COLLISION
 };
