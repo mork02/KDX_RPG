@@ -1,219 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Core">
+      <UniqueIdentifier>{B1A17C68-5F5F-4B13-926D-708A39FAE8A8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="Entities">
+      <UniqueIdentifier>{7D8E3142-44E5-4FC8-826A-54ABBF52482F}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Entities\Items">
+      <UniqueIdentifier>{B79A4B15-EC3F-44A5-AB7E-995CEB9ADCCF}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Window">
-      <UniqueIdentifier>{07033697-f0bc-4357-aa8c-567e0db6faf6}</UniqueIdentifier>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{74B3275B-88CC-4E98-AE13-2E8C45B1B2C5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\EntitieStuff">
-      <UniqueIdentifier>{f495386d-2b8e-4cac-a2c5-ccf1081f948e}</UniqueIdentifier>
+    <Filter Include="GameLogic">
+      <UniqueIdentifier>{99A472C4-FA6B-47B6-90C6-BBC6E64E58BB}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\EntitieStuff\ItemStuff">
-      <UniqueIdentifier>{d8e7ca73-1427-4bb4-bb73-c570a7ba5eeb}</UniqueIdentifier>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{332F4F43-CC2E-46D8-A748-119E83858C33}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\EntitieStuff">
-      <UniqueIdentifier>{858a7b07-23f3-4154-9f2b-1e1baeb14466}</UniqueIdentifier>
+    <Filter Include="Input">
+      <UniqueIdentifier>{BC70A3C1-22A4-4DA5-8EC9-8F97ECA9A572}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\EntitieStuff\ItemStuff">
-      <UniqueIdentifier>{d082fffd-69a9-4fd2-918d-49e195fbc358}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Window">
-      <UniqueIdentifier>{a38af4d9-af55-43e7-a573-fc4dc4dba277}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Window\Controller">
-      <UniqueIdentifier>{e63cef5a-15f3-4b11-9a92-2fba4fffca9b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Window\Assets">
-      <UniqueIdentifier>{2c08dc5a-746d-472f-9918-8b4f031c1fd3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Window\Assets">
-      <UniqueIdentifier>{aff0e9e5-1193-4a27-a20b-992caa38193d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Window\Szene">
-      <UniqueIdentifier>{1938b974-a0f6-47c3-b3cc-400768fd0df1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Window\Szene">
-      <UniqueIdentifier>{6d12d620-5b42-4dff-ae3c-816411fb45e4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Window\Szene\Menus">
-      <UniqueIdentifier>{b2d877a0-b174-42bd-a483-d46220cd85d5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Window\Szene\Menus">
-      <UniqueIdentifier>{492cc0f2-5b70-4931-b15e-4db4cee5e4df}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\EntitieStuff\Entities">
-      <UniqueIdentifier>{4d76f3e3-9625-4c1a-95ce-113b15974140}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\EntitieStuff\Entities">
-      <UniqueIdentifier>{ec1f8a41-5418-4219-a4ed-89a8154fb4ff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Window\Controller">
-      <UniqueIdentifier>{9149a9a1-ffd2-49d7-af3f-7daee6684372}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Enums">
-      <UniqueIdentifier>{c28e32ef-7f52-4b62-bb03-361817a9720d}</UniqueIdentifier>
+    <Filter Include="UI">
+      <UniqueIdentifier>{DCB47D8E-21D9-4A59-A09A-DFB9A3C1223E}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="..\src\inventory.cpp">
-      <Filter>Source Files\EntitieStuff</Filter>
+      <Filter>Entities</Filter>
     </ClCompile>
     <ClCompile Include="..\src\item.cpp">
-      <Filter>Source Files\EntitieStuff\ItemStuff</Filter>
+      <Filter>Entities\Items</Filter>
     </ClCompile>
     <ClCompile Include="..\src\armor.cpp">
-      <Filter>Source Files\EntitieStuff\ItemStuff</Filter>
+      <Filter>Entities\Items</Filter>
     </ClCompile>
     <ClCompile Include="..\src\potion.cpp">
-      <Filter>Source Files\EntitieStuff\ItemStuff</Filter>
+      <Filter>Entities\Items</Filter>
     </ClCompile>
     <ClCompile Include="..\src\weapon.cpp">
-      <Filter>Source Files\EntitieStuff\ItemStuff</Filter>
+      <Filter>Entities\Items</Filter>
     </ClCompile>
     <ClCompile Include="..\src\asset_loader.cpp">
-      <Filter>Source Files\Window\Assets</Filter>
+      <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="..\src\title_screen.cpp">
-      <Filter>Source Files\Window\Szene</Filter>
+      <Filter>GameLogic</Filter>
     </ClCompile>
     <ClCompile Include="..\src\gameplay.cpp">
-      <Filter>Source Files\Window\Szene</Filter>
+      <Filter>GameLogic</Filter>
     </ClCompile>
     <ClCompile Include="..\src\stats_menu.cpp">
-      <Filter>Source Files\Window\Szene\Menus</Filter>
+      <Filter>UI</Filter>
     </ClCompile>
     <ClCompile Include="..\src\tile_map_loader.cpp">
-      <Filter>Source Files\Window\Assets</Filter>
+      <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="..\src\pause_menu.cpp">
-      <Filter>Source Files\Window\Szene\Menus</Filter>
+      <Filter>UI</Filter>
     </ClCompile>
     <ClCompile Include="..\src\option_menu.cpp">
-      <Filter>Source Files\Window\Szene\Menus</Filter>
+      <Filter>UI</Filter>
     </ClCompile>
     <ClCompile Include="..\src\animation_loader.cpp">
-      <Filter>Source Files\Window\Assets</Filter>
+      <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="..\src\text.cpp">
-      <Filter>Source Files\Window\Assets</Filter>
+      <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="..\src\fps.cpp">
-      <Filter>Source Files\Window\Assets</Filter>
+      <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="..\src\camera.cpp">
-      <Filter>Source Files\Window\Controller</Filter>
+      <Filter>Physics</Filter>
     </ClCompile>
     <ClCompile Include="..\src\warrior.cpp">
-      <Filter>Source Files\EntitieStuff\Entities</Filter>
+      <Filter>Entities</Filter>
     </ClCompile>
     <ClCompile Include="..\src\goblin.cpp">
-      <Filter>Source Files\EntitieStuff\Entities</Filter>
+      <Filter>Entities</Filter>
     </ClCompile>
     <ClCompile Include="..\src\player_movement.cpp">
-      <Filter>Source Files\Window\Controller</Filter>
+      <Filter>Physics</Filter>
     </ClCompile>
     <ClCompile Include="..\src\collision.cpp">
-      <Filter>Source Files\Window\Assets</Filter>
+      <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="..\src\statusbar.cpp">
-      <Filter>Source Files\Window\Assets</Filter>
+      <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="..\src\game_manager.cpp">
-      <Filter>Source Files\Window</Filter>
+      <Filter>GameLogic</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\state_manager.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\level_manager.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\render_manager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\entity.h">
-      <Filter>Header Files\EntitieStuff</Filter>
+      <Filter>Entities</Filter>
     </ClInclude>
     <ClInclude Include="..\include\inventory.h">
-      <Filter>Header Files\EntitieStuff</Filter>
+      <Filter>Entities</Filter>
     </ClInclude>
     <ClInclude Include="..\include\armor.h">
-      <Filter>Header Files\EntitieStuff\ItemStuff</Filter>
+      <Filter>Entities\Items</Filter>
     </ClInclude>
     <ClInclude Include="..\include\item.h">
-      <Filter>Header Files\EntitieStuff\ItemStuff</Filter>
+      <Filter>Entities\Items</Filter>
     </ClInclude>
     <ClInclude Include="..\include\potion.h">
-      <Filter>Header Files\EntitieStuff\ItemStuff</Filter>
+      <Filter>Entities\Items</Filter>
     </ClInclude>
     <ClInclude Include="..\include\weapon.h">
-      <Filter>Header Files\EntitieStuff\ItemStuff</Filter>
+      <Filter>Entities\Items</Filter>
     </ClInclude>
     <ClInclude Include="..\include\asset_loader.h">
-      <Filter>Header Files\Window\Assets</Filter>
+      <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="..\include\text.h">
-      <Filter>Header Files\Window\Assets</Filter>
+      <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\include\gameplay.h">
-      <Filter>Header Files\Window\Szene</Filter>
+      <Filter>GameLogic</Filter>
     </ClInclude>
     <ClInclude Include="..\include\title_screen.h">
-      <Filter>Header Files\Window\Szene</Filter>
+      <Filter>GameLogic</Filter>
     </ClInclude>
     <ClInclude Include="..\include\menu.h">
-      <Filter>Header Files\Window\Szene\Menus</Filter>
+      <Filter>UI</Filter>
     </ClInclude>
     <ClInclude Include="..\include\stats_menu.h">
-      <Filter>Header Files\Window\Szene\Menus</Filter>
+      <Filter>UI</Filter>
     </ClInclude>
     <ClInclude Include="..\include\tile_map_loader.h">
-      <Filter>Header Files\Window\Assets</Filter>
+      <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\include\pause_menu.h">
-      <Filter>Header Files\Window\Szene\Menus</Filter>
+      <Filter>UI</Filter>
     </ClInclude>
     <ClInclude Include="..\include\option_menu.h">
-      <Filter>Header Files\Window\Szene\Menus</Filter>
+      <Filter>UI</Filter>
     </ClInclude>
     <ClInclude Include="..\include\animation_loader.h">
-      <Filter>Header Files\Window\Assets</Filter>
+      <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="..\include\fps.h">
-      <Filter>Header Files\Window\Assets</Filter>
+      <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\include\warrior.h">
-      <Filter>Header Files\EntitieStuff\Entities</Filter>
+      <Filter>Entities</Filter>
     </ClInclude>
     <ClInclude Include="..\include\goblin.h">
-      <Filter>Header Files\EntitieStuff\Entities</Filter>
+      <Filter>Entities</Filter>
     </ClInclude>
     <ClInclude Include="..\include\camera.h">
-      <Filter>Header Files\Window\Controller</Filter>
+      <Filter>Physics</Filter>
     </ClInclude>
     <ClInclude Include="..\include\movement.h">
-      <Filter>Header Files\Window\Controller</Filter>
+      <Filter>Physics</Filter>
     </ClInclude>
     <ClInclude Include="..\include\player_movement.h">
-      <Filter>Header Files\Window\Controller</Filter>
+      <Filter>Physics</Filter>
     </ClInclude>
     <ClInclude Include="..\include\collision.h">
-      <Filter>Header Files\Window\Assets</Filter>
+      <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\include\statusbar.h">
-      <Filter>Header Files\Window\Assets</Filter>
+      <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\include\game_manager.h">
-      <Filter>Header Files\Window</Filter>
+      <Filter>GameLogic</Filter>
     </ClInclude>
     <ClInclude Include="..\include\enums.h">
-      <Filter>Header Files\Enums</Filter>
+      <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\state_manager.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\level_manager.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\render_manager.h" />
   </ItemGroup>
 </Project>
