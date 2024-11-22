@@ -1,7 +1,5 @@
 #include "pause_menu.h"
-#include "gameplay.h"
 #include "game_manager.h"
-
 
 CPause_menu::CPause_menu(sf::RenderWindow& Window) : 
     CMenu(Window, EMenuState::PAUSE),
@@ -53,7 +51,7 @@ auto CPause_menu::set_text_position() -> void
     );
 }
 
-auto CPause_menu::draw() -> void
+auto CPause_menu::render() -> void
 {
     if (get_visible()) 
     {
@@ -66,21 +64,20 @@ auto CPause_menu::draw() -> void
     }
 }
 
-auto CPause_menu::handle_events(CGameplay& Gameplay, CGameManager* GameManager) -> void
+auto CPause_menu::handle_events(sf::Event& Event, CMenuManager& MenuManager, CStateManager* StateManager) -> void
 {
     sf::Vector2f mouse_pos = mWindow.mapPixelToCoords(sf::Mouse::getPosition(mWindow));
 
     if (mContinue_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
     {
-        Gameplay.set_menu(EMenuState::NULLPTR);
+        MenuManager.set_menu(nullptr);
     }
     else if (mOptions_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
     {
-        Gameplay.set_menu(EMenuState::OPTIONS);
+        MenuManager.set_menu(MenuManager.get_option_menu());
     }
     else if (mBack_To_Title_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
     {
-        Gameplay.set_menu(EMenuState::NULLPTR);
-        GameManager->set_GameState(EGameState::TITLE_SCREEN);
+        StateManager->set_state(StateManager->get_title_screen());
     }
 }

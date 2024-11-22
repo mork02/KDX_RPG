@@ -4,15 +4,14 @@
 #include "SFML/Graphics.hpp"
 #include "enums.h"
 
-class CGameplay;
-class CGameManager;
+class CMenuManager;
+class CStateManager;
 
 class CMenu : public CAsset_loader
 {
-private:
-    bool mVisible;
 
 protected:
+    bool mVisible;
     sf::RenderWindow& mWindow;
     EMenuState mMenu_Type;
 
@@ -27,8 +26,6 @@ public:
     auto get_visible() const -> bool { return mVisible; };
     auto set_visible(bool value) -> void { mVisible = value; };
 
-    virtual auto draw() -> void = 0;
-    virtual auto handle_events(CGameplay& Gameplay, CGameManager* GameManager) -> void = 0;
-
-    auto get_menu_name() -> const EMenuState& { return mMenu_Type; }
+    virtual auto render() -> void = 0;
+    virtual auto handle_events(sf::Event& Event, CMenuManager& MenuManager, CStateManager* StateManager) -> void = 0;
 };

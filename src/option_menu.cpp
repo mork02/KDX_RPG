@@ -1,5 +1,5 @@
 #include "option_menu.h"
-#include "gameplay.h"
+#include "gameplay_state.h"
 
 COption_menu::COption_menu(sf::RenderWindow& Window) : 
 	CMenu(Window, EMenuState::OPTIONS),
@@ -38,7 +38,7 @@ auto COption_menu::set_text_position() -> void
 
 }
 
-auto COption_menu::draw() -> void
+auto COption_menu::render() -> void
 {
 	if (get_visible())
 	{
@@ -51,11 +51,11 @@ auto COption_menu::draw() -> void
 	}
 }
 
-auto COption_menu::handle_events(CGameplay& Gameplay, CGameManager* GameManager) -> void
+auto COption_menu::handle_events(sf::Event& Event, CMenuManager& MenuManager, CStateManager* StateManager) -> void
 {
     sf::Vector2f mouse_pos = mWindow.mapPixelToCoords(sf::Mouse::getPosition(mWindow));
 	if (mBack_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
 	{
-		Gameplay.set_menu(EMenuState::PAUSE);
+		MenuManager.set_menu(MenuManager.get_pause_menu());
 	}
 }
