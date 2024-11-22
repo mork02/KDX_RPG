@@ -1,11 +1,13 @@
 #include "game_manager.h"
 
 CGameManager::CGameManager() :
-	Window(sf::VideoMode(Resolution[Resolution_Index].first, Resolution[Resolution_Index].second), WINDOW_TITLE, sf::Style::Close), Event(),
-    Title_Screen(Window), Gameplay(Window)
+	Window(sf::VideoMode(Resolution[Resolution_Index].first, Resolution[Resolution_Index].second), WINDOW_TITLE, sf::Style::Close), 
+    Event(), StateManager(Window)
 {
 	Window.setFramerateLimit(FPS_Value);
 	Window.setKeyRepeatEnabled(false);
+
+    StateManager.set_state(StateManager.get_title_screen());
 }
 
 auto CGameManager::Run() -> void
@@ -25,30 +27,14 @@ auto CGameManager::render() -> void
 {
     Window.clear();
 
-    switch (GameState)
-    {
-    case EGameState::TITLE_SCREEN:
-        Title_Screen.render();
-        break;
-    case EGameState::GAMEPLAY:
-        Gameplay.render();
-        break;
-    case EGameState::GAME_OVER:
-        break;
-    }
+    StateManager.render();
 
     Window.display();
 }
 
 auto CGameManager::update(float delta_time) -> void
 {
-    if (GameState == EGameState::TITLE_SCREEN) Title_Screen.update();
-    if (GameState == EGameState::GAMEPLAY) Gameplay.update(delta_time);
-}
-
-auto CGameManager::set_GameState(EGameState NewGameState) -> void
-{
-    GameState = NewGameState;
+    StateManager.update(delta_time);
 }
 
 auto CGameManager::handle_events() -> void
@@ -58,19 +44,7 @@ auto CGameManager::handle_events() -> void
         if (Event.type == sf::Event::Closed)    Window.close();
         configure_resolution();
 
-        switch (GameState)
-        {
-        case EGameState::TITLE_SCREEN:
-            Title_Screen.handle_events(*this, Event);
-            break;
-        case EGameState::GAMEPLAY:
-            Gameplay.handle_events(*this, Event);
-            break;
-        case EGameState::GAME_OVER:
-            break;
-        default:
-            break;
-        }
+        StateManager.handle_events(Event);
     }
 }
 
