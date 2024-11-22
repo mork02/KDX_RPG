@@ -25,6 +25,15 @@
     <Filter Include="UI">
       <UniqueIdentifier>{DCB47D8E-21D9-4A59-A09A-DFB9A3C1223E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{9021ca3b-6054-4ed1-8ece-5e5872e6f55e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLogic\States">
+      <UniqueIdentifier>{31659667-95c1-4353-91b7-40dba8ffad71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLogic\Manager">
+      <UniqueIdentifier>{0eb2e00b-18c6-487f-a29a-588b5e2ef27a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -47,12 +56,6 @@
     </ClCompile>
     <ClCompile Include="..\src\asset_loader.cpp">
       <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\title_screen.cpp">
-      <Filter>GameLogic</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\gameplay.cpp">
-      <Filter>GameLogic</Filter>
     </ClCompile>
     <ClCompile Include="..\src\stats_menu.cpp">
       <Filter>UI</Filter>
@@ -93,16 +96,30 @@
     <ClCompile Include="..\src\statusbar.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\game_manager.cpp">
-      <Filter>GameLogic</Filter>
+    <ClCompile Include="..\src\render_manager.cpp">
+      <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\state_manager.cpp">
-      <Filter>GameLogic</Filter>
+    <ClCompile Include="..\src\debug_manager.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game_manager.cpp">
+      <Filter>GameLogic\Manager</Filter>
     </ClCompile>
     <ClCompile Include="..\src\level_manager.cpp">
-      <Filter>GameLogic</Filter>
+      <Filter>GameLogic\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\render_manager.cpp" />
+    <ClCompile Include="..\src\state_manager.cpp">
+      <Filter>GameLogic\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gameplay_state.cpp">
+      <Filter>GameLogic\States</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\title_screen_state.cpp">
+      <Filter>GameLogic\States</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\menu_manager.cpp">
+      <Filter>GameLogic\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\entity.h">
@@ -128,12 +145,6 @@
     </ClInclude>
     <ClInclude Include="..\include\text.h">
       <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\gameplay.h">
-      <Filter>GameLogic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\title_screen.h">
-      <Filter>GameLogic</Filter>
     </ClInclude>
     <ClInclude Include="..\include\menu.h">
       <Filter>UI</Filter>
@@ -177,18 +188,35 @@
     <ClInclude Include="..\include\statusbar.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\game_manager.h">
-      <Filter>GameLogic</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\enums.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\state_manager.h">
-      <Filter>GameLogic</Filter>
+    <ClInclude Include="..\include\render_manager.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\debug_manager.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\game_manager.h">
+      <Filter>GameLogic\Manager</Filter>
     </ClInclude>
     <ClInclude Include="..\include\level_manager.h">
-      <Filter>GameLogic</Filter>
+      <Filter>GameLogic\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\render_manager.h" />
+    <ClInclude Include="..\include\state_manager.h">
+      <Filter>GameLogic\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\gameplay_state.h">
+      <Filter>GameLogic\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\title_screen_state.h">
+      <Filter>GameLogic\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\state.h">
+      <Filter>GameLogic\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\menu_manager.h">
+      <Filter>GameLogic\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -152,6 +152,7 @@
     <ClCompile Include="..\src\armor.cpp" />
     <ClCompile Include="..\src\camera.cpp" />
     <ClCompile Include="..\src\collision.cpp" />
+    <ClCompile Include="..\src\debug_manager.cpp" />
     <ClCompile Include="..\src\fps.cpp" />
     <ClCompile Include="..\src\game_manager.cpp" />
     <ClCompile Include="..\src\inventory.cpp" />
@@ -161,6 +162,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\src\menu_manager.cpp" />
     <ClCompile Include="..\src\player_movement.cpp" />
     <ClCompile Include="..\src\potion.cpp" />
     <ClCompile Include="..\src\render_manager.cpp" />
@@ -169,8 +171,8 @@
     <ClCompile Include="..\src\weapon.cpp" />
     <ClCompile Include="..\src\text.cpp" />
     <ClCompile Include="..\src\asset_loader.cpp" />
-    <ClCompile Include="..\src\title_screen.cpp" />
-    <ClCompile Include="..\src\gameplay.cpp" />
+    <ClCompile Include="..\src\title_screen_state.cpp" />
+    <ClCompile Include="..\src\gameplay_state.cpp" />
     <ClCompile Include="..\src\stats_menu.cpp" />
     <ClCompile Include="..\src\tile_map_loader.cpp" />
     <ClCompile Include="..\src\pause_menu.cpp" />
@@ -182,24 +184,27 @@
   <ItemGroup>
     <ClInclude Include="..\include\armor.h" />
     <ClInclude Include="..\include\collision.h" />
+    <ClInclude Include="..\include\debug_manager.h" />
     <ClInclude Include="..\include\entity.h" />
     <ClInclude Include="..\include\fps.h" />
     <ClInclude Include="..\include\game_manager.h" />
     <ClInclude Include="..\include\inventory.h" />
     <ClInclude Include="..\include\item.h" />
     <ClInclude Include="..\include\level_manager.h" />
+    <ClInclude Include="..\include\menu_manager.h" />
     <ClInclude Include="..\include\movement.h" />
     <ClInclude Include="..\include\player_movement.h" />
     <ClInclude Include="..\include\potion.h" />
     <ClInclude Include="..\include\render_manager.h" />
+    <ClInclude Include="..\include\state.h" />
     <ClInclude Include="..\include\statusbar.h" />
     <ClInclude Include="..\include\warrior.h" />
     <ClInclude Include="..\include\weapon.h" />
     <ClInclude Include="..\include\text.h" />
     <ClInclude Include="..\include\asset_loader.h" />
     <ClInclude Include="..\include\menu.h" />
-    <ClInclude Include="..\include\title_screen.h" />
-    <ClInclude Include="..\include\gameplay.h" />
+    <ClInclude Include="..\include\title_screen_state.h" />
+    <ClInclude Include="..\include\gameplay_state.h" />
     <ClInclude Include="..\include\stats_menu.h" />
     <ClInclude Include="..\include\tile_map_loader.h" />
     <ClInclude Include="..\include\pause_menu.h" />
