@@ -17,7 +17,7 @@ private:
 public:
 	COption_menu(sf::RenderWindow& Window);
 
-	auto draw() -> void override;
-	auto handle_events(CGameplay& Gameplay, CGameManager* GameManager) -> void override;
+	auto render() -> void override;
+	auto handle_events(sf::Event& Event, CMenuManager& MenuManager, CStateManager* StateManager) -> void override;
 };
 

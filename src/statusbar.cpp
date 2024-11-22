@@ -15,7 +15,7 @@ auto CStatusBar::update(CEntity* entity) -> void
 	}
 }
 
-auto CStatusBar::draw() -> void
+auto CStatusBar::render() -> void
 {
 
 }

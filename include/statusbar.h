@@ -11,6 +11,6 @@ private:
 public:
 	CStatusBar(sf::RenderWindow& Window);
 	auto update(CEntity* entity) -> void;
-	auto draw() -> void;
+	auto render() -> void;
 };
 

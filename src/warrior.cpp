@@ -11,15 +11,13 @@ CWarrior::CWarrior(sf::RenderWindow& Window) :
 auto CWarrior::init_asset() -> void
 {
     mAsset.init_animation("./assets/entities/AnimationSheet_Character.png", EAnimation_Warrior::A_IDLE, EAnimation_Warrior::L_IDLE);
-    mAsset.set_debug(true);
     mAsset.set_origin_center();
-    mAsset.get_Sprite().setPosition(250.f, 250.f);
 }
 
 
 auto CWarrior::render() -> void
 {
-    mAsset.draw();
+    mAsset.render();
 }
 
 auto CWarrior::handle_events(sf::RenderWindow& Window, sf::Event& Event) -> void

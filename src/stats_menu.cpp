@@ -8,7 +8,7 @@ CStats_menu::CStats_menu(sf::RenderWindow& Window) :
     center_asset();
 }
 
-auto CStats_menu::draw() -> void
+auto CStats_menu::render() -> void
 {
 
     if (get_visible())
@@ -17,7 +17,7 @@ auto CStats_menu::draw() -> void
     }
 }
 
-auto CStats_menu::handle_events(CGameplay& Gameplay, CGameManager* GameManager) -> void
+auto CStats_menu::handle_events(sf::Event& Event, CMenuManager& MenuManager, CStateManager* StateManager) -> void
 {
 
 }
