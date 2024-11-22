@@ -3,8 +3,7 @@
 #include "vector"
 #include "utility"
 #include "fps.h"
-#include "gameplay.h"
-#include "title_screen.h"
+#include "state_manager.h"
 #include "enums.h"
 
 class CGameManager
@@ -26,10 +25,7 @@ private:
 	CFPS FPS;
 	sf::Clock Clock;
 
-	CTitle_Screen Title_Screen;
-	CGameplay Gameplay;
-	EGameState GameState = EGameState::TITLE_SCREEN;
-
+	CStateManager StateManager;
 
 	auto handle_events() -> void;
 	auto configure_resolution() -> void;
@@ -38,8 +34,7 @@ private:
 	auto update(float delta_time) -> void;
 
 public:
-	auto set_GameState(EGameState NewGameState) -> void;
-
 	CGameManager();
 	auto Run() -> void;
+
 };
