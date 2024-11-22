@@ -19,8 +19,6 @@ private:
 
     bool mDebug = false;
     CText mD_Coordinates;
-    
-    auto Debugging() -> void;
 
 public:
     CAsset_loader(sf::RenderWindow& Window);
@@ -33,11 +31,11 @@ public:
     auto get_Scale() -> sf::Vector2f&;
 
     auto set_Position(float x, float y) -> void;
-    auto set_debug(bool value) -> void;
+    auto set_is_Animated(bool value) -> void;
     auto set_animation_param(unsigned Row, unsigned Frame_Length, unsigned Frame_Width = 32, unsigned Frame_Height = 32) -> void;
     auto set_direction(bool value) -> void;
     auto set_origin_center() -> void;
 
     auto center_asset() -> void;
-    auto draw() -> void;
+    auto render() -> void;
 };
