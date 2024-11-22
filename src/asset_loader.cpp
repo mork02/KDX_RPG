@@ -1,11 +1,15 @@
 #include "asset_loader.h"
 
 CAsset_loader::CAsset_loader(sf::RenderWindow& Window) :
-    mWindow(Window), CAnimation_loader(), mD_Coordinates(Window, "", ECharacter_Size::VERY_SMALL)
+    mWindow(Window), 
+    CAnimation_loader(), 
+    mD_Coordinates(Window, "", ECharacter_Size::VERY_SMALL), mIs_Animated(false)
 {}
 
 auto CAsset_loader::init_asset(std::string Path) -> void
 {
+    mIs_Animated = false;
+
     if (!mTexture.loadFromFile(Path))
     {
         std::cerr << "Error loading texture from " << Path << std::endl;
@@ -51,10 +55,9 @@ auto CAsset_loader::center_asset() -> void
     mSprite.setPosition(window_size.x / 2.0f, window_size.y / 2.0f);
 }
 
-auto CAsset_loader::draw() -> void
+auto CAsset_loader::render() -> void
 {
     if (mIs_Animated)   update(mSprite);
-    if (mDebug) Debugging();
 
     mWindow.draw(mSprite);
 }
@@ -77,6 +80,12 @@ auto CAsset_loader::get_Scale() -> sf::Vector2f&
 auto CAsset_loader::set_Position(float x, float y) -> void
 {
     mSprite.setPosition(x, y);
+}
+
+auto CAsset_loader::set_is_Animated(bool value) -> void
+{
+    mIs_Animated = value;
+    
 }
 
 auto CAsset_loader::set_animation_param(unsigned Row, unsigned Frame_Length, unsigned Frame_Width, unsigned Frame_Height) -> void
@@ -106,31 +115,4 @@ auto CAsset_loader::set_origin_center() -> void
 {
     sf::FloatRect bounds = mSprite.getLocalBounds();
     mSprite.setOrigin(bounds.width / 2.0f, bounds.height / 2.0f);
-    // mSprite.setPosition(bounds.getPosition().x + bounds.width / 2 * mScale , bounds.getPosition().y + bounds.height / 2 * mScale);
-}
-
-auto CAsset_loader::Debugging() -> void
-{
-    float X = mSprite.getPosition().x;
-    float Y = mSprite.getPosition().y;
-    sf::FloatRect sprite_bounds = mSprite.getGlobalBounds();
-    sf::RectangleShape debug_box(sf::Vector2f(sprite_bounds.width, sprite_bounds.height));
-
-    std::string text = ("X: " + std::to_string(X) + " / " + "Y: " + std::to_string(Y));
-    mD_Coordinates.set_text(text);
-    mD_Coordinates.set_position(sprite_bounds.left, sprite_bounds.top + sprite_bounds.height);
-
-    debug_box.setPosition(sprite_bounds.left, sprite_bounds.top);
-    debug_box.setOutlineColor(sf::Color::Blue);
-    debug_box.setOutlineThickness(2.0f);
-    debug_box.setFillColor(sf::Color::Transparent);
-
-    mD_Coordinates.render();
-    mWindow.draw(debug_box);
-    // std::cout << "X: " << mX << "Y: " << m | Y << std::endl;
-}
-
-auto CAsset_loader::set_debug(bool value) -> void
-{
-    mDebug = value;
 }
