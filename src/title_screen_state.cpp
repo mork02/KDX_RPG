@@ -1,7 +1,8 @@
-#include "title_screen.h"
+#include "title_screen_state.h"
 #include "game_manager.h"
 
 CTitle_Screen::CTitle_Screen(sf::RenderWindow& Window) :
+    CState(),
     mWindow(Window),
     mAsset(Window),
     mTitle_Text(Window, "KDX RPG", ECharacter_Size::LARGE, false),
@@ -33,7 +34,7 @@ auto CTitle_Screen::render() -> void
 
 }
 
-auto CTitle_Screen::update() -> void
+auto CTitle_Screen::update(float delta_time) -> void
 {
 }
 
@@ -90,7 +91,7 @@ auto CTitle_Screen::animate_title_text() -> void
     mTitle_Text.set_color(color);
 }
 
-auto CTitle_Screen::handle_events(CGameManager& GameManager, sf::Event& Event) -> void
+auto CTitle_Screen::handle_events(sf::Event& Event, CStateManager& StateManager) -> void
 {
     if (Event.type == sf::Event::MouseButtonPressed)
     {
@@ -98,7 +99,7 @@ auto CTitle_Screen::handle_events(CGameManager& GameManager, sf::Event& Event) -
         {
             if (mNew_Game_Text.get_Global_text_Bounds().contains(mMouse_Position.x, mMouse_Position.y))
             {
-                GameManager.set_GameState(EGameState::GAMEPLAY);
+                StateManager.set_state(StateManager.get_gameplay());
             }
             else if (mOptions_Text.get_Global_text_Bounds().contains(mMouse_Position.x, mMouse_Position.y))
             {
