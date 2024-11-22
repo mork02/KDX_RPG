@@ -6,8 +6,9 @@
 class CMovement
 {
 protected:
-	float mMovement_Speed = 250.f;
-	sf::Vector2f mPosition = { 0.f, 0.f };
+	float mMovement_Speed = 96 * 4.f;
+	sf::Vector2f mPosition = { 48.f, 48.f };
+	bool mMoving = false;
 
 	virtual auto handle_movement(float delta_time, CAsset_loader& Asset) -> void = 0;
 

@@ -7,51 +7,44 @@ CPlayer_Movement::CPlayer_Movement() :
 
 void CPlayer_Movement::handle_movement(float delta_time, CAsset_loader& Asset)
 {
-    if (std::abs(mPosition.x - mTargeted_Position.x) > 10.0f)
+    if (mMoving)
     {
-        if (mPosition.x < mTargeted_Position.x)
-        {
-            mPosition.x += mMovement_Speed * delta_time;
-            Asset.set_animation_param(EAnimation_Warrior::A_RIGHT, EAnimation_Warrior::L_RIGHT);
-            Asset.set_direction(true);
-        }
-        else if (mPosition.x > mTargeted_Position.x)
-        {
-            mPosition.x -= mMovement_Speed * delta_time;
-            Asset.set_animation_param(EAnimation_Warrior::A_LEFT, EAnimation_Warrior::L_LEFT);
-            Asset.set_direction(false);
-        }
-    }
+        bool x_done = std::abs(mPosition.x - mTargeted_Position.x) <= 5.0f;
+        bool y_done = std::abs(mPosition.y - mTargeted_Position.y) <= 5.0f;
 
-    else if (std::abs(mPosition.y - mTargeted_Position.y) > 10.0f)
-    {
-        if (mPosition.y < mTargeted_Position.y)
+        if (!x_done)
         {
-            mPosition.y += mMovement_Speed * delta_time;
+            mPosition.x += (mPosition.x < mTargeted_Position.x ? 1 : -1) * mMovement_Speed * delta_time;
+            Asset.set_animation_param(EAnimation_Warrior::A_RIGHT, EAnimation_Warrior::L_RIGHT);
+            Asset.set_direction(mPosition.x < mTargeted_Position.x);
+        }
+
+        else if (!y_done)
+        {
+            mPosition.y += (mPosition.y < mTargeted_Position.y ? 1 : -1) * mMovement_Speed * delta_time;
             Asset.set_animation_param(EAnimation_Warrior::A_DOWN, EAnimation_Warrior::L_DOWN);
         }
-        else if (mPosition.y > mTargeted_Position.y)
+
+        if (x_done && y_done)
         {
-            mPosition.y -= mMovement_Speed * delta_time;
-            Asset.set_animation_param(EAnimation_Warrior::A_UP, EAnimation_Warrior::L_UP);
+            Asset.set_animation_param(EAnimation_Warrior::A_IDLE, EAnimation_Warrior::L_IDLE);
+            mMoving = false;
         }
     }
-
-    if (std::abs(mPosition.x - mTargeted_Position.x) <= 10.0f &&
-        std::abs(mPosition.y - mTargeted_Position.y) <= 10.0f)
-    {
-        Asset.set_animation_param(EAnimation_Warrior::A_IDLE, EAnimation_Warrior::L_IDLE);
-    }
-
 }
+
 
 auto CPlayer_Movement::handle_events(sf::RenderWindow& Window, sf::Event& Event) -> void
 {
-	if (Event.type == sf::Event::MouseButtonPressed)
-		if (Event.key.code == sf::Mouse::Left)
-		{
-			mTargeted_Position = Window.mapPixelToCoords(sf::Mouse::getPosition(Window));
-		}
+    if (Event.type == sf::Event::MouseButtonPressed && Event.key.code == sf::Mouse::Left)
+    {
+        sf::Vector2f mouse_pos = Window.mapPixelToCoords(sf::Mouse::getPosition(Window));
+
+        mTargeted_Position.x = std::round((mouse_pos.x - 48) / 96) * 96 + 48;
+        mTargeted_Position.y = std::round((mouse_pos.y - 48) / 96) * 96 + 48;
+
+        mMoving = true;
+    }
 }
 
 auto CPlayer_Movement::update(float delta_time, CAsset_loader& Asset) -> void
