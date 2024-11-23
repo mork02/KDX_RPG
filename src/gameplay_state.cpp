@@ -1,11 +1,10 @@
 #include "gameplay_state.h"
-// #include "collision.h"
+#include "debug_manager.h"
 
 CGameplay::CGameplay(sf::RenderWindow& Window)
     : mWindow(Window), mCamera(Window), MenuManager(Window)
 
 {
-    mWarrior = std::make_unique<CWarrior>(Window);
     load_Entities();
 }
 
@@ -39,12 +38,23 @@ auto CGameplay::load_Entities() -> void
 {
     mEntities.reserve(10);
     mEntities.push_back(std::move(std::make_unique<CGoblin>(mWindow)));
+    mEntities.push_back(std::move(std::make_unique<CWarrior>(mWindow)));
 }
 
 auto CGameplay::handle_events(sf::Event& Event, CStateManager& StateManager) -> void
 {
-    mWarrior.get()->handle_events(mWindow, Event);
+    for (auto& entity : mEntities)
+    {
+        entity->handle_events(mWindow, Event);
+    }
     MenuManager.handle_events(Event, &StateManager);
+    if (Event.type == sf::Event::KeyPressed)
+    {
+        if (Event.key.code == sf::Keyboard::F10)
+        {
+            set_debugging(!mDebugging);
+        }
+    }
 }
 
 auto CGameplay::render() -> void
@@ -53,8 +63,8 @@ auto CGameplay::render() -> void
     for (auto& entity : mEntities)
     {
         entity->render();
+        if (mDebugging) CDebugManager::render(mWindow, entity.get());
     }
-    mWarrior->render();
 
     MenuManager.render();
 }
@@ -66,9 +76,12 @@ auto CGameplay::update(float delta_time) -> void
     {
         entity->update(delta_time);
     }
-    mWarrior->update(delta_time);
-    // mCamera.update(mWarrior.get());
 
     
     // TODO: add collusion class to detect collusion between entities
+}
+
+auto CGameplay::set_debugging(bool Value) -> void
+{
+    mDebugging = Value;
 }
