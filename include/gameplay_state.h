@@ -22,6 +22,7 @@ private:
 
 	// expample for Pausing the screen
 	bool mPause = false;
+	bool mDebugging = false;
 
 	std::unique_ptr<CWarrior> mWarrior;
 	std::vector<std::unique_ptr<CEntity>> mEntities;
@@ -31,7 +32,7 @@ private:
 public:
 	CGameplay(sf::RenderWindow& Window);
 
-	auto set_menu(EMenuState MenuState) -> void;
+	auto set_debugging(bool Value) -> void;
  
 	auto handle_events(sf::Event& Event, CStateManager& StateManager) -> void override;
 	auto render() -> void override;
