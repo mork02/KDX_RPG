@@ -96,9 +96,6 @@
     <ClCompile Include="..\src\statusbar.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\render_manager.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\debug_manager.cpp">
       <Filter>Utilities</Filter>
     </ClCompile>
@@ -190,9 +187,6 @@
     </ClInclude>
     <ClInclude Include="..\include\enums.h">
       <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\render_manager.h">
-      <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\include\debug_manager.h">
       <Filter>Utilities</Filter>

@@ -165,7 +165,6 @@
     <ClCompile Include="..\src\menu_manager.cpp" />
     <ClCompile Include="..\src\player_movement.cpp" />
     <ClCompile Include="..\src\potion.cpp" />
-    <ClCompile Include="..\src\render_manager.cpp" />
     <ClCompile Include="..\src\statusbar.cpp" />
     <ClCompile Include="..\src\warrior.cpp" />
     <ClCompile Include="..\src\weapon.cpp" />
@@ -195,7 +194,6 @@
     <ClInclude Include="..\include\movement.h" />
     <ClInclude Include="..\include\player_movement.h" />
     <ClInclude Include="..\include\potion.h" />
-    <ClInclude Include="..\include\render_manager.h" />
     <ClInclude Include="..\include\state.h" />
     <ClInclude Include="..\include\statusbar.h" />
     <ClInclude Include="..\include\warrior.h" />
