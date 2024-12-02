@@ -60,9 +60,6 @@
     <ClCompile Include="..\src\stats_menu.cpp">
       <Filter>UI</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\tile_map_loader.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\pause_menu.cpp">
       <Filter>UI</Filter>
     </ClCompile>
@@ -117,6 +114,9 @@
     <ClCompile Include="..\src\menu_manager.cpp">
       <Filter>GameLogic\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\tmx_loader.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\entity.h">
@@ -148,9 +148,6 @@
     </ClInclude>
     <ClInclude Include="..\include\stats_menu.h">
       <Filter>UI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\tile_map_loader.h">
-      <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\include\pause_menu.h">
       <Filter>UI</Filter>
@@ -211,6 +208,9 @@
     </ClInclude>
     <ClInclude Include="..\include\menu_manager.h">
       <Filter>GameLogic\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\tmx_loader.h">
+      <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
