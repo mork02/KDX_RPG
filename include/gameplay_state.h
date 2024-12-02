@@ -9,6 +9,7 @@
 #include "camera.h"
 #include "enums.h"
 #include "state.h"
+#include "tmx_loader.h"
 
 class CGameManager;
 
@@ -26,6 +27,8 @@ private:
 
 	std::unique_ptr<CWarrior> mWarrior;
 	std::vector<std::unique_ptr<CEntity>> mEntities;
+
+	CTmx_Loader tmx;
 
 	auto load_Level() -> void;
 	auto load_Entities() -> void;

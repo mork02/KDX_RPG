@@ -6,31 +6,13 @@ CGameplay::CGameplay(sf::RenderWindow& Window)
 
 {
     load_Entities();
+    load_Level();
 }
 
 auto CGameplay::load_Level() -> void
 {
-    sf::Color color1 = sf::Color(190, 190, 190);
-    sf::Color color2 = sf::Color(100, 100, 100);
-
-    for (unsigned y = 0; y < mWindow.getSize().y; y += 96)
-    {
-        for (unsigned x = 0; x < mWindow.getSize().x; x += 96)
-        {
-            sf::RectangleShape rect(sf::Vector2f(96, 96));
-            rect.setPosition(static_cast<float>(x), static_cast<float>(y));
-
-            if ((x / 96 + y / 96) % 2 == 0)
-            {
-                rect.setFillColor(color1);
-            }
-            else
-            {
-                rect.setFillColor(color2);
-            }
-
-            mWindow.draw(rect);
-        }
+    if (!tmx.LoadFromFile("assets/map/x.tmx")) {
+        std::cout << "Error";
     }
 }
 
@@ -59,11 +41,12 @@ auto CGameplay::handle_events(sf::Event& Event, CStateManager& StateManager) -> 
 
 auto CGameplay::render() -> void
 {
-    load_Level();
+    tmx.render(mWindow);
     for (auto& entity : mEntities)
     {
         entity->render();
         if (mDebugging) CDebugManager::render(mWindow, entity.get());
+        mCamera.update(mEntities[1].get());
     }
 
     MenuManager.render();
