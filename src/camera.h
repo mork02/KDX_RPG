@@ -8,7 +8,7 @@ private:
     sf::View mCamera;
     sf::RenderWindow& mWindow;
     float mMoveSpeed;
-    float mCamera_Zoom = .5f;
+    float mCamera_Zoom = .75f;
 
 public:
     CCamera(sf::RenderWindow& Window);
