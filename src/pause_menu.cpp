@@ -78,6 +78,7 @@ auto CPause_menu::handle_events(sf::Event& Event, CMenuManager& MenuManager, CSt
     }
     else if (mBack_To_Title_Text.get_Global_text_Bounds().contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
     {
+        MenuManager.set_menu(nullptr);
         StateManager->set_state(StateManager->get_title_screen());
     }
 }
