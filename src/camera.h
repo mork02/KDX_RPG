@@ -16,9 +16,9 @@ public:
     auto get_camera() -> sf::View&;
 
     auto update(CEntity* entity) -> void;
+    auto reset() -> void;
 };
 
 /* TODO:
     - add menus to Camera
-    - add reset camera if in back to menu
     */

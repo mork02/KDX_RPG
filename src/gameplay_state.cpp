@@ -12,7 +12,7 @@ CGameplay::CGameplay(sf::RenderWindow& Window)
 auto CGameplay::load_Level() -> void
 {
     if (!tmx.LoadFromFile("assets/map/x.tmx")) {
-        std::cout << "Error";
+        std::cout << "Error: Cant load map!" << std::endl;
     }
 }
 
@@ -45,8 +45,15 @@ auto CGameplay::render() -> void
     for (auto& entity : mEntities)
     {
         entity->render();
-        if (mDebugging) CDebugManager::render(mWindow, entity.get());
-        mCamera.update(mEntities[1].get());
+        if (mDebugging)
+        {
+            CDebugManager::render(mWindow, entity.get());
+            mCamera.reset();
+        }
+        else
+        {
+            mCamera.update(mEntities[1].get());
+        }
     }
 
     MenuManager.render();

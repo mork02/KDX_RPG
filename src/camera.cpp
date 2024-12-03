@@ -32,3 +32,8 @@ auto CCamera::update(CEntity* entity) -> void
     mCamera.setCenter(newPosition);
     mWindow.setView(mCamera);
 }
+
+auto CCamera::reset() -> void
+{
+    mWindow.setView(mWindow.getDefaultView());
+}
