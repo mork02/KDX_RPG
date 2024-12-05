@@ -25,9 +25,12 @@ auto CGameplay::load_Entities() -> void
 
 auto CGameplay::handle_events(sf::Event& Event, CStateManager& StateManager) -> void
 {
-    for (auto& entity : mEntities)
+    if (!mPause)
     {
-        entity->handle_events(mWindow, Event);
+        for (auto& entity : mEntities)
+        {
+            entity->handle_events(mWindow, Event);
+        }
     }
     MenuManager.handle_events(Event, &StateManager);
     if (Event.type == sf::Event::KeyPressed)
@@ -35,6 +38,7 @@ auto CGameplay::handle_events(sf::Event& Event, CStateManager& StateManager) -> 
         if (Event.key.code == sf::Keyboard::F10)
         {
             set_debugging(!mDebugging);
+            mPause = !mPause;
         }
     }
 }
@@ -61,10 +65,12 @@ auto CGameplay::render() -> void
 
 auto CGameplay::update(float delta_time) -> void
 {
-
-    for (auto& entity : mEntities)
+    if (!mPause)
     {
-        entity->update(delta_time);
+        for (auto& entity : mEntities)
+        {
+            entity->update(delta_time);
+        }
     }
 
     
