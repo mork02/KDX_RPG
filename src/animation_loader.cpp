@@ -34,7 +34,7 @@ auto CAnimation_loader::get_total_frames() -> unsigned
     return mFrames.size();
 }
 
-auto CAnimation_loader::update(sf::Sprite& sprite) -> void
+auto CAnimation_loader::update_frames(sf::Sprite& sprite) -> void
 {
     if (mFrame_Timer.getElapsedTime() >= sf::seconds(mFrame_Duration))
     {
