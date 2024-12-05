@@ -37,5 +37,6 @@ public:
     auto set_origin_center() -> void;
 
     auto center_asset() -> void;
+    auto update() -> void;
     auto render() -> void;
 };

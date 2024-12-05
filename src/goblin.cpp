@@ -28,4 +28,5 @@ auto CGoblin::handle_events(sf::RenderWindow& Window, sf::Event& Event) -> void
 
 auto CGoblin::update(float delta_time) -> void
 {
+    mAsset.update();
 }

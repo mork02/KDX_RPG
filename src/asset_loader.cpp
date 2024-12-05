@@ -55,9 +55,13 @@ auto CAsset_loader::center_asset() -> void
     mSprite.setPosition(window_size.x / 2.0f, window_size.y / 2.0f);
 }
 
+auto CAsset_loader::update() -> void
+{
+    if (mIs_Animated)   update_frames(mSprite);
+}
+
 auto CAsset_loader::render() -> void
 {
-    if (mIs_Animated)   update(mSprite);
 
     mWindow.draw(mSprite);
 }

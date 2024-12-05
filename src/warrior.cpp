@@ -27,6 +27,7 @@ auto CWarrior::handle_events(sf::RenderWindow& Window, sf::Event& Event) -> void
 
 auto CWarrior::update(float delta_time) -> void
 {
+    mAsset.update();
     Player_Movement.update(delta_time, mAsset);
     mAsset.get_Sprite().setPosition(Player_Movement.get_position());
 }
