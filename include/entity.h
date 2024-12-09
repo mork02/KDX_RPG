@@ -6,7 +6,8 @@ class CEntity
 {
 protected:
     std::string mName;
-    // unsigned mID;
+    unsigned mID;
+    static unsigned sNextID;
     int mHP, mMax_HP;
     int mBasic_DMG;
     int mBasic_DEF;
@@ -16,6 +17,7 @@ protected:
 public:
     CEntity(sf::RenderWindow& Window, std::string Name, int HP, int Max_HP, int Basic_DMG, int Basic_DEF)
         : 
+        mID(sNextID++),
         mAsset(Window),
         mName(Name),
         mHP(HP), mMax_HP(Max_HP),
@@ -25,7 +27,7 @@ public:
     virtual ~CEntity() = default;
 
     auto get_name() -> std::string& { return mName; }
-    // virtual auto get_id() const -> unsigned { return mID; }
+    auto get_id() const -> unsigned { return mID; }
     auto get_hp() -> int& { return mHP; }
     auto get_max_hp() -> int& { return mMax_HP; }
     auto get_basic_dmg() -> int& { return mBasic_DMG; }
