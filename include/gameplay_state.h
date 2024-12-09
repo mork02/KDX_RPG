@@ -3,9 +3,7 @@
 #include <iostream>
 #include <memory>
 #include "menu_manager.h"
-#include "entity.h"
-#include "warrior.h"
-#include "goblin.h"
+#include "entity_manager.h"
 #include "camera.h"
 #include "enums.h"
 #include "state.h"
@@ -20,18 +18,14 @@ private:
 	CCamera mCamera;
 
 	CMenuManager MenuManager;
+	CEntityManager EntityManager;
 
-	// expample for Pausing the screen
 	bool mPause = false;
 	bool mDebugging = false;
-
-	std::unique_ptr<CWarrior> mWarrior;
-	std::vector<std::unique_ptr<CEntity>> mEntities;
 
 	CTmx_Loader tmx;
 
 	auto load_Level() -> void;
-	auto load_Entities() -> void;
 public:
 	CGameplay(sf::RenderWindow& Window);
 

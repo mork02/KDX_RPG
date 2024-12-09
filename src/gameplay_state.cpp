@@ -5,7 +5,7 @@ CGameplay::CGameplay(sf::RenderWindow& Window)
     : mWindow(Window), mCamera(Window), MenuManager(Window)
 
 {
-    load_Entities();
+    EntityManager.prepare_vec(mWindow);
     load_Level();
 }
 
@@ -16,13 +16,6 @@ auto CGameplay::load_Level() -> void
     }
 }
 
-auto CGameplay::load_Entities() -> void
-{
-    mEntities.reserve(10);
-    mEntities.push_back(std::move(std::make_unique<CWarrior>(mWindow)));
-    mEntities.push_back(std::move(std::make_unique<CGoblin>(mWindow)));
-}
-
 // TODO: add method to remove entity from vec by id
 // TODO: add in class entity a unique id
 
@@ -30,10 +23,7 @@ auto CGameplay::handle_events(sf::Event& Event, CStateManager& StateManager) -> 
 {
     if (!mPause)
     {
-        for (auto& entity : mEntities)
-        {
-            entity->handle_events(mWindow, Event);
-        }
+        EntityManager.handle_events(mWindow, Event);
     }
     MenuManager.handle_events(Event, &StateManager);
     if (Event.type == sf::Event::KeyPressed)
@@ -49,18 +39,15 @@ auto CGameplay::handle_events(sf::Event& Event, CStateManager& StateManager) -> 
 auto CGameplay::render() -> void
 {
     tmx.render(mWindow);
-    for (auto& entity : mEntities)
+    EntityManager.render();
+    if (mDebugging)
     {
-        entity->render();
-        if (mDebugging)
-        {
-            CDebugManager::render(mWindow, entity.get());
-            mCamera.reset();
-        }
-        else
-        {
-            mCamera.update(mEntities[1].get());
-        }
+        // CDebugManager::render(mWindow, entity.get());
+        mCamera.reset();
+    }
+    else
+    {
+        // mCamera.update(mEntities[0].get());
     }
 
     MenuManager.render();
@@ -70,10 +57,7 @@ auto CGameplay::update(float delta_time) -> void
 {
     if (!mPause)
     {
-        for (auto& entity : mEntities)
-        {
-            entity->update(delta_time);
-        }
+        EntityManager.update(delta_time);
     }
 
     
