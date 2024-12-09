@@ -7,9 +7,6 @@
     <Filter Include="Entities">
       <UniqueIdentifier>{7D8E3142-44E5-4FC8-826A-54ABBF52482F}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Entities\Items">
-      <UniqueIdentifier>{B79A4B15-EC3F-44A5-AB7E-995CEB9ADCCF}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Graphics">
       <UniqueIdentifier>{74B3275B-88CC-4E98-AE13-2E8C45B1B2C5}</UniqueIdentifier>
     </Filter>
@@ -38,21 +35,6 @@
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
       <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\inventory.cpp">
-      <Filter>Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\item.cpp">
-      <Filter>Entities\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\armor.cpp">
-      <Filter>Entities\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\potion.cpp">
-      <Filter>Entities\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\weapon.cpp">
-      <Filter>Entities\Items</Filter>
     </ClCompile>
     <ClCompile Include="..\src\asset_loader.cpp">
       <Filter>Core</Filter>
@@ -124,21 +106,6 @@
   <ItemGroup>
     <ClInclude Include="..\include\entity.h">
       <Filter>Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\inventory.h">
-      <Filter>Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\armor.h">
-      <Filter>Entities\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\item.h">
-      <Filter>Entities\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\potion.h">
-      <Filter>Entities\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\weapon.h">
-      <Filter>Entities\Items</Filter>
     </ClInclude>
     <ClInclude Include="..\include\asset_loader.h">
       <Filter>Core</Filter>
