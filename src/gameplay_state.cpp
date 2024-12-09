@@ -1,5 +1,6 @@
 #include "gameplay_state.h"
 #include "debug_manager.h"
+#include "player.h"
 
 CGameplay::CGameplay(sf::RenderWindow& Window)
     : mWindow(Window), mCamera(Window), MenuManager(Window)
@@ -15,9 +16,6 @@ auto CGameplay::load_Level() -> void
         std::cout << "Error: Cant load map!" << std::endl;
     }
 }
-
-// TODO: add method to remove entity from vec by id
-// TODO: add in class entity a unique id
 
 auto CGameplay::handle_events(sf::Event& Event, CStateManager& StateManager) -> void
 {
@@ -40,16 +38,6 @@ auto CGameplay::render() -> void
 {
     tmx.render(mWindow);
     EntityManager.render();
-    if (mDebugging)
-    {
-        // CDebugManager::render(mWindow, entity.get());
-        mCamera.reset();
-    }
-    else
-    {
-        // mCamera.update(mEntities[0].get());
-    }
-
     MenuManager.render();
 }
 
@@ -59,9 +47,7 @@ auto CGameplay::update(float delta_time) -> void
     {
         EntityManager.update(delta_time);
     }
-
-    
-    // TODO: add collusion class to detect collusion between entities
+    mPause = MenuManager.update(delta_time);
 }
 
 auto CGameplay::set_debugging(bool Value) -> void

@@ -54,13 +54,21 @@ auto CMenuManager::handle_events(sf::Event& Event, CStateManager* StateManager) 
         }
     }
     if (Event.type == sf::Event::KeyPressed) {
-        if (Event.key.code == sf::Keyboard::Escape) set_menu(get_pause_menu());
-        if (Event.key.code == sf::Keyboard::G)      set_menu(get_stats_menu());
+        if (Event.key.code == sf::Keyboard::Escape)
+        {
+            set_menu(get_pause_menu());
+        }
+        if (Event.key.code == sf::Keyboard::G)
+        {
+            set_menu(get_stats_menu());
+        }
     }
 }
 
-auto CMenuManager::update(float delta_time) -> void
+auto CMenuManager::update(float delta_time) -> bool
 {
+    if (mCurrent_Menu)  return true;
+    return false;
 }
 
 auto CMenuManager::render() -> void

@@ -25,7 +25,7 @@ public:
 	auto get_stats_menu() -> CStats_menu*;
 
 	auto handle_events(sf::Event& Event, CStateManager* StateManager) -> void;
-	auto update(float delta_time) -> void;
+	auto update(float delta_time) -> bool;
 	auto render() -> void;
 };
 
