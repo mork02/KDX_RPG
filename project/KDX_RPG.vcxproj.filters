@@ -78,10 +78,7 @@
     <ClCompile Include="..\src\camera.cpp">
       <Filter>Physics</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\warrior.cpp">
-      <Filter>Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\goblin.cpp">
+    <ClCompile Include="..\src\player.cpp">
       <Filter>Entities</Filter>
     </ClCompile>
     <ClCompile Include="..\src\player_movement.cpp">
@@ -116,6 +113,12 @@
     </ClCompile>
     <ClCompile Include="..\src\tmx_loader.cpp">
       <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\entity.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\entity_manager.cpp">
+      <Filter>GameLogic\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -161,10 +164,7 @@
     <ClInclude Include="..\include\fps.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\warrior.h">
-      <Filter>Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\goblin.h">
+    <ClInclude Include="..\include\player.h">
       <Filter>Entities</Filter>
     </ClInclude>
     <ClInclude Include="..\include\camera.h">
@@ -211,6 +211,9 @@
     </ClInclude>
     <ClInclude Include="..\include\tmx_loader.h">
       <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\entity_manager.h">
+      <Filter>GameLogic\Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

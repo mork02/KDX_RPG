@@ -153,6 +153,7 @@
     <ClCompile Include="..\src\camera.cpp" />
     <ClCompile Include="..\src\collision.cpp" />
     <ClCompile Include="..\src\debug_manager.cpp" />
+    <ClCompile Include="..\src\entity_manager.cpp" />
     <ClCompile Include="..\src\fps.cpp" />
     <ClCompile Include="..\src\game_manager.cpp" />
     <ClCompile Include="..\src\inventory.cpp" />
@@ -167,7 +168,7 @@
     <ClCompile Include="..\src\potion.cpp" />
     <ClCompile Include="..\src\statusbar.cpp" />
     <ClCompile Include="..\src\tmx_loader.cpp" />
-    <ClCompile Include="..\src\warrior.cpp" />
+    <ClCompile Include="..\src\player.cpp" />
     <ClCompile Include="..\src\weapon.cpp" />
     <ClCompile Include="..\src\text.cpp" />
     <ClCompile Include="..\src\asset_loader.cpp" />
@@ -177,14 +178,15 @@
     <ClCompile Include="..\src\pause_menu.cpp" />
     <ClCompile Include="..\src\option_menu.cpp" />
     <ClCompile Include="..\src\animation_loader.cpp" />
-    <ClCompile Include="..\src\goblin.cpp" />
     <ClCompile Include="..\src\state_manager.cpp" />
+    <ClCompile Include="..\src\entity.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\armor.h" />
     <ClInclude Include="..\include\collision.h" />
     <ClInclude Include="..\include\debug_manager.h" />
     <ClInclude Include="..\include\entity.h" />
+    <ClInclude Include="..\include\entity_manager.h" />
     <ClInclude Include="..\include\fps.h" />
     <ClInclude Include="..\include\game_manager.h" />
     <ClInclude Include="..\include\inventory.h" />
@@ -197,7 +199,7 @@
     <ClInclude Include="..\include\state.h" />
     <ClInclude Include="..\include\statusbar.h" />
     <ClInclude Include="..\include\tmx_loader.h" />
-    <ClInclude Include="..\include\warrior.h" />
+    <ClInclude Include="..\include\player.h" />
     <ClInclude Include="..\include\weapon.h" />
     <ClInclude Include="..\include\text.h" />
     <ClInclude Include="..\include\asset_loader.h" />
@@ -209,7 +211,6 @@
     <ClInclude Include="..\include\option_menu.h" />
     <ClInclude Include="..\include\animation_loader.h" />
     <ClInclude Include="..\include\camera.h" />
-    <ClInclude Include="..\include\goblin.h" />
     <ClInclude Include="..\include\enums.h" />
     <ClInclude Include="..\include\state_manager.h" />
   </ItemGroup>
