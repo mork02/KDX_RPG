@@ -19,9 +19,12 @@ auto CGameplay::load_Level() -> void
 auto CGameplay::load_Entities() -> void
 {
     mEntities.reserve(10);
-    mEntities.push_back(std::move(std::make_unique<CGoblin>(mWindow)));
     mEntities.push_back(std::move(std::make_unique<CWarrior>(mWindow)));
+    mEntities.push_back(std::move(std::make_unique<CGoblin>(mWindow)));
 }
+
+// TODO: add method to remove entity from vec by id
+// TODO: add in class entity a unique id
 
 auto CGameplay::handle_events(sf::Event& Event, CStateManager& StateManager) -> void
 {
