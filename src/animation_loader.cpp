@@ -29,7 +29,7 @@ auto CAnimation_loader::get_frame_rect(unsigned frame_index) -> sf::IntRect
     return sf::IntRect();
 }
 
-auto CAnimation_loader::get_total_frames() -> unsigned
+auto CAnimation_loader::get_total_frames() -> size_t
 {
     return mFrames.size();
 }

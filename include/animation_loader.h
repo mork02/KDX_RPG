@@ -16,7 +16,7 @@ protected:
 
     auto setup_animation(const sf::Texture& Texture, unsigned Row, unsigned Frame_Lenght, unsigned Frame_Width, unsigned Frame_Height) -> void;
     auto get_frame_rect(unsigned frame_index) -> sf::IntRect;
-    auto get_total_frames() -> unsigned;
+    auto get_total_frames() -> size_t;
     auto update_frames(sf::Sprite& sprite) -> void;
 
 };

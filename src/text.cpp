@@ -23,7 +23,7 @@ CText::CText(
     set_size(Character_Size);
 }
 
-auto CText::get_Global_text_Bounds() -> const sf::FloatRect&
+auto CText::get_Global_text_Bounds() -> const sf::FloatRect
 {
     return mText.getGlobalBounds();
 }

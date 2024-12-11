@@ -32,7 +32,7 @@ public:
         std::string Showing_Text, ECharacter_Size Character_Size = ECharacter_Size::MEDIUM,
         bool Hoverable = false);
 
-    auto get_Global_text_Bounds() -> const sf::FloatRect&;
+    auto get_Global_text_Bounds() -> const sf::FloatRect;
     auto get_color() -> const sf::Color&;
 
     auto configure(float x, float y, ECharacter_Size Character_Size = ECharacter_Size::MEDIUM) -> void;
