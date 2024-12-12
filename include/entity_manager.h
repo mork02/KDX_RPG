@@ -14,7 +14,7 @@ private:
 public:
 	auto prepare_vec(sf::RenderWindow& Window) -> bool;
 	auto handle_events(sf::RenderWindow& Window, sf::Event& Event) -> void;
-	auto render() -> void;
+	auto render(sf::RenderWindow& Window) -> void;
 	auto update(float delta_time) -> void;
 };
 

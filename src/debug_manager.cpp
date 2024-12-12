@@ -24,7 +24,7 @@ auto CDebugManager::Hitbox(sf::RenderWindow& Window, CEntity* Entity) -> void
     debug_box.setOutlineThickness(2.0f);
     debug_box.setFillColor(sf::Color::Transparent);
 
-    coordinates.render();
+    coordinates.render(Window);
     Window.draw(debug_box);
 }
 
@@ -33,7 +33,7 @@ auto CDebugManager::MousePosition(sf::RenderWindow& Window) -> void
     sf::Vector2f MousePosition = Window.mapPixelToCoords(sf::Mouse::getPosition(Window));
     std::string text = "X: " + std::to_string(MousePosition.x) + "\nY: " + std::to_string(MousePosition.y);
     CText MouseText(Window, text, ECharacter_Size::VERY_SMALL);
-    MouseText.render();
+    MouseText.render(Window);
 }
 
 auto CDebugManager::render(sf::RenderWindow& Window, CEntity* Entity) -> void

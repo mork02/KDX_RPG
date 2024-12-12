@@ -14,7 +14,6 @@ enum class ECharacter_Size
 class CText
 {
 private:
-    sf::RenderWindow& mWindow;
     sf::Color mColor = sf::Color::White;
     sf::Font mFont;
     sf::Text mText;
@@ -23,8 +22,8 @@ private:
     bool mHoverable;
 
 private:
-    auto update_hover_state() -> void;
-    auto init_Standard_Size() -> void;
+    auto update_hover_state(sf::RenderWindow& Window) -> void;
+    auto init_Standard_Size(sf::RenderWindow& Window) -> void;
 
 public:
     CText(
@@ -42,5 +41,5 @@ public:
     auto set_text(std::string new_text) -> void;
     auto set_position(float value_x, float value_y) -> void;
 
-    auto render() -> void;
+    auto render(sf::RenderWindow& Window) -> void;
 };

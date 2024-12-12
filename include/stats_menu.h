@@ -13,6 +13,6 @@ private:
 public:
     CStats_menu(sf::RenderWindow& Window);
 
-    auto render() -> void override;
-    auto handle_events(sf::Event& Event, CMenuManager& MenuManager, CStateManager* StateManager) -> void override;
+    auto render(sf::RenderWindow& Window) -> void override;
+    auto handle_events(sf::Event& Event, sf::RenderWindow& Window, CMenuManager& MenuManager, CStateManager* StateManager) -> void override;
 };

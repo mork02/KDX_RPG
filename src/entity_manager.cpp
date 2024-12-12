@@ -38,11 +38,11 @@ auto CEntityManager::handle_events(sf::RenderWindow& Window, sf::Event& Event) -
     }
 }
 
-auto CEntityManager::render() -> void
+auto CEntityManager::render(sf::RenderWindow& Window) -> void
 {
     for (auto& entity : mEntity_Vec)
     {
-        entity->render();
+        entity->render(Window);
     }
 }
 

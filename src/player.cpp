@@ -15,9 +15,9 @@ auto CPlayer::init_asset() -> void
 }
 
 
-auto CPlayer::render() -> void
+auto CPlayer::render(sf::RenderWindow& Window) -> void
 {
-    mAsset.render();
+    mAsset.render(Window);
 }
 
 auto CPlayer::handle_events(sf::RenderWindow& Window, sf::Event& Event) -> void

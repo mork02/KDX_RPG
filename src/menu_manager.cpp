@@ -50,7 +50,7 @@ auto CMenuManager::handle_events(sf::Event& Event, CStateManager* StateManager) 
     {
         if (Event.key.code == sf::Mouse::Left)
         {
-            if (mCurrent_Menu)  mCurrent_Menu->handle_events(Event, *this, StateManager);
+            if (mCurrent_Menu)  mCurrent_Menu->handle_events(Event, mWindow, *this, StateManager);
         }
     }
     if (Event.type == sf::Event::KeyPressed) {
@@ -73,5 +73,5 @@ auto CMenuManager::update(float delta_time) -> bool
 
 auto CMenuManager::render() -> void
 {
-    if (mCurrent_Menu) mCurrent_Menu->render();
+    if (mCurrent_Menu) mCurrent_Menu->render(mWindow);
 }

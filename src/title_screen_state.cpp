@@ -27,7 +27,7 @@ auto CTitle_Screen::render() -> void
 
     for (auto const& text : get_text_components())
     {
-        text.get().render();
+        text.get().render(mWindow);
     }
     
     animate_title_text();

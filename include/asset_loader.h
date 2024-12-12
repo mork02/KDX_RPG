@@ -8,7 +8,6 @@
 class CAsset_loader : public CAnimation_loader
 {
 private:
-    sf::RenderWindow& mWindow;
     sf::Texture mTexture;
     sf::Sprite mSprite;
 
@@ -17,7 +16,6 @@ private:
     unsigned mCurrent_Frame_Length = 0;
     sf::Vector2f mScale;
 
-    bool mDebug = false;
     CText mD_Coordinates;
 
 public:
@@ -36,7 +34,7 @@ public:
     auto set_direction(bool value) -> void;
     auto set_origin_center() -> void;
 
-    auto center_asset() -> void;
+    auto center_asset(sf::RenderWindow& Window) -> void;
     auto update() -> void;
-    auto render() -> void;
+    auto render(sf::RenderWindow& Window) -> void;
 };

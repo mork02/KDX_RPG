@@ -5,7 +5,6 @@ CText::CText(
     sf::RenderWindow& Window,
     std::string Showing_Text, ECharacter_Size Character_Size,
     bool Hoverable) : 
-    mWindow(Window),
     mHoverable(Hoverable)
 {
     if (!mFont.loadFromFile("assets/font/Minecraft.ttf"))
@@ -13,7 +12,7 @@ CText::CText(
         std::cout << mFont.getInfo().family << std::endl;
     }
 
-    init_Standard_Size();
+    init_Standard_Size(Window);
 
     mText.setString(Showing_Text);
     mText.setFont(mFont);
@@ -68,17 +67,17 @@ auto CText::set_position(float value_x, float value_y) -> void
     mText.setPosition(value_x, value_y);
 }
 
-auto CText::render() -> void
+auto CText::render(sf::RenderWindow& Window) -> void
 {
-    update_hover_state();
-    mWindow.draw(mText);
+    update_hover_state(Window);
+    Window.draw(mText);
 }
 
-auto CText::update_hover_state() -> void
+auto CText::update_hover_state(sf::RenderWindow& Window) -> void
 {
     if (!mHoverable) return;
 
-    sf::Vector2f mouse_pos = mWindow.mapPixelToCoords(sf::Mouse::getPosition(mWindow));
+    sf::Vector2f mouse_pos = Window.mapPixelToCoords(sf::Mouse::getPosition(Window));
     sf::FloatRect text_bounds = get_Global_text_Bounds();
 
     if (text_bounds.contains(static_cast<float>(mouse_pos.x), static_cast<float>(mouse_pos.y)))
@@ -91,10 +90,10 @@ auto CText::update_hover_state() -> void
     }
 }
 
-auto CText::init_Standard_Size() -> void
+auto CText::init_Standard_Size(sf::RenderWindow& Window) -> void
 {
-    sf::Vector2u baseResolution(mWindow.getSize().x, mWindow.getSize().y);
-    sf::Vector2u windowSize = mWindow.getSize();
+    sf::Vector2u baseResolution(Window.getSize().x, Window.getSize().y);
+    sf::Vector2u windowSize = Window.getSize();
 
     float scaleX = static_cast<float>(windowSize.x) / baseResolution.x;
     float scaleY = static_cast<float>(windowSize.y) / baseResolution.y;

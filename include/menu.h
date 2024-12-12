@@ -12,12 +12,11 @@ class CMenu : public CAsset_loader
 
 protected:
     bool mVisible;
-    sf::RenderWindow& mWindow;
     EMenuState mMenu_Type;
 
 public:
     CMenu(sf::RenderWindow& Window, EMenuState Menu_Type) :
-        mWindow(Window), mMenu_Type(Menu_Type),
+        mMenu_Type(Menu_Type),
         CAsset_loader(Window),
         mVisible(false) 
     {}
@@ -26,6 +25,6 @@ public:
     auto get_visible() const -> bool { return mVisible; };
     auto set_visible(bool value) -> void { mVisible = value; };
 
-    virtual auto render() -> void = 0;
-    virtual auto handle_events(sf::Event& Event, CMenuManager& MenuManager, CStateManager* StateManager) -> void = 0;
+    virtual auto render(sf::RenderWindow& Window) -> void = 0;
+    virtual auto handle_events(sf::Event& Event, sf::RenderWindow& Window, CMenuManager& MenuManager, CStateManager* StateManager) -> void = 0;
 };

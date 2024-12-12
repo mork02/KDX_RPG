@@ -5,19 +5,19 @@ CStats_menu::CStats_menu(sf::RenderWindow& Window) :
 {
     init_asset(mPath);
     get_Sprite().setScale(6, 6);
-    center_asset();
+    center_asset(Window);
 }
 
-auto CStats_menu::render() -> void
+auto CStats_menu::render(sf::RenderWindow& Window) -> void
 {
 
     if (get_visible())
     {
-        mWindow.draw(get_Sprite());
+        Window.draw(get_Sprite());
     }
 }
 
-auto CStats_menu::handle_events(sf::Event& Event, CMenuManager& MenuManager, CStateManager* StateManager) -> void
+auto CStats_menu::handle_events(sf::Event& Event, sf::RenderWindow& Window, CMenuManager& MenuManager, CStateManager* StateManager) -> void
 {
 
 }

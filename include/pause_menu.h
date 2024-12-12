@@ -15,13 +15,13 @@ private:
     CText mBack_To_Title_Text;
 
     auto get_text_components() -> std::vector<std::reference_wrapper<CText>>;
-    auto set_text_position() -> void;
+    auto set_text_position(sf::RenderWindow& Window) -> void;
 
 public:
     CPause_menu(sf::RenderWindow& Window);
 
-    auto render() -> void override;
-    auto handle_events(sf::Event& Event, CMenuManager& MenuManager, CStateManager* StateManager) -> void override;
+    auto render(sf::RenderWindow& Window) -> void override;
+    auto handle_events(sf::Event& Event, sf::RenderWindow& Window, CMenuManager& MenuManager, CStateManager* StateManager) -> void override;
 };
 
 

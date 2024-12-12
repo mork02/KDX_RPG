@@ -37,7 +37,7 @@ auto CGameplay::handle_events(sf::Event& Event, CStateManager& StateManager) -> 
 auto CGameplay::render() -> void
 {
     tmx.render(mWindow);
-    EntityManager.render();
+    EntityManager.render(mWindow);
     MenuManager.render();
 }
 
